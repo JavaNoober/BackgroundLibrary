@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<shape-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:shape=["rectangle" | "oval" | "Line" | "ring"] >-->
+    <!--<corners-->
+        <!--android:radius="integer"-->
+        <!--android:topLeftRadius="integer"-->
+        <!--android:topRightRadius="integer"-->
+        <!--android:bottomLeftRadius="integer"-->
+        <!--android:bottomRightRadius="integer" />-->
+    <!--<gradient-->
+        <!--android:angle="integer"-->
+        <!--android:centerX="float"-->
+        <!--android:centerY="float"-->
+        <!--android:centerColor="integer"-->
+        <!--android:endColor="color"-->
+        <!--android:gradientRadius="integer"-->
+        <!--android:startColor="color"-->
+        <!--android:type=["linear" | "radial" | "sweep"]-->
+        <!--android:useLevel=["true" | "false"] />-->
+    <!--<padding-->
+        <!--android:left="integer"-->
+        <!--android:top="integer"-->
+        <!--android:right="integer"-->
+        <!--android:bottom="integer" />-->
+    <!--<size-->
+        <!--android:width="integer"-->
+        <!--android:height="integer" />-->
+    <!--<solid-->
+        <!--android:color="color" />-->
+    <!--<stroke-->
+        <!--android:width="integer"-->
+        <!--android:color="color"-->
+        <!--android:dashWidth="integer"-->
+        <!--android:dashGap="integer" />-->
+    <!--</shape>-->
+
+   <declare-styleable name="background">
+       <attr name="shape" format="enum">
+           <enum name="rectangle" value="0" />
+           <enum name="oval" value="1" />
+           <enum name="line" value="2" />
+           <enum name="ring" value="3" />
+       </attr>
+
+       <attr name="solid_color" format="color"/>
+
+       <attr name="corners_radius" format="dimension"/>
+       <attr name="corners_bottomLeftRadius" format="dimension"/>
+       <attr name="corners_bottomRightRadius" format="dimension"/>
+       <attr name="corners_topLeftRadius" format="dimension"/>
+       <attr name="corners_topRightRadius" format="dimension"/>
+
+       <attr name="gradient_angle" format="integer"/>
+       <attr name="gradient_centerX" format="float"/>
+       <attr name="gradient_centerY" format="float"/>
+       <attr name="gradient_centerColor" format="color"/>
+       <attr name="gradient_endColor" format="color"/>
+       <attr name="gradient_startColor" format="color"/>
+       <attr name="gradient_gradientRadius" format="dimension"/>
+       <attr name="gradient_type" format="enum">
+           <enum name="linear" value="0" />
+           <enum name="radial" value="1" />
+           <enum name="sweep" value="2" />
+       </attr>
+       <attr name="gradient_useLevel" format="boolean"/>
+
+       <attr name="padding_left" format="dimension"/>
+       <attr name="padding_top" format="dimension"/>
+       <attr name="padding_right" format="dimension"/>
+       <attr name="padding_bottom" format="dimension"/>
+
+       <attr name="size_width" format="integer">
+           <enum name="wrap_content" value="-2" />
+           <enum name="match_parent" value="-1" />
+       </attr>
+       <attr name="size_height" format="integer">
+           <enum name="wrap_content" value="-2" />
+           <enum name="match_parent" value="-1" />
+       </attr>
+
+       <attr name="stroke_width" format="dimension"/>
+       <attr name="stroke_color" format="color"/>
+       <attr name="stroke_dashWidth" format="dimension"/>
+       <attr name="stroke_dashGap" format="integer"/>
+   </declare-styleable>
+</resources>
