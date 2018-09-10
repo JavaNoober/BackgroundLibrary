@@ -86,7 +86,15 @@
        <attr name="stroke_dashGap" format="dimension"/>
 
        <!--以下是selector事件-->
-       <!--<attr name="stroke_dashGap" format="dimension"/>-->
+       <attr name="pressed_color" format="dimension"/>
 
    </declare-styleable>
+
+    <declare-styleable name="background_unpress">
+
+    </declare-styleable>
+
+    <declare-styleable name="background_press">
+
+    </declare-styleable>
 </resources>

@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.noober.background.utils.TypeValueHelper;
 
@@ -40,11 +43,15 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             if (view == null) {
                 view = createView(context, name, attrs);
             }
+            StateListDrawable stateListDrawable = new StateListDrawable();
+            stateListDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
+            stateListDrawable.addState(new int[]{android.R.attr.state_pressed},
+                    context.getResources().getDrawable(R.drawable.pressed));
 
             if (view == null) {
                 return null;
             } else {
-                view.setBackground(drawable);
+                view.setBackground(stateListDrawable);
             }
             return view;
         } catch (Exception e) {
