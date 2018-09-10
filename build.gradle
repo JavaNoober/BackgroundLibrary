@@ -18,6 +18,10 @@ allprojects {
         google()
         jcenter()
     }
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+    }
 }
 
 task clean(type: Delete) {
@@ -29,7 +33,7 @@ ext {
     userOrg = 'noober'
     groupId = 'com.noober.backgorund'
     uploadName = 'Background'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = "A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）"
     website = 'https://github.com/JavaNoober/BackgroudLibrary'
 //    gradlew clean build bintrayUpload -PbintrayUser=xiaoqiandroid -PbintrayKey=xxxxxxxxxxxxxxxx -PdryRun=false

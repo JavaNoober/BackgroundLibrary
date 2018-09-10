@@ -10,11 +10,16 @@ import android.view.View;
 
 public class BackgroundLibrary {
 
-    public static void inject(Activity activity) {
-        LayoutInflater inflater = activity.getLayoutInflater();
+    public static void inject(Context context) {
+        LayoutInflater inflater;
+        if(context instanceof Activity){
+            inflater = ((Activity)context).getLayoutInflater();
+        }else {
+            inflater = LayoutInflater.from(context);
+        }
         BackgroundFactory factory = new BackgroundFactory();
-        if (activity instanceof AppCompatActivity) {
-            final AppCompatDelegate delegate = ((AppCompatActivity) activity).getDelegate();
+        if (context instanceof AppCompatActivity) {
+            final AppCompatDelegate delegate = ((AppCompatActivity) context).getDelegate();
             factory.setInterceptFactory(new LayoutInflater.Factory() {
                 @Override
                 public View onCreateView(String name, Context context, AttributeSet attrs) {

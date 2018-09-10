@@ -32,8 +32,6 @@ import static android.graphics.drawable.GradientDrawable.LINEAR_GRADIENT;
 
 public class BackgroundFactory implements LayoutInflater.Factory {
 
-    private static final int[][] EMPTY = new int[][] { new int[0] };
-
     private LayoutInflater.Factory mViewCreateFactory;
 
     public void setInterceptFactory(LayoutInflater.Factory factory) {

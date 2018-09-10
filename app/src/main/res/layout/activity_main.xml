@@ -59,34 +59,20 @@
         app:shape="rectangle" />
 
     <TextView
-        android:layout_width="130dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#8c6822"
-        android:textSize="20sp"
         app:corners_radius="4dp"
         app:gradient_useLevel="true"
         app:solid_color="#E3B666"
         app:stroke_color="#8c6822"
         app:stroke_dashGap="5dp"
         app:stroke_dashWidth="10dp"
-        app:stroke_width="2dp" />
-
-    <View
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        app:stroke_width="2dp"
+        android:layout_width="130dp"
+        android:layout_height="36dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
+        android:text="TextView"
         android:textColor="#8c6822"
-        android:textSize="20sp"
-        app:shape="oval"
-        app:solid_color="#E3B666"
-        app:stroke_color="#8c6822"
-        app:stroke_dashGap="5dp"
-        app:stroke_dashWidth="10dp"
-        app:stroke_width="2dp" />
+        android:textSize="20sp"/>
 
     <Button
         android:layout_width="300dp"
@@ -102,6 +88,20 @@
         app:unpressed_color="#7CFC00"
         app:pressed_color="#7CCD7C"/>
 
+    <View
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textColor="#8c6822"
+        android:textSize="20sp"
+        app:shape="rectangle"
+        app:solid_color="#E3B666"
+        app:stroke_color="#8c6822"
+        app:stroke_width="2dp"
+        app:stroke_dashGap="5dp"
+        app:stroke_dashWidth="10dp"/>
+
     <Button
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -111,9 +111,12 @@
         android:text="有波纹触摸反馈的按钮"
         android:textColor="@android:color/white"
         android:textSize="20sp"
+        app:stroke_color="#8c6822"
+        app:stroke_width="2dp"
         app:corners_radius="20dp"
         app:ripple_enable="true"
         app:ripple_color="#71C671"
-        app:solid_color="#7CFC00"/>
+        app:solid_color="#7CFC00"
+        />
 
 </LinearLayout>
