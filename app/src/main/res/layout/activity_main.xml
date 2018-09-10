@@ -12,6 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="直接添加自定义属性，设置背景shape：" />
 
     <TextView
@@ -86,5 +87,33 @@
         app:stroke_dashGap="5dp"
         app:stroke_dashWidth="10dp"
         app:stroke_width="2dp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="有点击反馈的按钮"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:corners_radius="20dp"
+        app:shape="rectangle"
+        app:unpressed_color="#7CFC00"
+        app:pressed_color="#7CCD7C"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="有波纹触摸反馈的按钮"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:corners_radius="20dp"
+        app:ripple_enable="true"
+        app:ripple_color="#71C671"
+        app:solid_color="#7CFC00"/>
 
 </LinearLayout>

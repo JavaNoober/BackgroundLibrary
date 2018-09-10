@@ -1,10 +1,21 @@
 package com.noober.background;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PointF;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.graphics.drawable.shapes.RectShape;
+import android.os.Build;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -21,6 +32,8 @@ import static android.graphics.drawable.GradientDrawable.LINEAR_GRADIENT;
 
 public class BackgroundFactory implements LayoutInflater.Factory {
 
+    private static final int[][] EMPTY = new int[][] { new int[0] };
+
     private LayoutInflater.Factory mViewCreateFactory;
 
     public void setInterceptFactory(LayoutInflater.Factory factory) {
@@ -34,30 +47,44 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             view = mViewCreateFactory.onCreateView(name, context, attrs);
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
+        TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.background_press);
         try {
             int attrCount = typedArray.getIndexCount();
             if (attrCount == 0) {
                 return null;
             }
-            GradientDrawable drawable = getDrawable(typedArray);
             if (view == null) {
                 view = createView(context, name, attrs);
             }
-            StateListDrawable stateListDrawable = new StateListDrawable();
-            stateListDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
-            stateListDrawable.addState(new int[]{android.R.attr.state_pressed},
-                    context.getResources().getDrawable(R.drawable.pressed));
-
             if (view == null) {
                 return null;
-            } else {
+            }
+            GradientDrawable drawable = getDrawable(typedArray);
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
+                    typedArray.hasValue(R.styleable.background_ripple_enable)) {
+                if(typedArray.getBoolean(R.styleable.background_ripple_enable, false)){
+                    int color = typedArray.getColor(R.styleable.background_ripple_color, 0);
+                    RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), drawable, getShape());
+                    view.setClickable(true);
+                    view.setBackground(rippleDrawable);
+                    return view;
+                }
+
+            }
+
+            if(pressTa.getIndexCount() > 0){
+                StateListDrawable stateListDrawable = getStateListDrawable(drawable, getDrawable(typedArray), pressTa);
+                view.setClickable(true);
                 view.setBackground(stateListDrawable);
+            }else {
+                view.setBackground(drawable);
             }
             return view;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             typedArray.recycle();
+            pressTa.recycle();
         }
 
         return view;
@@ -256,7 +283,48 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             paddingField.setAccessible(true);
             paddingField.set(drawable, padding);
         }
-
         return drawable;
     }
+
+    private StateListDrawable getStateListDrawable(GradientDrawable drawable, GradientDrawable pressDrawable, TypedArray typedArray){
+        StateListDrawable stateListDrawable = new StateListDrawable();
+        for (int i = 0; i < typedArray.getIndexCount(); i++){
+            int attr = TypeValueHelper.sAppearancePressValues.get(typedArray.getIndex(i), -1);
+            if(attr == -1){
+                continue;
+            }
+            int typeIndex = typedArray.getIndex(i);
+
+            if(attr == R.styleable.background_press_pressed_color){
+                int color = typedArray.getColor(typeIndex, 0);
+                pressDrawable.setColor(color);
+                stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, pressDrawable);
+            }else if(attr == R.styleable.background_press_unpressed_color){
+                int color = typedArray.getColor(typeIndex, 0);
+                drawable.setColor(color);
+                stateListDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
+            }
+        }
+        return stateListDrawable;
+    }
+
+
+    private Drawable getShape(){
+        return new ShapeDrawable(new RectShape(){
+            @Override
+            public void draw(Canvas canvas, Paint paint) {
+                final float width = this.getWidth();
+                final float height = this.getHeight();
+                Path path = new Path();
+                path.moveTo(0,0);
+                path.lineTo(width,0);
+                path.lineTo(width,height);
+                path.lineTo(0,height);
+                path.lineTo(0,0);
+                path.close();
+                canvas.drawPath(path,paint);
+            }
+        });
+    }
+
 }

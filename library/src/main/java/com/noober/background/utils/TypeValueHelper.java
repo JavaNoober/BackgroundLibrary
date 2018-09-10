@@ -7,7 +7,7 @@ import com.noober.background.R;
 public class TypeValueHelper {
 
     public static final SparseIntArray sAppearanceValues = new SparseIntArray();
-
+    public static final SparseIntArray sAppearancePressValues = new SparseIntArray();
     static {
         sAppearanceValues.put(R.styleable.background_shape, R.styleable.background_shape);
         sAppearanceValues.put(R.styleable.background_solid_color, R.styleable.background_solid_color);
@@ -35,5 +35,10 @@ public class TypeValueHelper {
         sAppearanceValues.put(R.styleable.background_stroke_color, R.styleable.background_stroke_color);
         sAppearanceValues.put(R.styleable.background_stroke_dashWidth, R.styleable.background_stroke_dashWidth);
         sAppearanceValues.put(R.styleable.background_stroke_dashGap, R.styleable.background_stroke_dashGap);
+        sAppearanceValues.put(R.styleable.background_ripple_enable, R.styleable.background_ripple_enable);
+        sAppearanceValues.put(R.styleable.background_ripple_color, R.styleable.background_ripple_color);
+
+        sAppearancePressValues.put(R.styleable.background_press_pressed_color, R.styleable.background_press_pressed_color);
+        sAppearancePressValues.put(R.styleable.background_press_unpressed_color, R.styleable.background_press_unpressed_color);
     }
 }
