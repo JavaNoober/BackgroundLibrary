@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -19,18 +18,29 @@ import static android.graphics.drawable.GradientDrawable.LINEAR_GRADIENT;
 
 public class BackgroundFactory implements LayoutInflater.Factory {
 
-    private final static String TAG = "BackgroundFactory";
+    private LayoutInflater.Factory mViewCreateFactory;
+
+    public void setInterceptFactory(LayoutInflater.Factory factory) {
+        mViewCreateFactory = factory;
+    }
 
     @Override
-    public View onCreateView(String name, Context context, AttributeSet attributeSet) {
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.background);
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        View view = null;
+        if (mViewCreateFactory != null) {
+            view = mViewCreateFactory.onCreateView(name, context, attrs);
+        }
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
         try {
             int attrCount = typedArray.getIndexCount();
-            if(attrCount == 0){
+            if (attrCount == 0) {
                 return null;
             }
             GradientDrawable drawable = getDrawable(typedArray);
-            View view = createView(context, name, attributeSet);
+            if (view == null) {
+                view = createView(context, name, attrs);
+            }
+
             if (view == null) {
                 return null;
             } else {
@@ -43,7 +53,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             typedArray.recycle();
         }
 
-        return null;
+        return view;
     }
 
     private View createView(Context context, String name, AttributeSet attrs) {
@@ -69,10 +79,10 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         return view;
     }
 
-    private boolean hasSetRadius(float[] radius){
+    private boolean hasSetRadius(float[] radius) {
         boolean hasSet = false;
-        for(float f : radius){
-            if(f != 0.0f){
+        for (float f : radius) {
+            if (f != 0.0f) {
                 hasSet = true;
                 break;
             }
@@ -80,7 +90,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         return hasSet;
     }
 
-    private GradientDrawable getDrawable(TypedArray typedArray) throws Exception{
+    private GradientDrawable getDrawable(TypedArray typedArray) throws Exception {
         GradientDrawable drawable = new GradientDrawable();
         float[] cornerRadius = new float[8];
         float sizeWidth = 0;
@@ -88,7 +98,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         float strokeWidth = -1;
         float strokeDashWidth = 0;
         int strokeColor = 1;
-        int strokeGap = 0;
+        float strokeGap = 0;
         float centerX = 0;
         float centerY = 0;
         int centerColor = 0;
@@ -105,7 +115,6 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             int typeIndex = typedArray.getIndex(i);
             if (attr == R.styleable.background_shape) {
                 drawable.setShape(typedArray.getInt(typeIndex, 0));
-                Log.e(TAG, "background_shape");
             } else if (attr == R.styleable.background_solid_color) {
                 drawable.setColor(typedArray.getColor(typeIndex, 0));
             } else if (attr == R.styleable.background_corners_radius) {
@@ -160,35 +169,34 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             } else if (attr == R.styleable.background_stroke_dashWidth) {
                 strokeDashWidth = typedArray.getDimension(typeIndex, 0);
             } else if (attr == R.styleable.background_stroke_dashGap) {
-                strokeGap = typedArray.getInt(typeIndex, 0);
+                strokeGap = typedArray.getDimension(typeIndex, 0);
             }
         }
-        if(hasSetRadius(cornerRadius)){
-            Log.e(TAG, "hasSetRadius");
+        if (hasSetRadius(cornerRadius)) {
             drawable.setCornerRadii(cornerRadius);
         }
-        if(typedArray.hasValue(R.styleable.background_size_width) &&
-                typedArray.hasValue(R.styleable.background_size_height)){
+        if (typedArray.hasValue(R.styleable.background_size_width) &&
+                typedArray.hasValue(R.styleable.background_size_height)) {
             drawable.setSize((int) sizeWidth, (int) sizeHeight);
         }
-        if(typedArray.hasValue(R.styleable.background_stroke_width) &&
-                typedArray.hasValue(R.styleable.background_stroke_color)){
+        if (typedArray.hasValue(R.styleable.background_stroke_width) &&
+                typedArray.hasValue(R.styleable.background_stroke_color)) {
             drawable.setStroke((int) strokeWidth, strokeColor, strokeDashWidth, strokeGap);
         }
-        if(typedArray.hasValue(R.styleable.background_gradient_centerX) &&
-                typedArray.hasValue(R.styleable.background_gradient_centerY)){
+        if (typedArray.hasValue(R.styleable.background_gradient_centerX) &&
+                typedArray.hasValue(R.styleable.background_gradient_centerY)) {
             drawable.setGradientCenter(centerX, centerY);
         }
 
-        if(typedArray.hasValue(R.styleable.background_gradient_startColor) &&
-                typedArray.hasValue(R.styleable.background_gradient_endColor)){
+        if (typedArray.hasValue(R.styleable.background_gradient_startColor) &&
+                typedArray.hasValue(R.styleable.background_gradient_endColor)) {
             int[] colors;
-            if(typedArray.hasValue(R.styleable.background_gradient_centerColor)){
+            if (typedArray.hasValue(R.styleable.background_gradient_centerColor)) {
                 colors = new int[3];
                 colors[0] = startColor;
                 colors[1] = centerColor;
                 colors[2] = endColor;
-            }else {
+            } else {
                 colors = new int[2];
                 colors[0] = startColor;
                 colors[1] = endColor;
@@ -233,10 +241,10 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             drawable.setOrientation(mOrientation);
         }
 
-        if(typedArray.hasValue(R.styleable.background_padding_left) &&
+        if (typedArray.hasValue(R.styleable.background_padding_left) &&
                 typedArray.hasValue(R.styleable.background_padding_top) &&
                 typedArray.hasValue(R.styleable.background_padding_right) &&
-                typedArray.hasValue(R.styleable.background_padding_bottom)){
+                typedArray.hasValue(R.styleable.background_padding_bottom)) {
             Field paddingField = drawable.getClass().getField("mPadding");
             paddingField.setAccessible(true);
             paddingField.set(drawable, padding);

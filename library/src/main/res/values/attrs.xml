@@ -71,11 +71,11 @@
        <attr name="padding_right" format="dimension"/>
        <attr name="padding_bottom" format="dimension"/>
 
-       <attr name="size_width" format="integer">
+       <attr name="size_width" format="dimension">
            <enum name="wrap_content" value="-2" />
            <enum name="match_parent" value="-1" />
        </attr>
-       <attr name="size_height" format="integer">
+       <attr name="size_height" format="dimension">
            <enum name="wrap_content" value="-2" />
            <enum name="match_parent" value="-1" />
        </attr>
@@ -83,6 +83,10 @@
        <attr name="stroke_width" format="dimension"/>
        <attr name="stroke_color" format="color"/>
        <attr name="stroke_dashWidth" format="dimension"/>
-       <attr name="stroke_dashGap" format="integer"/>
+       <attr name="stroke_dashGap" format="dimension"/>
+
+       <!--以下是selector事件-->
+       <!--<attr name="stroke_dashGap" format="dimension"/>-->
+
    </declare-styleable>
 </resources>

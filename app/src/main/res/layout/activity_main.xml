@@ -1,29 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity"
+    tools:ignore="MissingPrefix">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="直接添加自定义属性，设置背景shape：" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#8c6822"
         android:textSize="20sp"
-        app:shape="rectangle"
         app:corners_radius="4dp"
-        app:gradient_centerColor="#FFB6C1"
-        app:stroke_width="@dimen/testwidth"
-        app:stroke_color="@android:color/holo_blue_bright"/>
+        app:solid_color="#E3B666"
+        app:stroke_color="#8c6822"
+        app:stroke_width="2dp" />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="Button"
+        android:textColor="#4F94CD"
+        android:textSize="20sp"
+        app:corners_radius="20dp"
+        app:gradient_angle="0"
+        app:gradient_endColor="#4F94CD"
+        app:gradient_startColor="#63B8FF"
+        app:shape="rectangle" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="确认"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:corners_radius="20dp"
+        app:gradient_angle="0"
+        app:gradient_centerColor="#CD4F39"
+        app:gradient_endColor="#CD2626"
+        app:gradient_startColor="#CD5B45"
+        app:shape="rectangle" />
 
     <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="20sp"/>
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#8c6822"
+        android:textSize="20sp"
+        app:corners_radius="4dp"
+        app:gradient_useLevel="true"
+        app:solid_color="#E3B666"
+        app:stroke_color="#8c6822"
+        app:stroke_dashGap="5dp"
+        app:stroke_dashWidth="10dp"
+        app:stroke_width="2dp" />
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textColor="#8c6822"
+        android:textSize="20sp"
+        app:shape="oval"
+        app:solid_color="#E3B666"
+        app:stroke_color="#8c6822"
+        app:stroke_dashGap="5dp"
+        app:stroke_dashWidth="10dp"
+        app:stroke_width="2dp" />
 
 </LinearLayout>
