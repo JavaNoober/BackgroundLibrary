@@ -8,6 +8,7 @@ public class TypeValueHelper {
 
     public static final SparseIntArray sAppearanceValues = new SparseIntArray();
     public static final SparseIntArray sAppearancePressValues = new SparseIntArray();
+    public static final SparseIntArray sAppearanceSelectorValues = new SparseIntArray();
     static {
         sAppearanceValues.put(R.styleable.background_shape, R.styleable.background_shape);
         sAppearanceValues.put(R.styleable.background_solid_color, R.styleable.background_solid_color);
@@ -40,5 +41,23 @@ public class TypeValueHelper {
 
         sAppearancePressValues.put(R.styleable.background_press_pressed_color, R.styleable.background_press_pressed_color);
         sAppearancePressValues.put(R.styleable.background_press_unpressed_color, R.styleable.background_press_unpressed_color);
+
+        sAppearanceSelectorValues.put(R.styleable.background_selector_checkable_drawable, R.styleable.background_selector_checkable_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_checked_drawable, R.styleable.background_selector_checked_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_enabled_drawable, R.styleable.background_selector_enabled_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_selected_drawable, R.styleable.background_selector_selected_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_pressed_drawable, R.styleable.background_selector_pressed_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_focused_drawable, R.styleable.background_selector_focused_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_focused_hovered, R.styleable.background_selector_focused_hovered);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_focused_activated, R.styleable.background_selector_focused_activated);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_unCheckable_drawable, R.styleable.background_selector_unCheckable_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_unChecked_drawable, R.styleable.background_selector_unChecked_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_unEnabled_drawable, R.styleable.background_selector_unEnabled_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_unSelected_drawable, R.styleable.background_selector_unSelected_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_unPressed_drawable, R.styleable.background_selector_unPressed_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_drawable, R.styleable.background_selector_unFocused_drawable);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_hovered, R.styleable.background_selector_unFocused_hovered);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_activated, R.styleable.background_selector_unFocused_activated);
+        sAppearanceSelectorValues.put(R.styleable.background_selector_selector_focused_selected_enabled, R.styleable.background_selector_selector_focused_selected_enabled);
     }
 }

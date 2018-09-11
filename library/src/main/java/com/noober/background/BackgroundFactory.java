@@ -46,6 +46,8 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
         TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.background_press);
+//        TypedArray selectorTa = context.obtainStyledAttributes(attrs, R.styleable.background_selector);
+
         try {
             int attrCount = typedArray.getIndexCount();
             if (attrCount == 0) {
@@ -83,6 +85,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         } finally {
             typedArray.recycle();
             pressTa.recycle();
+//            selectorTa.recycle();
         }
 
         return view;
@@ -306,6 +309,29 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         return stateListDrawable;
     }
 
+//    private StateListDrawable getSelectorDrawable(GradientDrawable drawable, GradientDrawable pressDrawable, TypedArray typedArray){
+//        StateListDrawable stateListDrawable = new StateListDrawable();
+//
+//        for (int i = 0; i < typedArray.getIndexCount(); i++){
+//            int attr = TypeValueHelper.sAppearanceSelectorValues.get(typedArray.getIndex(i), -1);
+//            if(attr == -1){
+//                continue;
+//            }
+//            int typeIndex = typedArray.getIndex(i);
+//
+//            if(attr == R.styleable.background_selector_pressed_drawable){
+//                int color = typedArray.getResourceId(typeIndex, 0);
+//                pressDrawable.setColor(color);
+//                stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, pressDrawable);
+//            }else if(attr == R.styleable.background_selector_unpressed_drawable){
+//                int color = typedArray.getResourceId(typeIndex, 0);
+//                drawable.setColor(color);
+//                drawable.getColor()
+//                stateListDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
+//            }
+//        }
+//        return stateListDrawable;
+//    }
 
     private Drawable getShape(){
         return new ShapeDrawable(new RectShape(){

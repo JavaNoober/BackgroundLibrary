@@ -118,5 +118,17 @@
         app:ripple_color="#71C671"
         app:solid_color="#7CFC00"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="下面是Fragment：" />
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
 </LinearLayout>
