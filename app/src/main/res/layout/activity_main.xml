@@ -40,6 +40,8 @@
         app:gradient_angle="0"
         app:gradient_endColor="#4F94CD"
         app:gradient_startColor="#63B8FF"
+        app:checkable_drawable="#63B8FF"
+
         app:shape="rectangle" />
 
     <Button
@@ -48,6 +50,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:padding="0dp"
+        app:checkable_drawable="@android:color/white"
         android:text="确认"
         android:textColor="@android:color/white"
         android:textSize="20sp"
@@ -66,6 +69,7 @@
         app:stroke_dashGap="5dp"
         app:stroke_dashWidth="10dp"
         app:stroke_width="2dp"
+        app:checkable_drawable="@drawable/circle_like_pressed"
         android:layout_width="130dp"
         android:layout_height="36dp"
         android:layout_marginTop="5dp"

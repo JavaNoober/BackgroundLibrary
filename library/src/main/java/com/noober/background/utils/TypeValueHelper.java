@@ -58,6 +58,5 @@ public class TypeValueHelper {
         sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_drawable, R.styleable.background_selector_unFocused_drawable);
         sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_hovered, R.styleable.background_selector_unFocused_hovered);
         sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_activated, R.styleable.background_selector_unFocused_activated);
-        sAppearanceSelectorValues.put(R.styleable.background_selector_selector_focused_selected_enabled, R.styleable.background_selector_selector_focused_selected_enabled);
     }
 }
