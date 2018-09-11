@@ -45,8 +45,9 @@ inject中实际上是给LayoutInflater添加了一个LayoutInflater.Factory类�
 
 ## 具体使用方法：
 添加依赖：
-
-    implementation 'com.noober.backgorund:core:1.0.1'
+    
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation 'com.noober.backgorund:core:1.0.4'
 
 BaseActivity的super.onCreate之前添加代码：
 
