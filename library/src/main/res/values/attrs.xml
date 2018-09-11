@@ -115,12 +115,6 @@
         <attr name="unFocused_hovered" format="color|reference"/>
         <attr name="unFocused_activated" format="color|reference"/>
 
-        <attr name="selector_focused_selected_enabled" format="flag|color|reference">
-            <flag name="true" value="1"/>
-            <flag name="false" value="0"/>
-            <flag name="null" value="-1"/>
-        </attr>
-
     </declare-styleable>
 
 </resources>

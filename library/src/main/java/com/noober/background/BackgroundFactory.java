@@ -16,8 +16,11 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.Build;
+import android.support.annotation.AttrRes;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -46,7 +49,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         }
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
         TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.background_press);
-//        TypedArray selectorTa = context.obtainStyledAttributes(attrs, R.styleable.background_selector);
+        TypedArray selectorTa = context.obtainStyledAttributes(attrs, R.styleable.background_selector);
 
         try {
             int attrCount = typedArray.getIndexCount();
@@ -59,7 +62,16 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             if (view == null) {
                 return null;
             }
+
+
             GradientDrawable drawable = getDrawable(typedArray);
+
+            if(selectorTa.getIndexCount() > 0){
+                StateListDrawable stateListDrawable = getSelectorDrawable(typedArray, selectorTa);
+//                view.setClickable(true);
+//                view.setBackground(stateListDrawable);
+            }
+
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
                     typedArray.hasValue(R.styleable.background_ripple_enable)) {
                 if(typedArray.getBoolean(R.styleable.background_ripple_enable, false)){
@@ -85,7 +97,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         } finally {
             typedArray.recycle();
             pressTa.recycle();
-//            selectorTa.recycle();
+            selectorTa.recycle();
         }
 
         return view;
@@ -309,29 +321,48 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         return stateListDrawable;
     }
 
-//    private StateListDrawable getSelectorDrawable(GradientDrawable drawable, GradientDrawable pressDrawable, TypedArray typedArray){
-//        StateListDrawable stateListDrawable = new StateListDrawable();
-//
-//        for (int i = 0; i < typedArray.getIndexCount(); i++){
-//            int attr = TypeValueHelper.sAppearanceSelectorValues.get(typedArray.getIndex(i), -1);
-//            if(attr == -1){
-//                continue;
-//            }
-//            int typeIndex = typedArray.getIndex(i);
-//
-//            if(attr == R.styleable.background_selector_pressed_drawable){
-//                int color = typedArray.getResourceId(typeIndex, 0);
-//                pressDrawable.setColor(color);
-//                stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, pressDrawable);
-//            }else if(attr == R.styleable.background_selector_unpressed_drawable){
-//                int color = typedArray.getResourceId(typeIndex, 0);
-//                drawable.setColor(color);
-//                drawable.getColor()
-//                stateListDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
-//            }
-//        }
-//        return stateListDrawable;
-//    }
+    private StateListDrawable getSelectorDrawable(TypedArray typedArray, TypedArray selectorTa) throws Exception {
+        StateListDrawable stateListDrawable = new StateListDrawable();
+
+        for (int i = 0; i < selectorTa.getIndexCount(); i++){
+            int attr = TypeValueHelper.sAppearanceSelectorValues.get(selectorTa.getIndex(i), -1);
+            if(attr == -1){
+                continue;
+            }
+            int typeIndex = selectorTa.getIndex(i);
+
+            if(attr == R.styleable.background_selector_checkable_drawable){
+                setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_pressed);
+            }else if(attr == R.styleable.background_selector_unCheckable_drawable){
+                setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_pressed);
+            }
+        }
+        return stateListDrawable;
+    }
+
+    private void setSelectorDrawable(TypedArray typedArray, TypedArray selectorTa,
+                                     StateListDrawable stateListDrawable, int typeIndex, @AttrRes int functionId) throws Exception {
+        int color = 0;
+        Drawable resDrawable = null;
+
+        //这里用try catch先判断是否是颜色而不是直接调用getDrawable，为了方便填入的是颜色时可以沿用其他属性,
+        //否则如果是其他资源会覆盖app:corners_radius等其他shape属性设置的效果
+        try {
+            color = selectorTa.getColor(typeIndex, 0);
+            if(color == 0){
+                resDrawable = selectorTa.getDrawable(typeIndex);
+            }
+        }catch (Exception e){
+            resDrawable = selectorTa.getDrawable(typeIndex);
+        }
+        if(resDrawable == null && color != 0){
+            GradientDrawable tmpDrawable = getDrawable(typedArray);
+            tmpDrawable.setColor(color);
+            stateListDrawable.addState(new int[]{functionId}, tmpDrawable);
+        }else {
+            stateListDrawable.addState(new int[]{functionId}, resDrawable);
+        }
+    }
 
     private Drawable getShape(){
         return new ShapeDrawable(new RectShape(){
