@@ -58,24 +58,22 @@ public class BackgroundFactory implements LayoutInflater.Factory {
                 return null;
             }
             GradientDrawable drawable = getDrawable(typedArray);
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
-                    typedArray.hasValue(R.styleable.background_ripple_enable)) {
-                if(typedArray.getBoolean(R.styleable.background_ripple_enable, false)){
-                    int color = typedArray.getColor(R.styleable.background_ripple_color, 0);
-                    RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), drawable, getShape());
-                    view.setClickable(true);
-                    view.setBackground(rippleDrawable);
-                    return view;
-                }
-
-            }
-
+            StateListDrawable stateListDrawable = null;
             if(pressTa.getIndexCount() > 0){
-                StateListDrawable stateListDrawable = getStateListDrawable(drawable, getDrawable(typedArray), pressTa);
+                stateListDrawable = getStateListDrawable(drawable, drawable, pressTa);
                 view.setClickable(true);
                 view.setBackground(stateListDrawable);
             }else {
                 view.setBackground(drawable);
+            }
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && typedArray.hasValue(R.styleable.background_ripple_enable)) {
+                if(typedArray.getBoolean(R.styleable.background_ripple_enable, false)){
+                    int color = typedArray.getColor(R.styleable.background_ripple_color, 0);
+                    Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
+                    RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), contentDrawable, contentDrawable);
+                    view.setClickable(true);
+                    view.setBackground(rippleDrawable);
+                }
             }
             return view;
         } catch (Exception e) {
