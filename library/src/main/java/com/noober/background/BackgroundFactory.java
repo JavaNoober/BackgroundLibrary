@@ -72,6 +72,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
 //                view.setBackground(stateListDrawable);
             }
 
+            // todo 适配5.0以下
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
                     typedArray.hasValue(R.styleable.background_ripple_enable)) {
                 if(typedArray.getBoolean(R.styleable.background_ripple_enable, false)){
