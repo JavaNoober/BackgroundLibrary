@@ -144,4 +144,4 @@ BaseActivity的super.onCreate之前添加代码：
 ![](https://user-gold-cdn.xitu.io/2018/9/11/165c44039942ecc4?w=848&h=468&f=png&s=134125)
 # 结尾
 项目地址：https://github.com/JavaNoober/BackgroudLibrary  
-后续更新完善内容会在项目里标明，大家的star是我继续研究的动力☺！
+后续更新完善内容会在项目里标明，欢迎star。
