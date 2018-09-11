@@ -31,8 +31,8 @@ task clean(type: Delete) {
 //添加
 ext {
     userOrg = 'noober'
-    groupId = 'com.noober.backgorund'
-    uploadName = 'Background'
+    groupId = 'com.noober.background'
+    uploadName = 'BackgroudLibrary'
     publishVersion = '1.0.1'
     desc = "A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）"
     website = 'https://github.com/JavaNoober/BackgroudLibrary'

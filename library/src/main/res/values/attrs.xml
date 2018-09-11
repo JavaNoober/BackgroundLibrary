@@ -95,4 +95,32 @@
         <attr name="pressed_color" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="background_selector">
+
+        <attr name="checkable_drawable" format="color|reference"/>
+        <attr name="checked_drawable" format="color|reference"/>
+        <attr name="enabled_drawable" format="color|reference"/>
+        <attr name="selected_drawable" format="color|reference"/>
+        <attr name="pressed_drawable" format="color|reference"/>
+        <attr name="focused_drawable" format="color|reference"/>
+        <attr name="focused_hovered" format="color|reference"/>
+        <attr name="focused_activated" format="color|reference"/>
+
+        <attr name="unCheckable_drawable" format="color|reference"/>
+        <attr name="unChecked_drawable" format="color|reference"/>
+        <attr name="unEnabled_drawable" format="color|reference"/>
+        <attr name="unSelected_drawable" format="color|reference"/>
+        <attr name="unPressed_drawable" format="color|reference"/>
+        <attr name="unFocused_drawable" format="color|reference"/>
+        <attr name="unFocused_hovered" format="color|reference"/>
+        <attr name="unFocused_activated" format="color|reference"/>
+
+        <attr name="selector_focused_selected_enabled" format="flag|color|reference">
+            <flag name="true" value="1"/>
+            <flag name="false" value="0"/>
+            <flag name="null" value="-1"/>
+        </attr>
+
+    </declare-styleable>
+
 </resources>
