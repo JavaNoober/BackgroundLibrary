@@ -139,6 +139,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 点击效果
 
 ![](https://user-gold-cdn.xitu.io/2018/9/12/165ce0e7226b6e05?w=264&h=68&f=gif&s=293851)
+
 第一个点赞效果：
 
     android:layout_width="20dp"
@@ -194,4 +195,14 @@ A framework for directly generating shape through Tags, no need to write shape.x
      <item android:state_pressed="true" android:state_focused="true"
         android:drawable="@drawable/button_pressed" />
         
-因为无法用一个属性去表示两种状态，有思路的同学可以告诉我
+因为无法用一个属性去表示两种状态，有思路的同学可以告诉我  
+5、fragment使用无需任何处理，其Activity调用inject即可  
+6、listView，recyclerView使用也无需任何处理。
+如果不生效，只需要
+    
+    //在调用inflate只需调用一次context，保证adapter创建View时传入的是同一个context即可
+    BackgroundLibrary.inject(context);
+    
+    View item = LayoutInflater.from(context).inflate(xxx)
+    
+7、自定义View中调用了inflate，同listView一样处理即可
