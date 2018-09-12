@@ -7,5 +7,5 @@ import android.graphics.drawable.Drawable;
  */
 public interface ICreateDrawable {
 
-    Drawable create();
+    Drawable create() throws Exception;
 }

@@ -32,6 +32,11 @@ public class BackgroundLibrary {
         inflater.setFactory(factory);
     }
 
+    /**
+     * used for activity which has addFactory
+     * 如果因为其他库已经设置了factory，可以使用该方法去进行inject，在其他库的setFactory后面调用即可
+     * @param context
+     */
     public static void inject2(Context context) {
         try {
             LayoutInflater inflater;
