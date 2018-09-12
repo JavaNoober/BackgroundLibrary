@@ -32,8 +32,10 @@ task clean(type: Delete) {
 ext {
     userOrg = 'noober'
     groupId = 'com.noober.background'
-    uploadName = 'BackgroudLibrary'
-    publishVersion = '1.0.1'
+    uploadName = 'LibraryForBackground'
+//    groupId = 'com.noober.backgorund'
+//    uploadName = 'Background'
+    publishVersion = '1.1.0-alpha'
     desc = "A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）"
     website = 'https://github.com/JavaNoober/BackgroudLibrary'
 //    gradlew clean build bintrayUpload -PbintrayUser=xiaoqiandroid -PbintrayKey=xxxxxxxxxxxxxxxx -PdryRun=false

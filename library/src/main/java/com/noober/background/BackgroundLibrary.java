@@ -8,13 +8,15 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import java.lang.reflect.Field;
+
 public class BackgroundLibrary {
 
     public static void inject(Context context) {
         LayoutInflater inflater;
-        if(context instanceof Activity){
-            inflater = ((Activity)context).getLayoutInflater();
-        }else {
+        if (context instanceof Activity) {
+            inflater = ((Activity) context).getLayoutInflater();
+        } else {
             inflater = LayoutInflater.from(context);
         }
         BackgroundFactory factory = new BackgroundFactory();
@@ -28,5 +30,34 @@ public class BackgroundLibrary {
             });
         }
         inflater.setFactory(factory);
+    }
+
+    public static void inject2(Context context) {
+        try {
+            LayoutInflater inflater;
+            if (context instanceof Activity) {
+                inflater = ((Activity) context).getLayoutInflater();
+            } else {
+                inflater = LayoutInflater.from(context);
+            }
+            Field field = LayoutInflater.class.getDeclaredField("mFactorySet");
+            field.setAccessible(true);
+            field.setBoolean(inflater, false);
+
+            BackgroundFactory factory = new BackgroundFactory();
+            if (inflater.getFactory2() != null) {
+                factory.setInterceptFactory2(inflater.getFactory2());
+            } else if (inflater.getFactory() != null) {
+                factory.setInterceptFactory(inflater.getFactory());
+            }
+            inflater.setFactory(factory);
+
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }
