@@ -4,6 +4,9 @@ A framework for directly generating shape through Tags, no need to write shape.x
 
 ![](https://user-gold-cdn.xitu.io/2018/9/11/165c6e5c0cff0548?w=681&h=233&f=png&s=31240)
 
+
+[English.md](https://github.com/JavaNoober/BackgroundLibrary/blob/master/README-EN.md)
+
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
