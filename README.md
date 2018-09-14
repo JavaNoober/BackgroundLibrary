@@ -182,7 +182,15 @@ A framework for directly generating shape through Tags, no need to write shape.x
             app:unPressed_drawable="#7CFC00" />
             
 使用其实基本和selector shape一样。
+## 简单的性能测试
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test1.png)
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test2.png)
 
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test3.png)
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test4.png)
+
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test111.png)
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test222.png)
 ## 使用注意
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  
 2、在根布局添加
