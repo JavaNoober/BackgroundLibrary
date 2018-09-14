@@ -10,12 +10,13 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.0'
+    implementation 'com.noober.background:core:1.2.2'
 
 版本更新：
     
     1.0.5 解决android 8以下Fragment中view显示问题，解决水波纹不能与press事件共存问题，优化水波纹显示
     1.2.0 增加对selector的支持
+    1.2.2 修复部分属性不生效的bug
  
 ## 示例效果
 

@@ -1,6 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.kotlin_version = '1.2.70'
     repositories {
         google()
         jcenter()
@@ -8,6 +9,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.2'
         classpath 'com.novoda:bintray-release:0.8.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -33,7 +35,7 @@ ext {
     userOrg = 'noober'
     groupId = 'com.noober.background'
     uploadName = 'LibraryForBackground'
-    publishVersion = '1.2.0'
+    publishVersion = '1.2.2'
     desc = "A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）"
     website = 'https://github.com/JavaNoober/BackgroundLibrary'
 //    gradlew clean build bintrayUpload -PbintrayUser=xiaoqiandroid -PbintrayKey=xxxxxxxxxxxxxxxx -PdryRun=false
