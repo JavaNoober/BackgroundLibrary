@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#71C671">
+    <!--自定义的shape作为背景
+    也可添加一张图片作为背景-->
+    <item android:drawable="@drawable/test_ripple1_shape" />
+</ripple>
