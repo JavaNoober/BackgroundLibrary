@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BlankFragment"
+    tools:ignore="MissingPrefix">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下面是Fragment："
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:background="@drawable/test_bg1"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#8c6822"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/test_bg2"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="Button"
+        android:textColor="#4F94CD"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/test_bg3"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="确认"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/test_bg4"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#8c6822"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/test_sel1"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="有点击反馈的按钮"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/test_bg5"
+        android:gravity="center"
+        android:textColor="#8c6822"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/test_bg5"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="有波纹触摸反馈的按钮"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/test_bg5"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="我是LinearLayou"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>
