@@ -20,7 +20,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
  
 ## 示例效果
 
-![](https://user-gold-cdn.xitu.io/2018/9/12/165ce13d4c0a176f?w=286&h=606&f=gif&s=807047)
+![](https://user-gold-cdn.xitu.io/2018/9/14/165d7104b7320e8c?w=347&h=725&f=gif&s=629939)
 
 ## 使用方法
 1、在BaseActivity中的super.onCreate之前调用。
