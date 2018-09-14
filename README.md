@@ -183,14 +183,22 @@ A framework for directly generating shape through Tags, no need to write shape.x
             
 使用其实基本和selector shape一样。
 ## 简单的性能测试
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test1.png)
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test2.png)
+我用原生的方法写了例子里面的shape和selector，做了一个比较简单的测试：
 
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test3.png)
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test4.png)
+下面两幅图，是没有background时打开MainActivity界面的启动时间和打开ListActivity的启动时间
+![](https://user-gold-cdn.xitu.io/2018/9/14/165d7f8a8fb3a46f?w=748&h=88&f=png&s=31994)
+![](https://user-gold-cdn.xitu.io/2018/9/14/165d7f8a8f8a5c0a?w=865&h=95&f=png&s=37982)
 
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test111.png)
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/develop/test/test222.png)
+下面两幅图，是使用原生drawable.xml去设置background时打开MainActivity界面的启动时间和打开ListActivity的启动时间
+![](https://user-gold-cdn.xitu.io/2018/9/14/165d7f8a8fbe7716?w=823&h=92&f=png&s=38142)
+![](https://user-gold-cdn.xitu.io/2018/9/14/165d7f8a8f96f979?w=786&h=75&f=png&s=35403)
+
+最后这两幅图，是使用自定义标签去设置background时打开MainActivity界面的启动时间和打开ListActivity的启动时间
+![](https://user-gold-cdn.xitu.io/2018/9/14/165d7f8a8fabb671?w=1013&h=74&f=png&s=45823)
+![](https://user-gold-cdn.xitu.io/2018/9/14/165d7f8a8fc5ddeb?w=747&h=125&f=png&s=40663)
+
+可以看得出来，其实通过自定义标签去创建drawable并没有真的很损耗性能，其实与本身的drawable.xml差不多，但是在list中，如果没有使用viewholer，会比较消耗性能，如果使用的话，应该差不多。  
+不过这个分析比较简单，只能看个大概，给担心性能的同学心里可以有个底。
 ## 使用注意
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  
 2、在根布局添加
