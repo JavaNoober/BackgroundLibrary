@@ -1,20 +1,10 @@
 package com.noober.background.drawable;
 
 import android.content.res.TypedArray;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.annotation.AttrRes;
-
-import com.noober.background.R;
-import com.noober.background.utils.TypeValueHelper;
 
 import org.xmlpull.v1.XmlPullParserException;
-
-import java.lang.reflect.Field;
-
-import static android.graphics.drawable.GradientDrawable.LINEAR_GRADIENT;
 
 /**
  * Created by xiaoqi on 2018/9/12

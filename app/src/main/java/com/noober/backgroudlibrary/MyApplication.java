@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
-import com.noober.background.BackgroundLibrary;
-
 /**
  * Created by xiaoqi on 2018/9/13
  */
