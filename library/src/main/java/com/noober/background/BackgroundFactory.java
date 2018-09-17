@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RadioButton;
 
 import com.noober.background.drawable.DrawableFactory;
 
@@ -60,7 +61,11 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             if (selectorTa.getIndexCount() > 0) {
                 stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa);
                 view.setClickable(true);
-                view.setBackground(stateListDrawable);
+                if(view instanceof RadioButton){
+                    ((RadioButton)view).setButtonDrawable(stateListDrawable);
+                }else {
+                    view.setBackground(stateListDrawable);
+                }
             } else if (pressTa.getIndexCount() > 0) {
                 drawable = DrawableFactory.getDrawable(typedArray);
                 stateListDrawable = DrawableFactory.getPressDrawable(drawable, typedArray, pressTa);
