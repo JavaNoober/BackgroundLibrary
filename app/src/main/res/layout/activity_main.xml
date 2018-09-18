@@ -106,6 +106,27 @@
             app:stroke_dashWidth="10dp"
             app:stroke_width="2dp" />
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="按钮1"
+                app:checked_drawable="@mipmap/rg_select"
+                app:unChecked_drawable="@mipmap/rg_unselect" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="按钮2"
+                app:checked_drawable="@mipmap/rg_select"
+                app:unChecked_drawable="@mipmap/rg_unselect" />
+        </RadioGroup>
+
         <Button
             android:layout_width="300dp"
             android:layout_height="50dp"
