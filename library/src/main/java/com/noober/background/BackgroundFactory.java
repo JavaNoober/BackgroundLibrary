@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 
 import com.noober.background.drawable.DrawableFactory;
@@ -63,6 +64,8 @@ public class BackgroundFactory implements LayoutInflater.Factory {
                 view.setClickable(true);
                 if(view instanceof RadioButton){
                     ((RadioButton)view).setButtonDrawable(stateListDrawable);
+                }else if(view instanceof CheckBox){
+                    ((CheckBox)view).setButtonDrawable(stateListDrawable);
                 }else {
                     view.setBackground(stateListDrawable);
                 }
