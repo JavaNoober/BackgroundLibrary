@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.3'
+    implementation 'com.noober.background:core:1.2.4'
 
 版本更新：
     
@@ -18,6 +18,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.2.0 增加对selector的支持
     1.2.2 修复部分属性不生效的bug
     1.2.3 checkbox radiobutton使用的bug
+    1.2.4 新增了text不同状态变色的支持
     
  
 ## 示例效果
@@ -84,7 +85,19 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |unFocused_drawable|color、reference|
 |unFocused_hovered|color、reference|
 |unFocused_activated|color、reference|
-
+|关于text颜色的设置||
+|checkable_textColor|color|
+|checked_textColor|color|
+|enabled_textColor|color|
+|selected_textColor|color|
+|pressed_textColor|color|
+|focused_textColor|color|
+|unCheckable_textColor|color|
+|unChecked_textColor|color|
+|unEnabled_textColor|color|
+|unSelected_textColor|color|
+|unPressed_textColor|color|
+|unFocused_textColor|color|
 ### 其他属性
 | 名称 | 类型 |备注|
 |---|---|---|
@@ -184,6 +197,21 @@ A framework for directly generating shape through Tags, no need to write shape.x
             app:unPressed_drawable="#7CFC00" />
             
 使用其实基本和selector shape一样。
+
+3.点击文字变色
+![](https://user-gold-cdn.xitu.io/2018/9/19/165f131f7e85b1e7?w=289&h=61&f=gif&s=8828)  
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="点击文字变色"
+        app:pressed_textColor="#919DAF"
+        app:unPressed_textColor="@android:color/holo_red_dark"/>
+
+
 ## 简单的性能测试
 我用原生的方法写了例子里面的shape和selector，做了一个比较简单的测试：
 
@@ -227,4 +255,10 @@ A framework for directly generating shape through Tags, no need to write shape.x
     
     View item = LayoutInflater.from(context).inflate(xxx)
     
-7、自定义View中调用了inflate，同listView一样处理即可
+7、自定义View中调用了inflate，同listView一样处理即可  
+8、关于水波纹，如果光设置下面两个属性是无效的，必须还要有个填充颜色的属性，原因如下：
+
+    app:ripple_color="#71C671"
+    app:ripple_enable="true"
+
+水波纹需要设置一个默认背景颜色，也就是填充颜色。比如app:solid_color 或者app:unPressed_drawable 或者app:unFocussed_drawable等都行，这些都是默认等背景颜色。而app:ripple_color是波纹的颜色。如果没有一个背景色，这个波纹颜色是无法显示的

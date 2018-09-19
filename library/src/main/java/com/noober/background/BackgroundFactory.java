@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.noober.background.drawable.DrawableFactory;
 
@@ -45,9 +46,10 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
         TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.background_press);
         TypedArray selectorTa = context.obtainStyledAttributes(attrs, R.styleable.background_selector);
-
+        TypedArray textTa = context.obtainStyledAttributes(attrs, R.styleable.text_selector);
         try {
-            if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0 && pressTa.getIndexCount() == 0) {
+            if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0
+                    && pressTa.getIndexCount() == 0 && textTa.getIndexCount() == 0) {
                 return null;
             }
             if (view == null) {
@@ -60,13 +62,13 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
             if (selectorTa.getIndexCount() > 0) {
-                stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa);
+                stateListDrawable = DrawableFactory.getTextSelectorColor(typedArray, selectorTa);
                 view.setClickable(true);
-                if(view instanceof RadioButton){
-                    ((RadioButton)view).setButtonDrawable(stateListDrawable);
-                }else if(view instanceof CheckBox){
-                    ((CheckBox)view).setButtonDrawable(stateListDrawable);
-                }else {
+                if (view instanceof RadioButton) {
+                    ((RadioButton) view).setButtonDrawable(stateListDrawable);
+                } else if (view instanceof CheckBox) {
+                    ((CheckBox) view).setButtonDrawable(stateListDrawable);
+                } else {
                     view.setBackground(stateListDrawable);
                 }
             } else if (pressTa.getIndexCount() > 0) {
@@ -77,6 +79,10 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             } else {
                 drawable = DrawableFactory.getDrawable(typedArray);
                 view.setBackground(drawable);
+            }
+
+            if (view instanceof TextView && textTa.getIndexCount() > 0) {
+                ((TextView) view).setTextColor(DrawableFactory.getTextSelectorColor(textTa));
             }
 
             if (typedArray.getBoolean(R.styleable.background_ripple_enable, false) &&
@@ -104,6 +110,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             typedArray.recycle();
             pressTa.recycle();
             selectorTa.recycle();
+            textTa.recycle();
         }
 
         return view;
