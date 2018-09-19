@@ -9,6 +9,7 @@ public class TypeValueHelper {
     public static final SparseIntArray sAppearanceValues = new SparseIntArray();
     public static final SparseIntArray sAppearancePressValues = new SparseIntArray();
     public static final SparseIntArray sAppearanceSelectorValues = new SparseIntArray();
+    public static final SparseIntArray sAppearanceTextValues = new SparseIntArray();
     static {
         sAppearanceValues.put(R.styleable.background_shape, R.styleable.background_shape);
         sAppearanceValues.put(R.styleable.background_solid_color, R.styleable.background_solid_color);
@@ -58,5 +59,19 @@ public class TypeValueHelper {
         sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_drawable, R.styleable.background_selector_unFocused_drawable);
         sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_hovered, R.styleable.background_selector_unFocused_hovered);
         sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_activated, R.styleable.background_selector_unFocused_activated);
+
+
+        sAppearanceTextValues.put(R.styleable.text_selector_checkable_textColor, R.styleable.text_selector_checkable_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_checked_textColor, R.styleable.text_selector_checked_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_enabled_textColor, R.styleable.text_selector_enabled_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_selected_textColor, R.styleable.text_selector_selected_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_pressed_textColor, R.styleable.text_selector_pressed_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_focused_textColor, R.styleable.text_selector_focused_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_unCheckable_textColor, R.styleable.text_selector_unCheckable_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_unChecked_textColor, R.styleable.text_selector_unChecked_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_unEnabled_textColor, R.styleable.text_selector_unEnabled_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_unSelected_textColor, R.styleable.text_selector_unSelected_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_unPressed_textColor, R.styleable.text_selector_unPressed_textColor);
+        sAppearanceTextValues.put(R.styleable.text_selector_unFocused_textColor, R.styleable.text_selector_unFocused_textColor);
     }
 }

@@ -174,6 +174,16 @@
             app:stroke_width="2dp"
             app:unPressed_drawable="#7CFC00" />
 
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="点击文字变色"
+            app:pressed_textColor="#919DAF"
+            app:unPressed_textColor="@android:color/holo_red_dark"/>
+
         <FrameLayout
             android:id="@+id/fl_content"
             android:layout_width="match_parent"

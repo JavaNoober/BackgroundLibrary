@@ -1,5 +1,6 @@
 package com.noober.background.drawable;
 
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -17,10 +18,17 @@ public class DrawableFactory {
     }
 
     //获取selector属性的drawable
-    public static StateListDrawable getSelectorDrawable(TypedArray typedArray, TypedArray selectorTa) throws Exception {
+    public static StateListDrawable getTextSelectorColor(TypedArray typedArray, TypedArray selectorTa) throws Exception {
         return (StateListDrawable) new SelectorDrawableCreator(typedArray, selectorTa).create();
     }
 
+
+    //获取selector属性关于text的color
+    public static ColorStateList getTextSelectorColor(TypedArray textTa) {
+        return new ColorStateCreator(textTa).create();
+    }
+
+    //适配早期版本的属性
     public static StateListDrawable getPressDrawable(GradientDrawable drawable, TypedArray typedArray, TypedArray pressTa)
             throws Exception {
         return (StateListDrawable) new PressDrawableCreator(drawable, typedArray, pressTa).create();
