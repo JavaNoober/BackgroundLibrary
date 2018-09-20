@@ -18,7 +18,7 @@ public class DrawableFactory {
     }
 
     //获取selector属性的drawable
-    public static StateListDrawable getTextSelectorColor(TypedArray typedArray, TypedArray selectorTa) throws Exception {
+    public static StateListDrawable getSelectorDrawable(TypedArray typedArray, TypedArray selectorTa) throws Exception {
         return (StateListDrawable) new SelectorDrawableCreator(typedArray, selectorTa).create();
     }
 

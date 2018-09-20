@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.0'
+    implementation 'com.noober.background:core:1.2.5'
 
  
 ## Example effect
@@ -172,8 +172,20 @@ the second：
             app:stroke_width="2dp"
             app:unPressed_drawable="#7CFC00" />
             
-In fact, it is basically the same as shape and selector.
+In fact, it is basically the same as shape and selector.  
 
+3.Click text discoloration  
+![](https://user-gold-cdn.xitu.io/2018/9/19/165f131f7e85b1e7?w=289&h=61&f=gif&s=8828)  
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:padding="0dp"
+        android:text="点击文字变色"
+        app:pressed_textColor="#919DAF"
+        app:unPressed_textColor="@android:color/holo_red_dark"/>
 ## Use attention
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  
 2、在根布局添加
