@@ -62,7 +62,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
             if (selectorTa.getIndexCount() > 0) {
-                stateListDrawable = DrawableFactory.getTextSelectorColor(typedArray, selectorTa);
+                stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa);
                 view.setClickable(true);
                 if (view instanceof RadioButton) {
                     ((RadioButton) view).setButtonDrawable(stateListDrawable);

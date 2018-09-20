@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.4'
+    implementation 'com.noober.background:core:1.2.5'
 
 版本更新：
     
@@ -19,7 +19,8 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.2.2 修复部分属性不生效的bug
     1.2.3 checkbox radiobutton使用的bug
     1.2.4 新增了text不同状态变色的支持
-    
+    1.2.5 去除kotlin依赖
+        
  
 ## 示例效果
 
@@ -103,8 +104,6 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |---|---|---|
 |ripple_enable|boolean|是否开启点击的水波纹效果|
 |ripple_color|color|水波纹颜色（如果开启，一定要有这个属性能生效）|
-|unpressed_color|color|没有press的时候的颜色（早版本的属性，可以被pressed_drawable替换）|
-|pressed_color|color|press时候的颜色（早版本的属性，可以被unPressed_drawable替换）|
 
 ## 使用例子
 
