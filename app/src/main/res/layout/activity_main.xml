@@ -26,10 +26,7 @@
             android:text="TextView"
             android:textColor="#8c6822"
             android:textSize="20sp"
-            app:corners_radius="4dp"
-            app:solid_color="#E3B666"
-            app:stroke_color="#8c6822"
-            app:stroke_width="2dp" />
+            style="@style/bg"/>
 
         <Button
             android:id="@+id/btn"
@@ -99,7 +96,7 @@
             android:gravity="center"
             android:textColor="#8c6822"
             android:textSize="20sp"
-            app:shape="rectangle"
+            app:shape="oval"
             app:solid_color="#E3B666"
             app:stroke_color="#8c6822"
             app:stroke_dashGap="5dp"
