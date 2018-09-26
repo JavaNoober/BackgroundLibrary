@@ -12,7 +12,7 @@ import java.lang.reflect.Field;
 
 public class BackgroundLibrary {
 
-    public static void inject(Context context) {
+    public static LayoutInflater inject(Context context) {
         LayoutInflater inflater;
         if (context instanceof Activity) {
             inflater = ((Activity) context).getLayoutInflater();
@@ -30,6 +30,7 @@ public class BackgroundLibrary {
             });
         }
         inflater.setFactory(factory);
+        return inflater;
     }
 
     /**
@@ -37,14 +38,14 @@ public class BackgroundLibrary {
      * 如果因为其他库已经设置了factory，可以使用该方法去进行inject，在其他库的setFactory后面调用即可
      * @param context
      */
-    public static void inject2(Context context) {
+    public static LayoutInflater inject2(Context context) {
+        LayoutInflater inflater;
+        if (context instanceof Activity) {
+            inflater = ((Activity) context).getLayoutInflater();
+        } else {
+            inflater = LayoutInflater.from(context);
+        }
         try {
-            LayoutInflater inflater;
-            if (context instanceof Activity) {
-                inflater = ((Activity) context).getLayoutInflater();
-            } else {
-                inflater = LayoutInflater.from(context);
-            }
             Field field = LayoutInflater.class.getDeclaredField("mFactorySet");
             field.setAccessible(true);
             field.setBoolean(inflater, false);
@@ -56,7 +57,6 @@ public class BackgroundLibrary {
                 factory.setInterceptFactory(inflater.getFactory());
             }
             inflater.setFactory(factory);
-
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
@@ -64,5 +64,6 @@ public class BackgroundLibrary {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
+        return inflater;
     }
 }
