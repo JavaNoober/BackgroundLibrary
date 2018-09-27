@@ -185,7 +185,28 @@ In fact, it is basically the same as shape and selector.
         android:padding="0dp"
         android:text="点击文字变色"
         app:pressed_textColor="#919DAF"
-        app:unPressed_textColor="@android:color/holo_red_dark"/>
+        app:unPressed_textColor="@android:color/holo_red_dark"/>  
+
+4.how to use like style  
+  
+no need to add "app:"
+
+    <style name="bg">
+        <item name="corners_radius">4dp</item>
+        <item name="solid_color">#E3B666</item>
+        <item name="stroke_color">#8c6822</item>
+        <item name="stroke_width">2dp</item>
+    </style>
+    
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#8c6822"
+        android:textSize="20sp"
+        style="@style/bg"/>
+        
 ## Use attention
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  
 2、在根布局添加
