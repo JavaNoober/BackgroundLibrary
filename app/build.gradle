@@ -21,6 +21,10 @@ android {
         abortOnError false
     }
 //    buildToolsVersion '28.0.2'
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {

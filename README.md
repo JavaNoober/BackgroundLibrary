@@ -210,6 +210,26 @@ A framework for directly generating shape through Tags, no need to write shape.x
         app:pressed_textColor="#919DAF"
         app:unPressed_textColor="@android:color/holo_red_dark"/>
 
+4.style类似的使用方式  
+
+style中不要加入"app:", 直接写属性名即可
+
+    <style name="bg">
+        <item name="corners_radius">4dp</item>
+        <item name="solid_color">#E3B666</item>
+        <item name="stroke_color">#8c6822</item>
+        <item name="stroke_width">2dp</item>
+    </style>
+    
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="#8c6822"
+        android:textSize="20sp"
+        style="@style/bg"/>
+    
 
 ## 简单的性能测试
 我用原生的方法写了例子里面的shape和selector，做了一个比较简单的测试：
