@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.5'
+    implementation 'com.noober.background:core:1.2.6'
 
 版本更新：
     
@@ -20,6 +20,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.2.3 checkbox radiobutton使用的bug
     1.2.4 新增了text不同状态变色的支持
     1.2.5 去除kotlin依赖
+    1.2.6 修复调用其他换肤框架可能失效的问题
         
  
 ## 示例效果
