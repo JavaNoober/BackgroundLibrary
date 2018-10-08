@@ -4,7 +4,6 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.util.Log;
 
 import com.noober.background.R;
 import com.noober.background.utils.TypeValueHelper;
@@ -19,7 +18,7 @@ public class GradientDrawableCreator implements ICreateDrawable {
 
     private TypedArray typedArray;
 
-    public GradientDrawableCreator(TypedArray typedArray) {
+    GradientDrawableCreator(TypedArray typedArray) {
         this.typedArray = typedArray;
     }
 

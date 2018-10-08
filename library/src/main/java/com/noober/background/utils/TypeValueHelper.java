@@ -60,7 +60,6 @@ public class TypeValueHelper {
         sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_hovered, R.styleable.background_selector_unFocused_hovered);
         sAppearanceSelectorValues.put(R.styleable.background_selector_unFocused_activated, R.styleable.background_selector_unFocused_activated);
 
-
         sAppearanceTextValues.put(R.styleable.text_selector_checkable_textColor, R.styleable.text_selector_checkable_textColor);
         sAppearanceTextValues.put(R.styleable.text_selector_checked_textColor, R.styleable.text_selector_checked_textColor);
         sAppearanceTextValues.put(R.styleable.text_selector_enabled_textColor, R.styleable.text_selector_enabled_textColor);

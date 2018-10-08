@@ -50,7 +50,7 @@ public class BackgroundFactory implements LayoutInflater.Factory {
         try {
             if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0
                     && pressTa.getIndexCount() == 0 && textTa.getIndexCount() == 0) {
-                return null;
+                return view;
             }
             if (view == null) {
                 view = createViewFromTag(context, name, attrs);

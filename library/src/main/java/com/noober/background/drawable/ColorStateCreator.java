@@ -11,7 +11,7 @@ public class ColorStateCreator {
 
     private TypedArray textTa;
 
-    public ColorStateCreator(TypedArray textTa) {
+    ColorStateCreator(TypedArray textTa) {
         this.textTa = textTa;
     }
 

@@ -14,7 +14,7 @@ public class PressDrawableCreator implements ICreateDrawable {
     private TypedArray pressTa;
     private TypedArray typedArray;
 
-    public PressDrawableCreator(GradientDrawable drawable, TypedArray typedArray, TypedArray pressTa) {
+    PressDrawableCreator(GradientDrawable drawable, TypedArray typedArray, TypedArray pressTa) {
         this.drawable = drawable;
         this.pressTa = pressTa;
         this.typedArray = typedArray;
