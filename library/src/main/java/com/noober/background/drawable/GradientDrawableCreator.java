@@ -1,9 +1,11 @@
 package com.noober.background.drawable;
 
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 
 import com.noober.background.R;
 import com.noober.background.utils.TypeValueHelper;
@@ -11,6 +13,7 @@ import com.noober.background.utils.TypeValueHelper;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 import static android.graphics.drawable.GradientDrawable.LINEAR_GRADIENT;
 
@@ -30,7 +33,7 @@ public class GradientDrawableCreator implements ICreateDrawable {
         float sizeHeight = 0;
         float strokeWidth = -1;
         float strokeDashWidth = 0;
-        int strokeColor = 1;
+        int strokeColor = 0;
         float strokeGap = 0;
         float centerX = 0;
         float centerY = 0;
@@ -112,9 +115,68 @@ public class GradientDrawableCreator implements ICreateDrawable {
                 typedArray.hasValue(R.styleable.background_size_height)) {
             drawable.setSize((int) sizeWidth, (int) sizeHeight);
         }
-        if (typedArray.hasValue(R.styleable.background_stroke_width) &&
-                typedArray.hasValue(R.styleable.background_stroke_color)) {
-            drawable.setStroke((int) strokeWidth, strokeColor, strokeDashWidth, strokeGap);
+        if (typedArray.hasValue(R.styleable.background_stroke_width)) {
+            int start = 0;
+            ArrayList<Integer> stateList = new ArrayList<>();
+            ArrayList<Integer> colorList = new ArrayList<>();
+            if (typedArray.hasValue(R.styleable.background_stroke_color)) {
+                drawable.setStroke((int) strokeWidth, strokeColor, strokeDashWidth, strokeGap);
+            } else if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (typedArray.hasValue(R.styleable.background_pressed_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_unPressed_stroke_color)) {
+                    stateList.add(android.R.attr.state_pressed);
+                    stateList.add(-android.R.attr.state_pressed);
+                    colorList.add(typedArray.getColor(R.styleable.background_pressed_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_unPressed_stroke_color, 0));
+                }
+                if (typedArray.hasValue(R.styleable.background_checkable_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_unCheckable_stroke_color)) {
+                    stateList.add(android.R.attr.state_checkable);
+                    stateList.add(-android.R.attr.state_checkable);
+                    colorList.add(typedArray.getColor(R.styleable.background_checkable_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_unCheckable_stroke_color, 0));
+                }
+                if (typedArray.hasValue(R.styleable.background_checked_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_unChecked_stroke_color)) {
+                    stateList.add(android.R.attr.state_checked);
+                    stateList.add(-android.R.attr.state_checked);
+                    colorList.add(typedArray.getColor(R.styleable.background_checked_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_unChecked_stroke_color, 0));
+                }
+                if (typedArray.hasValue(R.styleable.background_enabled_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_unEnabled_stroke_color)) {
+                    stateList.add(android.R.attr.state_enabled);
+                    stateList.add(-android.R.attr.state_enabled);
+                    colorList.add(typedArray.getColor(R.styleable.background_enabled_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_unEnabled_stroke_color, 0));
+                }
+                if (typedArray.hasValue(R.styleable.background_selected_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_unSelected_stroke_color)) {
+                    stateList.add(android.R.attr.state_selected);
+                    stateList.add(-android.R.attr.state_selected);
+                    colorList.add(typedArray.getColor(R.styleable.background_selected_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_unSelected_stroke_color, 0));
+                }
+                if (typedArray.hasValue(R.styleable.background_focused_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_unFocused_stroke_color)) {
+                    stateList.add(android.R.attr.state_focused);
+                    stateList.add(-android.R.attr.state_focused);
+                    colorList.add(typedArray.getColor(R.styleable.background_focused_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_unFocused_stroke_color, 0));
+                }
+                int[][] state = new int[stateList.size()][];
+                int[] color = new int[stateList.size()];
+                for (int iState : stateList) {
+                    state[start] = new int[]{iState};
+                    color[start] = colorList.get(start);
+                    start++;
+                }
+
+                ColorStateList colorStateList = new ColorStateList(state, color);
+                drawable.setStroke((int) strokeWidth, colorStateList, strokeDashWidth, strokeGap);
+                stateList = null;
+                colorList = null;
+            }
         }
         if (typedArray.hasValue(R.styleable.background_gradient_centerX) &&
                 typedArray.hasValue(R.styleable.background_gradient_centerY)) {

@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.6'
+    implementation 'com.noober.background:core:1.2.7'
 
 版本更新：
     
@@ -21,7 +21,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.2.4 新增了text不同状态变色的支持
     1.2.5 去除kotlin依赖
     1.2.6 修复调用其他换肤框架可能失效的问题
-        
+    1.2.7 新增pressed_stroke_color等边框的属性
  
 ## 示例效果
 
@@ -100,12 +100,23 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |unSelected_textColor|color|
 |unPressed_textColor|color|
 |unFocused_textColor|color|
-### 其他属性
+### 其他属性(sdk21及以上的手机才支持)
 | 名称 | 类型 |备注|
 |---|---|---|
 |ripple_enable|boolean|是否开启点击的水波纹效果|
 |ripple_color|color|水波纹颜色（如果开启，一定要有这个属性能生效）|
-
+|checkable_stroke_color| color| 边框状态的属性，如果在sdk21以下，会没有效果，默认固定边框色取stroke_color的值|
+|checked_stroke_color| color| |
+|enabled_stroke_color| color| |
+|selected_stroke_color| color| |
+|pressed_stroke_color| color| |
+|focused_stroke_color| color| |
+|unCheckable_stroke_color| color| |
+|unChecked_stroke_color| color| |
+|unEnabled_stroke_color| color| |
+|unSelected_stroke_color| color| |
+|unPressed_stroke_color| color| |
+|unFocused_stroke_color| color| |
 ## 使用例子
 
 1.边框+背景+圆角

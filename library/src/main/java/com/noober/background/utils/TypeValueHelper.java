@@ -39,6 +39,18 @@ public class TypeValueHelper {
         sAppearanceValues.put(R.styleable.background_stroke_dashGap, R.styleable.background_stroke_dashGap);
         sAppearanceValues.put(R.styleable.background_ripple_enable, R.styleable.background_ripple_enable);
         sAppearanceValues.put(R.styleable.background_ripple_color, R.styleable.background_ripple_color);
+        sAppearanceValues.put(R.styleable.background_checkable_stroke_color, R.styleable.background_checkable_stroke_color);
+        sAppearanceValues.put(R.styleable.background_unCheckable_stroke_color, R.styleable.background_unCheckable_stroke_color);
+        sAppearanceValues.put(R.styleable.background_checked_stroke_color, R.styleable.background_checked_stroke_color);
+        sAppearanceValues.put(R.styleable.background_unChecked_stroke_color, R.styleable.background_unChecked_stroke_color);
+        sAppearanceValues.put(R.styleable.background_enabled_stroke_color, R.styleable.background_enabled_stroke_color);
+        sAppearanceValues.put(R.styleable.background_unEnabled_stroke_color, R.styleable.background_unEnabled_stroke_color);
+        sAppearanceValues.put(R.styleable.background_selected_stroke_color, R.styleable.background_selected_stroke_color);
+        sAppearanceValues.put(R.styleable.background_unSelected_stroke_color, R.styleable.background_unSelected_stroke_color);
+        sAppearanceValues.put(R.styleable.background_pressed_stroke_color, R.styleable.background_pressed_stroke_color);
+        sAppearanceValues.put(R.styleable.background_unPressed_stroke_color, R.styleable.background_unPressed_stroke_color);
+        sAppearanceValues.put(R.styleable.background_focused_stroke_color, R.styleable.background_focused_stroke_color);
+        sAppearanceValues.put(R.styleable.background_unFocused_stroke_color, R.styleable.background_unFocused_stroke_color);
 
         sAppearancePressValues.put(R.styleable.background_press_pressed_color, R.styleable.background_press_pressed_color);
         sAppearancePressValues.put(R.styleable.background_press_unpressed_color, R.styleable.background_press_unpressed_color);

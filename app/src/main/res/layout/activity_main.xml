@@ -125,19 +125,21 @@
         </RadioGroup>
 
         <Button
+            android:id="@+id/btn1"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:padding="0dp"
-            android:text="有波纹触摸反馈的按钮"
+            android:text="有波纹触摸反馈的按钮(边框点击会变色)"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             app:corners_radius="20dp"
             app:ripple_color="#71C671"
             app:ripple_enable="true"
             app:solid_color="#7CFC00"
-            app:stroke_color="#8c6822"
+            app:unPressed_stroke_color="@android:color/holo_red_dark"
+            app:pressed_stroke_color="#000000"
             app:stroke_width="2dp" />
 
         <TextView

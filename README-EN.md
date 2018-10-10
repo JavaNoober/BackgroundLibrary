@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.6'
+    implementation 'com.noober.background:core:1.2.7'
 
  
 ## Example effect
@@ -75,12 +75,23 @@ All attributes of selector are supported：
 |unFocused_hovered|color、reference|
 |unFocused_activated|color、reference|
 
-### other
+### other（need sdk 27 and above）
 | name | category |remark|
 |---|---|---|
 |ripple_enable|boolean|ensure that the ripple effect is enabled|
 |ripple_color|color|the color of ripple|
-
+|checkable_stroke_color| color| different color when different state for stroke|
+|checked_stroke_color| color| |
+|enabled_stroke_color| color| |
+|selected_stroke_color| color| |
+|pressed_stroke_color| color| |
+|focused_stroke_color| color| |
+|unCheckable_stroke_color| color| |
+|unChecked_stroke_color| color| |
+|unEnabled_stroke_color| color| |
+|unSelected_stroke_color| color| |
+|unPressed_stroke_color| color| |
+|unFocused_stroke_color| color| |
 
 ## example
 
