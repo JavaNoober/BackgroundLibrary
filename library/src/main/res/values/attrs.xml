@@ -88,6 +88,21 @@
         <!--以下是selector事件-->
         <attr name="ripple_enable" format="boolean" />
         <attr name="ripple_color" format="color" />
+
+
+        <attr name="checkable_stroke_color" format="color" />
+        <attr name="checked_stroke_color" format="color" />
+        <attr name="enabled_stroke_color" format="color" />
+        <attr name="selected_stroke_color" format="color" />
+        <attr name="pressed_stroke_color" format="color" />
+        <attr name="focused_stroke_color" format="color" />
+
+        <attr name="unCheckable_stroke_color" format="color" />
+        <attr name="unChecked_stroke_color" format="color" />
+        <attr name="unEnabled_stroke_color" format="color" />
+        <attr name="unSelected_stroke_color" format="color" />
+        <attr name="unPressed_stroke_color" format="color" />
+        <attr name="unFocused_stroke_color" format="color" />
     </declare-styleable>
 
     <declare-styleable name="background_press">
