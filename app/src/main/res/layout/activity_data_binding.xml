@@ -21,11 +21,11 @@
             android:text="@{user.name}"
             android:textColor="@android:color/black"
             android:textSize="20sp"
-            app:corners_radius="20dp"
-            app:gradient_angle="0"
-            app:gradient_endColor="#4F94CD"
-            app:gradient_startColor="#63B8FF"
-            app:shape="rectangle" />
+            app:bl_corners_radius="20dp"
+            app:bl_gradient_angle="0"
+            app:bl_gradient_endColor="#4F94CD"
+            app:bl_gradient_startColor="#63B8FF"
+            app:bl_shape="rectangle" />
 
         <Button
             android:id="@+id/btn"
@@ -37,10 +37,10 @@
             android:text="跳转到列表"
             android:textColor="#4F94CD"
             android:textSize="20sp"
-            app:corners_radius="20dp"
-            app:gradient_angle="0"
-            app:gradient_endColor="#4F94CD"
-            app:gradient_startColor="#63B8FF"
-            app:shape="rectangle" />
+            app:bl_corners_radius="20dp"
+            app:bl_gradient_angle="0"
+            app:bl_gradient_endColor="#4F94CD"
+            app:bl_gradient_startColor="#63B8FF"
+            app:bl_shape="rectangle" />
     </LinearLayout>
 </layout>

@@ -30,37 +30,37 @@ public class SelectorDrawableCreator implements ICreateDrawable {
             }
             int typeIndex = selectorTa.getIndex(i);
 
-            if (attr == R.styleable.background_selector_checkable_drawable) {
+            if (attr == R.styleable.background_selector_bl_checkable_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_checkable);
-            } else if (attr == R.styleable.background_selector_unCheckable_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_unCheckable_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_checkable);
-            } else if (attr == R.styleable.background_selector_checked_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_checked_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_checked);
-            } else if (attr == R.styleable.background_selector_unChecked_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_unChecked_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_checked);
-            } else if (attr == R.styleable.background_selector_enabled_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_enabled_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_enabled);
-            } else if (attr == R.styleable.background_selector_unEnabled_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_unEnabled_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_enabled);
-            } else if (attr == R.styleable.background_selector_selected_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_selected_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_selected);
-            } else if (attr == R.styleable.background_selector_unSelected_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_unSelected_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_selected);
-            } else if (attr == R.styleable.background_selector_pressed_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_pressed_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_pressed);
-            } else if (attr == R.styleable.background_selector_unPressed_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_unPressed_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_pressed);
-            } else if (attr == R.styleable.background_selector_focused_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_focused_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_focused);
-            } else if (attr == R.styleable.background_selector_unFocused_drawable) {
+            } else if (attr == R.styleable.background_selector_bl_unFocused_drawable) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_focused);
-            } else if (attr == R.styleable.background_selector_focused_hovered) {
+            } else if (attr == R.styleable.background_selector_bl_focused_hovered) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_hovered);
-            } else if (attr == R.styleable.background_selector_unFocused_hovered) {
+            } else if (attr == R.styleable.background_selector_bl_unFocused_hovered) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_hovered);
-            } else if (attr == R.styleable.background_selector_focused_activated) {
+            } else if (attr == R.styleable.background_selector_bl_focused_activated) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, android.R.attr.state_activated);
-            } else if (attr == R.styleable.background_selector_unFocused_activated) {
+            } else if (attr == R.styleable.background_selector_bl_unFocused_activated) {
                 setSelectorDrawable(typedArray, selectorTa, stateListDrawable, typeIndex, -android.R.attr.state_activated);
             }
         }

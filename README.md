@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.7'
+    implementation 'com.noober.background:core:1.3.0'
 
 版本更新：
     
@@ -22,6 +22,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.2.5 去除kotlin依赖
     1.2.6 修复调用其他换肤框架可能失效的问题
     1.2.7 新增pressed_stroke_color等边框的属性
+    1.3.0 提供通过代码生成Drawable的方法；为了防止属性冲突，所有属性以bl_开头
  
 ## 示例效果
 
@@ -43,80 +44,97 @@ A framework for directly generating shape through Tags, no need to write shape.x
 
 | 名称 | 类型 |
 |---|---|
-|shape|rectangle、oval、line、ring(暂时不支持)|
-|solid_color|color|
-|corners_radius|dimension|
-|corners_bottomLeftRadius|dimension|
-|corners_bottomRightRadius|dimension|
-|corners_topLeftRadius|dimension|
-|corners_topRightRadius|dimension|
-|gradient_angle|integer|
-|gradient_centerX|float|
-|gradient_centerY|float|
-|gradient_centerColor|color|
-|gradient_endColor|color|
-|gradient_startColor|color|
-|gradient_gradientRadius|dimension|
-|gradient_type|linear、radial、sweep|
-|gradient_useLevel|boolean|
-|size_width|dimension|
-|size_height|dimension|
-|stroke_width|dimension|
-|stroke_color|color|
-|stroke_dashWidth|dimension|
-|stroke_dashGap|dimension|
+|bl_shape|rectangle、oval、line、ring(暂时不支持)|
+|bl_solid_color|color|
+|bl_corners_radius|dimension|
+|bl_corners_bottomLeftRadius|dimension|
+|bl_corners_bottomRightRadius|dimension|
+|bl_corners_topLeftRadius|dimension|
+|bl_corners_topRightRadius|dimension|
+|bl_gradient_angle|integer|
+|bl_gradient_centerX|float|
+|bl_gradient_centerY|float|
+|bl_gradient_centerColor|color|
+|bl_gradient_endColor|color|
+|bl_gradient_startColor|color|
+|bl_gradient_gradientRadius|dimension|
+|bl_gradient_type|linear、radial、sweep|
+|bl_gradient_useLevel|boolean|
+|bl_size_width|dimension|
+|bl_size_height|dimension|
+|bl_stroke_width|dimension|
+|bl_stroke_color|color|
+|bl_stroke_dashWidth|dimension|
+|bl_stroke_dashGap|dimension|
 
 ### selector类
 支持selector的所有属性：
 
 | 名称 | 类型 |
 |---|---|
-|checkable_drawable|color、reference|
-|checked_drawable|color、reference|
-|enabled_drawable|color、reference|
-|selected_drawable|color、reference|
-|pressed_drawable|color、reference|
-|focused_drawable|color、reference|
-|focused_hovered|color、reference|
-|focused_activated|color、reference|
-|unCheckable_drawable|color、reference|
-|unChecked_drawable|color、reference|
-|unEnabled_drawable|color、reference|
-|unSelected_drawable|color、reference|
-|unPressed_drawable|color、reference|
-|unFocused_drawable|color、reference|
-|unFocused_hovered|color、reference|
-|unFocused_activated|color、reference|
+|bl_checkable_drawable|color、reference|
+|bl_checked_drawable|color、reference|
+|bl_enabled_drawable|color、reference|
+|bl_selected_drawable|color、reference|
+|bl_pressed_drawable|color、reference|
+|bl_focused_drawable|color、reference|
+|bl_focused_hovered|color、reference|
+|bl_focused_activated|color、reference|
+|bl_unCheckable_drawable|color、reference|
+|bl_unChecked_drawable|color、reference|
+|bl_unEnabled_drawable|color、reference|
+|bl_unSelected_drawable|color、reference|
+|bl_unPressed_drawable|color、reference|
+|bl_unFocused_drawable|color、reference|
+|bl_unFocused_hovered|color、reference|
+|bl_unFocused_activated|color、reference|
 |关于text颜色的设置||
-|checkable_textColor|color|
-|checked_textColor|color|
-|enabled_textColor|color|
-|selected_textColor|color|
-|pressed_textColor|color|
-|focused_textColor|color|
-|unCheckable_textColor|color|
-|unChecked_textColor|color|
-|unEnabled_textColor|color|
-|unSelected_textColor|color|
-|unPressed_textColor|color|
-|unFocused_textColor|color|
+|bl_checkable_textColor|color|
+|bl_checked_textColor|color|
+|bl_enabled_textColor|color|
+|bl_selected_textColor|color|
+|bl_pressed_textColor|color|
+|bl_focused_textColor|color|
+|bl_unCheckable_textColor|color|
+|bl_unChecked_textColor|color|
+|bl_unEnabled_textColor|color|
+|bl_unSelected_textColor|color|
+|bl_unPressed_textColor|color|
+|bl_unFocused_textColor|color|
 ### 其他属性(sdk21及以上的手机才支持)
 | 名称 | 类型 |备注|
 |---|---|---|
-|ripple_enable|boolean|是否开启点击的水波纹效果|
-|ripple_color|color|水波纹颜色（如果开启，一定要有这个属性能生效）|
-|checkable_stroke_color| color| 边框状态的属性，如果在sdk21以下，会没有效果，默认固定边框色取stroke_color的值|
-|checked_stroke_color| color| |
-|enabled_stroke_color| color| |
-|selected_stroke_color| color| |
-|pressed_stroke_color| color| |
-|focused_stroke_color| color| |
-|unCheckable_stroke_color| color| |
-|unChecked_stroke_color| color| |
-|unEnabled_stroke_color| color| |
-|unSelected_stroke_color| color| |
-|unPressed_stroke_color| color| |
-|unFocused_stroke_color| color| |
+|bl_ripple_enable|boolean|是否开启点击的水波纹效果|
+|bl_ripple_color|color|水波纹颜色（如果开启，一定要有这个属性能生效）|
+|bl_checkable_stroke_color| color| 边框状态的属性，如果在sdk21以下，会没有效果，默认固定边框色取stroke_color的值|
+|bl_checked_stroke_color| color| |
+|bl_enabled_stroke_color| color| |
+|bl_selected_stroke_color| color| |
+|bl_pressed_stroke_color| color| |
+|bl_focused_stroke_color| color| |
+|bl_unCheckable_stroke_color| color| |
+|bl_unChecked_stroke_color| color| |
+|bl_unEnabled_stroke_color| color| |
+|bl_unSelected_stroke_color| color| |
+|bl_unPressed_stroke_color| color| |
+|bl_unFocused_stroke_color| color| |
+
+### 代码生成Drawable的Api,详情见DrawableCreator类
+ 
+所有的属性都提供了**set方法**去通过代码设置，具体见[DrawableCreator.Build](https://github.com/JavaNoober/BackgroundLibrary/blob/develop/library/src/main/java/com/noober/background/drawable/DrawableCreator.java)
+使用方法如下：
+
+    //设置button圆角背景
+    Drawable drawable = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
+                    .setGradientAngle(0).setGradientColor(Color.parseColor("#63B8FF"), Color.parseColor("#4F94CD")).build();
+    btn.setBackground(drawable);
+    //文字点击变色
+    tvTest1.setClickable(true);//由于Android源码的原因，必须调用，否则不生效
+    ColorStateList colors = new DrawableCreator.Builder().setPressedTextColor(Color.RED).setUnPressedTextColor(Color.BLUE).buildTextColor();
+    tvTest1.setTextColor(colors);
+
+
+
 ## 使用例子
 
 1.边框+背景+圆角
@@ -128,10 +146,10 @@ A framework for directly generating shape through Tags, no need to write shape.x
         android:text="TextView"
         android:textColor="#8c6822"
         android:textSize="20sp"
-        app:corners_radius="4dp"
-        app:solid_color="#E3B666"
-        app:stroke_color="#8c6822"
-        app:stroke_width="2dp" />
+        app:bl_corners_radius="4dp"
+        app:bl_solid_color="#E3B666"
+        app:bl_stroke_color="#8c6822"
+        app:bl_stroke_width="2dp" />
 等同于
 
     <shape xmlns:android="http://schemas.android.com/apk/res/android">
@@ -139,7 +157,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
         <solid android:color="#E3B666"/>
         <stroke android:color="#E3B666" android:width="2dp"/>
     </shape>
-    
+
 2、渐变
 
     <shape xmlns:android="http://schemas.android.com/apk/res/android">
@@ -161,10 +179,10 @@ A framework for directly generating shape through Tags, no need to write shape.x
         android:text="跳转到列表"
         android:textColor="#4F94CD"
         android:textSize="20sp"
-        app:corners_radius="2dp"
-        app:gradient_angle="0"
-        app:gradient_endColor="#4F94CD"
-        app:gradient_startColor="#63B8FF" />
+        app:bl_corners_radius="2dp"
+        app:bl_gradient_angle="0"
+        app:bl_gradient_endColor="#4F94CD"
+        app:bl_gradient_startColor="#63B8FF" />
     
 点击效果
 
@@ -175,8 +193,8 @@ A framework for directly generating shape through Tags, no need to write shape.x
     android:layout_width="20dp"
     android:layout_height="20dp"
     android:layout_marginTop="5dp"
-    app:pressed_drawable="@drawable/circle_like_pressed"
-    app:unPressed_drawable="@drawable/circle_like_normal" />
+    app:bl_pressed_drawable="@drawable/circle_like_pressed"
+    app:bl_unPressed_drawable="@drawable/circle_like_normal" />
     
 就等同于:  
 
@@ -187,6 +205,15 @@ A framework for directly generating shape through Tags, no need to write shape.x
             android:drawable="@drawable/circle_like_normal" />
     </selector>
     
+
+通过代码设置：
+
+    Drawable drawable4 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
+            .setPressedDrawable(ContextCompat.getDrawable(this, R.drawable.circle_like_pressed))
+            .setUnPressedDrawable(ContextCompat.getDrawable(this, R.drawable.circle_like_normal))
+            .build();
+    tv.setClickable(true);
+    tv.setBackground(drawable4);   
     
 第二个按钮效果：
 
@@ -199,14 +226,24 @@ A framework for directly generating shape through Tags, no need to write shape.x
             android:text="有波纹触摸反馈的按钮"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:corners_radius="20dp"
-            app:pressed_drawable="#71C671"
-            app:ripple_color="#71C671"
-            app:ripple_enable="true"
-            app:stroke_color="#8c6822"
-            app:stroke_width="2dp"
-            app:unPressed_drawable="#7CFC00" />
-            
+            app:bl_corners_radius="20dp"
+            app:bl_pressed_drawable="#71C671"
+            app:bl_ripple_color="#71C671"
+            app:bl_ripple_enable="true"
+            app:bl_stroke_color="#8c6822"
+            app:bl_stroke_width="2dp"
+            app:bl_unPressed_drawable="#7CFC00" />
+
+通过代码设置：
+
+    Drawable drawable3 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
+            .setRipple(true, Color.parseColor("#71C671"))
+            .setSolidColor(Color.parseColor("#7CFC00"))
+            .setStrokeColor(Color.parseColor("#8c6822"))
+            .setStrokeWidth(dip2px(2))
+            .build();
+    btn.setBackground(drawable3);
+
 使用其实基本和selector shape一样。
 
 3.点击文字变色
@@ -219,18 +256,18 @@ A framework for directly generating shape through Tags, no need to write shape.x
         android:gravity="center"
         android:padding="0dp"
         android:text="点击文字变色"
-        app:pressed_textColor="#919DAF"
-        app:unPressed_textColor="@android:color/holo_red_dark"/>
+        app:bl_pressed_textColor="#919DAF"
+        app:bl_unPressed_textColor="@android:color/holo_red_dark"/>
 
 4.style类似的使用方式  
 
 style中不要加入"app:", 直接写属性名即可
 
     <style name="bg">
-        <item name="corners_radius">4dp</item>
-        <item name="solid_color">#E3B666</item>
-        <item name="stroke_color">#8c6822</item>
-        <item name="stroke_width">2dp</item>
+        <item name="bl_corners_radius">4dp</item>
+        <item name="bl_solid_color">#E3B666</item>
+        <item name="bl_stroke_color">#8c6822</item>
+        <item name="bl_stroke_width">2dp</item>
     </style>
     
     <TextView
@@ -292,4 +329,8 @@ style中不要加入"app:", 直接写属性名即可
     app:ripple_color="#71C671"
     app:ripple_enable="true"
 
-水波纹需要设置一个默认背景颜色，也就是填充颜色。比如app:solid_color 或者app:unPressed_drawable 或者app:unFocussed_drawable等都行，这些都是默认等背景颜色。而app:ripple_color是波纹的颜色。如果没有一个背景色，这个波纹颜色是无法显示的
+水波纹需要设置一个默认背景颜色，也就是填充颜色。比如app:solid_color 或者app:unPressed_drawable 或者app:unFocussed_drawable等都行，这些都是默认等背景颜色。而app:ripple_color是波纹的颜色。如果没有一个背景色，这个波纹颜色是无法显示的  
+9、由于Android源码的原因，如果是通过代码生成有点击状态drawable，需要先调用一下  
+
+     view.setClickable(true);
+否则点击状态可能不生效

@@ -30,12 +30,12 @@ public class PressDrawableCreator implements ICreateDrawable {
             }
             int typeIndex = pressTa.getIndex(i);
 
-            if (attr == R.styleable.background_press_pressed_color) {
+            if (attr == R.styleable.background_press_bl_pressed_color) {
                 int color = pressTa.getColor(typeIndex, 0);
                 GradientDrawable pressDrawable = DrawableFactory.getDrawable(typedArray);
                 pressDrawable.setColor(color);
                 stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, pressDrawable);
-            } else if (attr == R.styleable.background_press_unpressed_color) {
+            } else if (attr == R.styleable.background_press_bl_unpressed_color) {
                 int color = pressTa.getColor(typeIndex, 0);
                 drawable.setColor(color);
                 stateListDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
