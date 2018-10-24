@@ -21,10 +21,10 @@
         android:text="TextView"
         android:textColor="#8c6822"
         android:textSize="20sp"
-        app:corners_radius="4dp"
-        app:solid_color="#E3B666"
-        app:stroke_color="#8c6822"
-        app:stroke_width="2dp" />
+        app:bl_corners_radius="4dp"
+        app:bl_solid_color="#E3B666"
+        app:bl_stroke_color="#8c6822"
+        app:bl_stroke_width="2dp" />
 
     <Button
         android:layout_width="130dp"
@@ -35,11 +35,11 @@
         android:text="Button"
         android:textColor="#4F94CD"
         android:textSize="20sp"
-        app:corners_radius="20dp"
-        app:gradient_angle="0"
-        app:gradient_endColor="#4F94CD"
-        app:gradient_startColor="#63B8FF"
-        app:shape="rectangle" />
+        app:bl_corners_radius="20dp"
+        app:bl_gradient_angle="0"
+        app:bl_gradient_endColor="#4F94CD"
+        app:bl_gradient_startColor="#63B8FF"
+        app:bl_shape="rectangle" />
 
     <Button
         android:layout_width="300dp"
@@ -50,12 +50,12 @@
         android:text="确认"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        app:corners_radius="20dp"
-        app:gradient_angle="0"
-        app:gradient_centerColor="#CD4F39"
-        app:gradient_endColor="#CD2626"
-        app:gradient_startColor="#CD5B45"
-        app:shape="rectangle" />
+        app:bl_corners_radius="20dp"
+        app:bl_gradient_angle="0"
+        app:bl_gradient_centerColor="#CD4F39"
+        app:bl_gradient_endColor="#CD2626"
+        app:bl_gradient_startColor="#CD5B45"
+        app:bl_shape="rectangle" />
 
     <TextView
         android:layout_width="130dp"
@@ -65,13 +65,13 @@
         android:text="TextView"
         android:textColor="#8c6822"
         android:textSize="20sp"
-        app:corners_radius="4dp"
-        app:gradient_useLevel="true"
-        app:solid_color="#E3B666"
-        app:stroke_color="#8c6822"
-        app:stroke_dashGap="5dp"
-        app:stroke_dashWidth="10dp"
-        app:stroke_width="2dp" />
+        app:bl_corners_radius="4dp"
+        app:bl_gradient_useLevel="true"
+        app:bl_solid_color="#E3B666"
+        app:bl_stroke_color="#8c6822"
+        app:bl_stroke_dashGap="5dp"
+        app:bl_stroke_dashWidth="10dp"
+        app:bl_stroke_width="2dp" />
 
     <Button
         android:layout_width="300dp"
@@ -82,10 +82,10 @@
         android:text="有点击反馈的按钮"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        app:corners_radius="20dp"
-        app:pressed_color="#7CCD7C"
-        app:shape="rectangle"
-        app:unpressed_color="#7CFC00" />
+        app:bl_corners_radius="20dp"
+        app:bl_pressed_color="#7CCD7C"
+        app:bl_shape="rectangle"
+        app:bl_unpressed_color="#7CFC00" />
 
     <View
         android:layout_width="50dp"
@@ -94,12 +94,12 @@
         android:gravity="center"
         android:textColor="#8c6822"
         android:textSize="20sp"
-        app:shape="rectangle"
-        app:solid_color="#E3B666"
-        app:stroke_color="#8c6822"
-        app:stroke_dashGap="5dp"
-        app:stroke_dashWidth="10dp"
-        app:stroke_width="2dp" />
+        app:bl_shape="rectangle"
+        app:bl_solid_color="#E3B666"
+        app:bl_stroke_color="#8c6822"
+        app:bl_stroke_dashGap="5dp"
+        app:bl_stroke_dashWidth="10dp"
+        app:bl_stroke_width="2dp" />
 
     <Button
         android:layout_width="300dp"
@@ -110,12 +110,12 @@
         android:text="有波纹触摸反馈的按钮"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        app:corners_radius="20dp"
-        app:ripple_color="#71C671"
-        app:ripple_enable="true"
-        app:solid_color="#7CFC00"
-        app:stroke_color="#8c6822"
-        app:stroke_width="2dp" />
+        app:bl_corners_radius="20dp"
+        app:bl_ripple_color="#71C671"
+        app:bl_ripple_enable="true"
+        app:bl_solid_color="#7CFC00"
+        app:bl_stroke_color="#8c6822"
+        app:bl_stroke_width="2dp" />
 
 
     <LinearLayout
@@ -123,12 +123,12 @@
         android:layout_height="200dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:corners_radius="20dp"
-        app:ripple_color="#71C671"
-        app:ripple_enable="true"
-        app:solid_color="#7CFC00"
-        app:stroke_color="#8c6822"
-        app:stroke_width="2dp">
+        app:bl_corners_radius="20dp"
+        app:bl_ripple_color="#71C671"
+        app:bl_ripple_enable="true"
+        app:bl_solid_color="#7CFC00"
+        app:bl_stroke_color="#8c6822"
+        app:bl_stroke_width="2dp">
 
         <TextView
             android:layout_width="wrap_content"

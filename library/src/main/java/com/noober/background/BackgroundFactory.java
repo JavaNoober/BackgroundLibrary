@@ -85,9 +85,9 @@ public class BackgroundFactory implements LayoutInflater.Factory {
                 ((TextView) view).setTextColor(DrawableFactory.getTextSelectorColor(textTa));
             }
 
-            if (typedArray.getBoolean(R.styleable.background_ripple_enable, false) &&
-                    typedArray.hasValue(R.styleable.background_ripple_color)) {
-                int color = typedArray.getColor(R.styleable.background_ripple_color, 0);
+            if (typedArray.getBoolean(R.styleable.background_bl_ripple_enable, false) &&
+                    typedArray.hasValue(R.styleable.background_bl_ripple_color)) {
+                int color = typedArray.getColor(R.styleable.background_bl_ripple_color, 0);
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
                     RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), contentDrawable, contentDrawable);

@@ -49,120 +49,120 @@ public class GradientDrawableCreator implements ICreateDrawable {
                 continue;
             }
             int typeIndex = typedArray.getIndex(i);
-            if (attr == R.styleable.background_shape) {
+            if (attr == R.styleable.background_bl_shape) {
                 drawable.setShape(typedArray.getInt(typeIndex, 0));
-            } else if (attr == R.styleable.background_solid_color) {
+            } else if (attr == R.styleable.background_bl_solid_color) {
                 drawable.setColor(typedArray.getColor(typeIndex, 0));
-            } else if (attr == R.styleable.background_corners_radius) {
+            } else if (attr == R.styleable.background_bl_corners_radius) {
                 drawable.setCornerRadius(typedArray.getDimension(typeIndex, 0));
-            } else if (attr == R.styleable.background_corners_bottomLeftRadius) {
+            } else if (attr == R.styleable.background_bl_corners_bottomLeftRadius) {
                 cornerRadius[6] = typedArray.getDimension(typeIndex, 0);
                 cornerRadius[7] = typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_corners_bottomRightRadius) {
+            } else if (attr == R.styleable.background_bl_corners_bottomRightRadius) {
                 cornerRadius[4] = typedArray.getDimension(typeIndex, 0);
                 cornerRadius[5] = typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_corners_topLeftRadius) {
+            } else if (attr == R.styleable.background_bl_corners_topLeftRadius) {
                 cornerRadius[0] = typedArray.getDimension(typeIndex, 0);
                 cornerRadius[1] = typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_corners_topRightRadius) {
+            } else if (attr == R.styleable.background_bl_corners_topRightRadius) {
                 cornerRadius[2] = typedArray.getDimension(typeIndex, 0);
                 cornerRadius[3] = typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_gradient_angle) {
+            } else if (attr == R.styleable.background_bl_gradient_angle) {
                 gradientAngle = typedArray.getInteger(typeIndex, 0);
-            } else if (attr == R.styleable.background_gradient_centerX) {
+            } else if (attr == R.styleable.background_bl_gradient_centerX) {
                 centerX = typedArray.getFloat(typeIndex, -1);
-            } else if (attr == R.styleable.background_gradient_centerY) {
+            } else if (attr == R.styleable.background_bl_gradient_centerY) {
                 centerY = typedArray.getFloat(typeIndex, -1);
-            } else if (attr == R.styleable.background_gradient_centerColor) {
+            } else if (attr == R.styleable.background_bl_gradient_centerColor) {
                 centerColor = typedArray.getColor(typeIndex, 0);
-            } else if (attr == R.styleable.background_gradient_endColor) {
+            } else if (attr == R.styleable.background_bl_gradient_endColor) {
                 endColor = typedArray.getColor(typeIndex, 0);
-            } else if (attr == R.styleable.background_gradient_startColor) {
+            } else if (attr == R.styleable.background_bl_gradient_startColor) {
                 startColor = typedArray.getColor(typeIndex, 0);
-            } else if (attr == R.styleable.background_gradient_gradientRadius) {
+            } else if (attr == R.styleable.background_bl_gradient_gradientRadius) {
                 drawable.setGradientRadius(typedArray.getDimension(typeIndex, 0));
-            } else if (attr == R.styleable.background_gradient_type) {
+            } else if (attr == R.styleable.background_bl_gradient_type) {
                 gradientType = typedArray.getInt(typeIndex, 0);
                 drawable.setGradientType(gradientType);
-            } else if (attr == R.styleable.background_gradient_useLevel) {
+            } else if (attr == R.styleable.background_bl_gradient_useLevel) {
                 drawable.setUseLevel(typedArray.getBoolean(typeIndex, false));
-            } else if (attr == R.styleable.background_padding_left) {
+            } else if (attr == R.styleable.background_bl_padding_left) {
                 padding.left = (int) typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_padding_top) {
+            } else if (attr == R.styleable.background_bl_padding_top) {
                 padding.top = (int) typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_padding_right) {
+            } else if (attr == R.styleable.background_bl_padding_right) {
                 padding.right = (int) typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_padding_bottom) {
+            } else if (attr == R.styleable.background_bl_padding_bottom) {
                 padding.bottom = (int) typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_size_width) {
+            } else if (attr == R.styleable.background_bl_size_width) {
                 sizeWidth = typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_size_height) {
+            } else if (attr == R.styleable.background_bl_size_height) {
                 sizeHeight = typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_stroke_width) {
+            } else if (attr == R.styleable.background_bl_stroke_width) {
                 strokeWidth = typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_stroke_color) {
+            } else if (attr == R.styleable.background_bl_stroke_color) {
                 strokeColor = typedArray.getColor(typeIndex, 0);
-            } else if (attr == R.styleable.background_stroke_dashWidth) {
+            } else if (attr == R.styleable.background_bl_stroke_dashWidth) {
                 strokeDashWidth = typedArray.getDimension(typeIndex, 0);
-            } else if (attr == R.styleable.background_stroke_dashGap) {
+            } else if (attr == R.styleable.background_bl_stroke_dashGap) {
                 strokeGap = typedArray.getDimension(typeIndex, 0);
             }
         }
         if (hasSetRadius(cornerRadius)) {
             drawable.setCornerRadii(cornerRadius);
         }
-        if (typedArray.hasValue(R.styleable.background_size_width) &&
-                typedArray.hasValue(R.styleable.background_size_height)) {
+        if (typedArray.hasValue(R.styleable.background_bl_size_width) &&
+                typedArray.hasValue(R.styleable.background_bl_size_height)) {
             drawable.setSize((int) sizeWidth, (int) sizeHeight);
         }
-        if (typedArray.hasValue(R.styleable.background_stroke_width)) {
+        if (typedArray.hasValue(R.styleable.background_bl_stroke_width)) {
             int start = 0;
             ArrayList<Integer> stateList = new ArrayList<>();
             ArrayList<Integer> colorList = new ArrayList<>();
-            if (typedArray.hasValue(R.styleable.background_stroke_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_stroke_color)) {
                 drawable.setStroke((int) strokeWidth, strokeColor, strokeDashWidth, strokeGap);
             } else if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                if (typedArray.hasValue(R.styleable.background_pressed_stroke_color) &&
-                        typedArray.hasValue(R.styleable.background_unPressed_stroke_color)) {
+                if (typedArray.hasValue(R.styleable.background_bl_pressed_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_bl_unPressed_stroke_color)) {
                     stateList.add(android.R.attr.state_pressed);
                     stateList.add(-android.R.attr.state_pressed);
-                    colorList.add(typedArray.getColor(R.styleable.background_pressed_stroke_color, 0));
-                    colorList.add(typedArray.getColor(R.styleable.background_unPressed_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_pressed_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_unPressed_stroke_color, 0));
                 }
-                if (typedArray.hasValue(R.styleable.background_checkable_stroke_color) &&
-                        typedArray.hasValue(R.styleable.background_unCheckable_stroke_color)) {
+                if (typedArray.hasValue(R.styleable.background_bl_checkable_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_bl_unCheckable_stroke_color)) {
                     stateList.add(android.R.attr.state_checkable);
                     stateList.add(-android.R.attr.state_checkable);
-                    colorList.add(typedArray.getColor(R.styleable.background_checkable_stroke_color, 0));
-                    colorList.add(typedArray.getColor(R.styleable.background_unCheckable_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_checkable_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_unCheckable_stroke_color, 0));
                 }
-                if (typedArray.hasValue(R.styleable.background_checked_stroke_color) &&
-                        typedArray.hasValue(R.styleable.background_unChecked_stroke_color)) {
+                if (typedArray.hasValue(R.styleable.background_bl_checked_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_bl_unChecked_stroke_color)) {
                     stateList.add(android.R.attr.state_checked);
                     stateList.add(-android.R.attr.state_checked);
-                    colorList.add(typedArray.getColor(R.styleable.background_checked_stroke_color, 0));
-                    colorList.add(typedArray.getColor(R.styleable.background_unChecked_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_checked_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_unChecked_stroke_color, 0));
                 }
-                if (typedArray.hasValue(R.styleable.background_enabled_stroke_color) &&
-                        typedArray.hasValue(R.styleable.background_unEnabled_stroke_color)) {
+                if (typedArray.hasValue(R.styleable.background_bl_enabled_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_bl_unEnabled_stroke_color)) {
                     stateList.add(android.R.attr.state_enabled);
                     stateList.add(-android.R.attr.state_enabled);
-                    colorList.add(typedArray.getColor(R.styleable.background_enabled_stroke_color, 0));
-                    colorList.add(typedArray.getColor(R.styleable.background_unEnabled_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_enabled_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_unEnabled_stroke_color, 0));
                 }
-                if (typedArray.hasValue(R.styleable.background_selected_stroke_color) &&
-                        typedArray.hasValue(R.styleable.background_unSelected_stroke_color)) {
+                if (typedArray.hasValue(R.styleable.background_bl_selected_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_bl_unSelected_stroke_color)) {
                     stateList.add(android.R.attr.state_selected);
                     stateList.add(-android.R.attr.state_selected);
-                    colorList.add(typedArray.getColor(R.styleable.background_selected_stroke_color, 0));
-                    colorList.add(typedArray.getColor(R.styleable.background_unSelected_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_selected_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_unSelected_stroke_color, 0));
                 }
-                if (typedArray.hasValue(R.styleable.background_focused_stroke_color) &&
-                        typedArray.hasValue(R.styleable.background_unFocused_stroke_color)) {
+                if (typedArray.hasValue(R.styleable.background_bl_focused_stroke_color) &&
+                        typedArray.hasValue(R.styleable.background_bl_unFocused_stroke_color)) {
                     stateList.add(android.R.attr.state_focused);
                     stateList.add(-android.R.attr.state_focused);
-                    colorList.add(typedArray.getColor(R.styleable.background_focused_stroke_color, 0));
-                    colorList.add(typedArray.getColor(R.styleable.background_unFocused_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_focused_stroke_color, 0));
+                    colorList.add(typedArray.getColor(R.styleable.background_bl_unFocused_stroke_color, 0));
                 }
                 int[][] state = new int[stateList.size()][];
                 int[] color = new int[stateList.size()];
@@ -178,15 +178,15 @@ public class GradientDrawableCreator implements ICreateDrawable {
                 colorList = null;
             }
         }
-        if (typedArray.hasValue(R.styleable.background_gradient_centerX) &&
-                typedArray.hasValue(R.styleable.background_gradient_centerY)) {
+        if (typedArray.hasValue(R.styleable.background_bl_gradient_centerX) &&
+                typedArray.hasValue(R.styleable.background_bl_gradient_centerY)) {
             drawable.setGradientCenter(centerX, centerY);
         }
 
-        if (typedArray.hasValue(R.styleable.background_gradient_startColor) &&
-                typedArray.hasValue(R.styleable.background_gradient_endColor)) {
+        if (typedArray.hasValue(R.styleable.background_bl_gradient_startColor) &&
+                typedArray.hasValue(R.styleable.background_bl_gradient_endColor)) {
             int[] colors;
-            if (typedArray.hasValue(R.styleable.background_gradient_centerColor)) {
+            if (typedArray.hasValue(R.styleable.background_bl_gradient_centerColor)) {
                 colors = new int[3];
                 colors[0] = startColor;
                 colors[1] = centerColor;
@@ -199,7 +199,7 @@ public class GradientDrawableCreator implements ICreateDrawable {
             drawable.setColors(colors);
         }
         if (gradientType == LINEAR_GRADIENT &&
-                typedArray.hasValue(R.styleable.background_gradient_angle)) {
+                typedArray.hasValue(R.styleable.background_bl_gradient_angle)) {
             gradientAngle %= 360;
             if (gradientAngle % 45 != 0) {
                 throw new XmlPullParserException(typedArray.getPositionDescription()
@@ -237,10 +237,10 @@ public class GradientDrawableCreator implements ICreateDrawable {
 
         }
 
-        if (typedArray.hasValue(R.styleable.background_padding_left) &&
-                typedArray.hasValue(R.styleable.background_padding_top) &&
-                typedArray.hasValue(R.styleable.background_padding_right) &&
-                typedArray.hasValue(R.styleable.background_padding_bottom)) {
+        if (typedArray.hasValue(R.styleable.background_bl_padding_left) &&
+                typedArray.hasValue(R.styleable.background_bl_padding_top) &&
+                typedArray.hasValue(R.styleable.background_bl_padding_right) &&
+                typedArray.hasValue(R.styleable.background_bl_padding_bottom)) {
             try {
                 Field paddingField = drawable.getClass().getField("mPadding");
                 paddingField.setAccessible(true);

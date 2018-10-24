@@ -29,29 +29,29 @@ public class ColorStateCreator {
             }
             int typeIndex = textTa.getIndex(i);
 
-            if (attr == R.styleable.text_selector_checkable_textColor) {
+            if (attr == R.styleable.text_selector_bl_checkable_textColor) {
                 setStateColor(textTa, typeIndex, android.R.attr.state_checkable);
-            } else if (attr == R.styleable.text_selector_unCheckable_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_unCheckable_textColor) {
                 setStateColor(textTa, typeIndex, -android.R.attr.state_checkable);
-            } else if (attr == R.styleable.text_selector_checked_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_checked_textColor) {
                 setStateColor(textTa, typeIndex, android.R.attr.state_checked);
-            } else if (attr == R.styleable.text_selector_unChecked_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_unChecked_textColor) {
                 setStateColor(textTa, typeIndex, -android.R.attr.state_checked);
-            } else if (attr == R.styleable.text_selector_enabled_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_enabled_textColor) {
                 setStateColor(textTa, typeIndex, android.R.attr.state_enabled);
-            } else if (attr == R.styleable.text_selector_unEnabled_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_unEnabled_textColor) {
                 setStateColor(textTa, typeIndex, -android.R.attr.state_enabled);
-            } else if (attr == R.styleable.text_selector_selected_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_selected_textColor) {
                 setStateColor(textTa, typeIndex, android.R.attr.state_selected);
-            } else if (attr == R.styleable.text_selector_unSelected_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_unSelected_textColor) {
                 setStateColor(textTa, typeIndex, -android.R.attr.state_selected);
-            } else if (attr == R.styleable.text_selector_pressed_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_pressed_textColor) {
                 setStateColor(textTa, typeIndex, android.R.attr.state_pressed);
-            } else if (attr == R.styleable.text_selector_unPressed_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_unPressed_textColor) {
                 setStateColor(textTa, typeIndex, -android.R.attr.state_pressed);
-            } else if (attr == R.styleable.text_selector_focused_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_focused_textColor) {
                 setStateColor(textTa, typeIndex, android.R.attr.state_focused);
-            } else if (attr == R.styleable.text_selector_unFocused_textColor) {
+            } else if (attr == R.styleable.text_selector_bl_unFocused_textColor) {
                 setStateColor(textTa, typeIndex, -android.R.attr.state_focused);
             }
         }

@@ -22,7 +22,6 @@ public class DrawableFactory {
         return (StateListDrawable) new SelectorDrawableCreator(typedArray, selectorTa).create();
     }
 
-
     //获取selector属性关于text的color
     public static ColorStateList getTextSelectorColor(TypedArray textTa) {
         return new ColorStateCreator(textTa).create();
@@ -33,6 +32,5 @@ public class DrawableFactory {
             throws Exception {
         return (StateListDrawable) new PressDrawableCreator(drawable, typedArray, pressTa).create();
     }
-
 
 }
