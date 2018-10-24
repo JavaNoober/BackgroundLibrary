@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.2.7'
+    implementation 'com.noober.background:core:1.3.0'
 
  
 ## Example effect
@@ -30,68 +30,83 @@ All attributes of shape are supported. The naming rule is **'tag name'_'tag attr
 
 | name | category |
 |---|---|
-|shape|rectangle、oval、line、ring(not support yet)|
-|solid_color|color|
-|corners_radius|dimension|
-|corners_bottomLeftRadius|dimension|
-|corners_bottomRightRadius|dimension|
-|corners_topLeftRadius|dimension|
-|corners_topRightRadius|dimension|
-|gradient_angle|integer|
-|gradient_centerX|float|
-|gradient_centerY|float|
-|gradient_centerColor|color|
-|gradient_endColor|color|
-|gradient_startColor|color|
-|gradient_gradientRadius|dimension|
-|gradient_type|linear、radial、sweep|
-|gradient_useLevel|boolean|
-|size_width|dimension|
-|size_height|dimension|
-|stroke_width|dimension|
-|stroke_color|color|
-|stroke_dashWidth|dimension|
-|stroke_dashGap|dimension|
+|bl_shape|rectangle、oval、line、ring(not support yet)|
+|bl_solid_color|color|
+|bl_corners_radius|dimension|
+|bl_corners_bottomLeftRadius|dimension|
+|bl_corners_bottomRightRadius|dimension|
+|bl_corners_topLeftRadius|dimension|
+|bl_corners_topRightRadius|dimension|
+|bl_gradient_angle|integer|
+|bl_gradient_centerX|float|
+|bl_gradient_centerY|float|
+|bl_gradient_centerColor|color|
+|bl_gradient_endColor|color|
+|bl_gradient_startColor|color|
+|bl_gradient_gradientRadius|dimension|
+|bl_gradient_type|linear、radial、sweep|
+|bl_gradient_useLevel|boolean|
+|bl_size_width|dimension|
+|bl_size_height|dimension|
+|bl_stroke_width|dimension|
+|bl_stroke_color|color|
+|bl_stroke_dashWidth|dimension|
+|bl_stroke_dashGap|dimension|
 
 ### selector
 All attributes of selector are supported：
 
 | name | category |
 |---|---|
-|checkable_drawable|color、reference|
-|checked_drawable|color、reference|
-|enabled_drawable|color、reference|
-|selected_drawable|color、reference|
-|pressed_drawable|color、reference|
-|focused_drawable|color、reference|
-|focused_hovered|color、reference|
-|focused_activated|color、reference|
-|unCheckable_drawable|color、reference|
-|unChecked_drawable|color、reference|
-|unEnabled_drawable|color、reference|
-|unSelected_drawable|color、reference|
-|unPressed_drawable|color、reference|
-|unFocused_drawable|color、reference|
-|unFocused_hovered|color、reference|
-|unFocused_activated|color、reference|
+|bl_checkable_drawable|color、reference|
+|bl_checked_drawable|color、reference|
+|bl_enabled_drawable|color、reference|
+|bl_selected_drawable|color、reference|
+|bl_pressed_drawable|color、reference|
+|bl_focused_drawable|color、reference|
+|bl_focused_hovered|color、reference|
+|bl_focused_activated|color、reference|
+|bl_unCheckable_drawable|color、reference|
+|bl_unChecked_drawable|color、reference|
+|bl_unEnabled_drawable|color、reference|
+|bl_unSelected_drawable|color、reference|
+|bl_unPressed_drawable|color、reference|
+|bl_unFocused_drawable|color、reference|
+|bl_unFocused_hovered|color、reference|
+|bl_unFocused_activated|color、reference|
 
 ### other（need sdk 27 and above）
 | name | category |remark|
 |---|---|---|
-|ripple_enable|boolean|ensure that the ripple effect is enabled|
-|ripple_color|color|the color of ripple|
-|checkable_stroke_color| color| different color when different state for stroke|
-|checked_stroke_color| color| |
-|enabled_stroke_color| color| |
-|selected_stroke_color| color| |
-|pressed_stroke_color| color| |
-|focused_stroke_color| color| |
-|unCheckable_stroke_color| color| |
-|unChecked_stroke_color| color| |
-|unEnabled_stroke_color| color| |
-|unSelected_stroke_color| color| |
-|unPressed_stroke_color| color| |
-|unFocused_stroke_color| color| |
+|bl_ripple_enable|boolean|ensure that the ripple effect is enabled|
+|bl_ripple_color|color|the color of ripple|
+|bl_checkable_stroke_color| color| different color when different state for stroke|
+|bl_checked_stroke_color| color| |
+|bl_enabled_stroke_color| color| |
+|bl_selected_stroke_color| color| |
+|bl_pressed_stroke_color| color| |
+|bl_focused_stroke_color| color| |
+|bl_unCheckable_stroke_color| color| |
+|bl_unChecked_stroke_color| color| |
+|bl_unEnabled_stroke_color| color| |
+|bl_unSelected_stroke_color| color| |
+|bl_unPressed_stroke_color| color| |
+|bl_unFocused_stroke_color| color| |
+
+### generate drawable by code(above v1.3.0)
+
+detail see :[DrawableCreator.Build](https://github.com/JavaNoober/BackgroundLibrary/blob/develop/library/src/main/java/com/noober/background/drawable/DrawableCreator.java)
+example:  
+    
+    //设置button圆角背景
+    Drawable drawable = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
+                    .setGradientAngle(0).setGradientColor(Color.parseColor("#63B8FF"), Color.parseColor("#4F94CD")).build();
+    btn.setBackground(drawable);
+    //文字点击变色
+    tvTest1.setClickable(true);//由于Android源码的原因，必须调用，否则不生效
+    ColorStateList colors = new DrawableCreator.Builder().setPressedTextColor(Color.RED).setUnPressedTextColor(Color.BLUE).buildTextColor();
+    tvTest1.setTextColor(colors);
+
 
 ## example
 
@@ -245,3 +260,25 @@ no need to add "app:"
     View item = LayoutInflater.from(context).inflate(xxx)
     
 7、自定义View中调用了inflate，同listView一样处理即可
+
+    MIT License
+    
+    Copyright (c) 2018 javaKepp
+    
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
