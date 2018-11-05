@@ -8,7 +8,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 
 import com.noober.background.R;
-import com.noober.background.utils.TypeValueHelper;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -44,68 +43,64 @@ public class GradientDrawableCreator implements ICreateDrawable {
         int gradientAngle = 0;
         Rect padding = new Rect();
         for (int i = 0; i < typedArray.getIndexCount(); i++) {
-            int attr = TypeValueHelper.sAppearanceValues.get(typedArray.getIndex(i), -1);
-            if (attr == -1) {
-                continue;
-            }
-            int typeIndex = typedArray.getIndex(i);
+            int attr = typedArray.getIndex(i);
             if (attr == R.styleable.background_bl_shape) {
-                drawable.setShape(typedArray.getInt(typeIndex, 0));
+                drawable.setShape(typedArray.getInt(attr, 0));
             } else if (attr == R.styleable.background_bl_solid_color) {
-                drawable.setColor(typedArray.getColor(typeIndex, 0));
+                drawable.setColor(typedArray.getColor(attr, 0));
             } else if (attr == R.styleable.background_bl_corners_radius) {
-                drawable.setCornerRadius(typedArray.getDimension(typeIndex, 0));
+                drawable.setCornerRadius(typedArray.getDimension(attr, 0));
             } else if (attr == R.styleable.background_bl_corners_bottomLeftRadius) {
-                cornerRadius[6] = typedArray.getDimension(typeIndex, 0);
-                cornerRadius[7] = typedArray.getDimension(typeIndex, 0);
+                cornerRadius[6] = typedArray.getDimension(attr, 0);
+                cornerRadius[7] = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_corners_bottomRightRadius) {
-                cornerRadius[4] = typedArray.getDimension(typeIndex, 0);
-                cornerRadius[5] = typedArray.getDimension(typeIndex, 0);
+                cornerRadius[4] = typedArray.getDimension(attr, 0);
+                cornerRadius[5] = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_corners_topLeftRadius) {
-                cornerRadius[0] = typedArray.getDimension(typeIndex, 0);
-                cornerRadius[1] = typedArray.getDimension(typeIndex, 0);
+                cornerRadius[0] = typedArray.getDimension(attr, 0);
+                cornerRadius[1] = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_corners_topRightRadius) {
-                cornerRadius[2] = typedArray.getDimension(typeIndex, 0);
-                cornerRadius[3] = typedArray.getDimension(typeIndex, 0);
+                cornerRadius[2] = typedArray.getDimension(attr, 0);
+                cornerRadius[3] = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_gradient_angle) {
-                gradientAngle = typedArray.getInteger(typeIndex, 0);
+                gradientAngle = typedArray.getInteger(attr, 0);
             } else if (attr == R.styleable.background_bl_gradient_centerX) {
-                centerX = typedArray.getFloat(typeIndex, -1);
+                centerX = typedArray.getFloat(attr, -1);
             } else if (attr == R.styleable.background_bl_gradient_centerY) {
-                centerY = typedArray.getFloat(typeIndex, -1);
+                centerY = typedArray.getFloat(attr, -1);
             } else if (attr == R.styleable.background_bl_gradient_centerColor) {
-                centerColor = typedArray.getColor(typeIndex, 0);
+                centerColor = typedArray.getColor(attr, 0);
             } else if (attr == R.styleable.background_bl_gradient_endColor) {
-                endColor = typedArray.getColor(typeIndex, 0);
+                endColor = typedArray.getColor(attr, 0);
             } else if (attr == R.styleable.background_bl_gradient_startColor) {
-                startColor = typedArray.getColor(typeIndex, 0);
+                startColor = typedArray.getColor(attr, 0);
             } else if (attr == R.styleable.background_bl_gradient_gradientRadius) {
-                drawable.setGradientRadius(typedArray.getDimension(typeIndex, 0));
+                drawable.setGradientRadius(typedArray.getDimension(attr, 0));
             } else if (attr == R.styleable.background_bl_gradient_type) {
-                gradientType = typedArray.getInt(typeIndex, 0);
+                gradientType = typedArray.getInt(attr, 0);
                 drawable.setGradientType(gradientType);
             } else if (attr == R.styleable.background_bl_gradient_useLevel) {
-                drawable.setUseLevel(typedArray.getBoolean(typeIndex, false));
+                drawable.setUseLevel(typedArray.getBoolean(attr, false));
             } else if (attr == R.styleable.background_bl_padding_left) {
-                padding.left = (int) typedArray.getDimension(typeIndex, 0);
+                padding.left = (int) typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_padding_top) {
-                padding.top = (int) typedArray.getDimension(typeIndex, 0);
+                padding.top = (int) typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_padding_right) {
-                padding.right = (int) typedArray.getDimension(typeIndex, 0);
+                padding.right = (int) typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_padding_bottom) {
-                padding.bottom = (int) typedArray.getDimension(typeIndex, 0);
+                padding.bottom = (int) typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_size_width) {
-                sizeWidth = typedArray.getDimension(typeIndex, 0);
+                sizeWidth = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_size_height) {
-                sizeHeight = typedArray.getDimension(typeIndex, 0);
+                sizeHeight = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_stroke_width) {
-                strokeWidth = typedArray.getDimension(typeIndex, 0);
+                strokeWidth = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_stroke_color) {
-                strokeColor = typedArray.getColor(typeIndex, 0);
+                strokeColor = typedArray.getColor(attr, 0);
             } else if (attr == R.styleable.background_bl_stroke_dashWidth) {
-                strokeDashWidth = typedArray.getDimension(typeIndex, 0);
+                strokeDashWidth = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_stroke_dashGap) {
-                strokeGap = typedArray.getDimension(typeIndex, 0);
+                strokeGap = typedArray.getDimension(attr, 0);
             }
         }
         if (hasSetRadius(cornerRadius)) {
