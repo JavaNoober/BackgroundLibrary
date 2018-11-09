@@ -29,6 +29,10 @@ A framework for directly generating shape through Tags, no need to write shape.x
 
 ![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/gif.gif)
 
+通过配置Live Templates，实现自动代码提示  
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/属性提示.gif)
+
+
 ## 使用方法
 1、在BaseActivity中的super.onCreate之前调用。
     
@@ -335,6 +339,20 @@ style中不要加入"app:", 直接写属性名即可
 
      view.setClickable(true);
 否则点击状态可能不生效  
+
+
+## 代码提示解决方案
+
+配置Live Templates步骤：
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step1.gif)
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step2.gif)
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step3.gif)
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step4.gif)
+效果：
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step5.gif)
+
+
+
 
     MIT License
     
