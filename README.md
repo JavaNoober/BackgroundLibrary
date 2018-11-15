@@ -342,14 +342,14 @@ style中不要加入"app:", 直接写属性名即可
 
 
 ## 代码提示解决方案
+配置Live Templates步骤:  
+以Android studio3.2为例:  
+mac:进入目录MacintoshHD\user\xxx\Library\Preferences\AndroidStudio3.2\templates  
+windows:进入目录C:\Users\XXX\.AndroidStudio3.2\config\templates  
+如果templates不存在，手动创建文件夹即可；
+在templates下面加入文件[BackgroundLibrary.xml](https://github.com/JavaNoober/BackgroundLibrary/blob/master/BackgroundLibrary.xml)
+重启as即可。
 
-配置Live Templates步骤：
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step1.png)
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step2.png)
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step3.png)
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step4.png)
-配置完所有属性，大约10分钟
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step6.png)
 效果：
 ![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step5.png)
 
