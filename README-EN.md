@@ -264,7 +264,7 @@ no need to add "app:"
     
 7、自定义View中调用了inflate，同listView一样处理即可
 
-## How to use
+## How to use Live Templates
 
 mac:Macintosh HD\user\xxx\Library\Preferences\AndroidStudio3.2\templates
 windows:C:\Users\XXX\.AndroidStudio3.2\config\templates
