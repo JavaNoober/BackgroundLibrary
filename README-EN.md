@@ -14,6 +14,9 @@ Add this to your app's build.gradle：
 
 ![](https://user-gold-cdn.xitu.io/2018/9/12/165ce13d4c0a176f?w=286&h=606&f=gif&s=807047)
 
+Automatic code prompt by Live Templates
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/属性提示.gif)
+
 ## How to use
 1、Calling code before the 'super.onCreate' in BaseActivity
     
@@ -260,6 +263,17 @@ no need to add "app:"
     View item = LayoutInflater.from(context).inflate(xxx)
     
 7、自定义View中调用了inflate，同listView一样处理即可
+
+## How to use
+
+mac:Macintosh HD\user\xxx\Library\Preferences\AndroidStudio3.2\templates
+windows:C:\Users\XXX\.AndroidStudio3.2\config\templates
+
+copy the file [BackgroundLibrary.xml](https://github.com/JavaNoober/BackgroundLibrary/blob/master/BackgroundLibrary.xml) to this directory
+effect：
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step5.png)
+
+
 
     MIT License
     
