@@ -1,5 +1,5 @@
 # BackgroudLibrary
-A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）
+A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）  
 
 
 ![](https://user-gold-cdn.xitu.io/2018/9/11/165c6e5c0cff0548?w=681&h=233&f=png&s=31240)
@@ -350,8 +350,12 @@ windows:进入目录C:\Users\XXX\.AndroidStudio3.2\config\templates
 在templates下面加入文件[BackgroundLibrary.xml](https://github.com/JavaNoober/BackgroundLibrary/blob/master/BackgroundLibrary.xml)
 重启as即可。
 
-效果：
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step5.png)
+效果：  
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/step5.png)  
+
+如果有什么问题，方便大家交流，创建了一个qq群，群号887686934，欢迎大家加入  
+
+![](https://user-gold-cdn.xitu.io/2018/11/22/1673a789b58ca9a6?w=10&h=10&f=png&s=94884)
 
 
 
