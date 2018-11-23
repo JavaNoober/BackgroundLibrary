@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.3.1'
+    implementation 'com.noober.background:core:1.3.2'
 
 版本更新：
     
@@ -24,6 +24,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.2.7 新增pressed_stroke_color等边框的属性
     1.3.0 提供通过代码生成Drawable的方法；为了防止属性冲突，所有属性以bl_开头
     1.3.1 优化代码，减少内存占用
+    1.3.2 修复与其他框架冲突的bug
  
 ## 示例效果
 
