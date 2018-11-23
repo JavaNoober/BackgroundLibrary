@@ -23,7 +23,7 @@ import com.noober.background.drawable.DrawableFactory;
 import java.lang.reflect.Constructor;
 import java.util.Map;
 
-public class BackgroundFactory implements LayoutInflater.Factory {
+public class BackgroundFactory implements LayoutInflater.Factory2 {
 
     private LayoutInflater.Factory mViewCreateFactory;
     private LayoutInflater.Factory2 mViewCreateFactory2;
@@ -172,5 +172,10 @@ public class BackgroundFactory implements LayoutInflater.Factory {
             Log.w("BackgroundLibrary", "cannot create 【" + name + "】 : ");
             return null;
         }
+    }
+
+    @Override
+    public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
+        return onCreateView(name, context, attrs);
     }
 }

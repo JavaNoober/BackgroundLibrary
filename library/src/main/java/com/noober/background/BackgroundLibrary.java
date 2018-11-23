@@ -29,7 +29,7 @@ public class BackgroundLibrary {
                 }
             });
         }
-        inflater.setFactory(factory);
+        inflater.setFactory2(factory);
         return inflater;
     }
 
@@ -56,7 +56,7 @@ public class BackgroundLibrary {
             } else if (inflater.getFactory() != null) {
                 factory.setInterceptFactory(inflater.getFactory());
             }
-            inflater.setFactory(factory);
+            inflater.setFactory2(factory);
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
