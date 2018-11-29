@@ -1,6 +1,5 @@
 package com.noober.backgroudlibrary;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         BackgroundLibrary.inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView( R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_content, new BlankFragment()).commitAllowingStateLoss();
         Button button = findViewById(R.id.btn);
         button.setOnClickListener(new View.OnClickListener() {
@@ -32,15 +31,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        Drawable drawable = new DrawableCreator.Builder().setCornersRadius(30)
+                .setSolidColor(Color.parseColor("#FFFFFF"))
+                .setStrokeColor(Color.parseColor("#FFFFFF"))
+                .setStrokeWidth(10)
+                .build();
         TextView tvTest1 = findViewById(R.id.tvTest1);
         tvTest1.setClickable(true);
         ColorStateList colors = new DrawableCreator.Builder().setPressedTextColor(Color.RED).setUnPressedTextColor(Color.BLUE).buildTextColor();
         tvTest1.setTextColor(colors);
 
         Button btnTest2 = findViewById(R.id.btnTest2);
-        Drawable drawable = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
-                .setGradientAngle(0).setGradientColor(Color.parseColor("#63B8FF"), Color.parseColor("#4F94CD")).build();
+//        Drawable drawable = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
+//                .setGradientAngle(0).setGradientColor(Color.parseColor("#63B8FF"), Color.parseColor("#4F94CD")).build();
         btnTest2.setBackground(drawable);
 
         Button btnTest3 = findViewById(R.id.btnTest3);

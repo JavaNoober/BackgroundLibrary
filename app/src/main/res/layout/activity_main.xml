@@ -24,9 +24,11 @@
             android:layout_height="36dp"
             android:gravity="center"
             android:text="TextView"
+            android:elevation ="12dp"
             android:textColor="#8c6822"
             android:textSize="20sp"
-            style="@style/bg"/>
+            android:clickable="true"
+            style="@style/test"/>
 
         <Button
             android:id="@+id/btn"
@@ -93,9 +95,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:textColor="#8c6822"
-            android:textSize="20sp"
             app:bl_shape="oval"
             app:bl_solid_color="#E3B666"
             app:bl_stroke_color="#8c6822"
