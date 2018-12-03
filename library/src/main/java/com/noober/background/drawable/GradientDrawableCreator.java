@@ -179,7 +179,8 @@ public class GradientDrawableCreator implements ICreateDrawable {
         }
 
         if (typedArray.hasValue(R.styleable.background_bl_gradient_startColor) &&
-                typedArray.hasValue(R.styleable.background_bl_gradient_endColor)) {
+                typedArray.hasValue(R.styleable.background_bl_gradient_endColor) &&
+                android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             int[] colors;
             if (typedArray.hasValue(R.styleable.background_bl_gradient_centerColor)) {
                 colors = new int[3];
@@ -194,7 +195,8 @@ public class GradientDrawableCreator implements ICreateDrawable {
             drawable.setColors(colors);
         }
         if (gradientType == LINEAR_GRADIENT &&
-                typedArray.hasValue(R.styleable.background_bl_gradient_angle)) {
+                typedArray.hasValue(R.styleable.background_bl_gradient_angle) &&
+                android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             gradientAngle %= 360;
             if (gradientAngle % 45 != 0) {
                 throw new XmlPullParserException(typedArray.getPositionDescription()

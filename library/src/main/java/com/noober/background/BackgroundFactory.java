@@ -69,16 +69,29 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 } else if (view instanceof CheckBox) {
                     ((CheckBox) view).setButtonDrawable(stateListDrawable);
                 } else {
-                    view.setBackground(stateListDrawable);
+                    if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                        view.setBackground(stateListDrawable);
+                    }else {
+                        view.setBackgroundDrawable(stateListDrawable);
+                    }
+
                 }
             } else if (pressTa.getIndexCount() > 0) {
                 drawable = DrawableFactory.getDrawable(typedArray);
                 stateListDrawable = DrawableFactory.getPressDrawable(drawable, typedArray, pressTa);
                 view.setClickable(true);
-                view.setBackground(stateListDrawable);
+                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                    view.setBackground(stateListDrawable);
+                }else {
+                    view.setBackgroundDrawable(stateListDrawable);
+                }
             } else {
                 drawable = DrawableFactory.getDrawable(typedArray);
-                view.setBackground(drawable);
+                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                    view.setBackground(drawable);
+                }else {
+                    view.setBackgroundDrawable(drawable);
+                }
             }
 
             if (view instanceof TextView && textTa.getIndexCount() > 0) {
@@ -100,7 +113,11 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     tmpDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
                     tmpDrawable.addState(new int[]{android.R.attr.state_pressed}, unPressDrawable);
                     view.setClickable(true);
-                    view.setBackground(tmpDrawable);
+                    if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                        view.setBackground(tmpDrawable);
+                    }else {
+                        view.setBackgroundDrawable(tmpDrawable);
+                    }
                 }
             }
             return view;

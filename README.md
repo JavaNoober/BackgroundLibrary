@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.3.3'
+    implementation 'com.noober.background:core:1.3.4'
 
 版本更新：
     
@@ -26,6 +26,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.3.1 优化代码，减少内存占用
     1.3.2 修复与其他框架冲突的bug
     1.3.3 修复通过代码创建drawable，白色失效的问题
+    1.3.4 支持最小sdk从16变为14，如果minSdkVersion < 16:bl_gradient_angle, bl_gradient_startColor, bl_gradient_centerColor, bl_gradient_endColor会失效，其他正常
  
 ## 示例效果
 
@@ -36,7 +37,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 
 
 ## 使用方法
-1、在BaseActivity中的super.onCreate之前调用。
+1、在BaseActivity中的super.onCreate之前调用。**如果minSdkVersion < 16:bl_gradient_angle, bl_gradient_startColor, bl_gradient_centerColor, bl_gradient_endColor会失效，其他正常**
     
     BackgroundLibrary.inject(context);
     

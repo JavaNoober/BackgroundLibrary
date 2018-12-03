@@ -1,5 +1,6 @@
 package com.noober.background.drawable;
 
+import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -140,6 +141,7 @@ public class DrawableCreator {
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientAngle(int gradientAngle) {
             this.gradientAngle = gradientAngle;
             return this;
@@ -151,12 +153,14 @@ public class DrawableCreator {
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientColor(int startColor, int endColor) {
             this.gradientStartColor = startColor;
             this.gradientEndColor = endColor;
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientColor(int startColor, int centerColor, int endColor) {
             this.gradientStartColor = startColor;
             this.gradientCenterColor = centerColor;
@@ -652,7 +656,10 @@ public class DrawableCreator {
                             mOrientation = GradientDrawable.Orientation.TL_BR;
                             break;
                     }
-                    drawable.setOrientation(mOrientation);
+                    if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                        drawable.setOrientation(mOrientation);
+                    }
+
                 }
             }
 
@@ -671,7 +678,9 @@ public class DrawableCreator {
                     colors[0] = gradientStartColor;
                     colors[1] = gradientEndColor;
                 }
-                drawable.setColors(colors);
+                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                    drawable.setColors(colors);
+                }
             }
             if (gradientRadius != null) {
                 drawable.setGradientRadius(gradientRadius);
