@@ -350,7 +350,7 @@ style中不要加入"app:", 直接写属性名即可
 mac:进入目录MacintoshHD\user\xxx\Library\Preferences\AndroidStudio3.2\templates  
 windows:进入目录C:\Users\XXX\.AndroidStudio3.2\config\templates  
 如果templates不存在，手动创建文件夹即可；
-在templates下面加入文件[BackgroundLibrary.xml](https://github.com/JavaNoober/BackgroundLibrary/blob/master/BackgroundLibrary.xml)
+在templates下面加入文件[BackgroundLibrary.xml](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/BackgroundLibrary.xml)
 重启as即可。
 
 效果：  
