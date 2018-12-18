@@ -22,6 +22,11 @@ public class DrawableFactory {
         return (StateListDrawable) new SelectorDrawableCreator(typedArray, selectorTa).create();
     }
 
+    //获取selector属性的drawable
+    public static StateListDrawable getButtonDrawable(TypedArray typedArray, TypedArray buttonTa) throws Exception {
+        return (StateListDrawable) new ButtonDrawableCreator(typedArray, buttonTa).create();
+    }
+
     //获取selector属性关于text的color
     public static ColorStateList getTextSelectorColor(TypedArray textTa) {
         return new ColorStateCreator(textTa).create();

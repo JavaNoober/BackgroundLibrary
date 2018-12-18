@@ -129,8 +129,13 @@
         <attr name="bl_unFocused_drawable" format="color|reference" />
         <attr name="bl_unFocused_hovered" format="color|reference" />
         <attr name="bl_unFocused_activated" format="color|reference" />
+
     </declare-styleable>
 
+    <declare-styleable name="background_button_drawable">
+        <attr name="bl_checked_button_drawable" format="color|reference" />
+        <attr name="bl_unChecked_button_drawable" format="color|reference" />
+    </declare-styleable>
 
     <declare-styleable name="text_selector">
         <attr name="bl_checkable_textColor" format="color" />

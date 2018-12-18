@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.3.4'
+    implementation 'com.noober.background:core:1.3.5'
 
 版本更新：
     
@@ -27,6 +27,8 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.3.2 修复与其他框架冲突的bug
     1.3.3 修复通过代码创建drawable，白色失效的问题
     1.3.4 支持最小sdk从16变为14，如果minSdkVersion < 16:bl_gradient_angle, bl_gradient_startColor, bl_gradient_centerColor, bl_gradient_endColor会失效，其他正常
+    1.3.5 新增属性bl_checked_button_drawable与bl_unChecked_button_drawable，在checkBox与radiobutton中使用了bl_checked_drawable与bl_unChecked_drawable会与之前版本有区别，
+        bl_checked_button_drawable相当于setButtonDrawable，而bl_checked_drawable相当于setBackground，详见demo的radiobutton写法
  
 ## 示例效果
 
@@ -109,6 +111,9 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |bl_unSelected_textColor|color|
 |bl_unPressed_textColor|color|
 |bl_unFocused_textColor|color|
+|关于checkbox、radiobutton的buttonDrawable的设置||
+|bl_checked_button_drawable|color、reference|
+|bl_unChecked_button_drawable|color、reference|
 ### 其他属性(sdk21及以上的手机才支持)
 | 名称 | 类型 |备注|
 |---|---|---|

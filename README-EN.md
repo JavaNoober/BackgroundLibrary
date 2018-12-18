@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.3.4'
+    implementation 'com.noober.background:core:1.3.5'
 
  
 ## Example effect
@@ -77,7 +77,9 @@ All attributes of selector are supported：
 |bl_unFocused_drawable|color、reference|
 |bl_unFocused_hovered|color、reference|
 |bl_unFocused_activated|color、reference|
-
+|setting about buttonDrawable||
+|bl_checked_button_drawable|color、reference|
+|bl_unChecked_button_drawable|color、reference|
 ### other（need sdk 27 and above）
 | name | category |remark|
 |---|---|---|

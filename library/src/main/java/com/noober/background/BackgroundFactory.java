@@ -15,6 +15,7 @@ import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -47,6 +48,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.background_press);
         TypedArray selectorTa = context.obtainStyledAttributes(attrs, R.styleable.background_selector);
         TypedArray textTa = context.obtainStyledAttributes(attrs, R.styleable.text_selector);
+        TypedArray buttonTa = context.obtainStyledAttributes(attrs, R.styleable.background_button_drawable);
         try {
             if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0
                     && pressTa.getIndexCount() == 0 && textTa.getIndexCount() == 0) {
@@ -61,20 +63,16 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
-            if (selectorTa.getIndexCount() > 0) {
+            if(buttonTa.getIndexCount() > 0 && view instanceof CompoundButton){
+                view.setClickable(true);
+                ((CompoundButton) view).setButtonDrawable(DrawableFactory.getButtonDrawable(typedArray, buttonTa));
+            } else if (selectorTa.getIndexCount() > 0) {
                 stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa);
                 view.setClickable(true);
-                if (view instanceof RadioButton) {
-                    ((RadioButton) view).setButtonDrawable(stateListDrawable);
-                } else if (view instanceof CheckBox) {
-                    ((CheckBox) view).setButtonDrawable(stateListDrawable);
-                } else {
-                    if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-                        view.setBackground(stateListDrawable);
-                    }else {
-                        view.setBackgroundDrawable(stateListDrawable);
-                    }
-
+                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                    view.setBackground(stateListDrawable);
+                }else {
+                    view.setBackgroundDrawable(stateListDrawable);
                 }
             } else if (pressTa.getIndexCount() > 0) {
                 drawable = DrawableFactory.getDrawable(typedArray);
@@ -128,6 +126,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             pressTa.recycle();
             selectorTa.recycle();
             textTa.recycle();
+            buttonTa.recycle();
         }
 
         return view;
