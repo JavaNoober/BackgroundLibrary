@@ -24,7 +24,7 @@
       <option name="XML" value="true" />
     </context>
   </template>
-  <template name="bl_corners_bottomRightRadius1" value="bl_corners_topRightRadius" description="右上圆角宽度" toReformat="true" toShortenFQNames="true">
+  <template name="bl_corners_topRightRadius" value="bl_corners_topRightRadius" description="右上圆角宽度" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="XML" value="true" />
     </context>
@@ -250,6 +250,16 @@
     </context>
   </template>
   <template name="bl_unFocused_stroke_color" value="bl_unFocused_stroke_color" description="边框状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_button_drawable" value="bl_checked_button_drawable" description="buttonDrawable属性" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_button_drawable" value="bl_unChecked_button_drawable" description="buttonDrawable属性" toReformat="true" toShortenFQNames="true">
     <context>
       <option name="XML" value="true" />
     </context>
