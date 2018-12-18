@@ -14,21 +14,37 @@
         tools:ignore="MissingPrefix">
 
         <TextView
+            android:id="@+id/cobbAngle"
+            android:layout_width="180dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="COBB ANGLE"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:bl_corners_radius="4dp"
+            app:bl_pressed_drawable="@android:color/darker_gray"
+            app:bl_stroke_color="@android:color/black"
+            app:bl_stroke_width="1dp"
+            app:bl_unPressed_drawable="#00FFFFFF" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="直接添加自定义属性，设置背景shape："
             android:textSize="15sp" />
 
         <TextView
+            style="@style/test"
             android:layout_width="130dp"
             android:layout_height="36dp"
+            android:clickable="true"
+            android:elevation="12dp"
             android:gravity="center"
             android:text="TextView"
-            android:elevation ="12dp"
             android:textColor="#8c6822"
-            android:textSize="20sp"
-            android:clickable="true"
-            style="@style/test"/>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn"
@@ -112,15 +128,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="按钮1"
-                app:bl_checked_drawable="@mipmap/rg_select"
-                app:bl_unChecked_drawable="@mipmap/rg_unselect" />
+                app:bl_checked_button_drawable="@mipmap/rg_select"
+                app:bl_corners_radius="10dp"
+                app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="按钮2"
-                app:bl_checked_drawable="@mipmap/rg_select"
-                app:bl_unChecked_drawable="@mipmap/rg_unselect" />
+                app:bl_checked_button_drawable="@mipmap/rg_select"
+                app:bl_corners_radius="10dp"
+                app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:textSize="15sp"
+                android:text="按钮1"
+                app:bl_checked_drawable="@drawable/shape_gender_green"
+                app:bl_unChecked_drawable="@drawable/shape_gender_red" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:button="@null"
+                android:textSize="15sp"
+                android:text="按钮2"
+                app:bl_checked_drawable="@drawable/shape_gender_green"
+                app:bl_unChecked_drawable="@drawable/shape_gender_red" />
         </RadioGroup>
 
         <Button
@@ -134,12 +178,12 @@
             android:textColor="@android:color/white"
             android:textSize="20sp"
             app:bl_corners_radius="20dp"
+            app:bl_pressed_stroke_color="#000000"
             app:bl_ripple_color="#71C671"
             app:bl_ripple_enable="true"
             app:bl_solid_color="#7CFC00"
-            app:bl_unPressed_stroke_color="@android:color/holo_red_dark"
-            app:bl_pressed_stroke_color="#000000"
-            app:bl_stroke_width="2dp" />
+            app:bl_stroke_width="2dp"
+            app:bl_unPressed_stroke_color="@android:color/holo_red_dark" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -180,12 +224,12 @@
             android:padding="0dp"
             android:text="点击文字变色"
             app:bl_pressed_textColor="#919DAF"
-            app:bl_unPressed_textColor="@android:color/holo_red_dark"/>
+            app:bl_unPressed_textColor="@android:color/holo_red_dark" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="下面是通过代码设置背景："/>
+            android:text="下面是通过代码设置背景：" />
 
         <TextView
             android:id="@+id/tvTest1"
@@ -193,7 +237,7 @@
             android:layout_height="36dp"
             android:gravity="center"
             android:text="点击文字变色"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btnTest2"

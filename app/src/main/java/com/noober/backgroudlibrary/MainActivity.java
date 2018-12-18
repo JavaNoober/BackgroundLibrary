@@ -16,7 +16,6 @@ import com.noober.background.BackgroundLibrary;
 import com.noober.background.drawable.DrawableCreator;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         BackgroundLibrary.inject(this);
