@@ -51,7 +51,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         TypedArray buttonTa = context.obtainStyledAttributes(attrs, R.styleable.background_button_drawable);
         try {
             if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0
-                    && pressTa.getIndexCount() == 0 && textTa.getIndexCount() == 0) {
+                    && pressTa.getIndexCount() == 0 && textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0) {
                 return view;
             }
             if (view == null) {
@@ -83,7 +83,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 }else {
                     view.setBackgroundDrawable(stateListDrawable);
                 }
-            } else {
+            } else if(typedArray.getIndexCount() > 0){
                 drawable = DrawableFactory.getDrawable(typedArray);
                 if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
                     view.setBackground(drawable);
