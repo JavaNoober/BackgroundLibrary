@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -43,7 +44,12 @@ public class MainActivity extends AppCompatActivity {
         Button btnTest2 = findViewById(R.id.btnTest2);
 //        Drawable drawable = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
 //                .setGradientAngle(0).setGradientColor(Color.parseColor("#63B8FF"), Color.parseColor("#4F94CD")).build();
-        btnTest2.setBackground(drawable);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+            btnTest2.setBackground(drawable);
+        }else {
+            btnTest2.setBackgroundDrawable(drawable);
+        }
+
 
         Button btnTest3 = findViewById(R.id.btnTest3);
         Drawable drawable3 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
@@ -52,7 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 .setStrokeColor(Color.parseColor("#8c6822"))
                 .setStrokeWidth(dip2px(2))
                 .build();
-        btnTest3.setBackground(drawable3);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+            btnTest3.setBackground(drawable3);
+        }else {
+            btnTest3.setBackgroundDrawable(drawable3);
+        }
+
 
         TextView tvTest4 = findViewById(R.id.tvTest4);
         Drawable drawable4 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
@@ -60,7 +71,11 @@ public class MainActivity extends AppCompatActivity {
                 .setUnPressedDrawable(ContextCompat.getDrawable(this, R.drawable.circle_like_normal))
                 .build();
         tvTest4.setClickable(true);
-        tvTest4.setBackground(drawable4);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+            tvTest4.setBackground(drawable4);
+        }else {
+            tvTest4.setBackgroundDrawable(drawable4);
+        }
     }
 
 

@@ -324,4 +324,64 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_checked_solid_color" value="bl_checked_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_solid_color" value="bl_unChecked_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checkable_solid_color" value="bl_checkable_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_solid_color" value="bl_unCheckable_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_solid_color" value="bl_enabled_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_solid_color" value="bl_unEnabled_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_solid_color" value="bl_unSelected_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_solid_color" value="bl_selected_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_solid_color" value="bl_unPressed_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_solid_color" value="bl_pressed_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_solid_color" value="bl_focused_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_solid_color" value="bl_unFocused_solid_color" description="填充颜色状态属性" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
 </templateSet>

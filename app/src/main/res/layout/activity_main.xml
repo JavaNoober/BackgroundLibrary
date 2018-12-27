@@ -29,6 +29,23 @@
             app:bl_stroke_width="1dp"
             app:bl_unPressed_drawable="#00FFFFFF" />
 
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="点击边框变色"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:clickable="true"
+            app:bl_pressed_solid_color="#FFDEAD"
+            app:bl_unPressed_solid_color="#E9967A"
+            app:bl_stroke_width="1dp"
+            app:bl_pressed_stroke_color="#C6E2FF"
+            app:bl_unPressed_stroke_color="#98FB98"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

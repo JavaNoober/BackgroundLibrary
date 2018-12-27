@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.3.6'
+    implementation 'com.noober.background:core:1.3.7'
 
 版本更新：
     
@@ -30,6 +30,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.3.5 新增属性bl_checked_button_drawable与bl_unChecked_button_drawable，在checkBox与radiobutton中使用了bl_checked_drawable与bl_unChecked_drawable会与之前版本有区别，
         bl_checked_button_drawable相当于setButtonDrawable，而bl_checked_drawable相当于setBackground，详见demo的radiobutton写法
     1.3.6 修复bug
+    1.3.7 新增属性，使用详见[例子4](#jump1)
  
 ## 示例效果
 
@@ -132,6 +133,18 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |bl_unSelected_stroke_color| color| |
 |bl_unPressed_stroke_color| color| |
 |bl_unFocused_stroke_color| color| |
+|bl_checkable_solid_color| color| 填充颜色的属性，如果在sdk21以下，会没有效果，默认固定边框色取solid_color的值|
+|bl_checked_solid_color| color| |
+|bl_enabled_solid_color| color| |
+|bl_selected_solid_color| color| |
+|bl_pressed_solid_color| color| |
+|bl_focused_solid_color| color| |
+|bl_unCheckable_solid_color| color| |
+|bl_unChecked_solid_color| color| |
+|bl_unEnabled_solid_color| color| |
+|bl_unSelected_solid_color| color| |
+|bl_unPressed_solid_color| color| |
+|bl_unFocused_solid_color| color| |
 
 ### 代码生成Drawable的Api,详情见DrawableCreator类
  
@@ -147,6 +160,41 @@ A framework for directly generating shape through Tags, no need to write shape.x
     ColorStateList colors = new DrawableCreator.Builder().setPressedTextColor(Color.RED).setUnPressedTextColor(Color.BLUE).buildTextColor();
     tvTest1.setTextColor(colors);
 
+注意，属性只有api>21生效，如果小于21，会使用默认值：
+
+    Drawable drawable3 = new DrawableCreator.Builder()
+            .setCornersRadius(dip2px(20))
+            .setSolidColor(Color.parseColor("#7CFC00"))//此处相当于api < 21 的默认值
+            .setStrokeColor(Color.parseColor("#7CFC00"))//此处相当于api < 21 的默认值
+            .setPressedSolidColor(Color.parseColor("#8c6822"), Color.parseColor("#71C671"))
+            .setPressedSolidColor(Color.parseColor("#8c6822"), Color.parseColor("#71C671"))
+            .setStrokeWidth(dip2px(1))
+            .build();
+
+|bl_checkable_stroke_color| color| 边框状态的属性，如果在sdk21以下，会没有效果，默认固定边框色取stroke_color的值|
+|bl_checked_stroke_color| color| |
+|bl_enabled_stroke_color| color| |
+|bl_selected_stroke_color| color| |
+|bl_pressed_stroke_color| color| |
+|bl_focused_stroke_color| color| |
+|bl_unCheckable_stroke_color| color| |
+|bl_unChecked_stroke_color| color| |
+|bl_unEnabled_stroke_color| color| |
+|bl_unSelected_stroke_color| color| |
+|bl_unPressed_stroke_color| color| |
+|bl_unFocused_stroke_color| color| |
+|bl_checkable_solid_color| color| 填充颜色的属性，如果在sdk21以下，会没有效果，默认固定边框色取solid_color的值|
+|bl_checked_solid_color| color| |
+|bl_enabled_solid_color| color| |
+|bl_selected_solid_color| color| |
+|bl_pressed_solid_color| color| |
+|bl_focused_solid_color| color| |
+|bl_unCheckable_solid_color| color| |
+|bl_unChecked_solid_color| color| |
+|bl_unEnabled_solid_color| color| |
+|bl_unSelected_solid_color| color| |
+|bl_unPressed_solid_color| color| |
+|bl_unFocused_solid_color| color| |
 
 
 ## 使用例子
@@ -154,6 +202,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 1.边框+背景+圆角
 
     <TextView
+        android:layout_width="130dp"
         android:layout_width="130dp"
         android:layout_height="36dp"
         android:gravity="center"
@@ -273,7 +322,28 @@ A framework for directly generating shape through Tags, no need to write shape.x
         app:bl_pressed_textColor="#919DAF"
         app:bl_unPressed_textColor="@android:color/holo_red_dark"/>
 
-4.style类似的使用方式  
+
+4.<span id="jump1">点击填充边框变色属性</span>
+
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/pic11.gif)
+
+    <TextView
+        android:layout_width="180dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="点击边框变色"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:clickable="true"
+        app:bl_pressed_solid_color="#FFDEAD"
+        app:bl_unPressed_solid_color="#E9967A"
+        app:bl_stroke_width="1dp"
+        app:bl_pressed_stroke_color="#C6E2FF"
+        app:bl_unPressed_stroke_color="#98FB98"/>
+
+5.style类似的使用方式
 
 style中不要加入"app:", 直接写属性名即可
 
@@ -344,11 +414,40 @@ style中不要加入"app:", 直接写属性名即可
     app:ripple_enable="true"
 
 水波纹需要设置一个默认背景颜色，也就是填充颜色。比如app:solid_color 或者app:unPressed_drawable 或者app:unFocussed_drawable等都行，这些都是默认等背景颜色。而app:ripple_color是波纹的颜色。如果没有一个背景色，这个波纹颜色是无法显示的  
-9、由于Android源码的原因，如果是通过代码生成有点击状态drawable，需要先调用一下  
+9、由于Android源码的原因，如果是通过代码生成有点击状态drawable，或者下列属性需要先调用一下
 
      view.setClickable(true);
-否则点击状态可能不生效  
+否则点击状态可能不生效
 
+| 名称 | 类型 |备注|
+|---|---|---|
+|bl_checkable_stroke_color| color| 边框状态的属性，如果在sdk21以下，会没有效果，默认固定边框色取stroke_color的值|
+|bl_checked_stroke_color| color| |
+|bl_enabled_stroke_color| color| |
+|bl_selected_stroke_color| color| |
+|bl_pressed_stroke_color| color| |
+|bl_focused_stroke_color| color| |
+|bl_unCheckable_stroke_color| color| |
+|bl_unChecked_stroke_color| color| |
+|bl_unEnabled_stroke_color| color| |
+|bl_unSelected_stroke_color| color| |
+|bl_unPressed_stroke_color| color| |
+|bl_unFocused_stroke_color| color| |
+|bl_checkable_solid_color| color| 填充颜色的属性，如果在sdk21以下，会没有效果，默认固定边框色取solid_color的值|
+|bl_checked_solid_color| color| |
+|bl_enabled_solid_color| color| |
+|bl_selected_solid_color| color| |
+|bl_pressed_solid_color| color| |
+|bl_focused_solid_color| color| |
+|bl_unCheckable_solid_color| color| |
+|bl_unChecked_solid_color| color| |
+|bl_unEnabled_solid_color| color| |
+|bl_unSelected_solid_color| color| |
+|bl_unPressed_solid_color| color| |
+|bl_unFocused_solid_color| color| |
+
+
+10、无法预览
 
 ## 代码提示解决方案
 配置Live Templates步骤:  
