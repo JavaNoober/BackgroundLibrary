@@ -160,17 +160,10 @@ A framework for directly generating shape through Tags, no need to write shape.x
     ColorStateList colors = new DrawableCreator.Builder().setPressedTextColor(Color.RED).setUnPressedTextColor(Color.BLUE).buildTextColor();
     tvTest1.setTextColor(colors);
 
-注意，属性只有api>21生效，如果小于21，会使用默认值：
+注意，下面属性只有api>21生效，如果小于21，会使用默认值：
 
-    Drawable drawable3 = new DrawableCreator.Builder()
-            .setCornersRadius(dip2px(20))
-            .setSolidColor(Color.parseColor("#7CFC00"))//此处相当于api < 21 的默认值
-            .setStrokeColor(Color.parseColor("#7CFC00"))//此处相当于api < 21 的默认值
-            .setPressedSolidColor(Color.parseColor("#8c6822"), Color.parseColor("#71C671"))
-            .setPressedSolidColor(Color.parseColor("#8c6822"), Color.parseColor("#71C671"))
-            .setStrokeWidth(dip2px(1))
-            .build();
-
+| 名称 | 类型 |备注|
+|---|---|---|
 |bl_checkable_stroke_color| color| 边框状态的属性，如果在sdk21以下，会没有效果，默认固定边框色取stroke_color的值|
 |bl_checked_stroke_color| color| |
 |bl_enabled_stroke_color| color| |
@@ -196,6 +189,15 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |bl_unPressed_solid_color| color| |
 |bl_unFocused_solid_color| color| |
 
+    Drawable drawable3 = new DrawableCreator.Builder()
+            .setCornersRadius(dip2px(20))
+            .setSolidColor(Color.parseColor("#7CFC00"))//此处相当于api < 21 的默认值
+            .setStrokeColor(Color.parseColor("#7CFC00"))//此处相当于api < 21 的默认值
+            .setPressedSolidColor(Color.parseColor("#8c6822"), Color.parseColor("#71C671"))
+            .setPressedSolidColor(Color.parseColor("#8c6822"), Color.parseColor("#71C671"))
+            .setStrokeWidth(dip2px(1))
+            .build();
+ 
 
 ## 使用例子
 
