@@ -55,6 +55,8 @@ All attributes of shape are supported. The naming rule is **'tag name'_'tag attr
 |bl_stroke_color|color|
 |bl_stroke_dashWidth|dimension|
 |bl_stroke_dashGap|dimension|
+|bl_position|left、right、top、bottom|
+
 
 ### selector
 All attributes of selector are supported：

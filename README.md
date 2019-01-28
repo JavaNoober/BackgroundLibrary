@@ -80,6 +80,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |bl_stroke_color|color|
 |bl_stroke_dashWidth|dimension|
 |bl_stroke_dashGap|dimension|
+|bl_position|left、right、top、bottom|
 
 ### selector类
 支持selector的所有属性：
