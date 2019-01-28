@@ -167,4 +167,13 @@
         <attr name="bl_unFocused_textColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="bl_other">
+        <attr name="bl_position" format="enum">
+            <enum name="left" value="1" />
+            <enum name="top" value="2" />
+            <enum name="right" value="4" />
+            <enum name="bottom" value="8" />
+        </attr>
+    </declare-styleable>
+
 </resources>

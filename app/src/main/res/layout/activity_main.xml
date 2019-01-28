@@ -216,6 +216,33 @@
             app:bl_pressed_drawable="@drawable/circle_like_pressed"
             app:bl_unPressed_drawable="@drawable/circle_like_normal" />
 
+
+        <Button
+            android:id="@+id/btn_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:bl_position="left"
+            android:background="@null"
+            android:text="点赞+1"
+            app:bl_pressed_drawable="@drawable/circle_like_pressed"
+            app:bl_unPressed_drawable="@drawable/circle_like_normal" />
+
+        <Button
+            android:id="@+id/btn_like2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:bl_position="left"
+            android:background="@null"
+            android:text="未点赞"
+            app:bl_selected_textColor="#fbdc4a"
+            app:bl_unSelected_textColor="@android:color/black"
+            app:bl_selected_drawable="@drawable/circle_like_pressed"
+            app:bl_unSelected_drawable="@drawable/circle_like_normal" />
+
+
+
         <Button
             android:layout_width="300dp"
             android:layout_height="50dp"

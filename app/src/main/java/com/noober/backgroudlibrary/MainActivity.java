@@ -42,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
         tvTest1.setTextColor(colors);
 
         Button btnTest2 = findViewById(R.id.btnTest2);
-//        Drawable drawable = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
-//                .setGradientAngle(0).setGradientColor(Color.parseColor("#63B8FF"), Color.parseColor("#4F94CD")).build();
+        Drawable drawable2 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
+                .setGradientAngle(0).setGradientColor(Color.parseColor("#63B8FF"), Color.parseColor("#4F94CD")).build();
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-            btnTest2.setBackground(drawable);
+            btnTest2.setBackground(drawable2);
         }else {
-            btnTest2.setBackgroundDrawable(drawable);
+            btnTest2.setBackgroundDrawable(drawable2);
         }
 
 
@@ -76,6 +76,29 @@ public class MainActivity extends AppCompatActivity {
         }else {
             tvTest4.setBackgroundDrawable(drawable4);
         }
+
+
+        final Button btnLike = findViewById(R.id.btn_like);
+        btnLike.setOnClickListener(new View.OnClickListener() {
+            int i = 1;
+
+            @Override
+            public void onClick(View v) {
+                btnLike.setText(String.format("点赞+%d", i++));
+            }
+        });
+        final Button btnLike2 = findViewById(R.id.btn_like2);
+        btnLike2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnLike2.isSelected()){
+                    btnLike2.setText("未点赞");
+                }else {
+                    btnLike2.setText("已点赞");
+                }
+                btnLike2.setSelected(!btnLike2.isSelected());
+            }
+        });
     }
 
 

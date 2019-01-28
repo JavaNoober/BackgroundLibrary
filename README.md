@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.3.7'
+    implementation 'com.noober.background:core:1.3.8'
 
 版本更新：
     
@@ -31,7 +31,9 @@ A framework for directly generating shape through Tags, no need to write shape.x
         bl_checked_button_drawable相当于setButtonDrawable，而bl_checked_drawable相当于setBackground，详见demo的radiobutton写法
     1.3.6 修复bug
     1.3.7 新增属性，使用详见[例子4](#jump1)
- 
+    1.3.8 新增属性bl_position，可以设置drawable的位置left top right bottom
+
+
 ## 示例效果
 
 ![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/gif.gif)
@@ -365,6 +367,32 @@ style中不要加入"app:", 直接写属性名即可
         android:textSize="20sp"
         style="@style/bg"/>
     
+6.设置drawableLeft
+![](https://user-gold-cdn.xitu.io/2019/1/28/168927fe5146b80d?w=261&h=82&f=gif&s=27162)
+
+        <Button
+            android:id="@+id/btn_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:bl_position="left"
+            android:background="@null"
+            android:text="点赞+1"
+            app:bl_pressed_drawable="@drawable/circle_like_pressed"
+            app:bl_unPressed_drawable="@drawable/circle_like_normal" />
+
+        <Button
+            android:id="@+id/btn_like2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:bl_position="left"
+            android:background="@null"
+            android:text="未点赞"
+            app:bl_selected_textColor="#fbdc4a"
+            app:bl_unSelected_textColor="@android:color/black"
+            app:bl_selected_drawable="@drawable/circle_like_pressed"
+            app:bl_unSelected_drawable="@drawable/circle_like_normal" />
 
 ## 简单的性能测试
 我用原生的方法写了例子里面的shape和selector，做了一个比较简单的测试：
@@ -467,6 +495,7 @@ windows:进入目录C:\Users\XXX\.AndroidStudio3.2\config\templates
 
 ![](https://user-gold-cdn.xitu.io/2018/11/22/1673a789b58ca9a6?w=10&h=10&f=png&s=94884)
 
+11、bl_position 不能与bl_ripple_enable同时使用
 
 
 

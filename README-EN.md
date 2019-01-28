@@ -269,7 +269,34 @@ no need to add "app:"
         android:textColor="#8c6822"
         android:textSize="20sp"
         style="@style/bg"/>
-        
+
+6.set drawableLeft
+![](https://user-gold-cdn.xitu.io/2019/1/28/168927fe5146b80d?w=261&h=82&f=gif&s=27162)
+
+        <Button
+            android:id="@+id/btn_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:bl_position="left"
+            android:background="@null"
+            android:text="点赞+1"
+            app:bl_pressed_drawable="@drawable/circle_like_pressed"
+            app:bl_unPressed_drawable="@drawable/circle_like_normal" />
+
+        <Button
+            android:id="@+id/btn_like2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:bl_position="left"
+            android:background="@null"
+            android:text="未点赞"
+            app:bl_selected_textColor="#fbdc4a"
+            app:bl_unSelected_textColor="@android:color/black"
+            app:bl_selected_drawable="@drawable/circle_like_pressed"
+            app:bl_unSelected_drawable="@drawable/circle_like_normal" />
+
 ## Use attention
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  
 2、在根布局添加

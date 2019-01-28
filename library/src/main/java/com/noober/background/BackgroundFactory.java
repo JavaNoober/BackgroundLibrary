@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -49,6 +50,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         TypedArray selectorTa = context.obtainStyledAttributes(attrs, R.styleable.background_selector);
         TypedArray textTa = context.obtainStyledAttributes(attrs, R.styleable.text_selector);
         TypedArray buttonTa = context.obtainStyledAttributes(attrs, R.styleable.background_button_drawable);
+        TypedArray otherTa = context.obtainStyledAttributes(attrs, R.styleable.bl_other);
         try {
             if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0
                     && pressTa.getIndexCount() == 0 && textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0) {
@@ -69,27 +71,15 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             } else if (selectorTa.getIndexCount() > 0) {
                 stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa);
                 view.setClickable(true);
-                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-                    view.setBackground(stateListDrawable);
-                }else {
-                    view.setBackgroundDrawable(stateListDrawable);
-                }
+                setDrawable(stateListDrawable, view, otherTa);
             } else if (pressTa.getIndexCount() > 0) {
                 drawable = DrawableFactory.getDrawable(typedArray);
                 stateListDrawable = DrawableFactory.getPressDrawable(drawable, typedArray, pressTa);
                 view.setClickable(true);
-                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-                    view.setBackground(stateListDrawable);
-                }else {
-                    view.setBackgroundDrawable(stateListDrawable);
-                }
+                setDrawable(stateListDrawable, view, otherTa);
             } else if(typedArray.getIndexCount() > 0){
                 drawable = DrawableFactory.getDrawable(typedArray);
-                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-                    view.setBackground(drawable);
-                }else {
-                    view.setBackgroundDrawable(drawable);
-                }
+                setDrawable(drawable, view, otherTa);
             }
 
             if (view instanceof TextView && textTa.getIndexCount() > 0) {
@@ -104,18 +94,14 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), contentDrawable, contentDrawable);
                     view.setClickable(true);
                     view.setBackground(rippleDrawable);
-                } else {
+                } else if(stateListDrawable == null){
                     StateListDrawable tmpDrawable = new StateListDrawable();
                     GradientDrawable unPressDrawable = DrawableFactory.getDrawable(typedArray);
                     unPressDrawable.setColor(color);
                     tmpDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
                     tmpDrawable.addState(new int[]{android.R.attr.state_pressed}, unPressDrawable);
                     view.setClickable(true);
-                    if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-                        view.setBackground(tmpDrawable);
-                    }else {
-                        view.setBackgroundDrawable(tmpDrawable);
-                    }
+                    setDrawable(tmpDrawable, view, otherTa);
                 }
             }
             return view;
@@ -127,9 +113,44 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             selectorTa.recycle();
             textTa.recycle();
             buttonTa.recycle();
+            otherTa.recycle();
         }
 
         return view;
+    }
+
+    private void setDrawable(Drawable drawable, View view, TypedArray otherTa){
+
+        if(view instanceof TextView){
+            if(otherTa.hasValue(R.styleable.bl_other_bl_position)){
+                if(otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 1){
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    ((TextView)view).setCompoundDrawables(drawable, null, null, null);
+                }else if(otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 2){
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    ((TextView)view).setCompoundDrawables(null, drawable, null, null);
+                }else if(otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 4){
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    ((TextView)view).setCompoundDrawables(null, null, drawable, null);
+                }else if(otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 8){
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    ((TextView)view).setCompoundDrawables(null, null, null, drawable);
+                }
+            }else {
+                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                    view.setBackground(drawable);
+                }else {
+                    view.setBackgroundDrawable(drawable);
+                }
+            }
+        }else {
+            if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                view.setBackground(drawable);
+            }else {
+                view.setBackgroundDrawable(drawable);
+            }
+        }
+
     }
 
     public void setInterceptFactory(LayoutInflater.Factory factory) {

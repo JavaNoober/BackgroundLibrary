@@ -384,4 +384,9 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_position" value="bl_position" description="drawable位置" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
 </templateSet>
