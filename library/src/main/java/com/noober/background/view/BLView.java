@@ -2,21 +2,21 @@ package com.noober.background.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.RelativeLayout;
+import android.view.View;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLReleativeLayout extends RelativeLayout {
-    public BLReleativeLayout(Context context) {
+public class BLView extends View {
+    public BLView(Context context) {
         super(context);
     }
 
-    public BLReleativeLayout(Context context, AttributeSet attrs) {
+    public BLView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public BLReleativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BLView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
