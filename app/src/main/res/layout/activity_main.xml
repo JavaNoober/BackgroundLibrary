@@ -12,8 +12,22 @@
         android:padding="10dp"
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
+        <com.noober.background.view.BLTextView
+            android:layout_width="130dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#8c6822"
+            android:textSize="20sp"
+            app:bl_corners_radius="4dp"
+            app:bl_solid_color="#E3B666"
+            app:bl_stroke_color="#8c6822"
+            app:bl_stroke_dashGap="5dp"
+            app:bl_stroke_dashWidth="10dp"
+            app:bl_stroke_width="2dp" />
 
-        <TextView
+        <com.noober.background.view.BLTextView
             android:id="@+id/cobbAngle"
             android:layout_width="180dp"
             android:layout_height="36dp"
@@ -30,7 +44,7 @@
             app:bl_unPressed_drawable="#00FFFFFF" />
 
 
-        <TextView
+        <com.noober.background.view.BLTextView
             android:layout_width="180dp"
             android:layout_height="36dp"
             android:layout_marginTop="15dp"
@@ -46,13 +60,13 @@
             app:bl_pressed_stroke_color="#C6E2FF"
             app:bl_unPressed_stroke_color="#98FB98"/>
 
-        <TextView
+        <com.noober.background.view.BLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="直接添加自定义属性，设置背景shape："
             android:textSize="15sp" />
 
-        <TextView
+        <com.noober.background.view.BLTextView
             style="@style/test"
             android:layout_width="130dp"
             android:layout_height="36dp"
@@ -63,7 +77,7 @@
             android:textColor="#8c6822"
             android:textSize="20sp" />
 
-        <Button
+        <com.noober.background.view.BLButton
             android:id="@+id/btn"
             android:layout_width="130dp"
             android:layout_height="36dp"
@@ -73,13 +87,14 @@
             android:text="跳转到列表"
             android:textColor="#4F94CD"
             android:textSize="20sp"
+            android:background="@null"
             app:bl_corners_radius="20dp"
             app:bl_gradient_angle="0"
             app:bl_gradient_endColor="#4F94CD"
             app:bl_gradient_startColor="#63B8FF"
             app:bl_shape="rectangle" />
 
-        <Button
+        <com.noober.background.view.BLButton
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
@@ -95,7 +110,7 @@
             app:bl_gradient_startColor="#CD5B45"
             app:bl_shape="rectangle" />
 
-        <TextView
+        <com.noober.background.view.BLTextView
             android:layout_width="130dp"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
@@ -110,7 +125,7 @@
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
 
-        <Button
+        <com.noober.background.view.BLButton
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
@@ -124,7 +139,7 @@
             app:bl_shape="rectangle"
             app:bl_unpressed_color="#7CFC00" />
 
-        <View
+        <com.noober.background.view.BLView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
@@ -135,13 +150,13 @@
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
 
-        <RadioGroup
+        <com.noober.background.view.BLRadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
-            <RadioButton
+            <com.noober.background.view.BLRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="按钮1"
@@ -149,22 +164,22 @@
                 app:bl_corners_radius="10dp"
                 app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
 
-            <RadioButton
+            <com.noober.background.view.BLRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="按钮2"
                 app:bl_checked_button_drawable="@mipmap/rg_select"
                 app:bl_corners_radius="10dp"
                 app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
-        </RadioGroup>
+        </com.noober.background.view.BLRadioGroup>
 
-        <RadioGroup
+        <com.noober.background.view.BLRadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
-            <RadioButton
+            <com.noober.background.view.BLRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@null"
@@ -173,7 +188,7 @@
                 app:bl_checked_drawable="@drawable/shape_gender_green"
                 app:bl_unChecked_drawable="@drawable/shape_gender_red" />
 
-            <RadioButton
+            <com.noober.background.view.BLRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -182,9 +197,9 @@
                 android:text="按钮2"
                 app:bl_checked_drawable="@drawable/shape_gender_green"
                 app:bl_unChecked_drawable="@drawable/shape_gender_red" />
-        </RadioGroup>
+        </com.noober.background.view.BLRadioGroup>
 
-        <Button
+        <com.noober.background.view.BLButton
             android:id="@+id/btn1"
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -194,6 +209,7 @@
             android:text="有波纹触摸反馈的按钮(边框点击会变色)"
             android:textColor="@android:color/white"
             android:textSize="20sp"
+            android:background="@null"
             app:bl_corners_radius="20dp"
             app:bl_pressed_stroke_color="#000000"
             app:bl_ripple_color="#71C671"
