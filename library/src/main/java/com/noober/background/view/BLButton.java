@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLButton extends AppCompatButton {
+class BLButton extends AppCompatButton {
     public BLButton(Context context) {
         super(context);
     }

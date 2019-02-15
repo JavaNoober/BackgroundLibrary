@@ -6,7 +6,7 @@ import android.widget.FrameLayout;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLFrameLayout extends FrameLayout {
+class BLFrameLayout extends FrameLayout {
     public BLFrameLayout(Context context) {
         super(context);
     }

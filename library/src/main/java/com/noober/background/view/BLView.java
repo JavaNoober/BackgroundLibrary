@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLView extends View {
+class BLView extends View {
     public BLView(Context context) {
         super(context);
     }

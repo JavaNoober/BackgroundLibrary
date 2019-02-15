@@ -6,7 +6,7 @@ import android.widget.GridLayout;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLGridLayout extends GridLayout {
+class BLGridLayout extends GridLayout {
     public BLGridLayout(Context context) {
         super(context);
     }

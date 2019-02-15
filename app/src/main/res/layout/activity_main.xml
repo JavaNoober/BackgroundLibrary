@@ -13,6 +13,7 @@
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
         <com.noober.background.view.BLTextView
+            android:id="@+id/ttt"
             android:layout_width="130dp"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
@@ -27,7 +28,7 @@
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
 
-        <com.noober.background.view.BLTextView
+        <TextView
             android:id="@+id/cobbAngle"
             android:layout_width="180dp"
             android:layout_height="36dp"
@@ -44,7 +45,7 @@
             app:bl_unPressed_drawable="#00FFFFFF" />
 
 
-        <com.noober.background.view.BLTextView
+        <TextView
             android:layout_width="180dp"
             android:layout_height="36dp"
             android:layout_marginTop="15dp"
@@ -60,13 +61,13 @@
             app:bl_pressed_stroke_color="#C6E2FF"
             app:bl_unPressed_stroke_color="#98FB98"/>
 
-        <com.noober.background.view.BLTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="直接添加自定义属性，设置背景shape："
             android:textSize="15sp" />
 
-        <com.noober.background.view.BLTextView
+        <TextView
             style="@style/test"
             android:layout_width="130dp"
             android:layout_height="36dp"
@@ -94,7 +95,7 @@
             app:bl_gradient_startColor="#63B8FF"
             app:bl_shape="rectangle" />
 
-        <com.noober.background.view.BLButton
+        <Button
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
@@ -110,7 +111,7 @@
             app:bl_gradient_startColor="#CD5B45"
             app:bl_shape="rectangle" />
 
-        <com.noober.background.view.BLTextView
+        <TextView
             android:layout_width="130dp"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
@@ -125,7 +126,7 @@
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
 
-        <com.noober.background.view.BLButton
+        <Button
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
@@ -139,7 +140,7 @@
             app:bl_shape="rectangle"
             app:bl_unpressed_color="#7CFC00" />
 
-        <com.noober.background.view.BLView
+        <View
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
@@ -160,6 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="按钮1"
+                android:checked="false"
                 app:bl_checked_button_drawable="@mipmap/rg_select"
                 app:bl_corners_radius="10dp"
                 app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
@@ -173,13 +175,13 @@
                 app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
         </com.noober.background.view.BLRadioGroup>
 
-        <com.noober.background.view.BLRadioGroup
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
-            <com.noober.background.view.BLRadioButton
+            <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@null"
@@ -188,7 +190,7 @@
                 app:bl_checked_drawable="@drawable/shape_gender_green"
                 app:bl_unChecked_drawable="@drawable/shape_gender_red" />
 
-            <com.noober.background.view.BLRadioButton
+            <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -197,9 +199,9 @@
                 android:text="按钮2"
                 app:bl_checked_drawable="@drawable/shape_gender_green"
                 app:bl_unChecked_drawable="@drawable/shape_gender_red" />
-        </com.noober.background.view.BLRadioGroup>
+        </RadioGroup>
 
-        <com.noober.background.view.BLButton
+        <Button
             android:id="@+id/btn1"
             android:layout_width="300dp"
             android:layout_height="50dp"

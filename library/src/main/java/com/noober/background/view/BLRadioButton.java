@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLRadioButton extends AppCompatRadioButton {
+class BLRadioButton extends AppCompatRadioButton {
     public BLRadioButton(Context context) {
         super(context);
     }

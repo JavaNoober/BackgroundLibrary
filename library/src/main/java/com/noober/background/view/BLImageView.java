@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLImageView extends AppCompatImageView {
+class BLImageView extends AppCompatImageView {
     public BLImageView(Context context) {
         super(context);
     }

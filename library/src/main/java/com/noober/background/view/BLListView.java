@@ -6,7 +6,7 @@ import android.widget.ListView;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLListView extends ListView {
+class BLListView extends ListView {
     public BLListView(Context context) {
         super(context);
     }

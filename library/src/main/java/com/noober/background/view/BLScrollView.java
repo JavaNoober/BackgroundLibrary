@@ -6,7 +6,7 @@ import android.widget.ScrollView;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLScrollView extends ScrollView {
+class BLScrollView extends ScrollView {
     public BLScrollView(Context context) {
         super(context);
     }

@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLLinearLayout extends LinearLayout {
+class BLLinearLayout extends LinearLayout {
     public BLLinearLayout(Context context) {
         super(context);
     }

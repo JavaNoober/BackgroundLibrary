@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLRelativeLayout extends RelativeLayout {
+class BLRelativeLayout extends RelativeLayout {
     public BLRelativeLayout(Context context) {
         super(context);
     }

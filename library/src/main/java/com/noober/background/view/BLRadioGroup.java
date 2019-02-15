@@ -6,7 +6,7 @@ import android.widget.RadioGroup;
 
 import com.noober.background.BackgroundFactory;
 
-public class BLRadioGroup extends RadioGroup {
+class BLRadioGroup extends RadioGroup {
     public BLRadioGroup(Context context) {
         super(context);
     }

@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.3.8'
+    implementation 'com.noober.background:core:1.4.0'
 
 版本更新：
     
@@ -32,6 +32,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.3.6 修复bug
     1.3.7 新增属性，使用详见[例子4](#jump1)
     1.3.8 新增属性bl_position，可以设置drawable的位置left top right bottom
+    1.4.0 增加预览功能
 
 
 ## 示例效果

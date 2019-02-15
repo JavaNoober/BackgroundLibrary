@@ -1,21 +1,4 @@
-package com.noober.background;
-
-import com.noober.background.view.BLButton;
-import com.noober.background.view.BLCheckBox;
-import com.noober.background.view.BLEditText;
-import com.noober.background.view.BLFrameLayout;
-import com.noober.background.view.BLGridLayout;
-import com.noober.background.view.BLGridView;
-import com.noober.background.view.BLImageButton;
-import com.noober.background.view.BLImageView;
-import com.noober.background.view.BLLinearLayout;
-import com.noober.background.view.BLListView;
-import com.noober.background.view.BLRadioButton;
-import com.noober.background.view.BLRadioGroup;
-import com.noober.background.view.BLRelativeLayout;
-import com.noober.background.view.BLScrollView;
-import com.noober.background.view.BLTextView;
-import com.noober.background.view.BLView;
+package com.noober.background.view;
 
 /**
  * @author xiaoqi
