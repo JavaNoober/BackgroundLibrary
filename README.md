@@ -413,6 +413,49 @@ style中不要加入"app:", 直接写属性名即可
 
 可以看得出来，其实通过自定义标签去创建drawable并没有真的很损耗性能，其实与本身的drawable.xml差不多，但是在list中，如果没有使用viewholer，会比较消耗性能，如果使用的话，应该差不多。  
 不过这个分析比较简单，只能看个大概，给担心性能的同学心里可以有个底。
+
+## 如何预览  
+
+![](https://user-gold-cdn.xitu.io/2019/2/15/168ef34a68818a5e?w=981&h=524&f=gif&s=3400624)  
+
+1、如果需要对View进行预览，直接把原来的View换成框架内对应的BLView即可，即可展示预览效果，如果不需要预览可以直接忽略这些用于预览的自定义View；  
+2、如果没有效果，make project一下即可；  
+3、如果BLView中没有对应的需要预览的View，可以很简单的自己实现一下，以BLTextView为例：
+
+    public class BLTextView extends AppCompatTextView {
+        public BLTextView(Context context) {
+            super(context);
+        }
+    
+        public BLTextView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init(context, attrs);
+        }
+    
+        public BLTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+            init(context, attrs);
+        }
+    
+        private void init(Context context, AttributeSet attrs){
+            BackgroundFactory.setViewBackground(context, attrs, this);
+        }
+    }
+    
+继承所需要预览的View，然后在构造函数中添加BackgroundFactory.setViewBackground(context, attrs, this)方法即可。    
+**注意**：  
+为了提高性能，这些View在编译的时候会**自动替换为对应原生的View**，所以除了再xml中，不要在代码中出现任何的BLTextView,否则会报类似如下的错误：  
+    
+    //错误
+    BLTextView button = findViewById(R.id.text);
+    //正确
+    BLTextView button = findViewById(R.id.text);
+
+
+    Caused by: java.lang.ClassCastException: android.support.v7.widget.AppCompatTextView cannot be cast to com.noober.background.view.BLTextView
+    
+
+
 ## 使用注意
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  
 2、在根布局添加
@@ -477,9 +520,6 @@ style中不要加入"app:", 直接写属性名即可
 |bl_unSelected_solid_color| color| |
 |bl_unPressed_solid_color| color| |
 |bl_unFocused_solid_color| color| |
-
-
-10、无法预览
 
 ## 代码提示解决方案
 配置Live Templates步骤:  
