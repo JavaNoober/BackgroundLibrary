@@ -12,6 +12,21 @@
         android:padding="10dp"
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
+        <com.noober.background.view.BLTextView
+            android:id="@+id/ttt"
+            android:layout_width="130dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#8c6822"
+            android:textSize="20sp"
+            app:bl_corners_radius="4dp"
+            app:bl_solid_color="#E3B666"
+            app:bl_stroke_color="#8c6822"
+            app:bl_stroke_dashGap="5dp"
+            app:bl_stroke_dashWidth="10dp"
+            app:bl_stroke_width="2dp" />
 
         <TextView
             android:id="@+id/cobbAngle"
@@ -63,7 +78,7 @@
             android:textColor="#8c6822"
             android:textSize="20sp" />
 
-        <Button
+        <com.noober.background.view.BLButton
             android:id="@+id/btn"
             android:layout_width="130dp"
             android:layout_height="36dp"
@@ -73,6 +88,7 @@
             android:text="跳转到列表"
             android:textColor="#4F94CD"
             android:textSize="20sp"
+            android:background="@null"
             app:bl_corners_radius="20dp"
             app:bl_gradient_angle="0"
             app:bl_gradient_endColor="#4F94CD"
@@ -135,28 +151,29 @@
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
 
-        <RadioGroup
+        <com.noober.background.view.BLRadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
-            <RadioButton
+            <com.noober.background.view.BLRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="按钮1"
+                android:checked="false"
                 app:bl_checked_button_drawable="@mipmap/rg_select"
                 app:bl_corners_radius="10dp"
                 app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
 
-            <RadioButton
+            <com.noober.background.view.BLRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="按钮2"
                 app:bl_checked_button_drawable="@mipmap/rg_select"
                 app:bl_corners_radius="10dp"
                 app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
-        </RadioGroup>
+        </com.noober.background.view.BLRadioGroup>
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -194,6 +211,7 @@
             android:text="有波纹触摸反馈的按钮(边框点击会变色)"
             android:textColor="@android:color/white"
             android:textSize="20sp"
+            android:background="@null"
             app:bl_corners_radius="20dp"
             app:bl_pressed_stroke_color="#000000"
             app:bl_ripple_color="#71C671"

@@ -8,19 +8,19 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.noober.background.drawable.DrawableFactory;
+import com.noober.background.view.Const;
 
 import java.lang.reflect.Constructor;
 import java.util.Map;
@@ -31,11 +31,12 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     private LayoutInflater.Factory2 mViewCreateFactory2;
 
     private static final Class<?>[] sConstructorSignature = new Class[]{Context.class, AttributeSet.class};
-    private final Object[] mConstructorArgs = new Object[2];
+    private static final Object[] mConstructorArgs = new Object[2];
     private static final Map<String, Constructor<? extends View>> sConstructorMap = new ArrayMap<>();
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
+        name = switchBLViewToOriginal(name);
         View view = null;
         if (mViewCreateFactory2 != null) {
             view = mViewCreateFactory2.onCreateView(name, context, attrs);
@@ -45,6 +46,53 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         } else if (mViewCreateFactory != null) {
             view = mViewCreateFactory.onCreateView(name, context, attrs);
         }
+        return setViewBackground(name, context, attrs, view);
+    }
+
+    private String switchBLViewToOriginal(String name) {
+        if(name.equals(Const.BLButton)){
+            name = "Button";
+        }else if(name.equals(Const.BLCheckBox)){
+            name = "CheckBox";
+        }else if(name.equals(Const.BLEditText)){
+            name = "EditText";
+        }else if(name.equals(Const.BLFrameLayout)){
+            name = "FrameLayout";
+        }else if(name.equals(Const.BLGridLayout)){
+            name = "GridLayout";
+        }else if(name.equals(Const.BLGridView)){
+            name = "GridView";
+        }else if(name.equals(Const.BLImageButton)){
+            name = "ImageButton";
+        }else if(name.equals(Const.BLImageView)){
+            name = "ImageView";
+        }else if(name.equals(Const.BLLinearLayout)){
+            name = "LinearLayout";
+        }else if(name.equals(Const.BLListView)){
+            name = "ListView";
+        }else if(name.equals(Const.BLRadioButton)){
+            name = "RadioButton";
+        }else if(name.equals(Const.BLRadioGroup)){
+            name = "RadioGroup";
+        }else if(name.equals(Const.BLRelativeLayout)){
+            name = "RelativeLayout";
+        }else if(name.equals(Const.BLScrollView)){
+            name = "ScrollView";
+        }else if(name.equals(Const.BLTextView)){
+            name = "TextView";
+        }else if(name.equals(Const.BLView)){
+            name = "View";
+        }
+        return name;
+    }
+
+    @Nullable
+    public static View setViewBackground(Context context, AttributeSet attrs, View view){
+        return setViewBackground(null, context, attrs, view);
+    }
+
+    @Nullable
+    private static View setViewBackground(String name, Context context, AttributeSet attrs, View view) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
         TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.background_press);
         TypedArray selectorTa = context.obtainStyledAttributes(attrs, R.styleable.background_selector);
@@ -89,7 +137,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             if (typedArray.getBoolean(R.styleable.background_bl_ripple_enable, false) &&
                     typedArray.hasValue(R.styleable.background_bl_ripple_color)) {
                 int color = typedArray.getColor(R.styleable.background_bl_ripple_color, 0);
-                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
                     RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), contentDrawable, contentDrawable);
                     view.setClickable(true);
@@ -107,6 +155,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             return view;
         } catch (Exception e) {
             e.printStackTrace();
+            return view;
         } finally {
             typedArray.recycle();
             pressTa.recycle();
@@ -115,11 +164,9 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             buttonTa.recycle();
             otherTa.recycle();
         }
-
-        return view;
     }
 
-    private void setDrawable(Drawable drawable, View view, TypedArray otherTa){
+    private static void setDrawable(Drawable drawable, View view, TypedArray otherTa){
 
         if(view instanceof TextView){
             if(otherTa.hasValue(R.styleable.bl_other_bl_position)){
@@ -161,7 +208,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         mViewCreateFactory2 = factory;
     }
 
-    private View createViewFromTag(Context context, String name, AttributeSet attrs) {
+    private static View createViewFromTag(Context context, String name, AttributeSet attrs) {
+        if(TextUtils.isEmpty(name)){
+            return null;
+        }
         if (name.equals("view")) {
             name = attrs.getAttributeValue(null, "class");
         }
@@ -193,7 +243,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         }
     }
 
-    private View createView(Context context, String name, String prefix) throws InflateException {
+    private static View createView(Context context, String name, String prefix) throws InflateException {
         Constructor<? extends View> constructor = sConstructorMap.get(name);
         try {
             if (constructor == null) {
