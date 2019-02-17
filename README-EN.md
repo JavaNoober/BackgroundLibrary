@@ -327,6 +327,11 @@ no need to add "app:"
     
 7、自定义View中调用了inflate，同listView一样处理即可
 
+## How to preview  
+![](https://user-gold-cdn.xitu.io/2019/2/15/168ef34a68818a5e?w=981&h=524&f=gif&s=3400624) 
+
+only need to use BLView to replace View(e.g. TextView to BLTextView, EditText to BLEditText) in layout.xml, don't use BLView in the code.
+
 ## How to use Live Templates
 
 mac:Macintosh HD\user\xxx\Library\Preferences\AndroidStudio3.2\templates
