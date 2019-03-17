@@ -10,6 +10,12 @@ import android.view.View;
 
 import java.lang.reflect.Field;
 
+/**
+ * minSdkVersion最小为14，建议minSdkVersion >= 16
+ * 如果minSdkVersion < 16:bl_gradient_angle, bl_gradient_startColor, bl_gradient_centerColor, bl_gradient_endColor会失效，其他正常
+ *
+ * Created by xiaoqi on 2018/9/9
+ */
 public class BackgroundLibrary {
 
     public static LayoutInflater inject(Context context) {
@@ -29,7 +35,7 @@ public class BackgroundLibrary {
                 }
             });
         }
-        inflater.setFactory(factory);
+        inflater.setFactory2(factory);
         return inflater;
     }
 
@@ -56,7 +62,7 @@ public class BackgroundLibrary {
             } else if (inflater.getFactory() != null) {
                 factory.setInterceptFactory(inflater.getFactory());
             }
-            inflater.setFactory(factory);
+            inflater.setFactory2(factory);
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {

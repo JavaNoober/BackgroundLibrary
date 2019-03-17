@@ -1,5 +1,6 @@
 package com.noober.background.drawable;
 
+import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -42,45 +43,58 @@ public class DrawableCreator {
 
     public static class Builder {
         private Shape shape = Shape.Rectangle;
-        private int solidColor = -1;
-        private float cornersRadius = -1;
-        private float cornersBottomLeftRadius = -1;
-        private float cornersBottomRightRadius = -1;
-        private float cornersTopLeftRadius = -1;
-        private float cornersTopRightRadius = -1;
+        private Integer solidColor;
+        private Float cornersRadius;
+        private Float cornersBottomLeftRadius;
+        private Float cornersBottomRightRadius;
+        private Float cornersTopLeftRadius;
+        private Float cornersTopRightRadius;
         private int gradientAngle = -1;
-        private float gradientCenterX = -1;
-        private float gradientCenterY = -1;
-        private int gradientCenterColor = -1;
-        private int gradientEndColor = -1;
-        private int gradientStartColor = -1;
-        private float gradientRadius = -1;
+        private Float gradientCenterX;
+        private Float gradientCenterY;
+        private Integer gradientCenterColor;
+        private Integer gradientEndColor;
+        private Integer gradientStartColor;
+        private Float gradientRadius;
         private Gradient gradient = Gradient.Linear;
         private boolean useLevel = false;
 
         private Rect padding = new Rect();
 
-        private float sizeWidth = -1;
-        private float sizeHeight = -1;
-        private float strokeWidth = -1;
-        private int strokeColor = -1;
+        private Float sizeWidth;
+        private Float sizeHeight;
+        private Float strokeWidth;
+        private Integer strokeColor;
         private float strokeDashWidth = 0;
         private float strokeDashGap = 0;
         private boolean rippleEnable = false;
-        private int rippleColor = -1;
+        private Integer rippleColor;
 
-        private int checkableStrokeColor = -1;
-        private int checkedStrokeColor = -1;
-        private int enabledStrokeColor = -1;
-        private int selectedStrokeColor = -1;
-        private int pressedStrokeColor = -1;
-        private int focusedStrokeColor = -1;
-        private int unCheckableStrokeColor = -1;
-        private int unCheckedStrokeColor = -1;
-        private int unEnabledStrokeColor = -1;
-        private int unSelectedStrokeColor = -1;
-        private int unPressedStrokeColor = -1;
-        private int unFocusedStrokeColor = -1;
+        private Integer checkableStrokeColor;
+        private Integer checkedStrokeColor;
+        private Integer enabledStrokeColor;
+        private Integer selectedStrokeColor;
+        private Integer pressedStrokeColor;
+        private Integer focusedStrokeColor;
+        private Integer unCheckableStrokeColor;
+        private Integer unCheckedStrokeColor;
+        private Integer unEnabledStrokeColor;
+        private Integer unSelectedStrokeColor;
+        private Integer unPressedStrokeColor;
+        private Integer unFocusedStrokeColor;
+
+        private Integer checkableSolidColor;
+        private Integer checkedSolidColor;
+        private Integer enabledSolidColor;
+        private Integer selectedSolidColor;
+        private Integer pressedSolidColor;
+        private Integer focusedSolidColor;
+        private Integer unCheckableSolidColor;
+        private Integer unCheckedSolidColor;
+        private Integer unEnabledSolidColor;
+        private Integer unSelectedSolidColor;
+        private Integer unPressedSolidColor;
+        private Integer unFocusedSolidColor;
 
         private Drawable checkableDrawable;
         private Drawable checkedDrawable;
@@ -100,19 +114,19 @@ public class DrawableCreator {
         private Drawable unFocusedHovered;
         private Drawable unFocusedActivated;
 
-        private int checkableTextColor = -1;
-        private int checkedTextColor = -1;
-        private int enabledTextColor = -1;
-        private int selectedTextColor = -1;
-        private int pressedTextColor = -1;
-        private int focusedTextColor = -1;
+        private Integer checkableTextColor;
+        private Integer checkedTextColor;
+        private Integer enabledTextColor;
+        private Integer selectedTextColor;
+        private Integer pressedTextColor;
+        private Integer focusedTextColor;
 
-        private int unCheckableTextColor = -1;
-        private int unCheckedTextColor = -1;
-        private int unEnabledTextColor = -1;
-        private int unSelectedTextColor = -1;
-        private int unPressedTextColor = -1;
-        private int unFocusedTextColor = -1;
+        private Integer unCheckableTextColor;
+        private Integer unCheckedTextColor;
+        private Integer unEnabledTextColor;
+        private Integer unSelectedTextColor;
+        private Integer unPressedTextColor;
+        private Integer unFocusedTextColor;
         private int textColorCount;
 
         private boolean hasSelectDrawable = false;
@@ -140,6 +154,7 @@ public class DrawableCreator {
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientAngle(int gradientAngle) {
             this.gradientAngle = gradientAngle;
             return this;
@@ -151,12 +166,14 @@ public class DrawableCreator {
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientColor(int startColor, int endColor) {
             this.gradientStartColor = startColor;
             this.gradientEndColor = endColor;
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientColor(int startColor, int centerColor, int endColor) {
             this.gradientStartColor = startColor;
             this.gradientCenterColor = centerColor;
@@ -256,6 +273,42 @@ public class DrawableCreator {
         public Builder setFocusedStrokeColor(int focusedStrokeColor, int unFocusedStrokeColor) {
             this.focusedStrokeColor = focusedStrokeColor;
             this.unFocusedStrokeColor = unFocusedStrokeColor;
+            return this;
+        }
+
+        public Builder setCheckableSolidColor(int checkableSolidColor, int unCheckableSolidColor) {
+            this.checkableSolidColor = checkableSolidColor;
+            this.unCheckableSolidColor = unCheckableSolidColor;
+            return this;
+        }
+
+        public Builder setCheckedSolidColor(int checkedSolidColor, int unCheckedSolidColor) {
+            this.checkedSolidColor = checkedSolidColor;
+            this.unCheckedSolidColor = unCheckedSolidColor;
+            return this;
+        }
+
+        public Builder setEnabledSolidColor(int enabledSolidColor, int unEnabledSolidColor) {
+            this.enabledSolidColor = enabledSolidColor;
+            this.unEnabledSolidColor = unEnabledSolidColor;
+            return this;
+        }
+
+        public Builder setSelectedSolidColor(int selectedSolidColor, int unSelectedSolidColor) {
+            this.selectedSolidColor = selectedSolidColor;
+            this.unSelectedSolidColor = unSelectedSolidColor;
+            return this;
+        }
+
+        public Builder setPressedSolidColor(int pressedSolidColor, int unPressedSolidColor) {
+            this.pressedSolidColor = pressedSolidColor;
+            this.unPressedSolidColor = unPressedSolidColor;
+            return this;
+        }
+
+        public Builder setFocusedSolidColor(int focusedSolidColor, int unFocusedSolidColor) {
+            this.focusedSolidColor = focusedSolidColor;
+            this.unFocusedSolidColor = unFocusedSolidColor;
             return this;
         }
 
@@ -431,12 +484,12 @@ public class DrawableCreator {
         public Drawable build() {
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
-            if(hasSelectDrawable){
+            if (hasSelectDrawable) {
                 stateListDrawable = getStateListDrawable();
-            }else {
+            } else {
                 drawable = getGradientDrawable();
             }
-            if(rippleEnable){
+            if (rippleEnable && rippleColor != null) {
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
                     return new RippleDrawable(ColorStateList.valueOf(rippleColor), contentDrawable, contentDrawable);
@@ -454,9 +507,9 @@ public class DrawableCreator {
         }
 
         public ColorStateList buildTextColor() {
-            if(textColorCount > 0){
+            if (textColorCount > 0) {
                 return getColorStateList();
-            }else {
+            } else {
                 return null;
             }
         }
@@ -465,62 +518,62 @@ public class DrawableCreator {
             int[][] states = new int[textColorCount][];
             int[] colors = new int[textColorCount];
             int index = 0;
-            if (checkableTextColor != -1) {
+            if (checkableTextColor != null) {
                 states[index] = new int[]{android.R.attr.state_checkable};
                 colors[index] = checkableTextColor;
                 index++;
             }
-            if (unCheckableTextColor != -1) {
+            if (unCheckableTextColor != null) {
                 states[index] = new int[]{-android.R.attr.state_checkable};
                 colors[index] = unCheckableTextColor;
                 index++;
             }
-            if (checkedTextColor != -1) {
+            if (checkedTextColor != null) {
                 states[index] = new int[]{android.R.attr.state_checked};
                 colors[index] = checkedTextColor;
                 index++;
             }
-            if (unCheckedTextColor != -1) {
+            if (unCheckedTextColor != null) {
                 states[index] = new int[]{-android.R.attr.state_checked};
                 colors[index] = unCheckedTextColor;
                 index++;
             }
-            if (enabledTextColor != -1) {
+            if (enabledTextColor != null) {
                 states[index] = new int[]{android.R.attr.state_enabled};
                 colors[index] = enabledTextColor;
                 index++;
             }
-            if (unEnabledTextColor != -1) {
+            if (unEnabledTextColor != null) {
                 states[index] = new int[]{-android.R.attr.state_enabled};
                 colors[index] = unEnabledTextColor;
                 index++;
             }
-            if (selectedTextColor != -1) {
+            if (selectedTextColor != null) {
                 states[index] = new int[]{android.R.attr.state_selected};
                 colors[index] = selectedTextColor;
                 index++;
             }
-            if (unSelectedTextColor != -1) {
+            if (unSelectedTextColor != null) {
                 states[index] = new int[]{-android.R.attr.state_selected};
                 colors[index] = unSelectedTextColor;
                 index++;
             }
-            if (pressedTextColor != -1) {
+            if (pressedTextColor != null) {
                 states[index] = new int[]{android.R.attr.state_pressed};
                 colors[index] = pressedTextColor;
                 index++;
             }
-            if (unPressedTextColor != -1) {
+            if (unPressedTextColor != null) {
                 states[index] = new int[]{-android.R.attr.state_pressed};
                 colors[index] = unPressedTextColor;
                 index++;
             }
-            if (focusedTextColor != -1) {
+            if (focusedTextColor != null) {
                 states[index] = new int[]{android.R.attr.state_focused};
                 colors[index] = focusedTextColor;
                 index++;
             }
-            if (unFocusedTextColor != -1) {
+            if (unFocusedTextColor != null) {
                 states[index] = new int[]{-android.R.attr.state_focused};
                 colors[index] = unFocusedTextColor;
             }
@@ -601,15 +654,12 @@ public class DrawableCreator {
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(shape.value);
 
-            if (solidColor != -1) {
-                drawable.setColor(solidColor);
-            }
-            if (cornersRadius != -1) {
+            if (cornersRadius != null) {
                 drawable.setCornerRadius(cornersRadius);
             }
 
-            if (cornersBottomLeftRadius != -1 && cornersBottomRightRadius != -1 &&
-                    cornersTopLeftRadius != -1 && cornersTopRightRadius != -1) {
+            if (cornersBottomLeftRadius != null && cornersBottomRightRadius != null &&
+                    cornersTopLeftRadius != null && cornersTopRightRadius != null) {
                 float[] cornerRadius = new float[8];
                 cornerRadius[0] = cornersTopLeftRadius;
                 cornerRadius[1] = cornersTopLeftRadius;
@@ -652,16 +702,19 @@ public class DrawableCreator {
                             mOrientation = GradientDrawable.Orientation.TL_BR;
                             break;
                     }
-                    drawable.setOrientation(mOrientation);
+                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        drawable.setOrientation(mOrientation);
+                    }
+
                 }
             }
 
-            if (gradientCenterX != -1 && gradientCenterY != -1) {
+            if (gradientCenterX != null && gradientCenterY != null) {
                 drawable.setGradientCenter(gradientCenterX, gradientCenterY);
             }
-            if (gradientStartColor != -1 && gradientEndColor != -1) {
+            if (gradientStartColor != null && gradientEndColor != null) {
                 int[] colors;
-                if (gradientCenterColor != -1) {
+                if (gradientCenterColor != null) {
                     colors = new int[3];
                     colors[0] = gradientStartColor;
                     colors[1] = gradientCenterColor;
@@ -671,9 +724,11 @@ public class DrawableCreator {
                     colors[0] = gradientStartColor;
                     colors[1] = gradientEndColor;
                 }
-                drawable.setColors(colors);
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    drawable.setColors(colors);
+                }
             }
-            if (gradientRadius != -1) {
+            if (gradientRadius != null) {
                 drawable.setGradientRadius(gradientRadius);
             }
             drawable.setGradientType(gradient.value);
@@ -691,53 +746,113 @@ public class DrawableCreator {
                 }
 
             }
-            if (sizeWidth != -1 && sizeHeight != -1) {
-                drawable.setSize((int) sizeWidth, (int) sizeHeight);
+            if (sizeWidth != null && sizeHeight != null) {
+                drawable.setSize(sizeWidth.intValue(), sizeHeight.intValue());
             }
 
-            if (strokeWidth > 0) {
-                int start = 0;
-                ArrayList<Integer> stateList = new ArrayList<>();
-                ArrayList<Integer> colorList = new ArrayList<>();
-                if (strokeColor != -1) {
-                    drawable.setStroke((int) strokeWidth, strokeColor, strokeDashWidth, strokeDashGap);
-                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    if (pressedStrokeColor != -1 && unPressedStrokeColor != -1) {
+            if (strokeWidth != null && strokeWidth > 0) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    int start = 0;
+                    ArrayList<Integer> stateList = new ArrayList<>();
+                    ArrayList<Integer> colorList = new ArrayList<>();
+                    if (pressedStrokeColor != null && unPressedStrokeColor != null) {
                         stateList.add(android.R.attr.state_pressed);
                         stateList.add(-android.R.attr.state_pressed);
                         colorList.add(pressedStrokeColor);
                         colorList.add(unPressedStrokeColor);
                     }
-                    if (checkableStrokeColor != -1 && unCheckableStrokeColor != -1) {
+                    if (checkableStrokeColor != null && unCheckableStrokeColor != null) {
                         stateList.add(android.R.attr.state_checkable);
                         stateList.add(-android.R.attr.state_checkable);
                         colorList.add(checkableStrokeColor);
                         colorList.add(unCheckableStrokeColor);
                     }
-                    if (checkedStrokeColor != -1 && unCheckedStrokeColor != -1) {
+                    if (checkedStrokeColor != null && unCheckedStrokeColor != null) {
                         stateList.add(android.R.attr.state_checked);
                         stateList.add(-android.R.attr.state_checked);
                         colorList.add(checkedStrokeColor);
                         colorList.add(unCheckedStrokeColor);
                     }
-                    if (enabledStrokeColor != -1 && unEnabledStrokeColor != -1) {
+                    if (enabledStrokeColor != null && unEnabledStrokeColor != null) {
                         stateList.add(android.R.attr.state_enabled);
                         stateList.add(-android.R.attr.state_enabled);
                         colorList.add(enabledStrokeColor);
                         colorList.add(unEnabledStrokeColor);
                     }
-                    if (selectedStrokeColor != -1 && unSelectedStrokeColor != -1) {
+                    if (selectedStrokeColor != null && unSelectedStrokeColor != null) {
                         stateList.add(android.R.attr.state_selected);
                         stateList.add(-android.R.attr.state_selected);
                         colorList.add(selectedStrokeColor);
                         colorList.add(unSelectedStrokeColor);
                     }
-                    if (focusedStrokeColor != -1 && unFocusedStrokeColor != -1) {
+                    if (focusedStrokeColor != null && unFocusedStrokeColor != null) {
                         stateList.add(android.R.attr.state_focused);
                         stateList.add(-android.R.attr.state_focused);
                         colorList.add(focusedStrokeColor);
                         colorList.add(unFocusedStrokeColor);
                     }
+                    if (stateList.size() > 0) {
+                        int[][] state = new int[stateList.size()][];
+                        int[] color = new int[stateList.size()];
+                        for (int iState : stateList) {
+                            state[start] = new int[]{iState};
+                            color[start] = colorList.get(start);
+                            start++;
+                        }
+
+                        ColorStateList colorStateList = new ColorStateList(state, color);
+                        drawable.setStroke(strokeWidth.intValue(), colorStateList, strokeDashWidth, strokeDashGap);
+                    } else if (strokeColor != null) {
+                        drawable.setStroke(strokeWidth.intValue(), strokeColor, strokeDashWidth, strokeDashGap);
+                    }
+                    stateList = null;
+                    colorList = null;
+                } else if (strokeColor != null) {
+                    drawable.setStroke(strokeWidth.intValue(), strokeColor, strokeDashWidth, strokeDashGap);
+                }
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                int start = 0;
+                ArrayList<Integer> stateList = new ArrayList<>();
+                ArrayList<Integer> colorList = new ArrayList<>();
+                if (pressedSolidColor != null && unPressedSolidColor != null) {
+                    stateList.add(android.R.attr.state_pressed);
+                    stateList.add(-android.R.attr.state_pressed);
+                    colorList.add(pressedSolidColor);
+                    colorList.add(unPressedSolidColor);
+                }
+                if (checkableSolidColor != null && unCheckableSolidColor != null) {
+                    stateList.add(android.R.attr.state_checkable);
+                    stateList.add(-android.R.attr.state_checkable);
+                    colorList.add(checkableSolidColor);
+                    colorList.add(unCheckableSolidColor);
+                }
+                if (checkedSolidColor != null && unCheckedSolidColor != null) {
+                    stateList.add(android.R.attr.state_checked);
+                    stateList.add(-android.R.attr.state_checked);
+                    colorList.add(checkedSolidColor);
+                    colorList.add(unCheckedSolidColor);
+                }
+                if (enabledSolidColor != null && unEnabledSolidColor != null) {
+                    stateList.add(android.R.attr.state_enabled);
+                    stateList.add(-android.R.attr.state_enabled);
+                    colorList.add(enabledSolidColor);
+                    colorList.add(unEnabledSolidColor);
+                }
+                if (selectedSolidColor != null && unSelectedSolidColor != null) {
+                    stateList.add(android.R.attr.state_selected);
+                    stateList.add(-android.R.attr.state_selected);
+                    colorList.add(selectedSolidColor);
+                    colorList.add(unSelectedSolidColor);
+                }
+                if (focusedSolidColor != null && unFocusedSolidColor != null) {
+                    stateList.add(android.R.attr.state_focused);
+                    stateList.add(-android.R.attr.state_focused);
+                    colorList.add(focusedSolidColor);
+                    colorList.add(unFocusedSolidColor);
+                }
+                if (stateList.size() > 0) {
                     int[][] state = new int[stateList.size()][];
                     int[] color = new int[stateList.size()];
                     for (int iState : stateList) {
@@ -745,12 +860,15 @@ public class DrawableCreator {
                         color[start] = colorList.get(start);
                         start++;
                     }
-
                     ColorStateList colorStateList = new ColorStateList(state, color);
-                    drawable.setStroke((int) strokeWidth, colorStateList, strokeDashWidth, strokeDashGap);
-                    stateList = null;
-                    colorList = null;
+                    drawable.setColor(colorStateList);
+                } else if (solidColor != null) {
+                    drawable.setColor(solidColor);
                 }
+                stateList = null;
+                colorList = null;
+            } else if (solidColor != null) {
+                drawable.setColor(solidColor);
             }
             return drawable;
         }

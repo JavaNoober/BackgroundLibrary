@@ -33,6 +33,7 @@ public class GradientDrawableCreator implements ICreateDrawable {
         float strokeWidth = -1;
         float strokeDashWidth = 0;
         int strokeColor = 0;
+        int solidColor = 0;
         float strokeGap = 0;
         float centerX = 0;
         float centerY = 0;
@@ -47,7 +48,7 @@ public class GradientDrawableCreator implements ICreateDrawable {
             if (attr == R.styleable.background_bl_shape) {
                 drawable.setShape(typedArray.getInt(attr, 0));
             } else if (attr == R.styleable.background_bl_solid_color) {
-                drawable.setColor(typedArray.getColor(attr, 0));
+                solidColor = typedArray.getColor(attr, 0);
             } else if (attr == R.styleable.background_bl_corners_radius) {
                 drawable.setCornerRadius(typedArray.getDimension(attr, 0));
             } else if (attr == R.styleable.background_bl_corners_bottomLeftRadius) {
@@ -110,13 +111,79 @@ public class GradientDrawableCreator implements ICreateDrawable {
                 typedArray.hasValue(R.styleable.background_bl_size_height)) {
             drawable.setSize((int) sizeWidth, (int) sizeHeight);
         }
-        if (typedArray.hasValue(R.styleable.background_bl_stroke_width)) {
+        //设置填充颜色
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             int start = 0;
             ArrayList<Integer> stateList = new ArrayList<>();
             ArrayList<Integer> colorList = new ArrayList<>();
-            if (typedArray.hasValue(R.styleable.background_bl_stroke_color)) {
-                drawable.setStroke((int) strokeWidth, strokeColor, strokeDashWidth, strokeGap);
-            } else if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (typedArray.hasValue(R.styleable.background_bl_pressed_solid_color) &&
+                    typedArray.hasValue(R.styleable.background_bl_unPressed_solid_color)) {
+                stateList.add(android.R.attr.state_pressed);
+                stateList.add(-android.R.attr.state_pressed);
+                colorList.add(typedArray.getColor(R.styleable.background_bl_pressed_solid_color, 0));
+                colorList.add(typedArray.getColor(R.styleable.background_bl_unPressed_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_checkable_solid_color) &&
+                    typedArray.hasValue(R.styleable.background_bl_unCheckable_solid_color)) {
+                stateList.add(android.R.attr.state_checkable);
+                stateList.add(-android.R.attr.state_checkable);
+                colorList.add(typedArray.getColor(R.styleable.background_bl_checkable_solid_color, 0));
+                colorList.add(typedArray.getColor(R.styleable.background_bl_unCheckable_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_checked_solid_color) &&
+                    typedArray.hasValue(R.styleable.background_bl_unChecked_solid_color)) {
+                stateList.add(android.R.attr.state_checked);
+                stateList.add(-android.R.attr.state_checked);
+                colorList.add(typedArray.getColor(R.styleable.background_bl_checked_solid_color, 0));
+                colorList.add(typedArray.getColor(R.styleable.background_bl_unChecked_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_enabled_solid_color) &&
+                    typedArray.hasValue(R.styleable.background_bl_unEnabled_solid_color)) {
+                stateList.add(android.R.attr.state_enabled);
+                stateList.add(-android.R.attr.state_enabled);
+                colorList.add(typedArray.getColor(R.styleable.background_bl_enabled_solid_color, 0));
+                colorList.add(typedArray.getColor(R.styleable.background_bl_unEnabled_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_selected_solid_color) &&
+                    typedArray.hasValue(R.styleable.background_bl_unSelected_solid_color)) {
+                stateList.add(android.R.attr.state_selected);
+                stateList.add(-android.R.attr.state_selected);
+                colorList.add(typedArray.getColor(R.styleable.background_bl_selected_solid_color, 0));
+                colorList.add(typedArray.getColor(R.styleable.background_bl_unSelected_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_focused_solid_color) &&
+                    typedArray.hasValue(R.styleable.background_bl_unFocused_solid_color)) {
+                stateList.add(android.R.attr.state_focused);
+                stateList.add(-android.R.attr.state_focused);
+                colorList.add(typedArray.getColor(R.styleable.background_bl_focused_solid_color, 0));
+                colorList.add(typedArray.getColor(R.styleable.background_bl_unFocused_solid_color, 0));
+            }
+
+            if (stateList.size() > 0) {
+                int[][] state = new int[stateList.size()][];
+                int[] color = new int[stateList.size()];
+                for (int iState : stateList) {
+                    state[start] = new int[]{iState};
+                    color[start] = colorList.get(start);
+                    start++;
+                }
+                ColorStateList colorStateList = new ColorStateList(state, color);
+                drawable.setColor(colorStateList);
+            } else if (typedArray.hasValue(R.styleable.background_bl_solid_color)) {
+                drawable.setColor(solidColor);
+            }
+            stateList = null;
+            colorList = null;
+        } else if (typedArray.hasValue(R.styleable.background_bl_solid_color)) {
+            drawable.setColor(solidColor);
+        }
+
+        //设置边框颜色
+        if (typedArray.hasValue(R.styleable.background_bl_stroke_width)) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                int start = 0;
+                ArrayList<Integer> stateList = new ArrayList<>();
+                ArrayList<Integer> colorList = new ArrayList<>();
                 if (typedArray.hasValue(R.styleable.background_bl_pressed_stroke_color) &&
                         typedArray.hasValue(R.styleable.background_bl_unPressed_stroke_color)) {
                     stateList.add(android.R.attr.state_pressed);
@@ -159,27 +226,35 @@ public class GradientDrawableCreator implements ICreateDrawable {
                     colorList.add(typedArray.getColor(R.styleable.background_bl_focused_stroke_color, 0));
                     colorList.add(typedArray.getColor(R.styleable.background_bl_unFocused_stroke_color, 0));
                 }
-                int[][] state = new int[stateList.size()][];
-                int[] color = new int[stateList.size()];
-                for (int iState : stateList) {
-                    state[start] = new int[]{iState};
-                    color[start] = colorList.get(start);
-                    start++;
+                if (stateList.size() > 0) {
+                    int[][] state = new int[stateList.size()][];
+                    int[] color = new int[stateList.size()];
+                    for (int iState : stateList) {
+                        state[start] = new int[]{iState};
+                        color[start] = colorList.get(start);
+                        start++;
+                    }
+                    ColorStateList colorStateList = new ColorStateList(state, color);
+                    drawable.setStroke((int) strokeWidth, colorStateList, strokeDashWidth, strokeGap);
+                } else if (typedArray.hasValue(R.styleable.background_bl_stroke_color)) {
+                    drawable.setStroke((int) strokeWidth, strokeColor, strokeDashWidth, strokeGap);
                 }
 
-                ColorStateList colorStateList = new ColorStateList(state, color);
-                drawable.setStroke((int) strokeWidth, colorStateList, strokeDashWidth, strokeGap);
                 stateList = null;
                 colorList = null;
+            } else if (typedArray.hasValue(R.styleable.background_bl_stroke_color)) {
+                drawable.setStroke((int) strokeWidth, strokeColor, strokeDashWidth, strokeGap);
             }
         }
+
         if (typedArray.hasValue(R.styleable.background_bl_gradient_centerX) &&
                 typedArray.hasValue(R.styleable.background_bl_gradient_centerY)) {
             drawable.setGradientCenter(centerX, centerY);
         }
 
         if (typedArray.hasValue(R.styleable.background_bl_gradient_startColor) &&
-                typedArray.hasValue(R.styleable.background_bl_gradient_endColor)) {
+                typedArray.hasValue(R.styleable.background_bl_gradient_endColor) &&
+                android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             int[] colors;
             if (typedArray.hasValue(R.styleable.background_bl_gradient_centerColor)) {
                 colors = new int[3];
@@ -194,7 +269,8 @@ public class GradientDrawableCreator implements ICreateDrawable {
             drawable.setColors(colors);
         }
         if (gradientType == LINEAR_GRADIENT &&
-                typedArray.hasValue(R.styleable.background_bl_gradient_angle)) {
+                typedArray.hasValue(R.styleable.background_bl_gradient_angle) &&
+                android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             gradientAngle %= 360;
             if (gradientAngle % 45 != 0) {
                 throw new XmlPullParserException(typedArray.getPositionDescription()
