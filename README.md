@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.0'
+    implementation 'com.noober.background:core:1.4.1'
 
 版本更新：
     
@@ -33,11 +33,12 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.3.7 新增属性，使用详见[例子4](#jump1)
     1.3.8 新增属性bl_position，可以设置drawable的位置left top right bottom
     1.4.0 增加预览功能
+    1.4.1 增加帧动画属性
 
 
 ## 示例效果
 
-![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/gif.gif)
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/show.gif)
 
 通过配置Live Templates，实现自动代码提示  
 ![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/属性提示.gif)
@@ -120,6 +121,34 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |关于checkbox、radiobutton的buttonDrawable的设置||
 |bl_checked_button_drawable|color、reference|
 |bl_unChecked_button_drawable|color、reference|
+
+### 动画属性
+| 名称 | 类型 |
+|---|---|
+|bl_oneshot|是否只显示一次|
+|bl_anim_auto_start|是否自动播放|
+|bl_duration|每一帧动画时长|
+|bl_duration_item0|第0帧动画时长|
+|bl_duration_item1|第1帧动画时长|
+|bl_duration_item2|第2帧动画时长|
+|bl_duration_item3|第3帧动画时长|
+|.|.|
+|.|.|
+|.|.|
+|bl_duration_item12|第12帧动画时长|
+|bl_duration_item13|第13帧动画时长|
+|bl_duration_item14|第14帧动画时长|
+|bl_frame_drawable_item0|第0帧动画|
+|bl_frame_drawable_item1|第1帧动画|
+|bl_frame_drawable_item2|第2帧动画|
+|bl_frame_drawable_item3|第3帧动画|
+|.|.|
+|.|.|
+|.|.|
+|bl_frame_drawable_item12|第12帧动画|
+|bl_frame_drawable_item13|第13帧动画|
+|bl_frame_drawable_item14|第14帧动画|
+
 ### 其他属性(sdk21及以上的手机才支持)
 | 名称 | 类型 |备注|
 |---|---|---|
@@ -395,6 +424,32 @@ style中不要加入"app:", 直接写属性名即可
             app:bl_unSelected_textColor="@android:color/black"
             app:bl_selected_drawable="@drawable/circle_like_pressed"
             app:bl_unSelected_drawable="@drawable/circle_like_normal" />
+
+7.设置帧动画
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/anim.gif)
+
+        <View
+            android:id="@+id/v_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bl_oneshot="false"
+            app:bl_duration="50"
+            app:bl_anim_auto_start="true"
+            app:bl_frame_drawable_item0="@drawable/img00"
+            app:bl_frame_drawable_item1="@drawable/img01"
+            app:bl_frame_drawable_item2="@drawable/img02"
+            app:bl_frame_drawable_item3="@drawable/img03"
+            app:bl_frame_drawable_item4="@drawable/img04"
+            app:bl_frame_drawable_item5="@drawable/img05"
+            app:bl_frame_drawable_item6="@drawable/img06"
+            app:bl_frame_drawable_item7="@drawable/img07"
+            app:bl_frame_drawable_item8="@drawable/img08"
+            app:bl_frame_drawable_item9="@drawable/img09"
+            app:bl_frame_drawable_item10="@drawable/img10"
+            app:bl_frame_drawable_item11="@drawable/img11"
+            app:bl_frame_drawable_item12="@drawable/img12"
+            app:bl_frame_drawable_item13="@drawable/img13"
+            app:bl_frame_drawable_item14="@drawable/img14"/>
 
 ## 简单的性能测试
 我用原生的方法写了例子里面的shape和selector，做了一个比较简单的测试：

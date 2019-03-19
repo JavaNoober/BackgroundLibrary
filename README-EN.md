@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.0'
+    implementation 'com.noober.background:core:1.4.1'
 
  
 ## Example effect
@@ -82,6 +82,34 @@ All attributes of selector are supported：
 |setting about buttonDrawable||
 |bl_checked_button_drawable|color、reference|
 |bl_unChecked_button_drawable|color、reference|
+
+### attributes about anim：
+| 名称 | 类型 |
+|---|---|
+|bl_oneshot|only show once|
+|bl_anim_auto_start| auto start|
+|bl_duration|The length of each animation frame|
+|bl_duration_item0|The animation duration of frame 0|
+|bl_duration_item1|The animation duration of frame 1|
+|bl_duration_item2|The animation duration of frame 2|
+|bl_duration_item3|The animation duration of frame 3|
+|.|.|
+|.|.|
+|.|.|
+|bl_duration_item12|The animation duration of frame 12|
+|bl_duration_item13|The animation duration of frame 13|
+|bl_duration_item14|The animation duration of frame 14|
+|bl_frame_drawable_item0|Frame 0 animation|
+|bl_frame_drawable_item1|Frame 1 animation|
+|bl_frame_drawable_item2|Frame 2 animation|
+|bl_frame_drawable_item3|Frame 3 animation|
+|.|.|
+|.|.|
+|.|.|
+|bl_frame_drawable_item12|Frame 12 animation|
+|bl_frame_drawable_item13|Frame 13 animation|
+|bl_frame_drawable_item14|Frame 14 animation|
+
 ### other（need sdk 27 and above）
 | name | category |remark|
 |---|---|---|
@@ -298,6 +326,33 @@ no need to add "app:"
             app:bl_unSelected_textColor="@android:color/black"
             app:bl_selected_drawable="@drawable/circle_like_pressed"
             app:bl_unSelected_drawable="@drawable/circle_like_normal" />
+
+
+7.FrameAnimation
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/anim.gif)
+
+        <View
+            android:id="@+id/v_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bl_oneshot="false"
+            app:bl_duration="50"
+            app:bl_anim_auto_start="true"
+            app:bl_frame_drawable_item0="@drawable/img00"
+            app:bl_frame_drawable_item1="@drawable/img01"
+            app:bl_frame_drawable_item2="@drawable/img02"
+            app:bl_frame_drawable_item3="@drawable/img03"
+            app:bl_frame_drawable_item4="@drawable/img04"
+            app:bl_frame_drawable_item5="@drawable/img05"
+            app:bl_frame_drawable_item6="@drawable/img06"
+            app:bl_frame_drawable_item7="@drawable/img07"
+            app:bl_frame_drawable_item8="@drawable/img08"
+            app:bl_frame_drawable_item9="@drawable/img09"
+            app:bl_frame_drawable_item10="@drawable/img10"
+            app:bl_frame_drawable_item11="@drawable/img11"
+            app:bl_frame_drawable_item12="@drawable/img12"
+            app:bl_frame_drawable_item13="@drawable/img13"
+            app:bl_frame_drawable_item14="@drawable/img14"/>
 
 ## Use attention
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  

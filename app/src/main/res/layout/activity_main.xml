@@ -28,7 +28,7 @@
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
 
-        <View
+        <com.noober.background.view.BLView
             android:id="@+id/v_anim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
