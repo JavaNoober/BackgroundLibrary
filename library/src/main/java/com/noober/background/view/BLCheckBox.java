@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-class BLCheckBox extends AppCompatCheckBox {
+public class BLCheckBox extends AppCompatCheckBox {
     public BLCheckBox(Context context) {
         super(context);
     }

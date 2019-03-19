@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-class BLTextView extends AppCompatTextView {
+public class BLTextView extends AppCompatTextView {
     public BLTextView(Context context) {
         super(context);
     }

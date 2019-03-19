@@ -28,6 +28,29 @@
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
 
+        <View
+            android:id="@+id/v_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bl_oneshot="false"
+            app:bl_duration="50"
+            app:bl_anim_auto_start="true"
+            app:bl_frame_drawable_item0="@drawable/img00"
+            app:bl_frame_drawable_item1="@drawable/img01"
+            app:bl_frame_drawable_item2="@drawable/img02"
+            app:bl_frame_drawable_item3="@drawable/img03"
+            app:bl_frame_drawable_item4="@drawable/img04"
+            app:bl_frame_drawable_item5="@drawable/img05"
+            app:bl_frame_drawable_item6="@drawable/img06"
+            app:bl_frame_drawable_item7="@drawable/img07"
+            app:bl_frame_drawable_item8="@drawable/img08"
+            app:bl_frame_drawable_item9="@drawable/img09"
+            app:bl_frame_drawable_item10="@drawable/img10"
+            app:bl_frame_drawable_item11="@drawable/img11"
+            app:bl_frame_drawable_item12="@drawable/img12"
+            app:bl_frame_drawable_item13="@drawable/img13"
+            app:bl_frame_drawable_item14="@drawable/img14"/>
+
         <TextView
             android:id="@+id/cobbAngle"
             android:layout_width="180dp"
