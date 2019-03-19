@@ -2,7 +2,7 @@ package com.noober.background.drawable;
 
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.support.annotation.AttrRes;
+import androidx.annotation.AttrRes;
 
 import com.noober.background.R;
 

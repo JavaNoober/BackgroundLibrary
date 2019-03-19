@@ -1,12 +1,12 @@
 package com.noober.background.view;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatRadioButton;
+import androidx.appcompat.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-class BLRadioButton extends AppCompatRadioButton {
+public class BLRadioButton extends AppCompatRadioButton {
     public BLRadioButton(Context context) {
         super(context);
     }

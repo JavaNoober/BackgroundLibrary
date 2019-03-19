@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'bintray-release'
+//apply plugin: 'bintray-release'
+apply plugin: "guru.stefma.bintrayrelease"
 
 android {
     compileSdkVersion 28
@@ -9,7 +10,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -24,18 +25,24 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compileOnly 'com.android.support:appcompat-v7:28.0.0-rc02'
+    compileOnly 'androidx.appcompat:appcompat:1.1.0-alpha02'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
+}
+
+version = rootProject.publishVersion
+group = rootProject.groupId
+androidArtifact { // 2
+    artifactId = 'corex'
 }
 
 publish {
-    artifactId = 'core'
+    artifactId = 'corex'
     userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
+//    groupId = rootProject.groupId
     uploadName = rootProject.uploadName
-    publishVersion = rootProject.publishVersion
+//    publishVersion = rootProject.publishVersion
     desc = rootProject.desc
     website = rootProject.website
 }

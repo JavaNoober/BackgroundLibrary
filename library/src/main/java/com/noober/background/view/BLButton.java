@@ -1,12 +1,12 @@
 package com.noober.background.view;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatButton;
 import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-class BLButton extends AppCompatButton {
+public class BLButton extends AppCompatButton {
     public BLButton(Context context) {
         super(context);
     }

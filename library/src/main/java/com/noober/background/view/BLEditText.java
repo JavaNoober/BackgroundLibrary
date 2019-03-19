@@ -1,12 +1,12 @@
 package com.noober.background.view;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatEditText;
 import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-class BLEditText extends AppCompatEditText {
+public class BLEditText extends AppCompatEditText {
     public BLEditText(Context context) {
         super(context);
     }

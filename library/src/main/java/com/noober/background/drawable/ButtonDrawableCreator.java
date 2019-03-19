@@ -4,7 +4,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.annotation.AttrRes;
+import androidx.annotation.AttrRes;
 
 import com.noober.background.R;
 
