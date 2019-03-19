@@ -3,6 +3,7 @@ package com.noober.backgroudlibrary;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ListActivity.class));
             }
         });
+
+        View vAnim = findViewById(R.id.v_anim);
+//        AnimationDrawable animationDrawable = (AnimationDrawable) vAnim.getBackground();
+//        animationDrawable.start();
 
         Drawable drawable = new DrawableCreator.Builder().setCornersRadius(30)
                 .setSolidColor(Color.parseColor("#FFFFFF"))

@@ -389,4 +389,169 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_oneshot" value="bl_oneshot" description="是否只播放一次" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration" value="bl_duration" description="每一帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item0" value="bl_duration_item0" description="第0帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item02" value="bl_duration_item02" description="第2帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item01" value="bl_duration_item01" description="第1帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item03" value="bl_duration_item03" description="第3帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item04" value="bl_duration_item04" description="第4帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item05" value="bl_duration_item05" description="第5帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item06" value="bl_duration_item06" description="第6帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item07" value="bl_duration_item07" description="第7帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item08" value="bl_duration_item08" description="第8帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item09" value="bl_duration_item09" description="第9帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item10" value="bl_duration_item10" description="第10帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item11" value="bl_duration_item11" description="第11帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item12" value="bl_duration_item12" description="第12帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item13" value="bl_duration_item13" description="第13帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_duration_item14" value="bl_duration_item14" description="第14帧动画时长" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item0" value="bl_frame_drawable_item0" description="第0帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item1" value="bl_frame_drawable_item1" description="第1帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item2" value="bl_frame_drawable_item2" description="第2帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item3" value="bl_frame_drawable_item3" description="第3帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item4" value="bl_frame_drawable_item4" description="第4帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item5" value="bl_frame_drawable_item5" description="第5帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item6" value="bl_frame_drawable_item6" description="第6帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item7" value="bl_frame_drawable_item7" description="第7帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item8" value="bl_frame_drawable_item8" description="第8帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item9" value="bl_frame_drawable_item9" description="第9帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item10" value="bl_frame_drawable_item10" description="第10帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item11" value="bl_frame_drawable_item11" description="第11帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item12" value="bl_frame_drawable_item12" description="第12帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item13" value="bl_frame_drawable_item13" description="第13帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_frame_drawable_item14" value="bl_frame_drawable_item14" description="第14帧动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_anim_auto_start" value="bl_anim_auto_start" description="是否自动播放动画" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
 </templateSet>

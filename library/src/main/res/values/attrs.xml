@@ -176,4 +176,41 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="bl_anim">
+        <attr name="bl_oneshot" format="boolean" />
+        <attr name="bl_anim_auto_start" format="boolean"/>
+        <attr name="bl_duration" format="integer"/>
+        <attr name="bl_duration_item0" format="integer"/>
+        <attr name="bl_duration_item1" format="integer"/>
+        <attr name="bl_duration_item2" format="integer"/>
+        <attr name="bl_duration_item3" format="integer"/>
+        <attr name="bl_duration_item4" format="integer"/>
+        <attr name="bl_duration_item5" format="integer"/>
+        <attr name="bl_duration_item6" format="integer"/>
+        <attr name="bl_duration_item7" format="integer"/>
+        <attr name="bl_duration_item8" format="integer"/>
+        <attr name="bl_duration_item9" format="integer"/>
+        <attr name="bl_duration_item10" format="integer"/>
+        <attr name="bl_duration_item11" format="integer"/>
+        <attr name="bl_duration_item12" format="integer"/>
+        <attr name="bl_duration_item13" format="integer"/>
+        <attr name="bl_duration_item14" format="integer"/>
+
+        <attr name="bl_frame_drawable_item0" format="reference"/>
+        <attr name="bl_frame_drawable_item1" format="reference"/>
+        <attr name="bl_frame_drawable_item2" format="reference"/>
+        <attr name="bl_frame_drawable_item3" format="reference"/>
+        <attr name="bl_frame_drawable_item4" format="reference"/>
+        <attr name="bl_frame_drawable_item5" format="reference"/>
+        <attr name="bl_frame_drawable_item6" format="reference"/>
+        <attr name="bl_frame_drawable_item7" format="reference"/>
+        <attr name="bl_frame_drawable_item8" format="reference"/>
+        <attr name="bl_frame_drawable_item9" format="reference"/>
+        <attr name="bl_frame_drawable_item10" format="reference"/>
+        <attr name="bl_frame_drawable_item11" format="reference"/>
+        <attr name="bl_frame_drawable_item12" format="reference"/>
+        <attr name="bl_frame_drawable_item13" format="reference"/>
+        <attr name="bl_frame_drawable_item14" format="reference"/>
+    </declare-styleable>
+
 </resources>

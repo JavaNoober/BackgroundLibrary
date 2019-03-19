@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 
 import com.noober.background.BackgroundFactory;
 
-class BLEditText extends AppCompatEditText {
+public class BLEditText extends AppCompatEditText {
     public BLEditText(Context context) {
         super(context);
     }

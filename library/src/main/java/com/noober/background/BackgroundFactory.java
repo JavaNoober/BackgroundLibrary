@@ -3,6 +3,7 @@ package com.noober.background;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
@@ -99,9 +100,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         TypedArray textTa = context.obtainStyledAttributes(attrs, R.styleable.text_selector);
         TypedArray buttonTa = context.obtainStyledAttributes(attrs, R.styleable.background_button_drawable);
         TypedArray otherTa = context.obtainStyledAttributes(attrs, R.styleable.bl_other);
+        TypedArray animTa = context.obtainStyledAttributes(attrs, R.styleable.bl_anim);
         try {
-            if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0
-                    && pressTa.getIndexCount() == 0 && textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0) {
+            if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0 && pressTa.getIndexCount() == 0
+                    && textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0 && animTa.getIndexCount() == 0 ) {
                 return view;
             }
             if (view == null) {
@@ -128,6 +130,16 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             } else if(typedArray.getIndexCount() > 0){
                 drawable = DrawableFactory.getDrawable(typedArray);
                 setDrawable(drawable, view, otherTa);
+            } else if(animTa.getIndexCount() > 0){
+                AnimationDrawable animationDrawable = DrawableFactory.getAnimationDrawable(animTa);
+                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+                    view.setBackground(animationDrawable);
+                }else {
+                    view.setBackgroundDrawable(animationDrawable);
+                }
+                if(animTa.getBoolean(R.styleable.bl_anim_bl_anim_auto_start, false)){
+                    animationDrawable.start();
+                }
             }
 
             if (view instanceof TextView && textTa.getIndexCount() > 0) {
@@ -163,6 +175,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             textTa.recycle();
             buttonTa.recycle();
             otherTa.recycle();
+            animTa.recycle();
         }
     }
 
