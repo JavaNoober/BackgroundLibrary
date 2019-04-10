@@ -34,6 +34,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.3.8 新增属性bl_position，可以设置drawable的位置left top right bottom
     1.4.0 增加预览功能
     1.4.1 增加帧动画属性
+    1.4.2 增加属性bl_activated_textColor, bl_active_textColor, bl_expanded_textColor, bl_unActivated_textColor, bl_unActive_textColor, bl_unExpanded_textColor以及BLConstraintLayout
 
 
 ## 示例效果
@@ -112,12 +113,18 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |bl_selected_textColor|color|
 |bl_pressed_textColor|color|
 |bl_focused_textColor|color|
+|bl_activated_textColor|color|
+|bl_active_textColor|color|
+|bl_expanded_textColor|color|
 |bl_unCheckable_textColor|color|
 |bl_unChecked_textColor|color|
 |bl_unEnabled_textColor|color|
 |bl_unSelected_textColor|color|
 |bl_unPressed_textColor|color|
 |bl_unFocused_textColor|color|
+|bl_unActivated_textColor|color|
+|bl_unActive_textColor|color|
+|bl_unExpanded_textColor|color|
 |关于checkbox、radiobutton的buttonDrawable的设置||
 |bl_checked_button_drawable|color、reference|
 |bl_unChecked_button_drawable|color、reference|

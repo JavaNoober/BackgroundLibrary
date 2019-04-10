@@ -67,6 +67,16 @@
             app:bl_stroke_width="1dp"
             app:bl_unPressed_drawable="#00FFFFFF" />
 
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="COBB ANGLE"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/shape1"/>
 
         <TextView
             android:layout_width="180dp"

@@ -158,6 +158,9 @@
         <attr name="bl_selected_textColor" format="color" />
         <attr name="bl_pressed_textColor" format="color" />
         <attr name="bl_focused_textColor" format="color" />
+        <attr name="bl_activated_textColor" format="color" />
+        <attr name="bl_active_textColor" format="color" />
+        <attr name="bl_expanded_textColor" format="color" />
 
         <attr name="bl_unCheckable_textColor" format="color" />
         <attr name="bl_unChecked_textColor" format="color" />
@@ -165,6 +168,9 @@
         <attr name="bl_unSelected_textColor" format="color" />
         <attr name="bl_unPressed_textColor" format="color" />
         <attr name="bl_unFocused_textColor" format="color" />
+        <attr name="bl_unActivated_textColor" format="color" />
+        <attr name="bl_unActive_textColor" format="color" />
+        <attr name="bl_unExpanded_textColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="bl_other">

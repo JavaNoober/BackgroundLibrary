@@ -20,4 +20,5 @@ public class Const {
     public static final String BLScrollView = BLScrollView.class.getCanonicalName();
     public static final String BLTextView = BLTextView.class.getCanonicalName();
     public static final String BLView = BLView.class.getCanonicalName();
+    public static final String BLConstraintLayout = "com.noober.background.view.BLConstraintLayout";
 }

@@ -659,4 +659,40 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_activated_textColor" value="app:bl_activated_textColor=&quot;$value$&quot;" description="activated文字颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unActivated_textColor" value="app:bl_unActivated_textColor=&quot;$value$&quot;" description="unActivated文字颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_active_textColor" value="app:bl_active_textColor=&quot;$value$&quot;" description="active文字颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unActive_textColor" value="app:bl_unActive_textColor=&quot;$value$&quot;" description="unActive文字颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_expanded_textColor" value="app:bl_expanded_textColor=&quot;$value$&quot;" description="expanded文字颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unExpanded_textColor" value="app:bl_unExpanded_textColor=&quot;$value$&quot;" description="unExpanded文字颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
 </templateSet>

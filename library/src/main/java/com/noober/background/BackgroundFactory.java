@@ -83,6 +83,8 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             name = "TextView";
         }else if(name.equals(Const.BLView)){
             name = "View";
+        }else if(name.equals(Const.BLConstraintLayout)){
+            name = "android.support.constraint.ConstraintLayout";
         }
         return name;
     }

@@ -79,6 +79,25 @@ All attributes of selector are supported：
 |bl_unFocused_drawable|color、reference|
 |bl_unFocused_hovered|color、reference|
 |bl_unFocused_activated|color、reference|
+|setting about textColor||
+|bl_checkable_textColor|color|
+|bl_checked_textColor|color|
+|bl_enabled_textColor|color|
+|bl_selected_textColor|color|
+|bl_pressed_textColor|color|
+|bl_focused_textColor|color|
+|bl_activated_textColor|color|
+|bl_active_textColor|color|
+|bl_expanded_textColor|color|
+|bl_unCheckable_textColor|color|
+|bl_unChecked_textColor|color|
+|bl_unEnabled_textColor|color|
+|bl_unSelected_textColor|color|
+|bl_unPressed_textColor|color|
+|bl_unFocused_textColor|color|
+|bl_unActivated_textColor|color|
+|bl_unActive_textColor|color|
+|bl_unExpanded_textColor|color|
 |setting about buttonDrawable||
 |bl_checked_button_drawable|color、reference|
 |bl_unChecked_button_drawable|color、reference|
