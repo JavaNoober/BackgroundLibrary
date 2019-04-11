@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.1'
+    implementation 'com.noober.background:core:1.4.3'
 
  
 ## Example effect
@@ -372,6 +372,13 @@ no need to add "app:"
             app:bl_frame_drawable_item12="@drawable/img12"
             app:bl_frame_drawable_item13="@drawable/img13"
             app:bl_frame_drawable_item14="@drawable/img14"/>
+
+## ProGuard
+
+No need to add since 1.4.3
+
+    -dontwarn com.noober.background.**
+    -keep public class com.noober.background.** {*;}
 
 ## Use attention
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  

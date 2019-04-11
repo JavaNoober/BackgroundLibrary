@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.1'
+    implementation 'com.noober.background:core:1.4.3'
 
 版本更新：
     
@@ -35,6 +35,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.4.0 增加预览功能
     1.4.1 增加帧动画属性
     1.4.2 增加属性bl_activated_textColor, bl_active_textColor, bl_expanded_textColor, bl_unActivated_textColor, bl_unActive_textColor, bl_unExpanded_textColor以及BLConstraintLayout
+    1.4.3 1.4.3开始自动加入混淆配置，无需自己配置
 
 
 ## 示例效果
@@ -517,6 +518,12 @@ style中不要加入"app:", 直接写属性名即可
     Caused by: java.lang.ClassCastException: android.support.v7.widget.AppCompatTextView cannot be cast to com.noober.background.view.BLTextView
     
 
+## ProGuard
+
+1.4.3开始无需添加
+
+    -dontwarn com.noober.background.**
+    -keep public class com.noober.background.** {*;}
 
 ## 使用注意
 1、selector的相关属性，如果传入的drawable不是颜色的资源，会覆盖掉shape设置的属性  
