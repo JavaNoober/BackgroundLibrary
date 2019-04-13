@@ -37,7 +37,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
-        name = switchBLViewToOriginal(name);
+        if(name.startsWith("com.noober.background.view")){
+            return null;
+        }
+//        name = switchBLViewToOriginal(name);
         View view = null;
         if (mViewCreateFactory2 != null) {
             view = mViewCreateFactory2.onCreateView(name, context, attrs);

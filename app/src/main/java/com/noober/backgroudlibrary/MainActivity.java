@@ -16,8 +16,12 @@ import android.widget.TextView;
 
 import com.noober.background.BackgroundLibrary;
 import com.noober.background.drawable.DrawableCreator;
+import com.noober.background.view.BLTextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    BLTextView blTextView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         BackgroundLibrary.inject(this);
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView( R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_content, new BlankFragment()).commitAllowingStateLoss();
         Button button = findViewById(R.id.btn);
+        blTextView = findViewById(R.id.ttt);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

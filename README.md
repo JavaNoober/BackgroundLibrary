@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.3'
+    implementation 'com.noober.background:core:1.4.4'
 
 版本更新：
     
@@ -36,6 +36,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     1.4.1 增加帧动画属性
     1.4.2 增加属性bl_activated_textColor, bl_active_textColor, bl_expanded_textColor, bl_unActivated_textColor, bl_unActive_textColor, bl_unExpanded_textColor以及BLConstraintLayout
     1.4.3 1.4.3开始自动加入混淆配置，无需自己配置
+    1.4.4 修复与kotlin直接通过id获取view冲突的问题，并且可以在代码内直接使用BLView
 
 
 ## 示例效果
@@ -506,7 +507,9 @@ style中不要加入"app:", 直接写属性名即可
     }
     
 继承所需要预览的View，然后在构造函数中添加BackgroundFactory.setViewBackground(context, attrs, this)方法即可。    
-**注意**：  
+**注意**：
+从1.4.4版本开始没有限制，
+在1.4.4版本之前，
 为了提高性能，这些View在编译的时候会**自动替换为对应原生的View**，所以除了再xml中，不要在代码中出现任何的BLTextView,否则会报类似如下的错误：  
     
     //错误
