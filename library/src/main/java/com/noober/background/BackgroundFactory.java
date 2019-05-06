@@ -37,11 +37,14 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
+        //如果是blview，代表已经进行了背景设置，无需再次创建，留给系统创建就行
         if(name.startsWith("com.noober.background.view")){
             return null;
         }
 //        name = switchBLViewToOriginal(name);
         View view = null;
+
+        //防止与其他调用factory库冲突，例如字体、皮肤替换库，用已经设置的factory来创建view
         if (mViewCreateFactory2 != null) {
             view = mViewCreateFactory2.onCreateView(name, context, attrs);
             if (view == null) {
@@ -97,6 +100,14 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         return setViewBackground(null, context, attrs, view);
     }
 
+    /**
+     * 根据属性设置图片背景
+     * @param name view的名字
+     * @param context 上下文
+     * @param attrs bl属性
+     * @param view view
+     * @return view
+     */
     @Nullable
     private static View setViewBackground(String name, Context context, AttributeSet attrs, View view) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
@@ -106,9 +117,11 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         TypedArray buttonTa = context.obtainStyledAttributes(attrs, R.styleable.background_button_drawable);
         TypedArray otherTa = context.obtainStyledAttributes(attrs, R.styleable.bl_other);
         TypedArray animTa = context.obtainStyledAttributes(attrs, R.styleable.bl_anim);
+        TypedArray multiSelTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector);
         try {
             if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0 && pressTa.getIndexCount() == 0
-                    && textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0 && animTa.getIndexCount() == 0 ) {
+                    && textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0 && animTa.getIndexCount() == 0
+                    && multiSelTa.getIndexCount() == 0) {
                 return view;
             }
             if (view == null) {
@@ -117,6 +130,11 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             if (view == null) {
                 return null;
             }
+            //R.styleable.background_selector 和 R.styleable.background_multi_selector的属性不能同时使用
+            if(selectorTa.getIndexCount() > 0 && multiSelTa.getIndexCount() > 0){
+                throw new IllegalArgumentException("Background_selector and background_multi_selector cannot be used simultaneously");
+            }
+
 
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
@@ -181,6 +199,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             buttonTa.recycle();
             otherTa.recycle();
             animTa.recycle();
+            multiSelTa.recycle();
         }
     }
 
