@@ -155,14 +155,13 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 setDrawable(drawable, view, otherTa);
             } else if(animTa.getIndexCount() > 0){
                 AnimationDrawable animationDrawable = DrawableFactory.getAnimationDrawable(animTa);
-                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-                    view.setBackground(animationDrawable);
-                }else {
-                    view.setBackgroundDrawable(animationDrawable);
-                }
+                setBackground(animationDrawable, view);
                 if(animTa.getBoolean(R.styleable.bl_anim_bl_anim_auto_start, false)){
                     animationDrawable.start();
                 }
+            } else if(multiSelTa.getIndexCount() > 0){
+                stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa);
+                setBackground(stateListDrawable, view);
             }
 
             if (view instanceof TextView && textTa.getIndexCount() > 0) {
@@ -221,20 +220,20 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     ((TextView)view).setCompoundDrawables(null, null, null, drawable);
                 }
             }else {
-                if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-                    view.setBackground(drawable);
-                }else {
-                    view.setBackgroundDrawable(drawable);
-                }
+                setBackground(drawable, view);
             }
         }else {
-            if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-                view.setBackground(drawable);
-            }else {
-                view.setBackgroundDrawable(drawable);
-            }
+            setBackground(drawable, view);
         }
 
+    }
+
+    private static void setBackground(Drawable drawable, View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            view.setBackground(drawable);
+        } else {
+            view.setBackgroundDrawable(drawable);
+        }
     }
 
     public void setInterceptFactory(LayoutInflater.Factory factory) {

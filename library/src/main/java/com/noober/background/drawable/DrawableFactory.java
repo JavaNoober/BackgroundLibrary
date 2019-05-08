@@ -1,5 +1,6 @@
 package com.noober.background.drawable;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.AnimationDrawable;
@@ -43,4 +44,10 @@ public class DrawableFactory {
     public static AnimationDrawable getAnimationDrawable(TypedArray animTa) throws Exception {
         return (AnimationDrawable) new AnimationDrawableCreator(animTa).create();
     }
+
+    public static StateListDrawable getMultiSelectorDrawable(Context context, TypedArray selectorTa)
+            throws Exception {
+        return (StateListDrawable) new MultiSelectorDrawableCreator(context, selectorTa).create();
+    }
+
 }

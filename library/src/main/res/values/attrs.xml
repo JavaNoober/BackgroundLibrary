@@ -152,6 +152,7 @@
         <attr name="bl_multi_selector3" format="string" />
         <attr name="bl_multi_selector4" format="string" />
         <attr name="bl_multi_selector5" format="string" />
+        <attr name="bl_multi_selector6" format="string" />
     </declare-styleable>
 
 

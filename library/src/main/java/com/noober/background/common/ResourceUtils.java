@@ -9,7 +9,7 @@ import android.support.v4.content.ContextCompat;
 public class ResourceUtils {
 
     @Nullable
-    public Drawable getDrawable(Context context, String resName) {
+    public static Drawable getDrawable(Context context, String resName) {
         Resources resources = context.getResources();
         int id = resources.getIdentifier(resName, "drawable", context.getPackageName());
         if(id == 0){
