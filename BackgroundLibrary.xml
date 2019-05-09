@@ -695,37 +695,73 @@
     <option name="XML" value="true" />
   </context>
 </template>
+  <template name="bl_multi_text_selector1" value="app:bl_multi_text_selector1=&quot;$value$&quot;" description="textColor一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_multi_text_selector2" value="app:bl_multi_text_selector2=&quot;$value$&quot;" description="textColor一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_multi_text_selector3" value="app:bl_multi_text_selector3=&quot;$value$&quot;" description="textColor一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_multi_text_selector4" value="app:bl_multi_text_selector4=&quot;$value$&quot;" description="textColor一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_multi_text_selector5" value="app:bl_multi_text_selector5=&quot;$value$&quot;" description="textColor一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_multi_text_selector6" value="app:bl_multi_text_selector6=&quot;$value$&quot;" description="textColor一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
   <template name="bl_multi_selector1" value="app:bl_multi_selector1=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
     <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="XML" value="true" />
     </context>
   </template>
-  <template name="bl_multi_selector2" value="app:bl_multi_selector1=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+  <template name="bl_multi_selector2" value="app:bl_multi_selector2=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
     <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="XML" value="true" />
     </context>
   </template>
-  <template name="bl_multi_selector3" value="app:bl_multi_selector1=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+  <template name="bl_multi_selector3" value="app:bl_multi_selector3=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
     <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="XML" value="true" />
     </context>
   </template>
-  <template name="bl_multi_selector4" value="app:bl_multi_selector1=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+  <template name="bl_multi_selector4" value="app:bl_multi_selector4=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
     <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="XML" value="true" />
     </context>
   </template>
-  <template name="bl_multi_selector5" value="app:bl_multi_selector1=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+  <template name="bl_multi_selector5" value="app:bl_multi_selector5=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
     <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="XML" value="true" />
     </context>
   </template>
-  <template name="bl_multi_selector6" value="app:bl_multi_selector1=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
+  <template name="bl_multi_selector6" value="app:bl_multi_selector6=&quot;$value$&quot;" description="selector一条属性多状态表示" toReformat="true" toShortenFQNames="true">
     <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="XML" value="true" />
