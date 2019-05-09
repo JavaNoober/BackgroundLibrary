@@ -135,6 +135,10 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |bl_multi_text_selector4| String| 同上|
 |bl_multi_text_selector5| String| 同上|
 |bl_multi_text_selector6| String| 同上|
+|关于checkbox、radiobutton的buttonDrawable的设置||
+|bl_checked_button_drawable|color、reference|
+|bl_unChecked_button_drawable|color、reference|
+
 
 bl_multi_text_selector的使用方法：
 支持selector的一条属性设置同时设置多个状态的写法,内容规则为以",
@@ -164,11 +168,6 @@ bl_multi_text_selector的使用方法：
             app:bl_multi_text_selector3="-state_pressed,state_enabled,#DDA0DD"/>
 
 
-### buttonDrawable
-
-|关于checkbox、radiobutton的buttonDrawable的设置| |
-|bl_checked_button_drawable|color、reference|
-|bl_unChecked_button_drawable|color、reference|
 
 ### 动画属性
 | 名称 | 类型 |
