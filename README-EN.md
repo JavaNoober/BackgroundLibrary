@@ -102,6 +102,41 @@ All attributes of selector are supported：
 |bl_checked_button_drawable|color、reference|
 |bl_unChecked_button_drawable|color、reference|
 
+|bl_multi_text_selector1| String|   |
+|bl_multi_text_selector2| String| 同上|
+|bl_multi_text_selector3| String| 同上|
+|bl_multi_text_selector4| String| 同上|
+|bl_multi_text_selector5| String| 同上|
+|bl_multi_text_selector6| String| 同上|
+
+bl_multi_text_selector的使用方法：
+支持selector的一条属性设置同时设置多个状态的写法,内容规则为以",
+"为分隔符，最后一项为颜色资源id的名字，可选状态为state_checkable，state_checked，state_enabled，state_selected，state_pressed，state_focused，state_hovered
+，state_activated，默认为true，如果为false则在前面加上"-"即可，例如-state_checkable
+
+效果例子如下：
+
+![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/images/mulit_text.gif)
+
+
+
+        <com.noober.background.view.BLTextView
+            android:padding="0dp"
+            android:layout_width="300dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@android:color/black"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="textView一条属性多个状态"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:bl_multi_text_selector1="state_pressed,state_enabled,#EE0000"
+            app:bl_multi_text_selector2="-state_pressed,-state_enabled,#DDA0DD"
+            app:bl_multi_text_selector3="-state_pressed,state_enabled,#DDA0DD"/>
+
+
 ### attributes about anim：
 | 名称 | 类型 |
 |---|---|

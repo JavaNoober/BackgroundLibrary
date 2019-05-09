@@ -164,8 +164,9 @@ bl_multi_text_selector的使用方法：
             app:bl_multi_text_selector3="-state_pressed,state_enabled,#DDA0DD"/>
 
 
+### buttonDrawable
 
-|关于checkbox、radiobutton的buttonDrawable的设置||
+|关于checkbox、radiobutton的buttonDrawable的设置| |
 |bl_checked_button_drawable|color、reference|
 |bl_unChecked_button_drawable|color、reference|
 
