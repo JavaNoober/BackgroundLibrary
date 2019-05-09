@@ -142,7 +142,9 @@ bl_multi_text_selector的使用方法：
 ，state_activated，默认为true，如果为false则在前面加上"-"即可，例如-state_checkable
 
 效果例子如下：
+
 ![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/images/mulit_text.gif)
+
 
 
         <com.noober.background.view.BLTextView
