@@ -141,7 +141,7 @@ bl_multi_text_selector的使用方法：
 "为分隔符，最后一项为颜色资源id的名字，可选状态为state_checkable，state_checked，state_enabled，state_selected，state_pressed，state_focused，state_hovered
 ，state_activated，默认为true，如果为false则在前面加上"-"即可，例如-state_checkable
 
-效果例子如下
+效果例子如下：
 ![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/images/mulit_text.gif)
 
 
