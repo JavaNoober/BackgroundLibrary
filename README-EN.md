@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.3'
+    implementation 'com.noober.background:core:1.4.5'
 
  
 ## Example effect
@@ -172,6 +172,57 @@ example:
     tvTest1.setClickable(true);//由于Android源码的原因，必须调用，否则不生效
     ColorStateList colors = new DrawableCreator.Builder().setPressedTextColor(Color.RED).setUnPressedTextColor(Color.BLUE).buildTextColor();
     tvTest1.setTextColor(colors);
+
+### bl_multi_selector属性
+| 名称 | 类型 |备注|
+|---|---|---|
+|bl_multi_selector1| String| Supports the selector for a property setting that sets multiple states at the same time. The content rules split with ",
+"For the delimiter, the last item is the name of the drawable resource id, and the optional states are state_checkable, state_checked, state_enabled, state_selected, state_pressed, state_focused, state_hointernet
+ , the default value of state_activated is true, and "-" after false can be activated, such as -state_checkable|
+|bl_multi_selector2| String| 同上|
+|bl_multi_selector3| String| 同上|
+|bl_multi_selector4| String| 同上|
+|bl_multi_selector5| String| 同上|
+|bl_multi_selector6| String| 同上|
+
+bl_multi_selector使用示例：
+In the next example, test_sel1, the item that has android:state_pressed="true" android:state_focused="true", then bl_multi_selector1=" app:bl_multi_selector1="state_pressed,state_focused,test_bg_sel"
+
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:text="一条属性多个状态（原生写法）"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:background="@drawable/test_sel1"/>
+
+    test_sel1:
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:state_pressed="true" android:state_focused="true"
+            android:drawable="@drawable/test_bg_sel" /> <!-- pressed -->
+        <item android:state_pressed="false" android:state_focused="false"
+            android:drawable="@drawable/test_bg_sel2" /> <!-- focused -->
+    </selector>
+    bl_multi_selector：Usage, up to 6
+
+     <EditText
+        android:padding="0dp"
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="一条属性多个状态（原生写法）"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:bl_multi_selector1="state_pressed,state_focused,test_bg_sel"
+        app:bl_multi_selector2="-state_pressed,-state_focused,test_bg_sel2"/>
 
 
 ## example

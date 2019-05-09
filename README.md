@@ -10,7 +10,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.4'
+    implementation 'com.noober.background:core:1.4.5'
 
 版本更新：
     
@@ -245,7 +245,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 ### bl_multi_selector属性
 | 名称 | 类型 |备注|
 |---|---|---|
-|bl_multi_selector1| String| 支持selector的一条属性设置同时设置多个状态的写法(#jump2),内容规则为以",
+|bl_multi_selector1| String| 支持selector的一条属性设置同时设置多个状态的写法,内容规则为以",
 "为分隔符，最后一项为drawable资源id的名字，可选状态为state_checkable，state_checked，state_enabled，state_selected，state_pressed，state_focused，state_hovered
 ，state_activated，默认为true，如果为false则在前面加上"-"即可，例如-state_checkable,具体可以查看使用例子8|
 |bl_multi_selector2| String| 同上|
@@ -253,6 +253,45 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |bl_multi_selector4| String| 同上|
 |bl_multi_selector5| String| 同上|
 |bl_multi_selector6| String| 同上|
+
+bl_multi_selector使用示例：
+下例中的test_sel1，item中同时设置了android:state_pressed="true" android:state_focused="true",则用bl_multi_selector1设置为：app:bl_multi_selector1="state_pressed,state_focused,test_bg_sel"
+
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:text="一条属性多个状态（原生写法）"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:background="@drawable/test_sel1"/>
+
+    test_sel1:
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:state_pressed="true" android:state_focused="true"
+            android:drawable="@drawable/test_bg_sel" /> <!-- pressed -->
+        <item android:state_pressed="false" android:state_focused="false"
+            android:drawable="@drawable/test_bg_sel2" /> <!-- focused -->
+    </selector>
+    bl_multi_selector：用法，最多支持6条
+
+     <EditText
+        android:padding="0dp"
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="15dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="一条属性多个状态（原生写法）"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:bl_multi_selector1="state_pressed,state_focused,test_bg_sel"
+        app:bl_multi_selector2="-state_pressed,-state_focused,test_bg_sel2"/>
 
 ## 使用例子
 
@@ -472,46 +511,6 @@ style中不要加入"app:", 直接写属性名即可
             app:bl_frame_drawable_item12="@drawable/img12"
             app:bl_frame_drawable_item13="@drawable/img13"
             app:bl_frame_drawable_item14="@drawable/img14"/>
-
-8.<span id="jump2">bl_multi_selector属性用法</span>
-
-下例中的test_sel1，item中同时设置了android:state_pressed="true" android:state_focused="true"
-
-
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:clickable="true"
-        android:text="一条属性多个状态（原生写法）"
-        android:textColor="@android:color/black"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:background="@drawable/test_sel1"/>
-        
-    test_sel1:
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-        <item android:state_pressed="true" android:state_focused="true"
-            android:drawable="@drawable/test_bg_sel" /> <!-- pressed -->
-        <item android:state_pressed="false" android:state_focused="false"
-            android:drawable="@drawable/test_bg_sel2" /> <!-- focused -->
-    </selector>
-    bl_multi_selector：用法，最多支持6条
-    
-     <EditText
-        android:padding="0dp"
-        android:layout_width="300dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="15dp"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="一条属性多个状态（原生写法）"
-        android:textColor="@android:color/black"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:bl_multi_selector1="state_pressed,state_focused,test_bg_sel"
-        app:bl_multi_selector2="-state_pressed,-state_focused,test_bg_sel2"/>
     
     
 
