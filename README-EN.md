@@ -183,6 +183,7 @@ example:
 |bl_multi_selector5| String| 同上|
 |bl_multi_selector6| String| 同上|
 
+
 Supports the selector for a property setting that sets multiple states at the same time. The content rules split with ",
 "For the delimiter, the last item is the name of the drawable resource id, and the optional states are state_checkable, state_checked, state_enabled, state_selected, state_pressed, state_focused, state_hointernet
  , the default value of state_activated is true, and "-" after false can be activated, such as -state_checkable

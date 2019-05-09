@@ -245,12 +245,13 @@ A framework for directly generating shape through Tags, no need to write shape.x
 ### bl_multi_selector属性
 | 名称 | 类型 |备注|
 |---|---|---|
-|bl_multi_selector1| String| |
+|bl_multi_selector1| String|   |
 |bl_multi_selector2| String| 同上|
 |bl_multi_selector3| String| 同上|
 |bl_multi_selector4| String| 同上|
 |bl_multi_selector5| String| 同上|
 |bl_multi_selector6| String| 同上|
+
 bl_multi_selector1的使用方法如下：
 支持selector的一条属性设置同时设置多个状态的写法,内容规则为以",
 "为分隔符，最后一项为drawable资源id的名字，可选状态为state_checkable，state_checked，state_enabled，state_selected，state_pressed，state_focused，state_hovered
