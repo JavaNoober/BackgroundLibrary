@@ -260,9 +260,13 @@ bl_multi_selector1的使用方法如下：
 
 bl_multi_selector使用示例：
 下例中的test_sel1，item中同时设置了
-    android:state_pressed="true" android:state_focused="true"
+
+        android:state_pressed="true" android:state_focused="true"
+
 则用bl_multi_selector1设置为：
-    app:bl_multi_selector1="state_pressed,state_focused,test_bg_sel"
+
+        app:bl_multi_selector1="state_pressed,state_focused,test_bg_sel"
+
 
 
     <EditText
