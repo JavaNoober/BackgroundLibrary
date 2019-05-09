@@ -245,14 +245,17 @@ A framework for directly generating shape through Tags, no need to write shape.x
 ### bl_multi_selector属性
 | 名称 | 类型 |备注|
 |---|---|---|
-|bl_multi_selector1| String| 支持selector的一条属性设置同时设置多个状态的写法,内容规则为以",
-"为分隔符，最后一项为drawable资源id的名字，可选状态为state_checkable，state_checked，state_enabled，state_selected，state_pressed，state_focused，state_hovered
-，state_activated，默认为true，如果为false则在前面加上"-"即可，例如-state_checkable,具体可以查看使用例子8|
+|bl_multi_selector1| String| |
 |bl_multi_selector2| String| 同上|
 |bl_multi_selector3| String| 同上|
 |bl_multi_selector4| String| 同上|
 |bl_multi_selector5| String| 同上|
 |bl_multi_selector6| String| 同上|
+bl_multi_selector1的使用方法如下：
+支持selector的一条属性设置同时设置多个状态的写法,内容规则为以",
+"为分隔符，最后一项为drawable资源id的名字，可选状态为state_checkable，state_checked，state_enabled，state_selected，state_pressed，state_focused，state_hovered
+，state_activated，默认为true，如果为false则在前面加上"-"即可，例如-state_checkable
+
 
 bl_multi_selector使用示例：
 下例中的test_sel1，item中同时设置了android:state_pressed="true" android:state_focused="true",则用bl_multi_selector1设置为：app:bl_multi_selector1="state_pressed,state_focused,test_bg_sel"
