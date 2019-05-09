@@ -136,7 +136,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 |bl_multi_text_selector5| String| 同上|
 |bl_multi_text_selector6| String| 同上|
 
-bl_multi_text_selector2的使用方法：
+bl_multi_text_selector的使用方法：
 支持selector的一条属性设置同时设置多个状态的写法,内容规则为以",
 "为分隔符，最后一项为颜色资源id的名字，可选状态为state_checkable，state_checked，state_enabled，state_selected，state_pressed，state_focused，state_hovered
 ，state_activated，默认为true，如果为false则在前面加上"-"即可，例如-state_checkable
