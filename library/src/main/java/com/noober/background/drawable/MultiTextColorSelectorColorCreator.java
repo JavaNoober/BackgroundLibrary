@@ -1,6 +1,7 @@
 package com.noober.background.drawable;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
@@ -9,56 +10,59 @@ import com.noober.background.R;
 import com.noober.background.common.MultiSelector;
 import com.noober.background.common.ResourceUtils;
 
-public class MultiSelectorDrawableCreator implements ICreateDrawable {
+public class MultiTextColorSelectorColorCreator implements ICreateColorState {
 
     private TypedArray selectorTa;
     private Context context;
-
-    public MultiSelectorDrawableCreator(Context context, TypedArray selectorTa) {
+    private int[][] states = new int[][]{};
+    private int[] colors = new int[]{};
+    private int index;
+    public MultiTextColorSelectorColorCreator(Context context, TypedArray selectorTa) {
         this.selectorTa = selectorTa;
         this.context = context;
     }
 
     @Override
-    public Drawable create() {
-        StateListDrawable stateListDrawable = new StateListDrawable();
+    public ColorStateList create() {
+        states = new int[selectorTa.getIndexCount()][];
+        colors = new int[selectorTa.getIndexCount()];
 
         for (int i = 0; i < selectorTa.getIndexCount(); i++) {
             int attr = selectorTa.getIndex(i);
 
-            if (attr == R.styleable.background_multi_selector_bl_multi_selector1) {
-                addState(stateListDrawable, attr);
-            } else if (attr == R.styleable.background_multi_selector_bl_multi_selector2) {
-                addState(stateListDrawable, attr);
-            } else if (attr == R.styleable.background_multi_selector_bl_multi_selector3) {
-                addState(stateListDrawable, attr);
-            } else if (attr == R.styleable.background_multi_selector_bl_multi_selector4) {
-                addState(stateListDrawable, attr);
-            } else if (attr == R.styleable.background_multi_selector_bl_multi_selector5) {
-                addState(stateListDrawable, attr);
-            } else if (attr == R.styleable.background_multi_selector_bl_multi_selector6) {
-                addState(stateListDrawable, attr);
+            if (attr == R.styleable.background_multi_selector_text_bl_multi_text_selector1) {
+                addState(attr);
+            } else if (attr == R.styleable.background_multi_selector_text_bl_multi_text_selector2) {
+                addState(attr);
+            } else if (attr == R.styleable.background_multi_selector_text_bl_multi_text_selector3) {
+                addState(attr);
+            } else if (attr == R.styleable.background_multi_selector_text_bl_multi_text_selector4) {
+                addState(attr);
+            } else if (attr == R.styleable.background_multi_selector_text_bl_multi_text_selector5) {
+                addState(attr);
+            } else if (attr == R.styleable.background_multi_selector_text_bl_multi_text_selector6) {
+                addState(attr);
             }
         }
-        return stateListDrawable;
+        return new ColorStateList(states, colors);
     }
 
-    private void addState(StateListDrawable stateListDrawable, int attr) {
+    private void addState(int attr) {
         String value = selectorTa.getString(attr);
         if(value != null){
             String[] vArray = value.split(",");
             if(vArray.length < 2){
                 throw new IllegalArgumentException("Attributes and drawable must be set at the same time");
             }
-            Drawable drawable = null;
+            int color = 0;
             int[] attrId = new int[vArray.length - 1];
             for (int p = 0; p < vArray.length; p++){
                 String attrStr = vArray[p];
                 //取出资源id
                 if(p == vArray.length - 1){
-                    drawable = ResourceUtils.getDrawable(context, attrStr);
-                    if(drawable == null){
-                        throw new IllegalArgumentException("cannot find drawable from the last attribute");
+                    color = ResourceUtils.getColor(context, attrStr);
+                    if(color == -1){
+                        throw new IllegalArgumentException("cannot find color from the last attribute");
                     }
                 }else {
                     MultiSelector multiSelector = MultiSelector.getMultiAttr(attrStr.replace("-", ""));
@@ -74,7 +78,9 @@ public class MultiSelectorDrawableCreator implements ICreateDrawable {
                     }
                 }
             }
-            stateListDrawable.addState(attrId, drawable);
+            states[index] = attrId;
+            colors[index] = color;
+            index++;
         }
     }
 }

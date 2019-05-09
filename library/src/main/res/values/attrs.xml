@@ -155,6 +155,14 @@
         <attr name="bl_multi_selector6" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="background_multi_selector_text">
+        <attr name="bl_multi_text_selector1" format="string" />
+        <attr name="bl_multi_text_selector2" format="string" />
+        <attr name="bl_multi_text_selector3" format="string" />
+        <attr name="bl_multi_text_selector4" format="string" />
+        <attr name="bl_multi_text_selector5" format="string" />
+        <attr name="bl_multi_text_selector6" format="string" />
+    </declare-styleable>
 
     <declare-styleable name="background_button_drawable">
         <attr name="bl_checked_button_drawable" format="color|reference" />

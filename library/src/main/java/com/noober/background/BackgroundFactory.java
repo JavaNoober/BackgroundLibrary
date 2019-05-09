@@ -118,10 +118,12 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         TypedArray otherTa = context.obtainStyledAttributes(attrs, R.styleable.bl_other);
         TypedArray animTa = context.obtainStyledAttributes(attrs, R.styleable.bl_anim);
         TypedArray multiSelTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector);
+        TypedArray multiTextTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector_text);
+
         try {
             if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0 && pressTa.getIndexCount() == 0
                     && textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0 && animTa.getIndexCount() == 0
-                    && multiSelTa.getIndexCount() == 0) {
+                    && multiSelTa.getIndexCount() == 0 && multiTextTa.getIndexCount() == 0) {
                 return view;
             }
             if (view == null) {
@@ -134,7 +136,9 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             if(selectorTa.getIndexCount() > 0 && multiSelTa.getIndexCount() > 0){
                 throw new IllegalArgumentException("Background_selector and background_multi_selector cannot be used simultaneously");
             }
-
+            if(textTa.getIndexCount() > 0 && multiTextTa.getIndexCount() > 0){
+                throw new IllegalArgumentException("text_selector and background_multi_selector_text cannot be used simultaneously");
+            }
 
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
@@ -166,6 +170,8 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 
             if (view instanceof TextView && textTa.getIndexCount() > 0) {
                 ((TextView) view).setTextColor(DrawableFactory.getTextSelectorColor(textTa));
+            }else if(view instanceof TextView && multiTextTa.getIndexCount() > 0){
+                ((TextView) view).setTextColor(DrawableFactory.getMultiTextColorSelectorColorCreator(context, multiTextTa));
             }
 
             if (typedArray.getBoolean(R.styleable.background_bl_ripple_enable, false) &&
@@ -199,6 +205,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             otherTa.recycle();
             animTa.recycle();
             multiSelTa.recycle();
+            multiTextTa.recycle();
         }
     }
 

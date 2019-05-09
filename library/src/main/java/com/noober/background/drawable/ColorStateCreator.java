@@ -6,7 +6,7 @@ import android.support.annotation.AttrRes;
 
 import com.noober.background.R;
 
-public class ColorStateCreator {
+public class ColorStateCreator implements ICreateColorState{
 
     private TypedArray textTa;
 

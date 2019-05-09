@@ -110,6 +110,21 @@ public class MainActivity extends AppCompatActivity {
                 btnLike2.setSelected(!btnLike2.isSelected());
             }
         });
+        final Button btnEnable = findViewById(R.id.btn_setEnable);
+        final TextView tvMulti = findViewById(R.id.tv_multi);
+        btnEnable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tvMulti.isEnabled()){
+                    tvMulti.setEnabled(false);
+                    tvMulti.setText("textView一条属性多个状态：enable=false");
+                }else {
+                    tvMulti.setEnabled(true);
+                    tvMulti.setText("textView一条属性多个状态：enable=true");
+                }
+            }
+        });
+
     }
 
 

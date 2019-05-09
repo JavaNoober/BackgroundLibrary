@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.5'
+    implementation 'com.noober.background:core:1.4.6'
 
  
 ## Example effect
@@ -239,10 +239,10 @@ In the next example, test_sel1, the item that has android:state_pressed="true" a
         android:text="TextView"
         android:textColor="#8c6822"
         android:textSize="20sp"
-        app:corners_radius="4dp"
-        app:solid_color="#E3B666"
-        app:stroke_color="#8c6822"
-        app:stroke_width="2dp" />
+        app:bl_corners_radius="4dp"
+        app:bl_solid_color="#E3B666"
+        app:bl_stroke_color="#8c6822"
+        app:bl_stroke_width="2dp" />
 equals to
 
     <shape xmlns:android="http://schemas.android.com/apk/res/android">
@@ -272,10 +272,10 @@ equals to
         android:text="跳转到列表"
         android:textColor="#4F94CD"
         android:textSize="20sp"
-        app:corners_radius="2dp"
-        app:gradient_angle="0"
-        app:gradient_endColor="#4F94CD"
-        app:gradient_startColor="#63B8FF" />
+        app:bl_corners_radius="2dp"
+        app:bl_gradient_angle="0"
+        app:bl_gradient_endColor="#4F94CD"
+        app:bl_gradient_startColor="#63B8FF" />
     
  the effect of click
 
@@ -286,8 +286,8 @@ the first：
     android:layout_width="20dp"
     android:layout_height="20dp"
     android:layout_marginTop="5dp"
-    app:pressed_drawable="@drawable/circle_like_pressed"
-    app:unPressed_drawable="@drawable/circle_like_normal" />
+    app:bl_pressed_drawable="@drawable/circle_like_pressed"
+    app:bl_unPressed_drawable="@drawable/circle_like_normal" />
     
 equals:  
 
@@ -310,13 +310,13 @@ the second：
             android:text="有波纹触摸反馈的按钮"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            app:corners_radius="20dp"
-            app:pressed_drawable="#71C671"
-            app:ripple_color="#71C671"
-            app:ripple_enable="true"
-            app:stroke_color="#8c6822"
-            app:stroke_width="2dp"
-            app:unPressed_drawable="#7CFC00" />
+            app:bl_corners_radius="20dp"
+            app:bl_pressed_drawable="#71C671"
+            app:bl_ripple_color="#71C671"
+            app:bl_ripple_enable="true"
+            app:bl_stroke_color="#8c6822"
+            app:bl_stroke_width="2dp"
+            app:bl_unPressed_drawable="#7CFC00" />
             
 In fact, it is basically the same as shape and selector.  
 
@@ -330,8 +330,8 @@ In fact, it is basically the same as shape and selector.
         android:gravity="center"
         android:padding="0dp"
         android:text="点击文字变色"
-        app:pressed_textColor="#919DAF"
-        app:unPressed_textColor="@android:color/holo_red_dark"/>  
+        app:bl_pressed_textColor="#919DAF"
+        app:bl_unPressed_textColor="@android:color/holo_red_dark"/>
 
 4.<span id="jump1">点击填充边框变色属性</span>
 
@@ -445,12 +445,14 @@ No need to add since 1.4.3
     BackgroundLibrary.inject2(context);
     
 这样其他的库与本库同样可以生效。  
-4、selector一个item表示多个属性，暂时无法实现，如下：
+4、～～selector一个item表示多个属性，暂时无法实现，如下：～～
 
      <item android:state_pressed="true" android:state_focused="true"
         android:drawable="@drawable/button_pressed" />
-        
-因为无法用一个属性去表示两种状态，有思路的同学可以告诉我  
+
+～～因为无法用一个属性去表示两种状态，有思路的同学可以告诉我 ～～
+1.4.5以后通过bl_multi_selector，可以支持
+
 5、fragment使用无需任何处理，其Activity调用inject即可  
 6、listView，recyclerView使用也无需任何处理。
 如果不生效，只需要
