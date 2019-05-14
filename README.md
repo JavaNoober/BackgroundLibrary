@@ -38,7 +38,9 @@ selector一样，但是只需要直接在xml中加入属性即可，例如
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
 
+如果有什么问题，方便大家交流，创建了一个qq群，群号887686934，欢迎大家加入  
 
+![](https://user-gold-cdn.xitu.io/2018/11/22/1673a789b58ca9a6?w=10&h=10&f=png&s=94884)
 
 ## Apache License
        Apache License
