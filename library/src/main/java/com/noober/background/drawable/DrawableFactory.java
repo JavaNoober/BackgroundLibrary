@@ -45,8 +45,8 @@ public class DrawableFactory {
         return (AnimationDrawable) new AnimationDrawableCreator(animTa).create();
     }
 
-    public static StateListDrawable getMultiSelectorDrawable(Context context, TypedArray selectorTa) {
-        return (StateListDrawable) new MultiSelectorDrawableCreator(context, selectorTa).create();
+    public static StateListDrawable getMultiSelectorDrawable(Context context, TypedArray selectorTa, TypedArray typedArray) {
+        return (StateListDrawable) new MultiSelectorDrawableCreator(context, selectorTa, typedArray).create();
     }
 
     public static ColorStateList getMultiTextColorSelectorColorCreator(Context context, TypedArray selectorTa) {

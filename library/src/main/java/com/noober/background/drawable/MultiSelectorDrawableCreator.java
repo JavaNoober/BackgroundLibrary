@@ -3,20 +3,25 @@ package com.noober.background.drawable;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 
 import com.noober.background.R;
 import com.noober.background.common.MultiSelector;
 import com.noober.background.common.ResourceUtils;
 
+import org.xmlpull.v1.XmlPullParserException;
+
 public class MultiSelectorDrawableCreator implements ICreateDrawable {
 
     private TypedArray selectorTa;
     private Context context;
-
-    public MultiSelectorDrawableCreator(Context context, TypedArray selectorTa) {
+    private GradientDrawable gradientDrawable;
+    TypedArray typedArray;
+    public MultiSelectorDrawableCreator(Context context, TypedArray selectorTa, TypedArray typedArray) {
         this.selectorTa = selectorTa;
         this.context = context;
+        this.typedArray = typedArray;
     }
 
     @Override
@@ -56,7 +61,20 @@ public class MultiSelectorDrawableCreator implements ICreateDrawable {
                 String attrStr = vArray[p];
                 //取出资源id
                 if(p == vArray.length - 1){
-                    drawable = ResourceUtils.getDrawable(context, attrStr);
+                    int color = ResourceUtils.getColor(context, attrStr);
+                    if(typedArray.getIndexCount() > 0){
+                        try {
+                            gradientDrawable = DrawableFactory.getDrawable(typedArray);
+                        } catch (XmlPullParserException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if(gradientDrawable != null && color != -1){
+                        gradientDrawable.setColor(color);
+                        drawable = gradientDrawable;
+                    }else {
+                        drawable = ResourceUtils.getDrawable(context, attrStr);
+                    }
                     if(drawable == null){
                         throw new IllegalArgumentException("cannot find drawable from the last attribute");
                     }

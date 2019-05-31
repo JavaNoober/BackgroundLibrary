@@ -154,6 +154,9 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 stateListDrawable = DrawableFactory.getPressDrawable(drawable, typedArray, pressTa);
                 view.setClickable(true);
                 setDrawable(stateListDrawable, view, otherTa);
+            } else if(multiSelTa.getIndexCount() > 0){
+                stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa, typedArray);
+                setBackground(stateListDrawable, view);
             } else if(typedArray.getIndexCount() > 0){
                 drawable = DrawableFactory.getDrawable(typedArray);
                 setDrawable(drawable, view, otherTa);
@@ -163,9 +166,6 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 if(animTa.getBoolean(R.styleable.bl_anim_bl_anim_auto_start, false)){
                     animationDrawable.start();
                 }
-            } else if(multiSelTa.getIndexCount() > 0){
-                stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa);
-                setBackground(stateListDrawable, view);
             }
 
             if (view instanceof TextView && textTa.getIndexCount() > 0) {
