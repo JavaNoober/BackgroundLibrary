@@ -79,7 +79,7 @@
             android:textStyle="bold"
             android:background="@drawable/test_sel1"/>
 
-        <com.noober.background.view.BLEditText
+        <com.noober.background.view.BLButton
             android:padding="0dp"
             android:layout_width="300dp"
             android:layout_height="36dp"
@@ -90,8 +90,27 @@
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:textStyle="bold"
-            app:bl_multi_selector1="state_pressed,state_focused,#FFC125"
-            app:bl_multi_selector2="-state_pressed,-state_focused,#DDA0DD"/>
+            app:bl_corners_radius="3dp"
+            app:bl_stroke_width="1dp"
+            app:bl_shape="rectangle"
+            app:bl_multi_selector1="-state_enabled,#9DD1F6"
+            app:bl_multi_selector2="state_pressed,#9DD1F6"
+            app:bl_multi_selector3="-state_pressed,#1B82D1"
+            />
+
+        <com.noober.background.view.BLButton
+            android:padding="0dp"
+            android:layout_width="300dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="一条属性多个状态（原生写法）"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/downbtn_blue"
+            />
 
         <TextView
             android:layout_width="180dp"
@@ -198,6 +217,38 @@
             app:bl_stroke_dashGap="5dp"
             app:bl_stroke_dashWidth="10dp"
             app:bl_stroke_width="2dp" />
+
+
+
+        <!--<com.noober.background.view.BLRadioGroup-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:orientation="horizontal">-->
+            <!--<com.noober.background.view.BLRadioButton-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:text="按钮1"-->
+                <!--android:button="@null"-->
+                <!--android:checked="true"-->
+                <!--app:bl_checked_solid_color="#61c375"-->
+                <!--app:bl_checked_stroke_color="@android:color/white"-->
+                <!--app:bl_unChecked_solid_color="@android:color/white"-->
+                <!--app:bl_unChecked_stroke_color="#98fb98"-->
+                <!--app:bl_corners_radius="10dp"-->
+                <!--app:bl_stroke_width="1dp" />-->
+            <!--<com.noober.background.view.BLRadioButton-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:text="按钮1"-->
+                <!--android:button="@null"-->
+                <!--app:bl_corners_radius="10dp"-->
+                <!--app:bl_checked_solid_color="#61c375"-->
+                <!--app:bl_checked_stroke_color="@android:color/white"-->
+                <!--app:bl_unChecked_solid_color="@android:color/white"-->
+                <!--app:bl_unChecked_stroke_color="#98fb98"-->
+                <!--app:bl_stroke_width="1dp" />-->
+        <!--</com.noober.background.view.BLRadioGroup>-->
 
         <com.noober.background.view.BLRadioGroup
             android:layout_width="match_parent"
