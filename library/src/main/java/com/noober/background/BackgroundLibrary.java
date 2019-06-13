@@ -25,17 +25,21 @@ public class BackgroundLibrary {
         } else {
             inflater = LayoutInflater.from(context);
         }
-        BackgroundFactory factory = new BackgroundFactory();
-        if (context instanceof AppCompatActivity) {
-            final AppCompatDelegate delegate = ((AppCompatActivity) context).getDelegate();
-            factory.setInterceptFactory(new LayoutInflater.Factory() {
-                @Override
-                public View onCreateView(String name, Context context, AttributeSet attrs) {
-                    return delegate.createView(null, name, context, attrs);
-                }
-            });
+        if(inflater.getFactory2() == null){
+            BackgroundFactory factory = new BackgroundFactory();
+            if (context instanceof AppCompatActivity) {
+                final AppCompatDelegate delegate = ((AppCompatActivity) context).getDelegate();
+                factory.setInterceptFactory(new LayoutInflater.Factory() {
+                    @Override
+                    public View onCreateView(String name, Context context, AttributeSet attrs) {
+                        return delegate.createView(null, name, context, attrs);
+                    }
+                });
+            }
+            inflater.setFactory2(factory);
+        }else if(!(inflater.getFactory2() instanceof BackgroundFactory)){
+            forceSetFactory2(inflater);
         }
-        inflater.setFactory2(factory);
         return inflater;
     }
 
@@ -51,6 +55,11 @@ public class BackgroundLibrary {
         } else {
             inflater = LayoutInflater.from(context);
         }
+        forceSetFactory2(inflater);
+        return inflater;
+    }
+
+    private static void forceSetFactory2(LayoutInflater inflater) {
         try {
             Field field = LayoutInflater.class.getDeclaredField("mFactorySet");
             field.setAccessible(true);
@@ -70,6 +79,5 @@ public class BackgroundLibrary {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        return inflater;
     }
 }
