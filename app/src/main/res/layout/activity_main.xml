@@ -12,6 +12,7 @@
         android:padding="10dp"
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
+
         <com.noober.background.view.BLTextView
             android:id="@+id/ttt"
             android:layout_width="130dp"
@@ -32,11 +33,15 @@
             android:id="@+id/v_anim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bl_oneshot="false"
-            app:bl_duration="50"
             app:bl_anim_auto_start="true"
+            app:bl_duration="50"
             app:bl_frame_drawable_item0="@drawable/img00"
             app:bl_frame_drawable_item1="@drawable/img01"
+            app:bl_frame_drawable_item10="@drawable/img10"
+            app:bl_frame_drawable_item11="@drawable/img11"
+            app:bl_frame_drawable_item12="@drawable/img12"
+            app:bl_frame_drawable_item13="@drawable/img13"
+            app:bl_frame_drawable_item14="@drawable/img14"
             app:bl_frame_drawable_item2="@drawable/img02"
             app:bl_frame_drawable_item3="@drawable/img03"
             app:bl_frame_drawable_item4="@drawable/img04"
@@ -45,11 +50,7 @@
             app:bl_frame_drawable_item7="@drawable/img07"
             app:bl_frame_drawable_item8="@drawable/img08"
             app:bl_frame_drawable_item9="@drawable/img09"
-            app:bl_frame_drawable_item10="@drawable/img10"
-            app:bl_frame_drawable_item11="@drawable/img11"
-            app:bl_frame_drawable_item12="@drawable/img12"
-            app:bl_frame_drawable_item13="@drawable/img13"
-            app:bl_frame_drawable_item14="@drawable/img14"/>
+            app:bl_oneshot="false" />
 
         <TextView
             android:id="@+id/cobbAngle"
@@ -71,62 +72,79 @@
             android:layout_width="300dp"
             android:layout_height="36dp"
             android:layout_marginTop="15dp"
-            android:gravity="center"
+            android:background="@drawable/test_sel1"
             android:clickable="true"
+            android:gravity="center"
             android:text="一条属性多个状态（原生写法）"
             android:textColor="@android:color/black"
             android:textSize="18dp"
-            android:textStyle="bold"
-            android:background="@drawable/test_sel1"/>
+            android:textStyle="bold" />
 
         <com.noober.background.view.BLButton
-            android:padding="0dp"
             android:layout_width="300dp"
             android:layout_height="36dp"
             android:layout_marginTop="15dp"
             android:clickable="true"
+            android:enabled="true"
             android:gravity="center"
+            android:padding="0dp"
             android:text="一条属性多个状态（非原生写法）"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:textStyle="bold"
             app:bl_corners_radius="3dp"
-            app:bl_stroke_width="1dp"
             app:bl_shape="rectangle"
+            app:bl_stroke_width="1dp"
             app:bl_multi_selector1="-state_enabled,#9DD1F6"
             app:bl_multi_selector2="state_pressed,#9DD1F6"
-            app:bl_multi_selector3="-state_pressed,#1B82D1"
-            />
+            app:bl_multi_selector3="-state_pressed,#1B82D1"/>
 
         <com.noober.background.view.BLButton
-            android:padding="0dp"
             android:layout_width="300dp"
             android:layout_height="36dp"
             android:layout_marginTop="15dp"
-            android:clickable="true"
+            android:enabled="true"
             android:gravity="center"
-            android:text="一条属性多个状态（原生写法）"
+            android:padding="0dp"
+            android:text="一条属性多个状态（非原生写法2）"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:textStyle="bold"
+            app:bl_corners_radius="3dp"
+            app:bl_shape="rectangle"
+            app:bl_stroke_width="1dp"
+            app:bl_pressed_drawable="#9DD1F6"
+            app:bl_unEnabled_drawable="#9DD1F6"
+            app:bl_unPressed_drawable="#1B82D1" />
+
+        <com.noober.background.view.BLButton
+            android:layout_width="300dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/downbtn_blue"
-            />
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="0dp"
+            android:text="一条属性多个状态（原生写法）"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="180dp"
             android:layout_height="36dp"
             android:layout_marginTop="15dp"
+            android:clickable="true"
             android:gravity="center"
             android:text="点击边框变色"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:clickable="true"
             app:bl_pressed_solid_color="#FFDEAD"
-            app:bl_unPressed_solid_color="#E9967A"
-            app:bl_stroke_width="1dp"
             app:bl_pressed_stroke_color="#C6E2FF"
-            app:bl_unPressed_stroke_color="#98FB98"/>
+            app:bl_stroke_width="1dp"
+            app:bl_unPressed_solid_color="#E9967A"
+            app:bl_unPressed_stroke_color="#98FB98" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -150,12 +168,12 @@
             android:layout_width="130dp"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
+            android:background="@null"
             android:gravity="center"
             android:padding="0dp"
             android:text="跳转到列表"
             android:textColor="#4F94CD"
             android:textSize="20sp"
-            android:background="@null"
             app:bl_corners_radius="20dp"
             app:bl_gradient_angle="0"
             app:bl_gradient_endColor="#4F94CD"
@@ -219,35 +237,34 @@
             app:bl_stroke_width="2dp" />
 
 
-
         <!--<com.noober.background.view.BLRadioGroup-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:orientation="horizontal">-->
-            <!--<com.noober.background.view.BLRadioButton-->
-                <!--android:layout_width="100dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:text="按钮1"-->
-                <!--android:button="@null"-->
-                <!--android:checked="true"-->
-                <!--app:bl_checked_solid_color="#61c375"-->
-                <!--app:bl_checked_stroke_color="@android:color/white"-->
-                <!--app:bl_unChecked_solid_color="@android:color/white"-->
-                <!--app:bl_unChecked_stroke_color="#98fb98"-->
-                <!--app:bl_corners_radius="10dp"-->
-                <!--app:bl_stroke_width="1dp" />-->
-            <!--<com.noober.background.view.BLRadioButton-->
-                <!--android:layout_width="100dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:text="按钮1"-->
-                <!--android:button="@null"-->
-                <!--app:bl_corners_radius="10dp"-->
-                <!--app:bl_checked_solid_color="#61c375"-->
-                <!--app:bl_checked_stroke_color="@android:color/white"-->
-                <!--app:bl_unChecked_solid_color="@android:color/white"-->
-                <!--app:bl_unChecked_stroke_color="#98fb98"-->
-                <!--app:bl_stroke_width="1dp" />-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:orientation="horizontal">-->
+        <!--<com.noober.background.view.BLRadioButton-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:text="按钮1"-->
+        <!--android:button="@null"-->
+        <!--android:checked="true"-->
+        <!--app:bl_checked_solid_color="#61c375"-->
+        <!--app:bl_checked_stroke_color="@android:color/white"-->
+        <!--app:bl_unChecked_solid_color="@android:color/white"-->
+        <!--app:bl_unChecked_stroke_color="#98fb98"-->
+        <!--app:bl_corners_radius="10dp"-->
+        <!--app:bl_stroke_width="1dp" />-->
+        <!--<com.noober.background.view.BLRadioButton-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:text="按钮1"-->
+        <!--android:button="@null"-->
+        <!--app:bl_corners_radius="10dp"-->
+        <!--app:bl_checked_solid_color="#61c375"-->
+        <!--app:bl_checked_stroke_color="@android:color/white"-->
+        <!--app:bl_unChecked_solid_color="@android:color/white"-->
+        <!--app:bl_unChecked_stroke_color="#98fb98"-->
+        <!--app:bl_stroke_width="1dp" />-->
         <!--</com.noober.background.view.BLRadioGroup>-->
 
         <com.noober.background.view.BLRadioGroup
@@ -259,8 +276,8 @@
             <com.noober.background.view.BLRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="按钮1"
                 android:checked="false"
+                android:text="按钮1"
                 app:bl_checked_button_drawable="@mipmap/rg_select"
                 app:bl_corners_radius="10dp"
                 app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
@@ -284,8 +301,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@null"
-                android:textSize="15sp"
                 android:text="按钮1"
+                android:textSize="15sp"
                 app:bl_checked_drawable="@drawable/shape_gender_green"
                 app:bl_unChecked_drawable="@drawable/shape_gender_red" />
 
@@ -294,8 +311,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:button="@null"
-                android:textSize="15sp"
                 android:text="按钮2"
+                android:textSize="15sp"
                 app:bl_checked_drawable="@drawable/shape_gender_green"
                 app:bl_unChecked_drawable="@drawable/shape_gender_red" />
         </RadioGroup>
@@ -305,12 +322,12 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
+            android:background="@null"
             android:gravity="center"
             android:padding="0dp"
             android:text="有波纹触摸反馈的按钮(边框点击会变色)"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:background="@null"
             app:bl_corners_radius="20dp"
             app:bl_pressed_stroke_color="#000000"
             app:bl_ripple_color="#71C671"
@@ -339,9 +356,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:bl_position="left"
             android:background="@null"
             android:text="点赞+1"
+            app:bl_position="left"
             app:bl_pressed_drawable="@drawable/circle_like_pressed"
             app:bl_unPressed_drawable="@drawable/circle_like_normal" />
 
@@ -350,14 +367,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:bl_position="left"
             android:background="@null"
             android:text="未点赞"
-            app:bl_selected_textColor="#fbdc4a"
-            app:bl_unSelected_textColor="@android:color/black"
+            app:bl_position="left"
             app:bl_selected_drawable="@drawable/circle_like_pressed"
-            app:bl_unSelected_drawable="@drawable/circle_like_normal" />
-
+            app:bl_selected_textColor="#fbdc4a"
+            app:bl_unSelected_drawable="@drawable/circle_like_normal"
+            app:bl_unSelected_textColor="@android:color/black" />
 
 
         <Button
@@ -399,19 +415,19 @@
 
         <com.noober.background.view.BLTextView
             android:id="@+id/tv_multi"
-            android:padding="0dp"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_marginTop="15dp"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
+            android:padding="0dp"
             android:text="textView一条属性多个状态：enable=true"
             android:textSize="18dp"
             android:textStyle="bold"
             app:bl_multi_text_selector1="state_pressed,state_enabled,#EE0000"
             app:bl_multi_text_selector2="-state_pressed,-state_enabled,#ff000000"
-            app:bl_multi_text_selector3="-state_pressed,state_enabled,#DDA0DD"/>
+            app:bl_multi_text_selector3="-state_pressed,state_enabled,#DDA0DD" />
 
         <TextView
             android:layout_width="wrap_content"

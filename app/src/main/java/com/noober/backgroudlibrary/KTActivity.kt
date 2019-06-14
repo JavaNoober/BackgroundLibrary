@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class KTActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        BackgroundLibrary.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ttt.setOnClickListener {

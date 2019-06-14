@@ -7,7 +7,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.4.8'
+    implementation 'com.noober.background:core:1.5.1'
 
  
 ## Example effect
@@ -18,7 +18,7 @@ Automatic code prompt by Live Templates
 ![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/属性提示.gif)
 
 ## How to use
-1、Calling code before the 'super.onCreate' in BaseActivity
+1、before version 1.5.0, Calling code before the 'super.onCreate' in BaseActivity, after 1.5.0 no need more
     
     BackgroundLibrary.inject(context);
     
