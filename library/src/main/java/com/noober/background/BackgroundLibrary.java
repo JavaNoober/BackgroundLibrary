@@ -25,6 +25,9 @@ public class BackgroundLibrary {
         } else {
             inflater = LayoutInflater.from(context);
         }
+        if(inflater == null){
+            return null;
+        }
         if(inflater.getFactory2() == null){
             BackgroundFactory factory = new BackgroundFactory();
             if (context instanceof AppCompatActivity) {
@@ -54,6 +57,9 @@ public class BackgroundLibrary {
             inflater = ((Activity) context).getLayoutInflater();
         } else {
             inflater = LayoutInflater.from(context);
+        }
+        if(inflater == null){
+            return null;
         }
         forceSetFactory2(inflater);
         return inflater;
