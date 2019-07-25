@@ -13,6 +13,27 @@
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
 
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:background="@drawable/shape_login_button" />
+
+        <com.noober.background.view.BLButton
+            android:layout_width="130dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:bl_solid_color="#2fdcb5"
+            app:bl_corners_radius="7dp" />
+
         <com.noober.background.view.BLTextView
             android:id="@+id/ttt"
             android:layout_width="130dp"
@@ -65,7 +86,7 @@
             app:bl_corners_radius="4dp"
             app:bl_pressed_drawable="@android:color/darker_gray"
             app:bl_stroke_color="@android:color/black"
-            app:bl_stroke_width="1dp"
+            app:bl_stroke_width="0.51dp"
             app:bl_unPressed_drawable="#00FFFFFF" />
 
         <EditText

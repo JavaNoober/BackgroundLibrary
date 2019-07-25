@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import com.noober.background.BackgroundLibrary;
+
 /**
  * Created by xiaoqi on 2018/9/13
  */
@@ -15,6 +17,7 @@ public class MyApplication extends Application {
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                BackgroundLibrary.inject(activity);
             }
 
             @Override
