@@ -117,6 +117,13 @@
         <attr name="bl_unSelected_solid_color" format="color" />
         <attr name="bl_unPressed_solid_color" format="color" />
         <attr name="bl_unFocused_solid_color" format="color" />
+
+        <attr name="bl_stroke_position" format="flags">
+            <flag name="left" value="2" />
+            <flag name="top" value="4" />
+            <flag name="right" value="8" />
+            <flag name="bottom" value="16" />
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="background_press">

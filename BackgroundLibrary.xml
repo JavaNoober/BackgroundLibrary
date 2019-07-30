@@ -767,4 +767,10 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_stroke_position" value="app:bl_stroke_position=&quot;$value$&quot;" description="指定显示某个方向的边框" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
 </templateSet>

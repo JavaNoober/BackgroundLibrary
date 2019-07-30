@@ -3,9 +3,11 @@ package com.noober.background;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Outline;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
@@ -17,6 +19,7 @@ import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
@@ -148,21 +151,21 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             } else if (selectorTa.getIndexCount() > 0) {
                 stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa);
                 view.setClickable(true);
-                setDrawable(stateListDrawable, view, otherTa);
+                setDrawable(stateListDrawable, view, otherTa, typedArray);
             } else if (pressTa.getIndexCount() > 0) {
                 drawable = DrawableFactory.getDrawable(typedArray);
                 stateListDrawable = DrawableFactory.getPressDrawable(drawable, typedArray, pressTa);
                 view.setClickable(true);
-                setDrawable(stateListDrawable, view, otherTa);
+                setDrawable(stateListDrawable, view, otherTa, typedArray);
             } else if(multiSelTa.getIndexCount() > 0){
                 stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa, typedArray);
-                setBackground(stateListDrawable, view);
+                setBackground(stateListDrawable, view, typedArray);
             } else if(typedArray.getIndexCount() > 0){
                 drawable = DrawableFactory.getDrawable(typedArray);
-                setDrawable(drawable, view, otherTa);
+                setDrawable(drawable, view, otherTa, typedArray);
             } else if(animTa.getIndexCount() > 0){
                 AnimationDrawable animationDrawable = DrawableFactory.getAnimationDrawable(animTa);
-                setBackground(animationDrawable, view);
+                setBackground(animationDrawable, view, typedArray);
                 if(animTa.getBoolean(R.styleable.bl_anim_bl_anim_auto_start, false)){
                     animationDrawable.start();
                 }
@@ -181,7 +184,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
                     RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), contentDrawable, contentDrawable);
                     view.setClickable(true);
-                    view.setBackground(rippleDrawable);
+                    setBackground(rippleDrawable, view, typedArray);
                 } else if(stateListDrawable == null){
                     StateListDrawable tmpDrawable = new StateListDrawable();
                     GradientDrawable unPressDrawable = DrawableFactory.getDrawable(typedArray);
@@ -189,9 +192,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     tmpDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
                     tmpDrawable.addState(new int[]{android.R.attr.state_pressed}, unPressDrawable);
                     view.setClickable(true);
-                    setDrawable(tmpDrawable, view, otherTa);
+                    setDrawable(tmpDrawable, view, otherTa, typedArray);
                 }
             }
+
             return view;
         } catch (Exception e) {
             e.printStackTrace();
@@ -209,7 +213,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         }
     }
 
-    private static void setDrawable(Drawable drawable, View view, TypedArray otherTa){
+    private static void setDrawable(Drawable drawable, View view, TypedArray otherTa, TypedArray typedArray){
 
         if(view instanceof TextView){
             if(otherTa.hasValue(R.styleable.bl_other_bl_position)){
@@ -227,21 +231,42 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     ((TextView)view).setCompoundDrawables(null, null, null, drawable);
                 }
             }else {
-                setBackground(drawable, view);
+                setBackground(drawable, view, typedArray);
             }
         }else {
-            setBackground(drawable, view);
+            setBackground(drawable, view, typedArray);
         }
 
     }
 
-    private static void setBackground(Drawable drawable, View view) {
+    private static void setBackground(Drawable drawable, View view, TypedArray typedArray) {
+        if(typedArray.hasValue(R.styleable.background_bl_stroke_width) && typedArray.hasValue(R.styleable.background_bl_stroke_position)){
+            //bl_stroke_position flag默认值
+            int left = 1 << 1;
+            int top = 1 << 2;
+            int right = 1 << 3;
+            int bottom = 1 << 4;
+            float width = typedArray.getDimension(R.styleable.background_bl_stroke_width, 0f);
+            int position = typedArray.getInt(R.styleable.background_bl_stroke_position, 0);
+            float leftValue = hasStatus(position, left) ? width : - width;
+            float topValue = hasStatus(position, top) ? width : - width;
+            float rightValue = hasStatus(position, right) ? width : - width;
+            float bottomValue = hasStatus(position, bottom) ? width : - width;
+            drawable = new LayerDrawable(new Drawable[]{drawable});
+            ((LayerDrawable)drawable).setLayerInset(0, (int)leftValue, (int)topValue, (int)rightValue, (int)bottomValue);
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             view.setBackground(drawable);
         } else {
             view.setBackgroundDrawable(drawable);
         }
     }
+
+    private static boolean hasStatus(int flag, int status) {
+        return (flag & status) == status;
+    }
+
 
     public void setInterceptFactory(LayoutInflater.Factory factory) {
         mViewCreateFactory = factory;

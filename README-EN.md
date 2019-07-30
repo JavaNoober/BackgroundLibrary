@@ -7,10 +7,11 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.5.2'
+    implementation 'com.noober.background:core:1.5.3'
 
  
 ## Example effect
+show more in [wiki](https://github.com/JavaNoober/BackgroundLibrary/wiki)  
 
 ![](https://user-gold-cdn.xitu.io/2018/9/12/165ce13d4c0a176f?w=286&h=606&f=gif&s=807047)
 

@@ -14,33 +14,26 @@
         tools:ignore="MissingPrefix">
 
 
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="TextView"
-            android:textSize="20sp"
-            android:background="@drawable/shape_login_button" />
-
-        <com.noober.background.view.BLButton
-            android:layout_width="130dp"
+        <com.noober.background.view.BLTextView
+            android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
             android:background="@null"
             android:gravity="center"
-            android:text="TextView"
+            android:text="指定只显示左右下方的边框"
             android:textSize="20sp"
-            app:bl_solid_color="#2fdcb5"
-            app:bl_corners_radius="7dp" />
+            app:bl_stroke_width="1dp"
+            app:bl_stroke_color="@android:color/black"
+            app:bl_solid_color="@android:color/white"
+            app:bl_stroke_position="left|bottom|right"/>
 
         <com.noober.background.view.BLTextView
             android:id="@+id/ttt"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="TextView"
+            android:text="虚线圆角边框以及填充"
             android:textColor="#8c6822"
             android:textSize="20sp"
             app:bl_corners_radius="4dp"
@@ -52,6 +45,7 @@
 
         <com.noober.background.view.BLView
             android:id="@+id/v_anim"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:bl_anim_auto_start="true"
@@ -79,7 +73,7 @@
             android:layout_height="36dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="COBB ANGLE"
+            android:text="点击填充变色"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:textStyle="bold"
