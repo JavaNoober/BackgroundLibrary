@@ -9,6 +9,11 @@ Add this to your app's build.gradle：
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation 'com.noober.background:core:1.5.3'
 
+if use androidx：  
+
+    implementation "androidx.appcompat:appcompat:$supportVersion" 
+    implementation 'com.noober.background:core:1.5.3'
+
  
 ## Example effect
 show more in [wiki](https://github.com/JavaNoober/BackgroundLibrary/wiki)  
