@@ -1,30 +1,27 @@
-package com.noober.backgroudlibrary;
+package com.noober.androidx;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.noober.background.BackgroundLibrary;
-import com.noober.background.drawable.DrawableCreator;
+import androidx.annotation.Nullable;
 
-public class MainActivity extends AppCompatActivity {
+import com.noober.background.drawable.DrawableCreator;
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
+
+public class MainActivity extends RxAppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BackgroundLibrary.inject(this)
         setContentView( R.layout.activity_main);
-        getSupportFragmentManager().beginTransaction().add(R.id.fl_content, new BlankFragment()).commitAllowingStateLoss();
         Button button = findViewById(R.id.btn);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        View vAnim = findViewById(R.id.v_anim);
 //        AnimationDrawable animationDrawable = (AnimationDrawable) vAnim.getBackground();
 //        animationDrawable.start();
 
@@ -72,40 +68,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        TextView tvTest4 = findViewById(R.id.tvTest4);
-        Drawable drawable4 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
-                .setPressedDrawable(ContextCompat.getDrawable(this, R.drawable.circle_like_pressed))
-                .setUnPressedDrawable(ContextCompat.getDrawable(this, R.drawable.circle_like_normal))
-                .build();
-        tvTest4.setClickable(true);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-            tvTest4.setBackground(drawable4);
-        }else {
-            tvTest4.setBackgroundDrawable(drawable4);
-        }
+//        TextView tvTest4 = findViewById(R.id.tvTest4);
+//        Drawable drawable4 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
+//                .setPressedDrawable(ContextCompat.getDrawable(this, R.drawable.circle_like_pressed))
+//                .setUnPressedDrawable(ContextCompat.getDrawable(this, R.drawable.circle_like_normal))
+//                .build();
+//        tvTest4.setClickable(true);
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
+//            tvTest4.setBackground(drawable4);
+//        }else {
+//            tvTest4.setBackgroundDrawable(drawable4);
+//        }
 
 
-        final Button btnLike = findViewById(R.id.btn_like);
-        btnLike.setOnClickListener(new View.OnClickListener() {
-            int i = 1;
-
-            @Override
-            public void onClick(View v) {
-                btnLike.setText(String.format("点赞+%d", i++));
-            }
-        });
-        final Button btnLike2 = findViewById(R.id.btn_like2);
-        btnLike2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(btnLike2.isSelected()){
-                    btnLike2.setText("未点赞");
-                }else {
-                    btnLike2.setText("已点赞");
-                }
-                btnLike2.setSelected(!btnLike2.isSelected());
-            }
-        });
         final Button btnEnable = findViewById(R.id.btn_setEnable);
         final TextView tvMulti = findViewById(R.id.tv_multi);
         btnEnable.setOnClickListener(new View.OnClickListener() {

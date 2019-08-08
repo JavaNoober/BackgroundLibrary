@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<shape-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:shape=["rectangle" | "oval" | "Line" | "ring"] >-->
+    <!--<corners-->
+    <!--android:radius="integer"-->
+    <!--android:topLeftRadius="integer"-->
+    <!--android:topRightRadius="integer"-->
+    <!--android:bottomLeftRadius="integer"-->
+    <!--android:bottomRightRadius="integer" />-->
+    <!--<gradient-->
+    <!--android:angle="integer"-->
+    <!--android:centerX="float"-->
+    <!--android:centerY="float"-->
+    <!--android:centerColor="integer"-->
+    <!--android:endColor="color"-->
+    <!--android:gradientRadius="integer"-->
+    <!--android:startColor="color"-->
+    <!--android:type=["linear" | "radial" | "sweep"]-->
+    <!--android:useLevel=["true" | "false"] />-->
+    <!--<padding-->
+    <!--android:left="integer"-->
+    <!--android:top="integer"-->
+    <!--android:right="integer"-->
+    <!--android:bottom="integer" />-->
+    <!--<size-->
+    <!--android:width="integer"-->
+    <!--android:height="integer" />-->
+    <!--<solid-->
+    <!--android:color="color" />-->
+    <!--<stroke-->
+    <!--android:width="integer"-->
+    <!--android:color="color"-->
+    <!--android:dashWidth="integer"-->
+    <!--android:dashGap="integer" />-->
+    <!--</shape>-->
+
+    <declare-styleable name="background">
+        <attr name="bl_shape" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="oval" value="1" />
+            <enum name="line" value="2" />
+            <enum name="ring" value="3" />
+        </attr>
+
+        <attr name="bl_solid_color" format="color" />
+
+        <attr name="bl_corners_radius" format="dimension" />
+        <attr name="bl_corners_bottomLeftRadius" format="dimension" />
+        <attr name="bl_corners_bottomRightRadius" format="dimension" />
+        <attr name="bl_corners_topLeftRadius" format="dimension" />
+        <attr name="bl_corners_topRightRadius" format="dimension" />
+
+        <attr name="bl_gradient_angle" format="integer" />
+        <attr name="bl_gradient_centerX" format="float" />
+        <attr name="bl_gradient_centerY" format="float" />
+        <attr name="bl_gradient_centerColor" format="color" />
+        <attr name="bl_gradient_endColor" format="color" />
+        <attr name="bl_gradient_startColor" format="color" />
+        <attr name="bl_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_padding_left" format="dimension" />
+        <attr name="bl_padding_top" format="dimension" />
+        <attr name="bl_padding_right" format="dimension" />
+        <attr name="bl_padding_bottom" format="dimension" />
+
+        <attr name="bl_size_width" format="dimension">
+            <enum name="wrap_content" value="-2" />
+            <enum name="match_parent" value="-1" />
+        </attr>
+        <attr name="bl_size_height" format="dimension">
+            <enum name="wrap_content" value="-2" />
+            <enum name="match_parent" value="-1" />
+        </attr>
+
+        <attr name="bl_stroke_width" format="dimension" />
+        <attr name="bl_stroke_color" format="color" />
+        <attr name="bl_stroke_dashWidth" format="dimension" />
+        <attr name="bl_stroke_dashGap" format="dimension" />
+
+        <!--以下是selector事件-->
+        <attr name="bl_ripple_enable" format="boolean" />
+        <attr name="bl_ripple_color" format="color" />
+
+
+        <attr name="bl_checkable_stroke_color" format="color" />
+        <attr name="bl_checked_stroke_color" format="color" />
+        <attr name="bl_enabled_stroke_color" format="color" />
+        <attr name="bl_selected_stroke_color" format="color" />
+        <attr name="bl_pressed_stroke_color" format="color" />
+        <attr name="bl_focused_stroke_color" format="color" />
+
+        <attr name="bl_unCheckable_stroke_color" format="color" />
+        <attr name="bl_unChecked_stroke_color" format="color" />
+        <attr name="bl_unEnabled_stroke_color" format="color" />
+        <attr name="bl_unSelected_stroke_color" format="color" />
+        <attr name="bl_unPressed_stroke_color" format="color" />
+        <attr name="bl_unFocused_stroke_color" format="color" />
+
+        <attr name="bl_checkable_solid_color" format="color" />
+        <attr name="bl_checked_solid_color" format="color" />
+        <attr name="bl_enabled_solid_color" format="color" />
+        <attr name="bl_selected_solid_color" format="color" />
+        <attr name="bl_pressed_solid_color" format="color" />
+        <attr name="bl_focused_solid_color" format="color" />
+
+        <attr name="bl_unCheckable_solid_color" format="color" />
+        <attr name="bl_unChecked_solid_color" format="color" />
+        <attr name="bl_unEnabled_solid_color" format="color" />
+        <attr name="bl_unSelected_solid_color" format="color" />
+        <attr name="bl_unPressed_solid_color" format="color" />
+        <attr name="bl_unFocused_solid_color" format="color" />
+
+        <attr name="bl_stroke_position" format="flags">
+            <flag name="left" value="2" />
+            <flag name="top" value="4" />
+            <flag name="right" value="8" />
+            <flag name="bottom" value="16" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="background_press">
+        <attr name="bl_unpressed_color" format="color" />
+        <attr name="bl_pressed_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="background_selector">
+
+        <attr name="bl_checkable_drawable" format="color|reference" />
+        <attr name="bl_checked_drawable" format="color|reference" />
+        <attr name="bl_enabled_drawable" format="color|reference" />
+        <attr name="bl_selected_drawable" format="color|reference" />
+        <attr name="bl_pressed_drawable" format="color|reference" />
+        <attr name="bl_focused_drawable" format="color|reference" />
+        <attr name="bl_focused_hovered" format="color|reference" />
+        <attr name="bl_focused_activated" format="color|reference" />
+
+        <attr name="bl_unCheckable_drawable" format="color|reference" />
+        <attr name="bl_unChecked_drawable" format="color|reference" />
+        <attr name="bl_unEnabled_drawable" format="color|reference" />
+        <attr name="bl_unSelected_drawable" format="color|reference" />
+        <attr name="bl_unPressed_drawable" format="color|reference" />
+        <attr name="bl_unFocused_drawable" format="color|reference" />
+        <attr name="bl_unFocused_hovered" format="color|reference" />
+        <attr name="bl_unFocused_activated" format="color|reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="background_multi_selector">
+        <attr name="bl_multi_selector1" format="string" />
+        <attr name="bl_multi_selector2" format="string" />
+        <attr name="bl_multi_selector3" format="string" />
+        <attr name="bl_multi_selector4" format="string" />
+        <attr name="bl_multi_selector5" format="string" />
+        <attr name="bl_multi_selector6" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="background_multi_selector_text">
+        <attr name="bl_multi_text_selector1" format="string" />
+        <attr name="bl_multi_text_selector2" format="string" />
+        <attr name="bl_multi_text_selector3" format="string" />
+        <attr name="bl_multi_text_selector4" format="string" />
+        <attr name="bl_multi_text_selector5" format="string" />
+        <attr name="bl_multi_text_selector6" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="background_button_drawable">
+        <attr name="bl_checked_button_drawable" format="color|reference" />
+        <attr name="bl_unChecked_button_drawable" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="text_selector">
+        <attr name="bl_checkable_textColor" format="color" />
+        <attr name="bl_checked_textColor" format="color" />
+        <attr name="bl_enabled_textColor" format="color" />
+        <attr name="bl_selected_textColor" format="color" />
+        <attr name="bl_pressed_textColor" format="color" />
+        <attr name="bl_focused_textColor" format="color" />
+        <attr name="bl_activated_textColor" format="color" />
+        <attr name="bl_active_textColor" format="color" />
+        <attr name="bl_expanded_textColor" format="color" />
+
+        <attr name="bl_unCheckable_textColor" format="color" />
+        <attr name="bl_unChecked_textColor" format="color" />
+        <attr name="bl_unEnabled_textColor" format="color" />
+        <attr name="bl_unSelected_textColor" format="color" />
+        <attr name="bl_unPressed_textColor" format="color" />
+        <attr name="bl_unFocused_textColor" format="color" />
+        <attr name="bl_unActivated_textColor" format="color" />
+        <attr name="bl_unActive_textColor" format="color" />
+        <attr name="bl_unExpanded_textColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="bl_other">
+        <attr name="bl_position" format="enum">
+            <enum name="left" value="1" />
+            <enum name="top" value="2" />
+            <enum name="right" value="4" />
+            <enum name="bottom" value="8" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="bl_anim">
+        <attr name="bl_oneshot" format="boolean" />
+        <attr name="bl_anim_auto_start" format="boolean"/>
+        <attr name="bl_duration" format="integer"/>
+        <attr name="bl_duration_item0" format="integer"/>
+        <attr name="bl_duration_item1" format="integer"/>
+        <attr name="bl_duration_item2" format="integer"/>
+        <attr name="bl_duration_item3" format="integer"/>
+        <attr name="bl_duration_item4" format="integer"/>
+        <attr name="bl_duration_item5" format="integer"/>
+        <attr name="bl_duration_item6" format="integer"/>
+        <attr name="bl_duration_item7" format="integer"/>
+        <attr name="bl_duration_item8" format="integer"/>
+        <attr name="bl_duration_item9" format="integer"/>
+        <attr name="bl_duration_item10" format="integer"/>
+        <attr name="bl_duration_item11" format="integer"/>
+        <attr name="bl_duration_item12" format="integer"/>
+        <attr name="bl_duration_item13" format="integer"/>
+        <attr name="bl_duration_item14" format="integer"/>
+
+        <attr name="bl_frame_drawable_item0" format="reference"/>
+        <attr name="bl_frame_drawable_item1" format="reference"/>
+        <attr name="bl_frame_drawable_item2" format="reference"/>
+        <attr name="bl_frame_drawable_item3" format="reference"/>
+        <attr name="bl_frame_drawable_item4" format="reference"/>
+        <attr name="bl_frame_drawable_item5" format="reference"/>
+        <attr name="bl_frame_drawable_item6" format="reference"/>
+        <attr name="bl_frame_drawable_item7" format="reference"/>
+        <attr name="bl_frame_drawable_item8" format="reference"/>
+        <attr name="bl_frame_drawable_item9" format="reference"/>
+        <attr name="bl_frame_drawable_item10" format="reference"/>
+        <attr name="bl_frame_drawable_item11" format="reference"/>
+        <attr name="bl_frame_drawable_item12" format="reference"/>
+        <attr name="bl_frame_drawable_item13" format="reference"/>
+        <attr name="bl_frame_drawable_item14" format="reference"/>
+    </declare-styleable>
+
+</resources>
