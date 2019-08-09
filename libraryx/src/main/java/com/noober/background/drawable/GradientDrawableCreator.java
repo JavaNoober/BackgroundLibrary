@@ -313,7 +313,7 @@ public class GradientDrawableCreator implements ICreateDrawable {
                 typedArray.hasValue(R.styleable.background_bl_padding_right) &&
                 typedArray.hasValue(R.styleable.background_bl_padding_bottom)) {
             try {
-                Field paddingField = drawable.getClass().getField("mPadding");
+                Field paddingField = drawable.getClass().getDeclaredField("mPadding");
                 paddingField.setAccessible(true);
                 paddingField.set(drawable, padding);
             } catch (NoSuchFieldException e) {
