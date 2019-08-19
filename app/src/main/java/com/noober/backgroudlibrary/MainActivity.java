@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView( R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_content, new BlankFragment()).commitAllowingStateLoss();
         Button button = findViewById(R.id.btn);
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -40,8 +40,8 @@ dependencies {
 
 // If you want pre-written Activities and Fragments you can subclass as providers
     implementation 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
-//    implementation project(':libraryx')
-    implementation 'com.noober.background:corex:1.5.4-ALPHA'
+    implementation project(':libraryx')
+//    implementation 'com.noober.background:corex:1.5.4-ALPHA'
 }
 
 repositories{
