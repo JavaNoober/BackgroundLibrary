@@ -736,14 +736,18 @@ public class DrawableCreator {
             drawable.setUseLevel(useLevel);
             if (!padding.isEmpty()) {
 
-                try {
-                    Field paddingField = drawable.getClass().getField("mPadding");
-                    paddingField.setAccessible(true);
-                    paddingField.set(drawable, padding);
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    drawable.setPadding(padding.left, padding.top, padding.right, padding.bottom);
+                } else {
+                    try {
+                        Field paddingField = drawable.getClass().getDeclaredField("mPadding");
+                        paddingField.setAccessible(true);
+                        paddingField.set(drawable, padding);
+                    } catch (NoSuchFieldException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }

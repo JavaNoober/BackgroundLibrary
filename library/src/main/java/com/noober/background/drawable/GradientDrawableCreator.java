@@ -312,16 +312,19 @@ public class GradientDrawableCreator implements ICreateDrawable {
                 typedArray.hasValue(R.styleable.background_bl_padding_top) &&
                 typedArray.hasValue(R.styleable.background_bl_padding_right) &&
                 typedArray.hasValue(R.styleable.background_bl_padding_bottom)) {
-            try {
-                Field paddingField = drawable.getClass().getDeclaredField("mPadding");
-                paddingField.setAccessible(true);
-                paddingField.set(drawable, padding);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                drawable.setPadding(padding.left, padding.top, padding.right, padding.bottom);
+            } else {
+                try {
+                    Field paddingField = drawable.getClass().getDeclaredField("mPadding");
+                    paddingField.setAccessible(true);
+                    paddingField.set(drawable, padding);
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
-
         }
         return drawable;
     }

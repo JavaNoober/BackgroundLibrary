@@ -36,7 +36,7 @@ ext {
     userOrg = 'noober'
     groupId = 'com.noober.background'
     uploadName = 'LibraryForBackground'
-    publishVersion = '1.5.4'
+    publishVersion = '1.5.5'
     desc = "A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）"
     website = 'https://github.com/JavaNoober/BackgroundLibrary'
 //    gradlew clean build bintrayUpload -PbintrayUser=xiaoqiandroid -PbintrayKey=xxxxxxxxxxxxxxxx -PdryRun=false
