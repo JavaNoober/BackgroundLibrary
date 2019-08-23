@@ -37,7 +37,7 @@ public class BackgroundLibrary {
             BackgroundFactory factory = setDelegateFactory(context);
             inflater.setFactory2(factory);
         } else if (!(inflater.getFactory2() instanceof BackgroundFactory)) {
-            forceSetFactory2(inflater, context);
+            forceSetFactory2(inflater);
         }
         return inflater;
     }
@@ -73,19 +73,11 @@ public class BackgroundLibrary {
         if (inflater == null) {
             return null;
         }
-        forceSetFactory2(inflater, context);
+        forceSetFactory2(inflater);
         return inflater;
     }
 
-    /**
-     * 通过LayoutInflaterCompat去规避非SDK接口在Android Q 中的受限。
-     * 首先：设置LayoutInflaterCompat的sCheckedField为false， 保证可以设置当前mFactory2的值
-     * 第二：设置LayoutInflater的 mFactory 为空，保证LayoutInflaterCompat调用setFactory的时候不进行FactoryMerger操作
-     * 第三：反射调用LayoutInflaterCompat的forceSetFactory2方法
-     * 第四：重新设置LayoutInflater的mFactory值，防止调用Fragment的时候fragment会进行FactoryMerger操作
-     * 经过上述步骤，在Activity以及Activity中的Fragment就会变成我们想要的factory类
-     */
-    private static void forceSetFactory2(LayoutInflater inflater, Context context) {
+    private static void forceSetFactory2(LayoutInflater inflater) {
         Class<LayoutInflaterCompat> compatClass = LayoutInflaterCompat.class;
         Class<LayoutInflater> inflaterClass = LayoutInflater.class;
         try {
@@ -94,41 +86,20 @@ public class BackgroundLibrary {
             sCheckedField.setBoolean(inflater, false);
             Field mFactory = inflaterClass.getDeclaredField("mFactory");
             mFactory.setAccessible(true);
-            mFactory.set(inflater, null);
-
-            Method method = compatClass.getDeclaredMethod("forceSetFactory2", LayoutInflater.class, LayoutInflater.Factory2.class);
-            method.setAccessible(true);
-            BackgroundFactory factory = setDelegateFactory(context);
-            method.invoke(null, inflater, factory);
+            Field mFactory2 = inflaterClass.getDeclaredField("mFactory2");
+            mFactory2.setAccessible(true);
+            BackgroundFactory factory = new BackgroundFactory();
+            if (inflater.getFactory2() != null) {
+                factory.setInterceptFactory2(inflater.getFactory2());
+            } else if (inflater.getFactory() != null) {
+                factory.setInterceptFactory(inflater.getFactory());
+            }
+            mFactory2.set(inflater, factory);
             mFactory.set(inflater, factory);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
             e.printStackTrace();
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-//        try {
-//            Field field = LayoutInflater.class.getDeclaredField("mFactorySet");
-//            field.setAccessible(true);
-//            field.setBoolean(inflater, false);
-//
-//            BackgroundFactory factory = new BackgroundFactory();
-//            if (inflater.getFactory2() != null) {
-//                factory.setInterceptFactory2(inflater.getFactory2());
-//            } else if (inflater.getFactory() != null) {
-//                factory.setInterceptFactory(inflater.getFactory());
-//            }
-//            inflater.setFactory2(factory);
-//        } catch (NoSuchFieldException e) {
-//            e.printStackTrace();
-//        } catch (IllegalArgumentException e) {
-//            e.printStackTrace();
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        }
-//        LayoutInflaterCompat.setFactory2(inflater.cloneInContext(context), setDelegateFactory(context));
     }
 }
