@@ -13,7 +13,6 @@
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
 
-
         <com.noober.background.view.BLTextView
             android:layout_width="wrap_content"
             android:layout_height="36dp"
@@ -32,6 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
+            app:bl_padding_left= "15dp"
+            app:bl_padding_top= "15dp"
+            app:bl_padding_bottom= "5dp"
+            app:bl_padding_right= "5dp"
             android:gravity="center"
             android:text="虚线圆角边框以及填充"
             android:textColor="#8c6822"
@@ -494,10 +497,10 @@
 
         </FrameLayout>
 
-        <!--<fragment-->
-            <!--android:id="@+id/fragmentTest"-->
-            <!--android:name="com.noober.backgroudlibrary.BlankFragment"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" />-->
+<!--        <fragment-->
+<!--            android:id="@+id/fragmentTest"-->
+<!--            android:name="com.noober.backgroudlibrary.BlankFragment"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

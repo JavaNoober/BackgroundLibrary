@@ -131,6 +131,9 @@ public class DrawableCreator {
 
         private boolean hasSelectDrawable = false;
 
+        private GradientDrawable baseGradientDrawable = null;
+        private StateListDrawable baseStateListDrawable = null;
+
         public Builder setShape(Shape shape) {
             this.shape = shape;
             return this;
@@ -481,6 +484,17 @@ public class DrawableCreator {
             return this;
         }
 
+        public Builder setBaseGradientDrawable(GradientDrawable baseGradientDrawable) {
+            this.baseGradientDrawable = baseGradientDrawable;
+            return this;
+        }
+
+        public Builder setBaseStateListDrawable(StateListDrawable baseStateListDrawable) {
+            this.baseStateListDrawable = baseStateListDrawable;
+            return this;
+        }
+
+
         public Drawable build() {
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
@@ -581,7 +595,7 @@ public class DrawableCreator {
         }
 
         private StateListDrawable getStateListDrawable() {
-            StateListDrawable stateListDrawable = null;
+            StateListDrawable stateListDrawable = baseStateListDrawable;
             if (checkableDrawable != null) {
                 stateListDrawable = getStateListDrawable(stateListDrawable);
                 stateListDrawable.addState(new int[]{android.R.attr.state_checkable}, checkableDrawable);
@@ -651,7 +665,10 @@ public class DrawableCreator {
 
         @NonNull
         private GradientDrawable getGradientDrawable() {
-            GradientDrawable drawable = new GradientDrawable();
+            GradientDrawable drawable = baseGradientDrawable;
+            if (drawable == null) {
+                drawable = new GradientDrawable();
+            }
             drawable.setShape(shape.value);
 
             if (cornersRadius != null) {
