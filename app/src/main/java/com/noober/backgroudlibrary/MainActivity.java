@@ -3,7 +3,6 @@ package com.noober.backgroudlibrary;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.noober.background.BackgroundLibrary;
+import com.noober.background.annotation.BLUsed;
 import com.noober.background.drawable.DrawableCreator;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,13 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_content, new BlankFragment()).commitAllowingStateLoss();
-        Button button = findViewById(R.id.btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ListActivity.class));
-            }
-        });
 
         View vAnim = findViewById(R.id.v_anim);
 //        AnimationDrawable animationDrawable = (AnimationDrawable) vAnim.getBackground();
@@ -125,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
     public int dip2px(float dipValue) {
         float scale = getResources().getDisplayMetrics().density;
         return (int)(dipValue * scale + 0.5F);
+    }
+
+    @BLUsed
+    private void jumpToList(){
+        startActivity(new Intent(MainActivity.this, ListActivity.class));
     }
 
 }

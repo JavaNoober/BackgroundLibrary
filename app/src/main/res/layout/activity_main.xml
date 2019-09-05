@@ -31,15 +31,15 @@
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
-            app:bl_padding_left= "15dp"
-            app:bl_padding_top= "15dp"
-            app:bl_padding_bottom= "5dp"
-            app:bl_padding_right= "5dp"
             android:gravity="center"
             android:text="虚线圆角边框以及填充"
             android:textColor="#8c6822"
             android:textSize="20sp"
             app:bl_corners_radius="4dp"
+            app:bl_padding_bottom="5dp"
+            app:bl_padding_left="15dp"
+            app:bl_padding_right="5dp"
+            app:bl_padding_top="15dp"
             app:bl_solid_color="#E3B666"
             app:bl_stroke_color="#8c6822"
             app:bl_stroke_dashGap="5dp"
@@ -181,7 +181,7 @@
             android:textColor="#8c6822"
             android:textSize="20sp" />
 
-        <com.noober.background.view.BLButton
+        <Button
             android:id="@+id/btn"
             android:layout_width="130dp"
             android:layout_height="36dp"
@@ -193,6 +193,8 @@
             android:textColor="#4F94CD"
             android:textSize="20sp"
             app:bl_corners_radius="20dp"
+            android:onClick="finish"
+            android:clickable="true"
             app:bl_gradient_angle="0"
             app:bl_gradient_endColor="#4F94CD"
             app:bl_gradient_startColor="#63B8FF"
@@ -497,10 +499,10 @@
 
         </FrameLayout>
 
-<!--        <fragment-->
-<!--            android:id="@+id/fragmentTest"-->
-<!--            android:name="com.noober.backgroudlibrary.BlankFragment"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent" />-->
+        <!--        <fragment-->
+        <!--            android:id="@+id/fragmentTest"-->
+        <!--            android:name="com.noober.backgroudlibrary.BlankFragment"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent" />-->
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

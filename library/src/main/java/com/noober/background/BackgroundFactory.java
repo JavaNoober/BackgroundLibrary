@@ -3,7 +3,6 @@ package com.noober.background;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Outline;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -19,7 +18,6 @@ import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewOutlineProvider;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
@@ -27,6 +25,10 @@ import com.noober.background.drawable.DrawableFactory;
 import com.noober.background.view.Const;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BackgroundFactory implements LayoutInflater.Factory2 {
@@ -38,10 +40,12 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     private static final Object[] mConstructorArgs = new Object[2];
     private static final Map<String, Constructor<? extends View>> sConstructorMap = new ArrayMap<>();
 
+    private static final HashMap<String, HashMap<String, Method>> methodMap = new HashMap<>();
+
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
         //如果是blview，代表已经进行了背景设置，无需再次创建，留给系统创建就行
-        if(name.startsWith("com.noober.background.view")){
+        if (name.startsWith("com.noober.background.view")) {
             return null;
         }
 //        name = switchBLViewToOriginal(name);
@@ -60,55 +64,56 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     }
 
     private String switchBLViewToOriginal(String name) {
-        if(name.equals(Const.BLButton)){
+        if (name.equals(Const.BLButton)) {
             name = "Button";
-        }else if(name.equals(Const.BLCheckBox)){
+        } else if (name.equals(Const.BLCheckBox)) {
             name = "CheckBox";
-        }else if(name.equals(Const.BLEditText)){
+        } else if (name.equals(Const.BLEditText)) {
             name = "EditText";
-        }else if(name.equals(Const.BLFrameLayout)){
+        } else if (name.equals(Const.BLFrameLayout)) {
             name = "FrameLayout";
-        }else if(name.equals(Const.BLGridLayout)){
+        } else if (name.equals(Const.BLGridLayout)) {
             name = "GridLayout";
-        }else if(name.equals(Const.BLGridView)){
+        } else if (name.equals(Const.BLGridView)) {
             name = "GridView";
-        }else if(name.equals(Const.BLImageButton)){
+        } else if (name.equals(Const.BLImageButton)) {
             name = "ImageButton";
-        }else if(name.equals(Const.BLImageView)){
+        } else if (name.equals(Const.BLImageView)) {
             name = "ImageView";
-        }else if(name.equals(Const.BLLinearLayout)){
+        } else if (name.equals(Const.BLLinearLayout)) {
             name = "LinearLayout";
-        }else if(name.equals(Const.BLListView)){
+        } else if (name.equals(Const.BLListView)) {
             name = "ListView";
-        }else if(name.equals(Const.BLRadioButton)){
+        } else if (name.equals(Const.BLRadioButton)) {
             name = "RadioButton";
-        }else if(name.equals(Const.BLRadioGroup)){
+        } else if (name.equals(Const.BLRadioGroup)) {
             name = "RadioGroup";
-        }else if(name.equals(Const.BLRelativeLayout)){
+        } else if (name.equals(Const.BLRelativeLayout)) {
             name = "RelativeLayout";
-        }else if(name.equals(Const.BLScrollView)){
+        } else if (name.equals(Const.BLScrollView)) {
             name = "ScrollView";
-        }else if(name.equals(Const.BLTextView)){
+        } else if (name.equals(Const.BLTextView)) {
             name = "TextView";
-        }else if(name.equals(Const.BLView)){
+        } else if (name.equals(Const.BLView)) {
             name = "View";
-        }else if(name.equals(Const.BLConstraintLayout)){
+        } else if (name.equals(Const.BLConstraintLayout)) {
             name = "android.support.constraint.ConstraintLayout";
         }
         return name;
     }
 
     @Nullable
-    public static View setViewBackground(Context context, AttributeSet attrs, View view){
+    public static View setViewBackground(Context context, AttributeSet attrs, View view) {
         return setViewBackground(null, context, attrs, view);
     }
 
     /**
      * 根据属性设置图片背景
-     * @param name view的名字
+     *
+     * @param name    view的名字
      * @param context 上下文
-     * @param attrs bl属性
-     * @param view view
+     * @param attrs   bl属性
+     * @param view    view
      * @return view
      */
     @Nullable
@@ -136,16 +141,16 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 return null;
             }
             //R.styleable.background_selector 和 R.styleable.background_multi_selector的属性不能同时使用
-            if(selectorTa.getIndexCount() > 0 && multiSelTa.getIndexCount() > 0){
+            if (selectorTa.getIndexCount() > 0 && multiSelTa.getIndexCount() > 0) {
                 throw new IllegalArgumentException("Background_selector and background_multi_selector cannot be used simultaneously");
             }
-            if(textTa.getIndexCount() > 0 && multiTextTa.getIndexCount() > 0){
+            if (textTa.getIndexCount() > 0 && multiTextTa.getIndexCount() > 0) {
                 throw new IllegalArgumentException("text_selector and background_multi_selector_text cannot be used simultaneously");
             }
 
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
-            if(buttonTa.getIndexCount() > 0 && view instanceof CompoundButton){
+            if (buttonTa.getIndexCount() > 0 && view instanceof CompoundButton) {
                 view.setClickable(true);
                 ((CompoundButton) view).setButtonDrawable(DrawableFactory.getButtonDrawable(typedArray, buttonTa));
             } else if (selectorTa.getIndexCount() > 0) {
@@ -157,23 +162,23 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 stateListDrawable = DrawableFactory.getPressDrawable(drawable, typedArray, pressTa);
                 view.setClickable(true);
                 setDrawable(stateListDrawable, view, otherTa, typedArray);
-            } else if(multiSelTa.getIndexCount() > 0){
+            } else if (multiSelTa.getIndexCount() > 0) {
                 stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa, typedArray);
                 setBackground(stateListDrawable, view, typedArray);
-            } else if(typedArray.getIndexCount() > 0){
+            } else if (typedArray.getIndexCount() > 0) {
                 drawable = DrawableFactory.getDrawable(typedArray);
                 setDrawable(drawable, view, otherTa, typedArray);
-            } else if(animTa.getIndexCount() > 0){
+            } else if (animTa.getIndexCount() > 0) {
                 AnimationDrawable animationDrawable = DrawableFactory.getAnimationDrawable(animTa);
                 setBackground(animationDrawable, view, typedArray);
-                if(animTa.getBoolean(R.styleable.bl_anim_bl_anim_auto_start, false)){
+                if (animTa.getBoolean(R.styleable.bl_anim_bl_anim_auto_start, false)) {
                     animationDrawable.start();
                 }
             }
 
             if (view instanceof TextView && textTa.getIndexCount() > 0) {
                 ((TextView) view).setTextColor(DrawableFactory.getTextSelectorColor(textTa));
-            }else if(view instanceof TextView && multiTextTa.getIndexCount() > 0){
+            } else if (view instanceof TextView && multiTextTa.getIndexCount() > 0) {
                 ((TextView) view).setTextColor(DrawableFactory.getMultiTextColorSelectorColorCreator(context, multiTextTa));
             }
 
@@ -185,7 +190,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), contentDrawable, contentDrawable);
                     view.setClickable(true);
                     setBackground(rippleDrawable, view, typedArray);
-                } else if(stateListDrawable == null){
+                } else if (stateListDrawable == null) {
                     StateListDrawable tmpDrawable = new StateListDrawable();
                     GradientDrawable unPressDrawable = DrawableFactory.getDrawable(typedArray);
                     unPressDrawable.setColor(color);
@@ -193,6 +198,27 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     tmpDrawable.addState(new int[]{android.R.attr.state_pressed}, unPressDrawable);
                     view.setClickable(true);
                     setDrawable(tmpDrawable, view, otherTa, typedArray);
+                }
+            }
+
+            if (otherTa.hasValue(R.styleable.bl_other_bl_function)) {
+                String methodName = otherTa.getString(R.styleable.bl_other_bl_function);
+                if (methodName != null) {
+                    final Context currentContext = view.getContext();
+                    final Class parentClass = currentContext.getClass();
+                    final Method method = getMethod(parentClass, methodName);
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            try {
+                                method.invoke(currentContext);
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            } catch (InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
                 }
             }
 
@@ -213,34 +239,77 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         }
     }
 
-    private static void setDrawable(Drawable drawable, View view, TypedArray otherTa, TypedArray typedArray){
+    private static Method getMethod(Class clazz, String methodName) {
+        Method method = null;
+        HashMap<String, Method> methodHashMap = methodMap.get(clazz.getCanonicalName());
+        if (methodHashMap != null) {
+            method = methodMap.get(clazz.getCanonicalName()).get(methodName);
+        } else {
+            methodHashMap = new HashMap<>();
+            methodMap.put(clazz.getCanonicalName(), methodHashMap);
+        }
+        if (method == null) {
+            method = findMethod(clazz, methodName);
+            if (method != null) {
+                methodHashMap.put(methodName, method);
+            }
+        }
+        return method;
+    }
 
-        if(view instanceof TextView){
-            if(otherTa.hasValue(R.styleable.bl_other_bl_position)){
-                if(otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 1){
+
+    private static Method findMethod(Class clazz, String methodName) {
+        Method method;
+        try {
+            method = clazz.getMethod(methodName);
+        } catch (NoSuchMethodException e) {
+            method = findDeclaredMethod(clazz, methodName);
+        }
+        return method;
+    }
+
+    private static Method findDeclaredMethod(Class clazz, String methodName) {
+        Method method = null;
+        try {
+            method = clazz.getDeclaredMethod(methodName);
+            method.setAccessible(true);
+        } catch (NoSuchMethodException e) {
+            if (clazz.getSuperclass() != null) {
+                method = findDeclaredMethod(clazz.getSuperclass(), methodName);
+            }
+        }
+        return method;
+    }
+
+
+    private static void setDrawable(Drawable drawable, View view, TypedArray otherTa, TypedArray typedArray) {
+
+        if (view instanceof TextView) {
+            if (otherTa.hasValue(R.styleable.bl_other_bl_position)) {
+                if (otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 1) {
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    ((TextView)view).setCompoundDrawables(drawable, null, null, null);
-                }else if(otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 2){
+                    ((TextView) view).setCompoundDrawables(drawable, null, null, null);
+                } else if (otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 2) {
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    ((TextView)view).setCompoundDrawables(null, drawable, null, null);
-                }else if(otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 4){
+                    ((TextView) view).setCompoundDrawables(null, drawable, null, null);
+                } else if (otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 4) {
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    ((TextView)view).setCompoundDrawables(null, null, drawable, null);
-                }else if(otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 8){
+                    ((TextView) view).setCompoundDrawables(null, null, drawable, null);
+                } else if (otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 8) {
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    ((TextView)view).setCompoundDrawables(null, null, null, drawable);
+                    ((TextView) view).setCompoundDrawables(null, null, null, drawable);
                 }
-            }else {
+            } else {
                 setBackground(drawable, view, typedArray);
             }
-        }else {
+        } else {
             setBackground(drawable, view, typedArray);
         }
 
     }
 
     private static void setBackground(Drawable drawable, View view, TypedArray typedArray) {
-        if(typedArray.hasValue(R.styleable.background_bl_stroke_width) && typedArray.hasValue(R.styleable.background_bl_stroke_position)){
+        if (typedArray.hasValue(R.styleable.background_bl_stroke_width) && typedArray.hasValue(R.styleable.background_bl_stroke_position)) {
             //bl_stroke_position flag默认值
             int left = 1 << 1;
             int top = 1 << 2;
@@ -248,12 +317,12 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             int bottom = 1 << 4;
             float width = typedArray.getDimension(R.styleable.background_bl_stroke_width, 0f);
             int position = typedArray.getInt(R.styleable.background_bl_stroke_position, 0);
-            float leftValue = hasStatus(position, left) ? width : - width;
-            float topValue = hasStatus(position, top) ? width : - width;
-            float rightValue = hasStatus(position, right) ? width : - width;
-            float bottomValue = hasStatus(position, bottom) ? width : - width;
+            float leftValue = hasStatus(position, left) ? width : -width;
+            float topValue = hasStatus(position, top) ? width : -width;
+            float rightValue = hasStatus(position, right) ? width : -width;
+            float bottomValue = hasStatus(position, bottom) ? width : -width;
             drawable = new LayerDrawable(new Drawable[]{drawable});
-            ((LayerDrawable)drawable).setLayerInset(0, (int)leftValue, (int)topValue, (int)rightValue, (int)bottomValue);
+            ((LayerDrawable) drawable).setLayerInset(0, (int) leftValue, (int) topValue, (int) rightValue, (int) bottomValue);
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -277,7 +346,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     }
 
     private static View createViewFromTag(Context context, String name, AttributeSet attrs) {
-        if(TextUtils.isEmpty(name)){
+        if (TextUtils.isEmpty(name)) {
             return null;
         }
         if (name.equals("view")) {
