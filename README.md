@@ -20,7 +20,12 @@ A framework for directly generating shape through Tags, no need to write shape.x
 
 ## 使用文档
 
-**无需任何代码，直接加入bl标签属性即可，与原生view无缝衔接**，具体使用方法以及属性内容请查看[wiki](https://github.com/JavaNoober/BackgroundLibrary/wiki)
+**无需任何代码，直接加入bl标签属性即可，与原生view无缝衔接**，具体使用方法以及属性内容请查看[wiki](https://github.com/JavaNoober/BackgroundLibrary/wiki)  
+**重要的事情说3遍!!!**  
+[wiki](https://github.com/JavaNoober/BackgroundLibrary/wiki)  
+[wiki](https://github.com/JavaNoober/BackgroundLibrary/wiki)  
+[wiki](https://github.com/JavaNoober/BackgroundLibrary/wiki)  
+
 ## 示例效果
 
 ![](https://raw.githubusercontent.com/JavaNoober/BackgroundLibrary/master/test/show.gif)
