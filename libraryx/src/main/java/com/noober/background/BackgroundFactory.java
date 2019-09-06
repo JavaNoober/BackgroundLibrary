@@ -26,6 +26,9 @@ import com.noober.background.drawable.DrawableFactory;
 import com.noober.background.view.Const;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Map;
 
 public class BackgroundFactory implements LayoutInflater.Factory2 {
@@ -36,6 +39,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     private static final Class<?>[] sConstructorSignature = new Class[]{Context.class, AttributeSet.class};
     private static final Object[] mConstructorArgs = new Object[2];
     private static final Map<String, Constructor<? extends View>> sConstructorMap = new ArrayMap<>();
+    private static final HashMap<String, HashMap<String, Method>> methodMap = new HashMap<>();
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
@@ -195,6 +199,27 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 }
             }
 
+            if (otherTa.hasValue(R.styleable.bl_other_bl_function)) {
+                String methodName = otherTa.getString(R.styleable.bl_other_bl_function);
+                if (!TextUtils.isEmpty(methodName)) {
+                    final Context currentContext = view.getContext();
+                    final Class parentClass = currentContext.getClass();
+                    final Method method = getMethod(parentClass, methodName);
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            try {
+                                method.invoke(currentContext);
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            } catch (InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+
             return view;
         } catch (Exception e) {
             e.printStackTrace();
@@ -211,6 +236,50 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             multiTextTa.recycle();
         }
     }
+
+
+    private static Method getMethod(Class clazz, String methodName) {
+        Method method = null;
+        HashMap<String, Method> methodHashMap = methodMap.get(clazz.getCanonicalName());
+        if (methodHashMap != null) {
+            method = methodMap.get(clazz.getCanonicalName()).get(methodName);
+        } else {
+            methodHashMap = new HashMap<>();
+            methodMap.put(clazz.getCanonicalName(), methodHashMap);
+        }
+        if (method == null) {
+            method = findMethod(clazz, methodName);
+            if (method != null) {
+                methodHashMap.put(methodName, method);
+            }
+        }
+        return method;
+    }
+
+
+    private static Method findMethod(Class clazz, String methodName) {
+        Method method;
+        try {
+            method = clazz.getMethod(methodName);
+        } catch (NoSuchMethodException e) {
+            method = findDeclaredMethod(clazz, methodName);
+        }
+        return method;
+    }
+
+    private static Method findDeclaredMethod(Class clazz, String methodName) {
+        Method method = null;
+        try {
+            method = clazz.getDeclaredMethod(methodName);
+            method.setAccessible(true);
+        } catch (NoSuchMethodException e) {
+            if (clazz.getSuperclass() != null) {
+                method = findDeclaredMethod(clazz.getSuperclass(), methodName);
+            }
+        }
+        return method;
+    }
+
 
     private static void setDrawable(Drawable drawable, View view, TypedArray otherTa, TypedArray typedArray){
 

@@ -205,6 +205,8 @@
             <enum name="right" value="4" />
             <enum name="bottom" value="8" />
         </attr>
+
+        <attr name="bl_function" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="bl_anim">

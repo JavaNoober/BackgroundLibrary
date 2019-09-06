@@ -10,12 +10,12 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.5.7'
+    implementation 'com.noober.background:core:1.5.8'
 
 如果项目使用了androidx：  
 
     implementation "androidx.appcompat:appcompat:$supportVersion" 
-    implementation 'com.noober.background:core:1.5.7'
+    implementation 'com.noober.background:core:1.5.8'
    
 
 ## 使用文档
@@ -265,6 +265,18 @@ style中不要加入"app:", 直接写属性名即可
             app:bl_frame_drawable_item12="@drawable/img12"
             app:bl_frame_drawable_item13="@drawable/img13"
             app:bl_frame_drawable_item14="@drawable/img14"/>
+
+9、甚至支持直接在xml中设置方法，暂时只支持无参方法，支持父类方法
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="320dp"
+            android:layout_height="36dp"
+            android:text="通过bl_function属性跳转到列表"
+            app:bl_function="finish"/>
+            
+加入bl_function属性即可，这样控件就增加了finish点击事件，很多时候返回键只是一个finish，我们仅需要加入该属性即可，
+当然使用场景还有很多。
 
 如果有什么问题，方便大家交流，创建了一个qq群，群号887686934，欢迎大家加入  
 

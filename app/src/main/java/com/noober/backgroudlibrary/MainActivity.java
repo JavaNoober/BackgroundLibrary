@@ -119,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         return (int)(dipValue * scale + 0.5F);
     }
 
-    @BLUsed
     private void jumpToList(){
         startActivity(new Intent(MainActivity.this, ListActivity.class));
     }

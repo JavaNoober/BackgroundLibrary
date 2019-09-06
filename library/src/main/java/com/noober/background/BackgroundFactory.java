@@ -28,7 +28,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class BackgroundFactory implements LayoutInflater.Factory2 {
@@ -39,7 +38,6 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     private static final Class<?>[] sConstructorSignature = new Class[]{Context.class, AttributeSet.class};
     private static final Object[] mConstructorArgs = new Object[2];
     private static final Map<String, Constructor<? extends View>> sConstructorMap = new ArrayMap<>();
-
     private static final HashMap<String, HashMap<String, Method>> methodMap = new HashMap<>();
 
     @Override
@@ -203,7 +201,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 
             if (otherTa.hasValue(R.styleable.bl_other_bl_function)) {
                 String methodName = otherTa.getString(R.styleable.bl_other_bl_function);
-                if (methodName != null) {
+                if (!TextUtils.isEmpty(methodName)) {
                     final Context currentContext = view.getContext();
                     final Class parentClass = currentContext.getClass();
                     final Method method = getMethod(parentClass, methodName);
