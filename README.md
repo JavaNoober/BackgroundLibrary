@@ -10,12 +10,12 @@ A framework for directly generating shape through Tags, no need to write shape.x
 依赖方式：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.5.8'
+    implementation 'com.noober.background:core:1.5.9'
 
 如果项目使用了androidx：  
 
     implementation "androidx.appcompat:appcompat:$supportVersion" 
-    implementation 'com.noober.background:core:1.5.8'
+    implementation 'com.noober.background:core:1.5.9'
    
 
 ## 使用文档

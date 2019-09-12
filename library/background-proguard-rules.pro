@@ -22,3 +22,5 @@
 
 -dontwarn com.noober.background.**
 -keep public class com.noober.background.** {*;}
+-keep public class android.support.v4.view.** {*;}
+-keep public class android.view.LayoutInflater.** {*;}
