@@ -205,18 +205,20 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     final Context currentContext = view.getContext();
                     final Class parentClass = currentContext.getClass();
                     final Method method = getMethod(parentClass, methodName);
-                    view.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            try {
-                                method.invoke(currentContext);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (InvocationTargetException e) {
-                                e.printStackTrace();
+                    if(method != null){
+                        view.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                try {
+                                    method.invoke(currentContext);
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                } catch (InvocationTargetException e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             }
 
