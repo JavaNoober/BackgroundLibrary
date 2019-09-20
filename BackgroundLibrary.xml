@@ -779,4 +779,28 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_padding_left" value="app:bl_padding_left=&quot;$value$&quot;" description="paddingLeft属性" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_padding_top" value="app:bl_padding_top=&quot;$value$&quot;" description="paddingTop属性" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_padding_right" value="app:bl_padding_right=&quot;$value$&quot;" description="paddingRight属性" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_padding_bottom" value="app:bl_padding_bottom=&quot;$value$&quot;" description="paddingBottom属性" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
 </templateSet>
