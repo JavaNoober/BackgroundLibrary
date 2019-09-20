@@ -7,12 +7,12 @@ A framework for directly generating shape through Tags, no need to write shape.x
 Add this to your app's build.gradle：
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.5.9'
+    implementation 'com.noober.background:core:1.6.0'
 
 if use androidx：  
 
     implementation "androidx.appcompat:appcompat:$supportVersion" 
-    implementation 'com.noober.background:core:1.5.9'
+    implementation 'com.noober.background:core:1.6.0'
 
  
 ## Example effect

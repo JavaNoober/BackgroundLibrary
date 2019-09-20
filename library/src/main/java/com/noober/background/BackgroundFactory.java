@@ -46,7 +46,6 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         if (name.startsWith("com.noober.background.view")) {
             return null;
         }
-//        name = switchBLViewToOriginal(name);
         View view = null;
 
         //防止与其他调用factory库冲突，例如字体、皮肤替换库，用已经设置的factory来创建view
@@ -59,45 +58,6 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             view = mViewCreateFactory.onCreateView(name, context, attrs);
         }
         return setViewBackground(name, context, attrs, view);
-    }
-
-    private String switchBLViewToOriginal(String name) {
-        if (name.equals(Const.BLButton)) {
-            name = "Button";
-        } else if (name.equals(Const.BLCheckBox)) {
-            name = "CheckBox";
-        } else if (name.equals(Const.BLEditText)) {
-            name = "EditText";
-        } else if (name.equals(Const.BLFrameLayout)) {
-            name = "FrameLayout";
-        } else if (name.equals(Const.BLGridLayout)) {
-            name = "GridLayout";
-        } else if (name.equals(Const.BLGridView)) {
-            name = "GridView";
-        } else if (name.equals(Const.BLImageButton)) {
-            name = "ImageButton";
-        } else if (name.equals(Const.BLImageView)) {
-            name = "ImageView";
-        } else if (name.equals(Const.BLLinearLayout)) {
-            name = "LinearLayout";
-        } else if (name.equals(Const.BLListView)) {
-            name = "ListView";
-        } else if (name.equals(Const.BLRadioButton)) {
-            name = "RadioButton";
-        } else if (name.equals(Const.BLRadioGroup)) {
-            name = "RadioGroup";
-        } else if (name.equals(Const.BLRelativeLayout)) {
-            name = "RelativeLayout";
-        } else if (name.equals(Const.BLScrollView)) {
-            name = "ScrollView";
-        } else if (name.equals(Const.BLTextView)) {
-            name = "TextView";
-        } else if (name.equals(Const.BLView)) {
-            name = "View";
-        } else if (name.equals(Const.BLConstraintLayout)) {
-            name = "android.support.constraint.ConstraintLayout";
-        }
-        return name;
     }
 
     @Nullable
