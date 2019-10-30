@@ -22,7 +22,6 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.noober.background.drawable.DrawableFactory;
-import com.noober.background.view.Const;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

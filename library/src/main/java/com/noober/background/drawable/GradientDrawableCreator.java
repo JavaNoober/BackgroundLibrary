@@ -25,7 +25,7 @@ public class GradientDrawableCreator implements ICreateDrawable {
     }
 
     @Override
-    public Drawable create() throws XmlPullParserException {
+    public GradientDrawable create() throws XmlPullParserException {
         GradientDrawable drawable = new GradientDrawable();
         float[] cornerRadius = new float[8];
         float sizeWidth = 0;

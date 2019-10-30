@@ -25,7 +25,7 @@ public class MultiSelectorDrawableCreator implements ICreateDrawable {
     }
 
     @Override
-    public Drawable create() {
+    public StateListDrawable create() {
         StateListDrawable stateListDrawable = new StateListDrawable();
 
         for (int i = 0; i < selectorTa.getIndexCount(); i++) {

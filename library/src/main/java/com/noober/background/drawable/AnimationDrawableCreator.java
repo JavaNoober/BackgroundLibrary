@@ -18,7 +18,7 @@ public class AnimationDrawableCreator implements ICreateDrawable {
     }
 
     @Override
-    public Drawable create() throws Exception {
+    public AnimationDrawable create() {
         for(int i = 0; i < animationTa.getIndexCount(); i ++){
             int attr = animationTa.getIndex(i);
             if(attr == R.styleable.bl_anim_bl_duration){
