@@ -19,17 +19,16 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.collection.ArrayMap;
-
 import com.noober.background.drawable.DrawableFactory;
-import com.noober.background.view.Const;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.Nullable;
+import androidx.collection.ArrayMap;
 
 public class BackgroundFactory implements LayoutInflater.Factory2 {
 
@@ -85,6 +84,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         TypedArray animTa = context.obtainStyledAttributes(attrs, R.styleable.bl_anim);
         TypedArray multiSelTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector);
         TypedArray multiTextTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector_text);
+        TypedArray selectorPre21Ta = null;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            selectorPre21Ta = context.obtainStyledAttributes(attrs, R.styleable.background_selector_pre_21);
+        }
 
         try {
             if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0 && pressTa.getIndexCount() == 0
@@ -124,8 +127,13 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa, typedArray);
                 setBackground(stateListDrawable, view, typedArray);
             } else if(typedArray.getIndexCount() > 0){
-                drawable = DrawableFactory.getDrawable(typedArray);
-                setDrawable(drawable, view, otherTa, typedArray);
+                if (selectorPre21Ta != null && selectorPre21Ta.getIndexCount() > 0) {
+                    stateListDrawable = DrawableFactory.getSelectorPre21Drawable(typedArray);
+                    setDrawable(stateListDrawable, view, otherTa, typedArray);
+                } else {
+                    drawable = DrawableFactory.getDrawable(typedArray);
+                    setDrawable(drawable, view, otherTa, typedArray);
+                }
             } else if(animTa.getIndexCount() > 0){
                 AnimationDrawable animationDrawable = DrawableFactory.getAnimationDrawable(animTa);
                 setBackground(animationDrawable, view, typedArray);
@@ -196,6 +204,9 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             animTa.recycle();
             multiSelTa.recycle();
             multiTextTa.recycle();
+            if (selectorPre21Ta != null) {
+                selectorPre21Ta.recycle();
+            }
         }
     }
 
