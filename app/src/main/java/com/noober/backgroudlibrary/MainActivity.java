@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -38,15 +39,23 @@ public class MainActivity extends AppCompatActivity {
         ColorStateList colors = new DrawableCreator.Builder().setPressedTextColor(Color.RED).setUnPressedTextColor(Color.BLUE).buildTextColor();
         tvTest1.setTextColor(colors);
 
-        Button btnTest2 = findViewById(R.id.btnTest2);
-        Drawable drawable2 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
-                .setGradientAngle(0).setGradientColor(Color.parseColor("#63B8FF"), Color.parseColor("#4F94CD")).build();
+        TextView btnTest2 = findViewById(R.id.btnTest2);
+        btnTest2.setEnabled(false);
+        GradientDrawable drawable2;
+        drawable2 = new GradientDrawable();
+        int[][] state = new int[2][];
+        int[] color = new int[2];
+        state[0] =  new int[]{android.R.attr.state_pressed};
+        state[1] =  new int[]{-android.R.attr.state_pressed};
+        color[0] = R.color.colorAccent;
+        color[1] = R.color.colorPrimaryDark;
+        ColorStateList colorStateList = new ColorStateList(state, color);
+//        drawable2.setColor(colorStateList);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
             btnTest2.setBackground(drawable2);
         }else {
             btnTest2.setBackgroundDrawable(drawable2);
         }
-
 
         Button btnTest3 = findViewById(R.id.btnTest3);
         Drawable drawable3 = new DrawableCreator.Builder().setCornersRadius(dip2px(20))
