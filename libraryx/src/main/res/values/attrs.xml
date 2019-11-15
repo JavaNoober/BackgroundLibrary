@@ -126,6 +126,36 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="background_selector_pre_21">
+        <attr name="bl_checkable_stroke_color" />
+        <attr name="bl_checked_stroke_color" />
+        <attr name="bl_enabled_stroke_color" />
+        <attr name="bl_selected_stroke_color" />
+        <attr name="bl_pressed_stroke_color" />
+        <attr name="bl_focused_stroke_color" />
+
+        <attr name="bl_unCheckable_stroke_color" />
+        <attr name="bl_unChecked_stroke_color" />
+        <attr name="bl_unEnabled_stroke_color" />
+        <attr name="bl_unSelected_stroke_color" />
+        <attr name="bl_unPressed_stroke_color" />
+        <attr name="bl_unFocused_stroke_color" />
+
+        <attr name="bl_checkable_solid_color" />
+        <attr name="bl_checked_solid_color" />
+        <attr name="bl_enabled_solid_color" />
+        <attr name="bl_selected_solid_color" />
+        <attr name="bl_pressed_solid_color" />
+        <attr name="bl_focused_solid_color" />
+
+        <attr name="bl_unCheckable_solid_color" />
+        <attr name="bl_unChecked_solid_color" />
+        <attr name="bl_unEnabled_solid_color" />
+        <attr name="bl_unSelected_solid_color" />
+        <attr name="bl_unPressed_solid_color" />
+        <attr name="bl_unFocused_solid_color" />
+    </declare-styleable>
+
     <declare-styleable name="background_press">
         <attr name="bl_unpressed_color" format="color" />
         <attr name="bl_pressed_color" format="color" />

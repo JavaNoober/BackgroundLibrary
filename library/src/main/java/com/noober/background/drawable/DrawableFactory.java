@@ -24,6 +24,11 @@ public class DrawableFactory {
         return new SelectorDrawableCreator(typedArray, selectorTa).create();
     }
 
+    //针对sdk21以前获取selector属性的drawable
+    public static StateListDrawable getSelectorPre21Drawable(TypedArray typedArray) throws Exception {
+        return new SelectorPre21DrawableCreator(typedArray).create();
+    }
+
     //获取button 属性的drawable
     public static StateListDrawable getButtonDrawable(TypedArray typedArray, TypedArray buttonTa) throws Exception {
         return new ButtonDrawableCreator(typedArray, buttonTa).create();
