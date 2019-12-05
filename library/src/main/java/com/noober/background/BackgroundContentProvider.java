@@ -11,7 +11,7 @@ import android.support.annotation.Nullable;
 public class BackgroundContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
-        if(getContext() != null && getContext() instanceof Application){
+        if(getContext() != null && getContext() instanceof Application && BLAutoInjectController.isEnableAutoInject()){
             BackgroundLibrary.inject(getContext());
             ((Application) getContext()).registerActivityLifecycleCallbacks(new BLActivityLifecycleRegister());
         }

@@ -1,19 +1,37 @@
 package com.noober.backgroudlibrary;
 
-import android.app.Activity;
 import android.app.Application;
-import android.os.Bundle;
+import android.content.Context;
+import android.util.Log;
 
-import com.noober.background.BackgroundLibrary;
+import com.noober.background.BLAutoInjectController;
 
 /**
  * Created by xiaoqi on 2018/9/13
  */
 public class MyApplication extends Application {
 
+
+
+    {
+        BLAutoInjectController.setEnableAutoInject(false);
+    }
+    //或者
+    static {
+        BLAutoInjectController.setEnableAutoInject(false);
+    }
+    //或者
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        BLAutoInjectController.setEnableAutoInject(false);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.e("BL", "onCreate");
+
 //        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
 //            @Override
 //            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
