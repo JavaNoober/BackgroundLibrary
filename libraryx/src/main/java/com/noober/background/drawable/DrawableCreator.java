@@ -8,6 +8,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -40,6 +42,12 @@ public class DrawableCreator {
         Gradient(int value) {
             this.value = value;
         }
+    }
+
+    public enum DrawablePosition {
+
+        Left, Right, Top, Bottom
+
     }
 
     public static class Builder {
@@ -899,6 +907,40 @@ public class DrawableCreator {
                 stateListDrawable = new StateListDrawable();
             }
             return stateListDrawable;
+        }
+
+    }
+
+
+    // 设置drawable的位置
+    public static void setDrawable(Drawable drawable, View view, DrawablePosition drawablePosition) {
+
+        if (view instanceof TextView) {
+            if (drawablePosition == DrawablePosition.Left) {
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                ((TextView) view).setCompoundDrawables(drawable, null, null, null);
+            } else if (drawablePosition == DrawablePosition.Top) {
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                ((TextView) view).setCompoundDrawables(null, drawable, null, null);
+            } else if (drawablePosition == DrawablePosition.Right) {
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                ((TextView) view).setCompoundDrawables(null, null, drawable, null);
+            } else if (drawablePosition == DrawablePosition.Bottom) {
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                ((TextView) view).setCompoundDrawables(null, null, null, drawable);
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    view.setBackground(drawable);
+                } else {
+                    view.setBackgroundDrawable(drawable);
+                }
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                view.setBackground(drawable);
+            } else {
+                view.setBackgroundDrawable(drawable);
+            }
         }
 
     }
