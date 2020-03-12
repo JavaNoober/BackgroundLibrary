@@ -17,7 +17,6 @@ public class ListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BackgroundLibrary.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 

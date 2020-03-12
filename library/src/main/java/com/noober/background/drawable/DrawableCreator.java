@@ -1,6 +1,8 @@
 package com.noober.background.drawable;
 
+import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -8,6 +10,10 @@ import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.TextView;
+
+import com.noober.background.R;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -38,6 +44,12 @@ public class DrawableCreator {
         Gradient(int value) {
             this.value = value;
         }
+    }
+
+    public enum DrawablePosition {
+
+        Left, Right, Top, Bottom
+
     }
 
     public static class Builder {
@@ -82,6 +94,19 @@ public class DrawableCreator {
         private Integer unPressedStrokeColor;
         private Integer unFocusedStrokeColor;
 
+        private Integer checkableSolidColor;
+        private Integer checkedSolidColor;
+        private Integer enabledSolidColor;
+        private Integer selectedSolidColor;
+        private Integer pressedSolidColor;
+        private Integer focusedSolidColor;
+        private Integer unCheckableSolidColor;
+        private Integer unCheckedSolidColor;
+        private Integer unEnabledSolidColor;
+        private Integer unSelectedSolidColor;
+        private Integer unPressedSolidColor;
+        private Integer unFocusedSolidColor;
+
         private Drawable checkableDrawable;
         private Drawable checkedDrawable;
         private Drawable enabledDrawable;
@@ -117,6 +142,9 @@ public class DrawableCreator {
 
         private boolean hasSelectDrawable = false;
 
+        private GradientDrawable baseGradientDrawable = null;
+        private StateListDrawable baseStateListDrawable = null;
+
         public Builder setShape(Shape shape) {
             this.shape = shape;
             return this;
@@ -140,6 +168,7 @@ public class DrawableCreator {
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientAngle(int gradientAngle) {
             this.gradientAngle = gradientAngle;
             return this;
@@ -151,12 +180,14 @@ public class DrawableCreator {
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientColor(int startColor, int endColor) {
             this.gradientStartColor = startColor;
             this.gradientEndColor = endColor;
             return this;
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         public Builder setGradientColor(int startColor, int centerColor, int endColor) {
             this.gradientStartColor = startColor;
             this.gradientCenterColor = centerColor;
@@ -256,6 +287,42 @@ public class DrawableCreator {
         public Builder setFocusedStrokeColor(int focusedStrokeColor, int unFocusedStrokeColor) {
             this.focusedStrokeColor = focusedStrokeColor;
             this.unFocusedStrokeColor = unFocusedStrokeColor;
+            return this;
+        }
+
+        public Builder setCheckableSolidColor(int checkableSolidColor, int unCheckableSolidColor) {
+            this.checkableSolidColor = checkableSolidColor;
+            this.unCheckableSolidColor = unCheckableSolidColor;
+            return this;
+        }
+
+        public Builder setCheckedSolidColor(int checkedSolidColor, int unCheckedSolidColor) {
+            this.checkedSolidColor = checkedSolidColor;
+            this.unCheckedSolidColor = unCheckedSolidColor;
+            return this;
+        }
+
+        public Builder setEnabledSolidColor(int enabledSolidColor, int unEnabledSolidColor) {
+            this.enabledSolidColor = enabledSolidColor;
+            this.unEnabledSolidColor = unEnabledSolidColor;
+            return this;
+        }
+
+        public Builder setSelectedSolidColor(int selectedSolidColor, int unSelectedSolidColor) {
+            this.selectedSolidColor = selectedSolidColor;
+            this.unSelectedSolidColor = unSelectedSolidColor;
+            return this;
+        }
+
+        public Builder setPressedSolidColor(int pressedSolidColor, int unPressedSolidColor) {
+            this.pressedSolidColor = pressedSolidColor;
+            this.unPressedSolidColor = unPressedSolidColor;
+            return this;
+        }
+
+        public Builder setFocusedSolidColor(int focusedSolidColor, int unFocusedSolidColor) {
+            this.focusedSolidColor = focusedSolidColor;
+            this.unFocusedSolidColor = unFocusedSolidColor;
             return this;
         }
 
@@ -428,15 +495,26 @@ public class DrawableCreator {
             return this;
         }
 
+        public Builder setBaseGradientDrawable(GradientDrawable baseGradientDrawable) {
+            this.baseGradientDrawable = baseGradientDrawable;
+            return this;
+        }
+
+        public Builder setBaseStateListDrawable(StateListDrawable baseStateListDrawable) {
+            this.baseStateListDrawable = baseStateListDrawable;
+            return this;
+        }
+
+
         public Drawable build() {
             GradientDrawable drawable = null;
             StateListDrawable stateListDrawable = null;
-            if(hasSelectDrawable){
+            if (hasSelectDrawable) {
                 stateListDrawable = getStateListDrawable();
-            }else {
+            } else {
                 drawable = getGradientDrawable();
             }
-            if(rippleEnable && rippleColor != null){
+            if (rippleEnable && rippleColor != null) {
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
                     return new RippleDrawable(ColorStateList.valueOf(rippleColor), contentDrawable, contentDrawable);
@@ -454,9 +532,9 @@ public class DrawableCreator {
         }
 
         public ColorStateList buildTextColor() {
-            if(textColorCount > 0){
+            if (textColorCount > 0) {
                 return getColorStateList();
-            }else {
+            } else {
                 return null;
             }
         }
@@ -528,7 +606,7 @@ public class DrawableCreator {
         }
 
         private StateListDrawable getStateListDrawable() {
-            StateListDrawable stateListDrawable = null;
+            StateListDrawable stateListDrawable = baseStateListDrawable;
             if (checkableDrawable != null) {
                 stateListDrawable = getStateListDrawable(stateListDrawable);
                 stateListDrawable.addState(new int[]{android.R.attr.state_checkable}, checkableDrawable);
@@ -598,12 +676,12 @@ public class DrawableCreator {
 
         @NonNull
         private GradientDrawable getGradientDrawable() {
-            GradientDrawable drawable = new GradientDrawable();
+            GradientDrawable drawable = baseGradientDrawable;
+            if (drawable == null) {
+                drawable = new GradientDrawable();
+            }
             drawable.setShape(shape.value);
 
-            if (solidColor != null) {
-                drawable.setColor(solidColor);
-            }
             if (cornersRadius != null) {
                 drawable.setCornerRadius(cornersRadius);
             }
@@ -652,7 +730,10 @@ public class DrawableCreator {
                             mOrientation = GradientDrawable.Orientation.TL_BR;
                             break;
                     }
-                    drawable.setOrientation(mOrientation);
+                    if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        drawable.setOrientation(mOrientation);
+                    }
+
                 }
             }
 
@@ -671,7 +752,9 @@ public class DrawableCreator {
                     colors[0] = gradientStartColor;
                     colors[1] = gradientEndColor;
                 }
-                drawable.setColors(colors);
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    drawable.setColors(colors);
+                }
             }
             if (gradientRadius != null) {
                 drawable.setGradientRadius(gradientRadius);
@@ -679,29 +762,29 @@ public class DrawableCreator {
             drawable.setGradientType(gradient.value);
             drawable.setUseLevel(useLevel);
             if (!padding.isEmpty()) {
-
-                try {
-                    Field paddingField = drawable.getClass().getField("mPadding");
-                    paddingField.setAccessible(true);
-                    paddingField.set(drawable, padding);
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+                if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    drawable.setPadding(padding.left, padding.top, padding.right, padding.bottom);
+                } else {
+                    try {
+                        Field paddingField = drawable.getClass().getDeclaredField("mPadding");
+                        paddingField.setAccessible(true);
+                        paddingField.set(drawable, padding);
+                    } catch (NoSuchFieldException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
                 }
-
             }
             if (sizeWidth != null && sizeHeight != null) {
                 drawable.setSize(sizeWidth.intValue(), sizeHeight.intValue());
             }
 
             if (strokeWidth != null && strokeWidth > 0) {
-                int start = 0;
-                ArrayList<Integer> stateList = new ArrayList<>();
-                ArrayList<Integer> colorList = new ArrayList<>();
-                if (strokeColor != null) {
-                    drawable.setStroke(strokeWidth.intValue(), strokeColor, strokeDashWidth, strokeDashGap);
-                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    int start = 0;
+                    ArrayList<Integer> stateList = new ArrayList<>();
+                    ArrayList<Integer> colorList = new ArrayList<>();
                     if (pressedStrokeColor != null && unPressedStrokeColor != null) {
                         stateList.add(android.R.attr.state_pressed);
                         stateList.add(-android.R.attr.state_pressed);
@@ -738,6 +821,68 @@ public class DrawableCreator {
                         colorList.add(focusedStrokeColor);
                         colorList.add(unFocusedStrokeColor);
                     }
+                    if (stateList.size() > 0) {
+                        int[][] state = new int[stateList.size()][];
+                        int[] color = new int[stateList.size()];
+                        for (int iState : stateList) {
+                            state[start] = new int[]{iState};
+                            color[start] = colorList.get(start);
+                            start++;
+                        }
+
+                        ColorStateList colorStateList = new ColorStateList(state, color);
+                        drawable.setStroke(strokeWidth.intValue(), colorStateList, strokeDashWidth, strokeDashGap);
+                    } else if (strokeColor != null) {
+                        drawable.setStroke(strokeWidth.intValue(), strokeColor, strokeDashWidth, strokeDashGap);
+                    }
+                    stateList = null;
+                    colorList = null;
+                } else if (strokeColor != null) {
+                    drawable.setStroke(strokeWidth.intValue(), strokeColor, strokeDashWidth, strokeDashGap);
+                }
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                int start = 0;
+                ArrayList<Integer> stateList = new ArrayList<>();
+                ArrayList<Integer> colorList = new ArrayList<>();
+                if (pressedSolidColor != null && unPressedSolidColor != null) {
+                    stateList.add(android.R.attr.state_pressed);
+                    stateList.add(-android.R.attr.state_pressed);
+                    colorList.add(pressedSolidColor);
+                    colorList.add(unPressedSolidColor);
+                }
+                if (checkableSolidColor != null && unCheckableSolidColor != null) {
+                    stateList.add(android.R.attr.state_checkable);
+                    stateList.add(-android.R.attr.state_checkable);
+                    colorList.add(checkableSolidColor);
+                    colorList.add(unCheckableSolidColor);
+                }
+                if (checkedSolidColor != null && unCheckedSolidColor != null) {
+                    stateList.add(android.R.attr.state_checked);
+                    stateList.add(-android.R.attr.state_checked);
+                    colorList.add(checkedSolidColor);
+                    colorList.add(unCheckedSolidColor);
+                }
+                if (enabledSolidColor != null && unEnabledSolidColor != null) {
+                    stateList.add(android.R.attr.state_enabled);
+                    stateList.add(-android.R.attr.state_enabled);
+                    colorList.add(enabledSolidColor);
+                    colorList.add(unEnabledSolidColor);
+                }
+                if (selectedSolidColor != null && unSelectedSolidColor != null) {
+                    stateList.add(android.R.attr.state_selected);
+                    stateList.add(-android.R.attr.state_selected);
+                    colorList.add(selectedSolidColor);
+                    colorList.add(unSelectedSolidColor);
+                }
+                if (focusedSolidColor != null && unFocusedSolidColor != null) {
+                    stateList.add(android.R.attr.state_focused);
+                    stateList.add(-android.R.attr.state_focused);
+                    colorList.add(focusedSolidColor);
+                    colorList.add(unFocusedSolidColor);
+                }
+                if (stateList.size() > 0) {
                     int[][] state = new int[stateList.size()][];
                     int[] color = new int[stateList.size()];
                     for (int iState : stateList) {
@@ -745,12 +890,15 @@ public class DrawableCreator {
                         color[start] = colorList.get(start);
                         start++;
                     }
-
                     ColorStateList colorStateList = new ColorStateList(state, color);
-                    drawable.setStroke(strokeWidth.intValue(), colorStateList, strokeDashWidth, strokeDashGap);
-                    stateList = null;
-                    colorList = null;
+                    drawable.setColor(colorStateList);
+                } else if (solidColor != null) {
+                    drawable.setColor(solidColor);
                 }
+                stateList = null;
+                colorList = null;
+            } else if (solidColor != null) {
+                drawable.setColor(solidColor);
             }
             return drawable;
         }
@@ -761,6 +909,38 @@ public class DrawableCreator {
                 stateListDrawable = new StateListDrawable();
             }
             return stateListDrawable;
+        }
+    }
+
+    // 设置drawable的位置
+    public static void setDrawable(Drawable drawable, View view, DrawablePosition drawablePosition) {
+
+        if (view instanceof TextView) {
+            if (drawablePosition == DrawablePosition.Left) {
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                ((TextView) view).setCompoundDrawables(drawable, null, null, null);
+            } else if (drawablePosition == DrawablePosition.Top) {
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                ((TextView) view).setCompoundDrawables(null, drawable, null, null);
+            } else if (drawablePosition == DrawablePosition.Right) {
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                ((TextView) view).setCompoundDrawables(null, null, drawable, null);
+            } else if (drawablePosition == DrawablePosition.Bottom) {
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                ((TextView) view).setCompoundDrawables(null, null, null, drawable);
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    view.setBackground(drawable);
+                } else {
+                    view.setBackgroundDrawable(drawable);
+                }
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                view.setBackground(drawable);
+            } else {
+                view.setBackgroundDrawable(drawable);
+            }
         }
 
     }

@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+//    implementation 'com.android.support:support-v4:28.0.0-rc02'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
+
+// If you want to bind to Android-specific lifecycles
+    implementation 'com.trello.rxlifecycle3:rxlifecycle-android:3.0.0'
+
+// If you want pre-written Activities and Fragments you can subclass as providers
+    implementation 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
+    implementation project(':libraryx')
+//    implementation 'com.noober.background:corex:1.5.4-ALPHA'
+}
+
+repositories{
+    maven { url 'https://dl.bintray.com/noober/maven' }
+}
+
+

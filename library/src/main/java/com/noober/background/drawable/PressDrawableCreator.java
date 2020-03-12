@@ -20,7 +20,7 @@ public class PressDrawableCreator implements ICreateDrawable {
     }
 
     @Override
-    public Drawable create() throws Exception{
+    public StateListDrawable create() throws Exception{
         StateListDrawable stateListDrawable = new StateListDrawable();
         for (int i = 0; i < pressTa.getIndexCount(); i++) {
             int attr = pressTa.getIndex(i);
