@@ -116,57 +116,73 @@ public class GradientDrawableCreator implements ICreateDrawable {
             int start = 0;
             ArrayList<Integer> stateList = new ArrayList<>();
             ArrayList<Integer> colorList = new ArrayList<>();
-            if (typedArray.hasValue(R.styleable.background_bl_pressed_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unPressed_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_pressed_solid_color)) {
                 stateList.add(android.R.attr.state_pressed);
-                stateList.add(-android.R.attr.state_pressed);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_pressed_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unPressed_solid_color)) {
+                stateList.add(-android.R.attr.state_pressed);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unPressed_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_checkable_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unCheckable_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_checkable_solid_color)) {
                 stateList.add(android.R.attr.state_checkable);
-                stateList.add(-android.R.attr.state_checkable);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_checkable_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unCheckable_solid_color)) {
+                stateList.add(-android.R.attr.state_checkable);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unCheckable_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_checked_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unChecked_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_checked_solid_color)) {
                 stateList.add(android.R.attr.state_checked);
-                stateList.add(-android.R.attr.state_checked);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_checked_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unChecked_solid_color)) {
+                stateList.add(-android.R.attr.state_checked);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unChecked_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_enabled_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unEnabled_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_enabled_solid_color)) {
                 stateList.add(android.R.attr.state_enabled);
-                stateList.add(-android.R.attr.state_enabled);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_enabled_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unEnabled_solid_color)) {
+                stateList.add(-android.R.attr.state_enabled);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unEnabled_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_selected_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unSelected_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_selected_solid_color)) {
                 stateList.add(android.R.attr.state_selected);
-                stateList.add(-android.R.attr.state_selected);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_selected_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unSelected_solid_color)) {
+                stateList.add(-android.R.attr.state_selected);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unSelected_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_focused_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unFocused_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_focused_solid_color)) {
                 stateList.add(android.R.attr.state_focused);
-                stateList.add(-android.R.attr.state_focused);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_focused_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unFocused_solid_color)) {
+                stateList.add(-android.R.attr.state_focused);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unFocused_solid_color, 0));
             }
 
             if (stateList.size() > 0) {
-                int[][] state = new int[stateList.size()][];
-                int[] color = new int[stateList.size()];
+                int size = stateList.size();
+                if (typedArray.hasValue(R.styleable.background_bl_solid_color)) {
+                    size ++;
+                }
+                int[][] state = new int[size][];
+                int[] color = new int[size];
                 for (int iState : stateList) {
                     state[start] = new int[]{iState};
                     color[start] = colorList.get(start);
                     start++;
                 }
+
+                if (typedArray.hasValue(R.styleable.background_bl_solid_color)) {
+                    state[start] = new int[]{};
+                    color[start] = solidColor;
+                }
+
                 ColorStateList colorStateList = new ColorStateList(state, color);
                 drawable.setColor(colorStateList);
             } else if (typedArray.hasValue(R.styleable.background_bl_solid_color)) {
