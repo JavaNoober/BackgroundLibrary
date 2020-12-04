@@ -13,47 +13,6 @@
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
 
-
-        <TextView
-            android:id="@+id/tv111"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="今日持仓"
-            android:textSize="12sp"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:background="@drawable/test_sel3" />
-
-
-        <com.noober.background.view.BLFrameLayout
-            android:id="@+id/select_view"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            app:bl_corners_radius="15dp"
-            app:bl_solid_color="@android:color/darker_gray"
-            app:bl_selected_solid_color="@android:color/holo_red_dark"
-            app:bl_pressed_solid_color="@android:color/black">
-
-        </com.noober.background.view.BLFrameLayout>
-
-        <com.noober.background.view.BLRadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="今日持仓"
-            android:textSize="12sp"
-            android:paddingLeft="6dp"
-            android:paddingRight="6dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            app:bl_checked_solid_color="@color/colorPrimaryDark"
-            app:bl_unCheckable_solid_color="#F4F4F4"
-            app:bl_checked_textColor="@android:color/white"
-            app:bl_unChecked_textColor="@color/colorPrimaryDark"
-            app:bl_corners_radius="10dp" />
-
-
         <com.noober.background.view.BLButton
             android:id="@+id/btn_login"
             style="?android:attr/borderlessButtonStyle"

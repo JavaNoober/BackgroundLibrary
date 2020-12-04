@@ -13,19 +13,21 @@ public class MyApplication extends Application {
 
 
 
-    {
-        BLAutoInjectController.setEnableAutoInject(false);
-    }
-    //或者
-    static {
-        BLAutoInjectController.setEnableAutoInject(false);
-    }
-    //或者
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        BLAutoInjectController.setEnableAutoInject(false);
-    }
+    // 控制是否需要自动进行inject
+
+//    {
+//        BLAutoInjectController.setEnableAutoInject(false);
+//    }
+//    //或者
+//    static {
+//        BLAutoInjectController.setEnableAutoInject(false);
+//    }
+//    //或者
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(base);
+//        BLAutoInjectController.setEnableAutoInject(false);
+//    }
 
     @Override
     public void onCreate() {

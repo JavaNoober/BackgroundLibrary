@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.noober.background.BackgroundLibrary;
 import com.noober.background.annotation.BLUsed;
 import com.noober.background.drawable.DrawableCreator;
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 //        findViewById(R.id.tv111).setSelected(true);
 
 //        findViewById(R.id.select_view).setSelected(true);
-
+//        findViewById(R.id.submit).setEnabled(false);
         Drawable drawable = new DrawableCreator.Builder().setCornersRadius(30)
                 .setSolidColor(Color.parseColor("#FFFFFF"))
                 .setStrokeColor(Color.parseColor("#FFFFFF"))
