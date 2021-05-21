@@ -7,6 +7,8 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 
+import androidx.annotation.AttrRes;
+
 import org.xmlpull.v1.XmlPullParserException;
 
 /**
@@ -18,6 +20,15 @@ public class DrawableFactory {
     public static GradientDrawable getDrawable(TypedArray typedArray) throws XmlPullParserException {
         return (GradientDrawable) new GradientDrawableCreator(typedArray).create();
     }
+
+    public static GradientDrawable getDrawable(TypedArray typedArray, @AttrRes int gradientState) throws XmlPullParserException {
+        return (GradientDrawable) new GradientDrawableCreator(typedArray, gradientState).create();
+    }
+
+    public static StateListDrawable getStateGradientDrawable(TypedArray typedArray) throws Exception {
+        return (StateListDrawable) new GradientStateDrawableCreator(typedArray).create();
+    }
+
 
     //获取selector属性的drawable
     public static StateListDrawable getSelectorDrawable(TypedArray typedArray, TypedArray selectorTa) throws Exception {

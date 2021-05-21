@@ -131,8 +131,13 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     stateListDrawable = DrawableFactory.getSelectorPre21Drawable(typedArray);
                     setDrawable(stateListDrawable, view, otherTa, typedArray);
                 } else {
-                    drawable = DrawableFactory.getDrawable(typedArray);
-                    setDrawable(drawable, view, otherTa, typedArray);
+                    if (hasGradientState(typedArray)) {
+                        stateListDrawable = DrawableFactory.getStateGradientDrawable(typedArray);
+                        setDrawable(stateListDrawable, view, otherTa, typedArray);
+                    } else {
+                        drawable = DrawableFactory.getDrawable(typedArray);
+                        setDrawable(drawable, view, otherTa, typedArray);
+                    }
                 }
             } else if (animTa.getIndexCount() > 0) {
                 AnimationDrawable animationDrawable = DrawableFactory.getAnimationDrawable(animTa);
@@ -373,4 +378,15 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
         return onCreateView(name, context, attrs);
     }
+
+    private static boolean hasGradientState(TypedArray typedArray) {
+        return typedArray.hasValue(R.styleable.background_bl_checkable_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_checked_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_enabled_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_selected_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_pressed_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_focused_gradient_startColor);
+    }
 }
+
+
