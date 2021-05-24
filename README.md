@@ -9,13 +9,27 @@ A framework for directly generating shape through Tags, no need to write shape.x
 
 依赖方式：
 
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.noober.background:core:1.6.5'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.6.9'
 
 如果项目使用了androidx：  
 
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+
     implementation "androidx.appcompat:appcompat:$supportVersion" 
-    implementation 'com.noober.background:core:1.6.5'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.6.9'
    
 
 ## 使用文档
