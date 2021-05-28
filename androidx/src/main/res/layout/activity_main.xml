@@ -11,8 +11,35 @@
         android:orientation="vertical"
         android:padding="10dp"
         tools:context=".MainActivity"
-        tools:ignore="MissingPrefix">
+        tools:ignore="MissingPrefix,HardcodedText">
 
+        <com.noober.background.view.BLTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            app:bl_corners_topRadius="15dp"
+            app:bl_solid_color="@color/colorAccent" />
+
+        <com.noober.background.view.BLTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            app:bl_corners_leftRadius="15dp"
+            app:bl_solid_color="@color/colorAccent" />
+
+        <com.noober.background.view.BLTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            app:bl_corners_bottomRadius="15dp"
+            app:bl_solid_color="@color/colorAccent" />
+
+        <com.noober.background.view.BLTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            app:bl_corners_rightRadius="15dp"
+            app:bl_solid_color="@color/colorAccent" />
 
         <com.noober.background.view.BLTextView
             android:layout_width="wrap_content"
@@ -22,10 +49,10 @@
             android:gravity="center"
             android:text="指定只显示左右下方的边框"
             android:textSize="20sp"
-            app:bl_stroke_width="1dp"
-            app:bl_stroke_color="@android:color/black"
             app:bl_solid_color="@android:color/white"
-            app:bl_stroke_position="left|bottom|right"/>
+            app:bl_stroke_color="@android:color/black"
+            app:bl_stroke_position="left|bottom|right"
+            app:bl_stroke_width="1dp" />
 
         <com.noober.background.view.BLTextView
             android:id="@+id/ttt"
@@ -74,11 +101,11 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:bl_corners_radius="3dp"
-            app:bl_shape="rectangle"
-            app:bl_stroke_width="1dp"
             app:bl_multi_selector1="-state_enabled,#9DD1F6"
             app:bl_multi_selector2="state_pressed,#9DD1F6"
-            app:bl_multi_selector3="-state_pressed,#1B82D1"/>
+            app:bl_multi_selector3="-state_pressed,#1B82D1"
+            app:bl_shape="rectangle"
+            app:bl_stroke_width="1dp" />
 
         <com.noober.background.view.BLButton
             android:layout_width="300dp"
@@ -92,9 +119,9 @@
             android:textSize="18dp"
             android:textStyle="bold"
             app:bl_corners_radius="3dp"
+            app:bl_pressed_drawable="#9DD1F6"
             app:bl_shape="rectangle"
             app:bl_stroke_width="1dp"
-            app:bl_pressed_drawable="#9DD1F6"
             app:bl_unEnabled_drawable="#9DD1F6"
             app:bl_unPressed_drawable="#1B82D1" />
 
