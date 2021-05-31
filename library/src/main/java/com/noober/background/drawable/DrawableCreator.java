@@ -761,7 +761,7 @@ public class DrawableCreator {
             }
             drawable.setGradientType(gradient.value);
             drawable.setUseLevel(useLevel);
-            if (!padding.isEmpty()) {
+            if (!isEmpty(padding)) {
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     drawable.setPadding(padding.left, padding.top, padding.right, padding.bottom);
                 } else {
@@ -958,5 +958,9 @@ public class DrawableCreator {
             }
         }
 
+    }
+
+    private static final boolean isEmpty(Rect rect) {
+        return rect.left > rect.right || rect.top > rect.bottom;
     }
 }
