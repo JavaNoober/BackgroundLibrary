@@ -1454,4 +1454,28 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_corners_leftRadius" value="app:bl_corners_leftRadius=&quot;$value$&quot;" description="左边的圆角" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_corners_topRadius" value="app:bl_corners_topRadius=&quot;$value$&quot;" description="上方的圆角" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_corners_rightRadius" value="app:bl_corners_rightRadius=&quot;$value$&quot;" description="右边的圆角" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_corners_bottomRadius" value="app:bl_corners_bottomRadius=&quot;$value$&quot;" description="下方的圆角" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
 </templateSet>

@@ -14,7 +14,7 @@ Add this to your app's build.gradle：
     }
 
     implementation "androidx.appcompat:appcompat:$supportVersion"
-    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.6.9'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.7.1'
 
 if use androidx：  
 

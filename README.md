@@ -17,7 +17,7 @@ A framework for directly generating shape through Tags, no need to write shape.x
     }
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.6.9'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.7.1'
 
 如果项目使用了androidx：  
 
