@@ -26,7 +26,7 @@ if use androidx：
     }
 
     implementation "androidx.appcompat:appcompat:$supportVersion"
-    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.6.9'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.7.1'
 
  
 ## Example effect
