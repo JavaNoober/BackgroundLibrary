@@ -1,6 +1,8 @@
 # BackgroundLibrary
 A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）  
 
+issue回复不及时，可以添加qq群887686934  
+
 
 ![](https://user-gold-cdn.xitu.io/2018/9/11/165c6e5c0cff0548?w=681&h=233&f=png&s=31240)
 
