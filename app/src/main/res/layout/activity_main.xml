@@ -13,6 +13,21 @@
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
 
+        <Button
+            android:id="@+id/btnConsole"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginTop="12.5dp"
+            android:padding="0dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:bl_corners_radius="10dp"
+            app:bl_gradient_angle="45"
+            app:bl_gradient_endColor="#00E0D3"
+            app:bl_gradient_startColor="#0093C3"
+            app:bl_gradient_type="linear" />
+
         <com.noober.background.view.BLButton
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"

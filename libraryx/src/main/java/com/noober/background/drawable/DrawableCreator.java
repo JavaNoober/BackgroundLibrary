@@ -69,7 +69,7 @@ public class DrawableCreator {
         private boolean useLevel = false;
 
         private Rect padding = new Rect();
-
+        private boolean hasSetPadding = false;
         private Float sizeWidth;
         private Float sizeHeight;
         private Float strokeWidth;
@@ -209,6 +209,7 @@ public class DrawableCreator {
         }
 
         public Builder setPadding(float paddingLeft, float paddingTop, float paddingRight, float paddingBottom) {
+            hasSetPadding = true;
             padding.left = (int) paddingLeft;
             padding.top = (int) paddingTop;
             padding.right = (int) paddingRight;
@@ -759,7 +760,7 @@ public class DrawableCreator {
             }
             drawable.setGradientType(gradient.value);
             drawable.setUseLevel(useLevel);
-            if (!isEmpty(padding)) {
+            if (hasSetPadding) {
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     drawable.setPadding(padding.left, padding.top, padding.right, padding.bottom);
                 } else {
@@ -958,9 +959,5 @@ public class DrawableCreator {
             }
         }
 
-    }
-
-    private static final boolean isEmpty(Rect rect) {
-        return rect.left > rect.right || rect.top > rect.bottom;
     }
 }
