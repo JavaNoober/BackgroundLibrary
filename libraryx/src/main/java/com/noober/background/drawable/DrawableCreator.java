@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
@@ -50,6 +51,13 @@ public class DrawableCreator {
 
     }
 
+    public static class StrokePosition {
+        public static final int Left = 1 << 1;
+        public static final int Top = 1 << 2;
+        public static final int Right = 1 << 3;
+        public static final int Bottom = 1 << 4;
+    }
+
     public static class Builder {
         private Shape shape = Shape.Rectangle;
         private Integer solidColor;
@@ -78,6 +86,7 @@ public class DrawableCreator {
         private float strokeDashGap = 0;
         private boolean rippleEnable = false;
         private Integer rippleColor;
+        private Integer strokePosition;
 
         private Integer checkableStrokeColor;
         private Integer checkedStrokeColor;
@@ -250,6 +259,11 @@ public class DrawableCreator {
         public Builder setRipple(boolean rippleEnable, int rippleColor) {
             this.rippleEnable = rippleEnable;
             this.rippleColor = rippleColor;
+            return this;
+        }
+
+        public Builder setStrokePosition(int strokePosition) {
+            this.strokePosition = strokePosition;
             return this;
         }
 
@@ -506,28 +520,40 @@ public class DrawableCreator {
 
 
         public Drawable build() {
-            GradientDrawable drawable = null;
+            Drawable drawable = null;
+            GradientDrawable gradientDrawable = null;
             StateListDrawable stateListDrawable = null;
             if (hasSelectDrawable) {
                 stateListDrawable = getStateListDrawable();
             } else {
-                drawable = getGradientDrawable();
+                gradientDrawable = getGradientDrawable();
             }
             if (rippleEnable && rippleColor != null) {
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
-                    return new RippleDrawable(ColorStateList.valueOf(rippleColor), contentDrawable, contentDrawable);
+                    Drawable contentDrawable = (stateListDrawable == null ? gradientDrawable : stateListDrawable);
+                    drawable = new RippleDrawable(ColorStateList.valueOf(rippleColor), contentDrawable, contentDrawable);
                 } else {
                     StateListDrawable resultDrawable = new StateListDrawable();
                     GradientDrawable unPressDrawable = getGradientDrawable();
                     unPressDrawable.setColor(rippleColor);
-                    resultDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
+                    resultDrawable.addState(new int[]{-android.R.attr.state_pressed}, gradientDrawable);
                     resultDrawable.addState(new int[]{android.R.attr.state_pressed}, unPressDrawable);
-                    return resultDrawable;
+                    drawable = resultDrawable;
                 }
             }
 
-            return drawable == null ? stateListDrawable : drawable;
+            if (drawable == null) {
+                drawable = gradientDrawable == null ? stateListDrawable : gradientDrawable;
+            }
+            if (strokePosition != null) {
+                float leftValue = hasStatus(strokePosition, StrokePosition.Left) ? 0 : -strokeWidth;
+                float topValue = hasStatus(strokePosition, StrokePosition.Top) ? 0 : -strokeWidth;
+                float rightValue = hasStatus(strokePosition, StrokePosition.Right) ? 0 : -strokeWidth;
+                float bottomValue = hasStatus(strokePosition, StrokePosition.Bottom) ? 0 : -strokeWidth;
+                drawable = new LayerDrawable(new Drawable[]{drawable});
+                ((LayerDrawable) drawable).setLayerInset(0, (int) leftValue, (int) topValue, (int) rightValue, (int) bottomValue);
+            }
+            return drawable;
         }
 
         public ColorStateList buildTextColor() {
@@ -910,6 +936,9 @@ public class DrawableCreator {
             return stateListDrawable;
         }
 
+        private static boolean hasStatus(int flag, int position) {
+            return (flag & position) == position;
+        }
     }
 
 
