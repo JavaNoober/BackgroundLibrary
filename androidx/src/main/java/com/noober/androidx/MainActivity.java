@@ -80,7 +80,32 @@ public class MainActivity extends RxAppCompatActivity {
 //            tvTest4.setBackgroundDrawable(drawable4);
 //        }
 
+        TextView tvTest5 = findViewById(R.id.tvTest5);
+        Drawable drawable5 = new DrawableCreator.Builder()
+                .setSolidColor(Color.parseColor("#E3B666"))
+                .setStrokeColor(Color.parseColor("#8c6822"))
+                .setStrokeWidth(dip2px(0.5f))
+                .build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            tvTest5.setBackground(drawable5);
+        } else {
+            tvTest5.setBackgroundDrawable(drawable5);
+        }
 
+        TextView tvTest6 = findViewById(R.id.tvTest6);
+        Drawable drawable6 = new DrawableCreator.Builder()
+                .setSolidColor(Color.parseColor("#E3B666"))
+                .setStrokeColor(Color.parseColor("#8c6822"))
+                .setStrokeWidth(dip2px(0.5f))
+                .setStrokePosition(DrawableCreator.StrokePosition.Right
+                        | DrawableCreator.StrokePosition.Top
+                        | DrawableCreator.StrokePosition.Bottom)
+                .build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            tvTest6.setBackground(drawable6);
+        } else {
+            tvTest6.setBackgroundDrawable(drawable6);
+        }
         final Button btnEnable = findViewById(R.id.btn_setEnable);
         final TextView tvMulti = findViewById(R.id.tv_multi);
         btnEnable.setOnClickListener(new View.OnClickListener() {

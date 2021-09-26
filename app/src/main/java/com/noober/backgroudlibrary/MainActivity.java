@@ -14,8 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.noober.background.BackgroundLibrary;
-import com.noober.background.annotation.BLUsed;
 import com.noober.background.drawable.DrawableCreator;
 
 public class MainActivity extends AppCompatActivity {
@@ -87,6 +85,34 @@ public class MainActivity extends AppCompatActivity {
             tvTest4.setBackground(drawable4);
         }else {
             tvTest4.setBackgroundDrawable(drawable4);
+        }
+
+
+        TextView tvTest5 = findViewById(R.id.tvTest5);
+        Drawable drawable5 = new DrawableCreator.Builder()
+                .setSolidColor(Color.parseColor("#E3B666"))
+                .setStrokeColor(Color.parseColor("#8c6822"))
+                .setStrokeWidth(dip2px(0.5f))
+                .build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            tvTest5.setBackground(drawable5);
+        } else {
+            tvTest5.setBackgroundDrawable(drawable5);
+        }
+
+        TextView tvTest6 = findViewById(R.id.tvTest6);
+        Drawable drawable6 = new DrawableCreator.Builder()
+                .setSolidColor(Color.parseColor("#E3B666"))
+                .setStrokeColor(Color.parseColor("#8c6822"))
+                .setStrokeWidth(dip2px(0.5f))
+                .setStrokePosition(DrawableCreator.StrokePosition.Right
+                        | DrawableCreator.StrokePosition.Top
+                        | DrawableCreator.StrokePosition.Bottom)
+                .build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            tvTest6.setBackground(drawable6);
+        } else {
+            tvTest6.setBackgroundDrawable(drawable6);
         }
 
 
