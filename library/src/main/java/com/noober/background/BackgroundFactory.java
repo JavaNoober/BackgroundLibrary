@@ -131,8 +131,13 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     stateListDrawable = DrawableFactory.getSelectorPre21Drawable(typedArray);
                     setDrawable(stateListDrawable, view, otherTa, typedArray);
                 } else {
-                    drawable = DrawableFactory.getDrawable(typedArray);
-                    setDrawable(drawable, view, otherTa, typedArray);
+                    if (hasGradientState(typedArray)) {
+                        stateListDrawable = DrawableFactory.getStateGradientDrawable(typedArray);
+                        setDrawable(stateListDrawable, view, otherTa, typedArray);
+                    } else {
+                        drawable = DrawableFactory.getDrawable(typedArray);
+                        setDrawable(drawable, view, otherTa, typedArray);
+                    }
                 }
             } else if (animTa.getIndexCount() > 0) {
                 AnimationDrawable animationDrawable = DrawableFactory.getAnimationDrawable(animTa);
@@ -288,10 +293,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             int bottom = 1 << 4;
             float width = typedArray.getDimension(R.styleable.background_bl_stroke_width, 0f);
             int position = typedArray.getInt(R.styleable.background_bl_stroke_position, 0);
-            float leftValue = hasStatus(position, left) ? width : -width;
-            float topValue = hasStatus(position, top) ? width : -width;
-            float rightValue = hasStatus(position, right) ? width : -width;
-            float bottomValue = hasStatus(position, bottom) ? width : -width;
+            float leftValue = hasStatus(position, left) ? 0 : -width;
+            float topValue = hasStatus(position, top) ? 0 : -width;
+            float rightValue = hasStatus(position, right) ? 0 : -width;
+            float bottomValue = hasStatus(position, bottom) ? 0 : -width;
             drawable = new LayerDrawable(new Drawable[]{drawable});
             ((LayerDrawable) drawable).setLayerInset(0, (int) leftValue, (int) topValue, (int) rightValue, (int) bottomValue);
         }
@@ -373,4 +378,15 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
         return onCreateView(name, context, attrs);
     }
+
+    private static boolean hasGradientState(TypedArray typedArray) {
+        return typedArray.hasValue(R.styleable.background_bl_checkable_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_checked_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_enabled_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_selected_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_pressed_gradient_startColor) ||
+                typedArray.hasValue(R.styleable.background_bl_focused_gradient_startColor);
+    }
 }
+
+

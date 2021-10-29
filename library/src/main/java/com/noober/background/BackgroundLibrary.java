@@ -80,7 +80,7 @@ public class BackgroundLibrary {
         try {
             Field sCheckedField = compatClass.getDeclaredField("sCheckedField");
             sCheckedField.setAccessible(true);
-            sCheckedField.setBoolean(inflater, false);
+            sCheckedField.setBoolean(compatClass, false);
             Field mFactory = inflaterClass.getDeclaredField("mFactory");
             mFactory.setAccessible(true);
             Field mFactory2 = inflaterClass.getDeclaredField("mFactory2");

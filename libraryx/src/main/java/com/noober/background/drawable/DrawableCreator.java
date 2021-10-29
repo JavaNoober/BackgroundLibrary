@@ -69,7 +69,7 @@ public class DrawableCreator {
         private boolean useLevel = false;
 
         private Rect padding = new Rect();
-
+        private boolean hasSetPadding = false;
         private Float sizeWidth;
         private Float sizeHeight;
         private Float strokeWidth;
@@ -209,6 +209,7 @@ public class DrawableCreator {
         }
 
         public Builder setPadding(float paddingLeft, float paddingTop, float paddingRight, float paddingBottom) {
+            hasSetPadding = true;
             padding.left = (int) paddingLeft;
             padding.top = (int) paddingTop;
             padding.right = (int) paddingRight;
@@ -759,7 +760,7 @@ public class DrawableCreator {
             }
             drawable.setGradientType(gradient.value);
             drawable.setUseLevel(useLevel);
-            if (!padding.isEmpty()) {
+            if (hasSetPadding) {
                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     drawable.setPadding(padding.left, padding.top, padding.right, padding.bottom);
                 } else {
@@ -916,24 +917,39 @@ public class DrawableCreator {
     public static void setDrawable(Drawable drawable, View view, DrawablePosition drawablePosition) {
 
         if (view instanceof TextView) {
-            if (drawablePosition == DrawablePosition.Left) {
-                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                ((TextView) view).setCompoundDrawables(drawable, null, null, null);
-            } else if (drawablePosition == DrawablePosition.Top) {
-                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                ((TextView) view).setCompoundDrawables(null, drawable, null, null);
-            } else if (drawablePosition == DrawablePosition.Right) {
-                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                ((TextView) view).setCompoundDrawables(null, null, drawable, null);
-            } else if (drawablePosition == DrawablePosition.Bottom) {
-                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                ((TextView) view).setCompoundDrawables(null, null, null, drawable);
-            } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    view.setBackground(drawable);
+            if(drawable != null){
+                if (drawablePosition == DrawablePosition.Left) {
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    ((TextView) view).setCompoundDrawables(drawable, null, null, null);
+                } else if (drawablePosition == DrawablePosition.Top) {
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    ((TextView) view).setCompoundDrawables(null, drawable, null, null);
+                } else if (drawablePosition == DrawablePosition.Right) {
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    ((TextView) view).setCompoundDrawables(null, null, drawable, null);
+                } else if (drawablePosition == DrawablePosition.Bottom) {
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    ((TextView) view).setCompoundDrawables(null, null, null, drawable);
                 } else {
-                    view.setBackgroundDrawable(drawable);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        view.setBackground(drawable);
+                    } else {
+                        view.setBackgroundDrawable(drawable);
+                    }
                 }
+            }else {
+                Drawable[] drawables = ((TextView) view).getCompoundDrawables();
+                if (drawablePosition == DrawablePosition.Left) {
+                    drawables[0] = null;
+                } else if (drawablePosition == DrawablePosition.Top) {
+                    drawables[1] = null;
+                } else if (drawablePosition == DrawablePosition.Right) {
+                    drawables[2] = null;
+                } else if (drawablePosition == DrawablePosition.Bottom) {
+                    drawables[3] = null;
+
+                }
+                ((TextView) view).setCompoundDrawables(drawables[0], drawables[1], drawables[2], drawables[3]);
             }
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

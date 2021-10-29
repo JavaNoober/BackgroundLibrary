@@ -3,9 +3,10 @@ package com.noober.background.drawable;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.support.annotation.AttrRes;
+
 
 import com.noober.background.R;
 
@@ -22,6 +23,13 @@ public class GradientDrawableCreator implements ICreateDrawable {
 
     GradientDrawableCreator(TypedArray typedArray) {
         this.typedArray = typedArray;
+    }
+
+    private int gradientState = -1;
+
+    GradientDrawableCreator(TypedArray typedArray, @AttrRes int gradientState) {
+        this.typedArray = typedArray;
+        this.gradientState = gradientState;
     }
 
     @Override
@@ -63,25 +71,501 @@ public class GradientDrawableCreator implements ICreateDrawable {
             } else if (attr == R.styleable.background_bl_corners_topRightRadius) {
                 cornerRadius[2] = typedArray.getDimension(attr, 0);
                 cornerRadius[3] = typedArray.getDimension(attr, 0);
-            } else if (attr == R.styleable.background_bl_gradient_angle) {
-                gradientAngle = typedArray.getInteger(attr, 0);
-            } else if (attr == R.styleable.background_bl_gradient_centerX) {
-                centerX = typedArray.getFloat(attr, -1);
-            } else if (attr == R.styleable.background_bl_gradient_centerY) {
-                centerY = typedArray.getFloat(attr, -1);
-            } else if (attr == R.styleable.background_bl_gradient_centerColor) {
-                centerColor = typedArray.getColor(attr, 0);
-            } else if (attr == R.styleable.background_bl_gradient_endColor) {
-                endColor = typedArray.getColor(attr, 0);
-            } else if (attr == R.styleable.background_bl_gradient_startColor) {
-                startColor = typedArray.getColor(attr, 0);
-            } else if (attr == R.styleable.background_bl_gradient_gradientRadius) {
-                drawable.setGradientRadius(typedArray.getDimension(attr, 0));
-            } else if (attr == R.styleable.background_bl_gradient_type) {
-                gradientType = typedArray.getInt(attr, 0);
+            } else if (attr == R.styleable.background_bl_corners_leftRadius) {
+                cornerRadius[0] = typedArray.getDimension(attr, 0);
+                cornerRadius[1] = typedArray.getDimension(attr, 0);
+                cornerRadius[6] = typedArray.getDimension(attr, 0);
+                cornerRadius[7] = typedArray.getDimension(attr, 0);
+            } else if (attr == R.styleable.background_bl_corners_topRadius) {
+                cornerRadius[0] = typedArray.getDimension(attr, 0);
+                cornerRadius[1] = typedArray.getDimension(attr, 0);
+                cornerRadius[2] = typedArray.getDimension(attr, 0);
+                cornerRadius[3] = typedArray.getDimension(attr, 0);
+            } else if (attr == R.styleable.background_bl_corners_rightRadius) {
+                cornerRadius[2] = typedArray.getDimension(attr, 0);
+                cornerRadius[3] = typedArray.getDimension(attr, 0);
+                cornerRadius[4] = typedArray.getDimension(attr, 0);
+                cornerRadius[5] = typedArray.getDimension(attr, 0);
+            } else if (attr == R.styleable.background_bl_corners_bottomRadius) {
+                cornerRadius[4] = typedArray.getDimension(attr, 0);
+                cornerRadius[5] = typedArray.getDimension(attr, 0);
+                cornerRadius[6] = typedArray.getDimension(attr, 0);
+                cornerRadius[7] = typedArray.getDimension(attr, 0);
+            } else if (attr == R.styleable.background_bl_gradient_angle ||
+                    attr == R.styleable.background_bl_checkable_gradient_angle ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_angle ||
+                    attr == R.styleable.background_bl_checked_gradient_angle ||
+                    attr == R.styleable.background_bl_unChecked_gradient_angle ||
+                    attr == R.styleable.background_bl_enabled_gradient_angle ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_angle ||
+                    attr == R.styleable.background_bl_selected_gradient_angle ||
+                    attr == R.styleable.background_bl_unSelected_gradient_angle ||
+                    attr == R.styleable.background_bl_pressed_gradient_angle ||
+                    attr == R.styleable.background_bl_unPressed_gradient_angle ||
+                    attr == R.styleable.background_bl_focused_gradient_angle ||
+                    attr == R.styleable.background_bl_unFocused_gradient_angle) {
+
+                if (gradientState == -1) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_angle) {
+                    gradientAngle = typedArray.getInteger(attr, 0);
+                }
+
+            } else if (attr == R.styleable.background_bl_gradient_centerX ||
+                    attr == R.styleable.background_bl_checkable_gradient_centerX ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_centerX ||
+                    attr == R.styleable.background_bl_checked_gradient_centerX ||
+                    attr == R.styleable.background_bl_unChecked_gradient_centerX ||
+                    attr == R.styleable.background_bl_enabled_gradient_centerX ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_centerX ||
+                    attr == R.styleable.background_bl_selected_gradient_centerX ||
+                    attr == R.styleable.background_bl_unSelected_gradient_centerX ||
+                    attr == R.styleable.background_bl_pressed_gradient_centerX ||
+                    attr == R.styleable.background_bl_unPressed_gradient_centerX ||
+                    attr == R.styleable.background_bl_focused_gradient_centerX ||
+                    attr == R.styleable.background_bl_unFocused_gradient_centerX) {
+
+                if (gradientState == -1) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_centerX) {
+                    centerX = typedArray.getFloat(attr, -1);
+                }
+            } else if (attr == R.styleable.background_bl_gradient_centerY ||
+                    attr == R.styleable.background_bl_checkable_gradient_centerY ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_centerY ||
+                    attr == R.styleable.background_bl_checked_gradient_centerY ||
+                    attr == R.styleable.background_bl_unChecked_gradient_centerY ||
+                    attr == R.styleable.background_bl_enabled_gradient_centerY ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_centerY ||
+                    attr == R.styleable.background_bl_selected_gradient_centerY ||
+                    attr == R.styleable.background_bl_unSelected_gradient_centerY ||
+                    attr == R.styleable.background_bl_pressed_gradient_centerY ||
+                    attr == R.styleable.background_bl_unPressed_gradient_centerY ||
+                    attr == R.styleable.background_bl_focused_gradient_centerY ||
+                    attr == R.styleable.background_bl_unFocused_gradient_centerY) {
+                if (gradientState == -1) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_centerY) {
+                    centerY = typedArray.getFloat(attr, -1);
+                }
+            } else if (attr == R.styleable.background_bl_gradient_centerColor ||
+                    attr == R.styleable.background_bl_checkable_gradient_centerColor ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_centerColor ||
+                    attr == R.styleable.background_bl_checked_gradient_centerColor ||
+                    attr == R.styleable.background_bl_unChecked_gradient_centerColor ||
+                    attr == R.styleable.background_bl_enabled_gradient_centerColor ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_centerColor ||
+                    attr == R.styleable.background_bl_selected_gradient_centerColor ||
+                    attr == R.styleable.background_bl_unSelected_gradient_centerColor ||
+                    attr == R.styleable.background_bl_pressed_gradient_centerColor ||
+                    attr == R.styleable.background_bl_unPressed_gradient_centerColor ||
+                    attr == R.styleable.background_bl_focused_gradient_centerColor ||
+                    attr == R.styleable.background_bl_unFocused_gradient_centerColor) {
+                if (gradientState == -1) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_centerColor) {
+                    centerColor = typedArray.getColor(attr, 0);
+                }
+
+            } else if (attr == R.styleable.background_bl_gradient_endColor ||
+                    attr == R.styleable.background_bl_checkable_gradient_endColor ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_endColor ||
+                    attr == R.styleable.background_bl_checked_gradient_endColor ||
+                    attr == R.styleable.background_bl_unChecked_gradient_endColor ||
+                    attr == R.styleable.background_bl_enabled_gradient_endColor ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_endColor ||
+                    attr == R.styleable.background_bl_selected_gradient_endColor ||
+                    attr == R.styleable.background_bl_unSelected_gradient_endColor ||
+                    attr == R.styleable.background_bl_pressed_gradient_endColor ||
+                    attr == R.styleable.background_bl_unPressed_gradient_endColor ||
+                    attr == R.styleable.background_bl_focused_gradient_endColor ||
+                    attr == R.styleable.background_bl_unFocused_gradient_endColor) {
+                if (gradientState == -1) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_endColor) {
+                    endColor = typedArray.getColor(attr, 0);
+                }
+            } else if (attr == R.styleable.background_bl_gradient_startColor ||
+                    attr == R.styleable.background_bl_checkable_gradient_startColor ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_startColor ||
+                    attr == R.styleable.background_bl_checked_gradient_startColor ||
+                    attr == R.styleable.background_bl_unChecked_gradient_startColor ||
+                    attr == R.styleable.background_bl_enabled_gradient_startColor ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_startColor ||
+                    attr == R.styleable.background_bl_selected_gradient_startColor ||
+                    attr == R.styleable.background_bl_unSelected_gradient_startColor ||
+                    attr == R.styleable.background_bl_pressed_gradient_startColor ||
+                    attr == R.styleable.background_bl_unPressed_gradient_startColor ||
+                    attr == R.styleable.background_bl_focused_gradient_startColor ||
+                    attr == R.styleable.background_bl_unFocused_gradient_startColor) {
+                if (gradientState == -1) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_startColor) {
+                    startColor = typedArray.getColor(attr, 0);
+                }
+            } else if (attr == R.styleable.background_bl_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_checkable_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_checked_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_unChecked_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_enabled_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_selected_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_unSelected_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_pressed_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_unPressed_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_focused_gradient_gradientRadius ||
+                    attr == R.styleable.background_bl_unFocused_gradient_gradientRadius) {
+                if (gradientState == -1) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_gradientRadius) {
+                    drawable.setGradientRadius(typedArray.getDimension(attr, 0));
+                }
+
+            } else if (attr == R.styleable.background_bl_gradient_type ||
+                    attr == R.styleable.background_bl_checkable_gradient_type ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_type ||
+                    attr == R.styleable.background_bl_checked_gradient_type ||
+                    attr == R.styleable.background_bl_unChecked_gradient_type ||
+                    attr == R.styleable.background_bl_enabled_gradient_type ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_type ||
+                    attr == R.styleable.background_bl_selected_gradient_type ||
+                    attr == R.styleable.background_bl_unSelected_gradient_type ||
+                    attr == R.styleable.background_bl_pressed_gradient_type ||
+                    attr == R.styleable.background_bl_unPressed_gradient_type ||
+                    attr == R.styleable.background_bl_focused_gradient_type ||
+                    attr == R.styleable.background_bl_unFocused_gradient_type) {
+                if (gradientState == -1) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_type) {
+                    gradientType = typedArray.getInt(attr, 0);
+                }
                 drawable.setGradientType(gradientType);
-            } else if (attr == R.styleable.background_bl_gradient_useLevel) {
-                drawable.setUseLevel(typedArray.getBoolean(attr, false));
+            } else if (attr == R.styleable.background_bl_gradient_useLevel ||
+                    attr == R.styleable.background_bl_checkable_gradient_useLevel ||
+                    attr == R.styleable.background_bl_unCheckable_gradient_useLevel ||
+                    attr == R.styleable.background_bl_checked_gradient_useLevel ||
+                    attr == R.styleable.background_bl_unChecked_gradient_useLevel ||
+                    attr == R.styleable.background_bl_enabled_gradient_useLevel ||
+                    attr == R.styleable.background_bl_unEnabled_gradient_useLevel ||
+                    attr == R.styleable.background_bl_selected_gradient_useLevel ||
+                    attr == R.styleable.background_bl_unSelected_gradient_useLevel ||
+                    attr == R.styleable.background_bl_pressed_gradient_useLevel ||
+                    attr == R.styleable.background_bl_unPressed_gradient_useLevel ||
+                    attr == R.styleable.background_bl_focused_gradient_useLevel ||
+                    attr == R.styleable.background_bl_unFocused_gradient_useLevel) {
+                if (gradientState == -1) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_checkable_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == -android.R.attr.state_checkable &&
+                        attr == R.styleable.background_bl_unCheckable_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_checked_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == -android.R.attr.state_checked &&
+                        attr == R.styleable.background_bl_unChecked_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_enabled_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == -android.R.attr.state_enabled &&
+                        attr == R.styleable.background_bl_unEnabled_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_selected_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == -android.R.attr.state_selected &&
+                        attr == R.styleable.background_bl_unSelected_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_pressed_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == -android.R.attr.state_pressed &&
+                        attr == R.styleable.background_bl_unPressed_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_focused_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                } else if (gradientState == -android.R.attr.state_focused &&
+                        attr == R.styleable.background_bl_unFocused_gradient_useLevel) {
+                    drawable.setUseLevel(typedArray.getBoolean(attr, false));
+                }
+
             } else if (attr == R.styleable.background_bl_padding_left) {
                 padding.left = (int) typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.background_bl_padding_top) {
@@ -116,57 +600,73 @@ public class GradientDrawableCreator implements ICreateDrawable {
             int start = 0;
             ArrayList<Integer> stateList = new ArrayList<>();
             ArrayList<Integer> colorList = new ArrayList<>();
-            if (typedArray.hasValue(R.styleable.background_bl_pressed_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unPressed_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_pressed_solid_color)) {
                 stateList.add(android.R.attr.state_pressed);
-                stateList.add(-android.R.attr.state_pressed);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_pressed_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unPressed_solid_color)) {
+                stateList.add(-android.R.attr.state_pressed);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unPressed_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_checkable_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unCheckable_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_checkable_solid_color)) {
                 stateList.add(android.R.attr.state_checkable);
-                stateList.add(-android.R.attr.state_checkable);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_checkable_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unCheckable_solid_color)) {
+                stateList.add(-android.R.attr.state_checkable);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unCheckable_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_checked_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unChecked_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_checked_solid_color)) {
                 stateList.add(android.R.attr.state_checked);
-                stateList.add(-android.R.attr.state_checked);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_checked_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unChecked_solid_color)) {
+                stateList.add(-android.R.attr.state_checked);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unChecked_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_enabled_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unEnabled_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_enabled_solid_color)) {
                 stateList.add(android.R.attr.state_enabled);
-                stateList.add(-android.R.attr.state_enabled);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_enabled_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unEnabled_solid_color)) {
+                stateList.add(-android.R.attr.state_enabled);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unEnabled_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_selected_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unSelected_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_selected_solid_color)) {
                 stateList.add(android.R.attr.state_selected);
-                stateList.add(-android.R.attr.state_selected);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_selected_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unSelected_solid_color)) {
+                stateList.add(-android.R.attr.state_selected);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unSelected_solid_color, 0));
             }
-            if (typedArray.hasValue(R.styleable.background_bl_focused_solid_color) &&
-                    typedArray.hasValue(R.styleable.background_bl_unFocused_solid_color)) {
+            if (typedArray.hasValue(R.styleable.background_bl_focused_solid_color)) {
                 stateList.add(android.R.attr.state_focused);
-                stateList.add(-android.R.attr.state_focused);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_focused_solid_color, 0));
+            }
+            if (typedArray.hasValue(R.styleable.background_bl_unFocused_solid_color)) {
+                stateList.add(-android.R.attr.state_focused);
                 colorList.add(typedArray.getColor(R.styleable.background_bl_unFocused_solid_color, 0));
             }
 
             if (stateList.size() > 0) {
-                int[][] state = new int[stateList.size()][];
-                int[] color = new int[stateList.size()];
+                int size = stateList.size();
+                if (typedArray.hasValue(R.styleable.background_bl_solid_color)) {
+                    size++;
+                }
+                int[][] state = new int[size][];
+                int[] color = new int[size];
                 for (int iState : stateList) {
                     state[start] = new int[]{iState};
                     color[start] = colorList.get(start);
                     start++;
                 }
+
+                if (typedArray.hasValue(R.styleable.background_bl_solid_color)) {
+                    state[start] = new int[]{};
+                    color[start] = solidColor;
+                }
+
                 ColorStateList colorStateList = new ColorStateList(state, color);
                 drawable.setColor(colorStateList);
             } else if (typedArray.hasValue(R.styleable.background_bl_solid_color)) {
@@ -226,6 +726,7 @@ public class GradientDrawableCreator implements ICreateDrawable {
                     colorList.add(typedArray.getColor(R.styleable.background_bl_focused_stroke_color, 0));
                     colorList.add(typedArray.getColor(R.styleable.background_bl_unFocused_stroke_color, 0));
                 }
+
                 if (stateList.size() > 0) {
                     int[][] state = new int[stateList.size()][];
                     int[] color = new int[stateList.size()];
@@ -247,14 +748,38 @@ public class GradientDrawableCreator implements ICreateDrawable {
             }
         }
 
-        if (typedArray.hasValue(R.styleable.background_bl_gradient_centerX) &&
-                typedArray.hasValue(R.styleable.background_bl_gradient_centerY)) {
+        if ((typedArray.hasValue(R.styleable.background_bl_gradient_centerX) &&
+                typedArray.hasValue(R.styleable.background_bl_gradient_centerY)) ||
+                (typedArray.hasValue(R.styleable.background_bl_checkable_gradient_centerX) &&
+                        typedArray.hasValue(R.styleable.background_bl_unCheckable_gradient_centerY)) ||
+                (typedArray.hasValue(R.styleable.background_bl_checked_gradient_centerX) &&
+                        typedArray.hasValue(R.styleable.background_bl_unChecked_gradient_centerY)) ||
+                (typedArray.hasValue(R.styleable.background_bl_enabled_gradient_centerX) &&
+                        typedArray.hasValue(R.styleable.background_bl_unEnabled_gradient_centerY)) ||
+                (typedArray.hasValue(R.styleable.background_bl_selected_gradient_centerX) &&
+                        typedArray.hasValue(R.styleable.background_bl_unSelected_gradient_centerY)) ||
+                (typedArray.hasValue(R.styleable.background_bl_pressed_gradient_centerX) &&
+                        typedArray.hasValue(R.styleable.background_bl_unPressed_gradient_centerY)) ||
+                (typedArray.hasValue(R.styleable.background_bl_focused_gradient_centerX) &&
+                        typedArray.hasValue(R.styleable.background_bl_unFocused_gradient_centerY))) {
             drawable.setGradientCenter(centerX, centerY);
         }
 
-        if (typedArray.hasValue(R.styleable.background_bl_gradient_startColor) &&
-                typedArray.hasValue(R.styleable.background_bl_gradient_endColor) &&
-                android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (((typedArray.hasValue(R.styleable.background_bl_gradient_startColor) &&
+                typedArray.hasValue(R.styleable.background_bl_gradient_endColor)) ||
+                (typedArray.hasValue(R.styleable.background_bl_checkable_gradient_startColor) &&
+                        typedArray.hasValue(R.styleable.background_bl_unCheckable_gradient_endColor)) ||
+                (typedArray.hasValue(R.styleable.background_bl_checked_gradient_startColor) &&
+                        typedArray.hasValue(R.styleable.background_bl_unChecked_gradient_endColor)) ||
+                (typedArray.hasValue(R.styleable.background_bl_enabled_gradient_startColor) &&
+                        typedArray.hasValue(R.styleable.background_bl_unEnabled_gradient_endColor)) ||
+                (typedArray.hasValue(R.styleable.background_bl_selected_gradient_startColor) &&
+                        typedArray.hasValue(R.styleable.background_bl_unSelected_gradient_endColor)) ||
+                (typedArray.hasValue(R.styleable.background_bl_pressed_gradient_startColor) &&
+                        typedArray.hasValue(R.styleable.background_bl_unPressed_gradient_endColor)) ||
+                (typedArray.hasValue(R.styleable.background_bl_focused_gradient_startColor) &&
+                        typedArray.hasValue(R.styleable.background_bl_unFocused_gradient_endColor)) &&
+                        android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)) {
             int[] colors;
             if (typedArray.hasValue(R.styleable.background_bl_gradient_centerColor)) {
                 colors = new int[3];
@@ -269,8 +794,20 @@ public class GradientDrawableCreator implements ICreateDrawable {
             drawable.setColors(colors);
         }
         if (gradientType == LINEAR_GRADIENT &&
-                typedArray.hasValue(R.styleable.background_bl_gradient_angle) &&
-                android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN &&
+                (typedArray.hasValue(R.styleable.background_bl_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_checkable_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_checked_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_enabled_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_selected_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_pressed_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_focused_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_unCheckable_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_unChecked_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_unEnabled_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_unSelected_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_unPressed_gradient_angle) ||
+                        typedArray.hasValue(R.styleable.background_bl_unFocused_gradient_angle))) {
             gradientAngle %= 360;
             if (gradientAngle % 45 != 0) {
                 throw new XmlPullParserException(typedArray.getPositionDescription()

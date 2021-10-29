@@ -13,6 +13,95 @@
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix">
 
+        <Button
+            android:id="@+id/btnConsole"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginTop="12.5dp"
+            android:padding="0dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:bl_corners_radius="10dp"
+            app:bl_gradient_angle="45"
+            app:bl_gradient_endColor="#00E0D3"
+            app:bl_gradient_startColor="#0093C3"
+            app:bl_gradient_type="linear" />
+
+        <com.noober.background.view.BLButton
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="点击事件支持渐变"
+            android:textColor="@android:color/white"
+            app:bl_corners_radius="4dp"
+            app:bl_pressed_gradient_centerColor="@android:color/holo_green_dark"
+            app:bl_unPressed_gradient_centerColor="@android:color/darker_gray"
+            app:bl_pressed_gradient_startColor="@android:color/black"
+            app:bl_unPressed_gradient_startColor="@android:color/white"
+            app:bl_pressed_gradient_endColor="@android:color/holo_red_dark"
+            app:bl_unPressed_gradient_endColor="@android:color/holo_blue_light"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.noober.background.view.BLFlow
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="20.0dp"
+                app:bl_corners_radius="4dp"
+                app:bl_padding_bottom="5dp"
+                app:bl_padding_left="15dp"
+                app:bl_padding_right="5dp"
+                app:bl_padding_top="15dp"
+                app:bl_solid_color="#E3B666"
+                app:bl_stroke_color="#8c6822"
+                app:bl_stroke_dashGap="5dp"
+                app:bl_stroke_dashWidth="10dp"
+                app:bl_stroke_width="2dp"
+                app:constraint_referenced_ids="tv1,tv2,tv3,tv4,tv5"
+                app:flow_horizontalGap="20.0dp"
+                app:flow_verticalGap="20.0dp"
+                app:flow_wrapMode="aligned"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!" />
+
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!" />
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!" />
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!" />
+
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello World!" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
         <com.noober.background.view.BLButton
             android:id="@+id/btn_login"
             style="?android:attr/borderlessButtonStyle"
@@ -36,6 +125,22 @@
             app:bl_stroke_color="@android:color/black"
             app:bl_stroke_position="left|bottom|right"
             app:bl_stroke_width="1dp" />
+
+
+        <com.noober.background.view.BLTextView
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="指定只显示左右下方的边框22222"
+            android:textSize="20sp"
+            app:bl_pressed_stroke_color="@android:color/holo_red_dark"
+            app:bl_stroke_position="left|bottom|right"
+            app:bl_stroke_width="1dp"
+            app:bl_unPressed_stroke_color="@android:color/black" />
+
 
         <com.noober.background.view.BLTextView
             android:id="@+id/ttt"
@@ -478,16 +583,16 @@
             android:layout_width="130dp"
             android:layout_height="36dp"
             android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:padding="0dp"
             android:clickable="true"
             android:focusable="true"
-            app:bl_pressed_solid_color="@color/colorAccent"
-            app:bl_unPressed_solid_color="@color/colorPrimaryDark"
-            app:bl_corners_radius="5dp"
+            android:gravity="center"
+            android:padding="0dp"
             android:text="背景"
             android:textColor="#4F94CD"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:bl_corners_radius="5dp"
+            app:bl_pressed_solid_color="@color/colorAccent"
+            app:bl_unPressed_solid_color="@color/colorPrimaryDark" />
 
         <Button
             android:id="@+id/btnTest3"

@@ -26,15 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListActivity" />
-        <activity android:name=".DataBindingActivity">
-
-             <!--<intent-filter>-->
-             <!--<action android:name="android.intent.action.MAIN" />-->
-<!--&lt;!&ndash;&ndash;&gt;-->
-<!--&lt;!&ndash;&ndash;&gt;-->
-             <!--<category android:name="android.intent.category.LAUNCHER" />-->
-             <!--</intent-filter>-->
-        </activity>
     </application>
 
 </manifest>

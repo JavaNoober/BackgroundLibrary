@@ -42,6 +42,7 @@ dependencies {
     implementation 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
     implementation project(':libraryx')
 //    implementation 'com.noober.background:corex:1.5.4-ALPHA'
+//    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.6.9'
 }
 
 repositories{

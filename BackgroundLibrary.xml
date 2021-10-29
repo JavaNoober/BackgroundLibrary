@@ -797,7 +797,682 @@
       <option name="XML" value="true" />
     </context>
   </template>
-  <template name="bl_padding_bottom" value="app:bl_padding_bottom=&quot;$value$&quot;" description="paddingBottom属性" toReformat="true" toShortenFQNames="true">
+
+  <template name="bl_checkable_gradient_angle" value="app:bl_checkable_gradient_angle=&quot;$value$&quot;" description="checkable状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_angle" value="app:bl_checked_gradient_angle=&quot;$value$&quot;" description="checked状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_angle" value="app:bl_enabled_gradient_angle=&quot;$value$&quot;" description="enabled状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_angle" value="app:bl_selected_gradient_angle=&quot;$value$&quot;" description="selected状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_angle" value="app:bl_pressed_gradient_angle=&quot;$value$&quot;" description="pressed状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_angle" value="app:bl_focused_gradient_angle=&quot;$value$&quot;" description="focused状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_angle" value="app:bl_unCheckable_gradient_angle=&quot;$value$&quot;" description="unCheckable状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_angle" value="app:bl_unChecked_gradient_angle=&quot;$value$&quot;" description="unChecked状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_angle" value="app:bl_unEnabled_gradient_angle=&quot;$value$&quot;" description="unEnabled状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_angle" value="app:bl_unSelected_gradient_angle=&quot;$value$&quot;" description="unSelected状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_angle" value="app:bl_unPressed_gradient_angle=&quot;$value$&quot;" description="unPressed状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_angle" value="app:bl_unFocused_gradient_angle=&quot;$value$&quot;" description="unFocused状态的渐变角度" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+
+  <template name="bl_checkable_gradient_centerX" value="app:bl_checkable_gradient_centerX=&quot;$value$&quot;" description="checkable状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_centerX" value="app:bl_checked_gradient_centerX=&quot;$value$&quot;" description="checked状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_centerX" value="app:bl_enabled_gradient_centerX=&quot;$value$&quot;" description="enabled状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_centerX" value="app:bl_selected_gradient_centerX=&quot;$value$&quot;" description="selected状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_centerX" value="app:bl_pressed_gradient_centerX=&quot;$value$&quot;" description="pressed状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_centerX" value="app:bl_focused_gradient_centerX=&quot;$value$&quot;" description="focused状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_centerX" value="app:bl_unCheckable_gradient_centerX=&quot;$value$&quot;" description="unCheckable状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_centerX" value="app:bl_unChecked_gradient_centerX=&quot;$value$&quot;" description="unChecked状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_centerX" value="app:bl_unEnabled_gradient_centerX=&quot;$value$&quot;" description="unEnabled状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_centerX" value="app:bl_unSelected_gradient_centerX=&quot;$value$&quot;" description="unSelected状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_centerX" value="app:bl_unPressed_gradient_centerX=&quot;$value$&quot;" description="unPressed状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_centerX" value="app:bl_unFocused_gradient_centerX=&quot;$value$&quot;" description="unFocused状态的中心x" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+
+  <template name="bl_checkable_gradient_centerY" value="app:bl_checkable_gradient_centerY=&quot;$value$&quot;" description="checkable状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_centerY" value="app:bl_checked_gradient_centerY=&quot;$value$&quot;" description="checked状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_centerY" value="app:bl_enabled_gradient_centerY=&quot;$value$&quot;" description="enabled状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_centerY" value="app:bl_selected_gradient_centerY=&quot;$value$&quot;" description="selected状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_centerY" value="app:bl_pressed_gradient_centerY=&quot;$value$&quot;" description="pressed状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_centerY" value="app:bl_focused_gradient_centerY=&quot;$value$&quot;" description="focused状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_centerY" value="app:bl_unCheckable_gradient_centerY=&quot;$value$&quot;" description="unCheckable状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_centerY" value="app:bl_unChecked_gradient_centerY=&quot;$value$&quot;" description="unChecked状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_centerY" value="app:bl_unEnabled_gradient_centerY=&quot;$value$&quot;" description="unEnabled状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_centerY" value="app:bl_unSelected_gradient_centerY=&quot;$value$&quot;" description="unSelected状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_centerY" value="app:bl_unPressed_gradient_centerY=&quot;$value$&quot;" description="unPressed状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_centerY" value="app:bl_unFocused_gradient_centerY=&quot;$value$&quot;" description="unFocused状态的中心y" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+
+  <template name="bl_checkable_gradient_centerColor" value="app:bl_checkable_gradient_centerColor=&quot;$value$&quot;" description="checkable状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_centerColor" value="app:bl_checked_gradient_centerColor=&quot;$value$&quot;" description="checked状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_centerColor" value="app:bl_enabled_gradient_centerColor=&quot;$value$&quot;" description="enabled状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_centerColor" value="app:bl_selected_gradient_centerColor=&quot;$value$&quot;" description="selected状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_centerColor" value="app:bl_pressed_gradient_centerColor=&quot;$value$&quot;" description="pressed状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_centerColor" value="app:bl_focused_gradient_centerColor=&quot;$value$&quot;" description="focused状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_centerColor" value="app:bl_unCheckable_gradient_centerColor=&quot;$value$&quot;" description="unCheckable状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_centerColor" value="app:bl_unChecked_gradient_centerColor=&quot;$value$&quot;" description="unChecked状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_centerColor" value="app:bl_unEnabled_gradient_centerColor=&quot;$value$&quot;" description="unEnabled状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_centerColor" value="app:bl_unSelected_gradient_centerColor=&quot;$value$&quot;" description="unSelected状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_centerColor" value="app:bl_unPressed_gradient_centerColor=&quot;$value$&quot;" description="unPressed状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_centerColor" value="app:bl_unFocused_gradient_centerColor=&quot;$value$&quot;" description="unFocused状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+
+  <template name="bl_checkable_gradient_endColor" value="app:bl_checkable_gradient_endColor=&quot;$value$&quot;" description="checkable状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_endColor" value="app:bl_checked_gradient_endColor=&quot;$value$&quot;" description="checked状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_endColor" value="app:bl_enabled_gradient_endColor=&quot;$value$&quot;" description="enabled状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_endColor" value="app:bl_selected_gradient_endColor=&quot;$value$&quot;" description="selected状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_endColor" value="app:bl_pressed_gradient_endColor=&quot;$value$&quot;" description="pressed状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_endColor" value="app:bl_focused_gradient_endColor=&quot;$value$&quot;" description="focused状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_endColor" value="app:bl_unCheckable_gradient_endColor=&quot;$value$&quot;" description="unCheckable状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_endColor" value="app:bl_unChecked_gradient_endColor=&quot;$value$&quot;" description="unChecked状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_endColor" value="app:bl_unEnabled_gradient_endColor=&quot;$value$&quot;" description="unEnabled状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_endColor" value="app:bl_unSelected_gradient_endColor=&quot;$value$&quot;" description="unSelected状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_endColor" value="app:bl_unPressed_gradient_endColor=&quot;$value$&quot;" description="unPressed状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_endColor" value="app:bl_unFocused_gradient_endColor=&quot;$value$&quot;" description="unFocused状态的结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+
+  <template name="bl_checkable_gradient_startColor" value="app:bl_checkable_gradient_startColor=&quot;$value$&quot;" description="checkable状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_startColor" value="app:bl_checked_gradient_startColor=&quot;$value$&quot;" description="checked状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_startColor" value="app:bl_enabled_gradient_startColor=&quot;$value$&quot;" description="enabled状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_startColor" value="app:bl_selected_gradient_startColor=&quot;$value$&quot;" description="selected状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_startColor" value="app:bl_pressed_gradient_startColor=&quot;$value$&quot;" description="pressed状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_startColor" value="app:bl_focused_gradient_startColor=&quot;$value$&quot;" description="focused状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_startColor" value="app:bl_unCheckable_gradient_startColor=&quot;$value$&quot;" description="unCheckable状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_startColor" value="app:bl_unChecked_gradient_startColor=&quot;$value$&quot;" description="unChecked状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_startColor" value="app:bl_unEnabled_gradient_startColor=&quot;$value$&quot;" description="unEnabled状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_startColor" value="app:bl_unSelected_gradient_startColor=&quot;$value$&quot;" description="unSelected状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_startColor" value="app:bl_unPressed_gradient_startColor=&quot;$value$&quot;" description="unPressed状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_startColor" value="app:bl_unFocused_gradient_startColor=&quot;$value$&quot;" description="unFocused状态的开始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+
+  <template name="bl_checkable_gradient_gradientRadius" value="app:bl_checkable_gradient_gradientRadius=&quot;$value$&quot;" description="checkable状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_gradientRadius" value="app:bl_checked_gradient_gradientRadius=&quot;$value$&quot;" description="checked状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_gradientRadius" value="app:bl_enabled_gradient_gradientRadius=&quot;$value$&quot;" description="enabled状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_gradientRadius" value="app:bl_selected_gradient_gradientRadius=&quot;$value$&quot;" description="selected状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_gradientRadius" value="app:bl_pressed_gradient_gradientRadius=&quot;$value$&quot;" description="pressed状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_gradientRadius" value="app:bl_focused_gradient_gradientRadius=&quot;$value$&quot;" description="focused状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_gradientRadius" value="app:bl_unCheckable_gradient_gradientRadius=&quot;$value$&quot;" description="unCheckable状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_gradientRadius" value="app:bl_unChecked_gradient_gradientRadius=&quot;$value$&quot;" description="unChecked状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_gradientRadius" value="app:bl_unEnabled_gradient_gradientRadius=&quot;$value$&quot;" description="unEnabled状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_gradientRadius" value="app:bl_unSelected_gradient_gradientRadius=&quot;$value$&quot;" description="unSelected状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_gradientRadius" value="app:bl_unPressed_gradient_gradientRadius=&quot;$value$&quot;" description="unPressed状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_gradientRadius" value="app:bl_unFocused_gradient_gradientRadius=&quot;$value$&quot;" description="unFocused状态的圆角大小" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+
+  <template name="bl_checkable_gradient_type" value="app:bl_checkable_gradient_type=&quot;$value$&quot;" description="checkable状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_type" value="app:bl_checked_gradient_type=&quot;$value$&quot;" description="checked状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_type" value="app:bl_enabled_gradient_type=&quot;$value$&quot;" description="enabled状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_type" value="app:bl_selected_gradient_type=&quot;$value$&quot;" description="selected状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_type" value="app:bl_pressed_gradient_type=&quot;$value$&quot;" description="pressed状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_type" value="app:bl_focused_gradient_type=&quot;$value$&quot;" description="focused状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_type" value="app:bl_unCheckable_gradient_type=&quot;$value$&quot;" description="unCheckable状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_type" value="app:bl_unChecked_gradient_type=&quot;$value$&quot;" description="unChecked状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_type" value="app:bl_unEnabled_gradient_type=&quot;$value$&quot;" description="unEnabled状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_type" value="app:bl_unSelected_gradient_type=&quot;$value$&quot;" description="unSelected状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_type" value="app:bl_unPressed_gradient_type=&quot;$value$&quot;" description="unPressed状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_type" value="app:bl_unFocused_gradient_type=&quot;$value$&quot;" description="unFocused状态的渐变类型" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+
+  <template name="bl_checkable_gradient_useLevel" value="app:bl_checkable_gradient_useLevel=&quot;$value$&quot;" description="checkable状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_checked_gradient_useLevel" value="app:bl_checked_gradient_useLevel=&quot;$value$&quot;" description="checked状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_enabled_gradient_useLevel" value="app:bl_enabled_gradient_useLevel=&quot;$value$&quot;" description="enabled状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_selected_gradient_useLevel" value="app:bl_selected_gradient_useLevel=&quot;$value$&quot;" description="selected状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_pressed_gradient_useLevel" value="app:bl_pressed_gradient_useLevel=&quot;$value$&quot;" description="pressed状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_focused_gradient_useLevel" value="app:bl_focused_gradient_useLevel=&quot;$value$&quot;" description="focused状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unCheckable_gradient_useLevel" value="app:bl_unCheckable_gradient_useLevel=&quot;$value$&quot;" description="unCheckable状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unChecked_gradient_useLevel" value="app:bl_unChecked_gradient_useLevel=&quot;$value$&quot;" description="unChecked状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unEnabled_gradient_useLevel" value="app:bl_unEnabled_gradient_useLevel=&quot;$value$&quot;" description="unEnabled状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unSelected_gradient_useLevel" value="app:bl_unSelected_gradient_useLevel=&quot;$value$&quot;" description="unSelected状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unPressed_gradient_useLevel" value="app:bl_unPressed_gradient_useLevel=&quot;$value$&quot;" description="unPressed状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_unFocused_gradient_useLevel" value="app:bl_unFocused_gradient_useLevel=&quot;$value$&quot;" description="unFocused状态的useLevel" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_corners_leftRadius" value="app:bl_corners_leftRadius=&quot;$value$&quot;" description="左边的圆角" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_corners_topRadius" value="app:bl_corners_topRadius=&quot;$value$&quot;" description="上方的圆角" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_corners_rightRadius" value="app:bl_corners_rightRadius=&quot;$value$&quot;" description="右边的圆角" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_corners_bottomRadius" value="app:bl_corners_bottomRadius=&quot;$value$&quot;" description="下方的圆角" toReformat="true" toShortenFQNames="true">
     <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="XML" value="true" />

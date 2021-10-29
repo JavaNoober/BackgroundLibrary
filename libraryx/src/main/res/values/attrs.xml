@@ -1,40 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<shape-->
-    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:shape=["rectangle" | "oval" | "Line" | "ring"] >-->
-    <!--<corners-->
-    <!--android:radius="integer"-->
-    <!--android:topLeftRadius="integer"-->
-    <!--android:topRightRadius="integer"-->
-    <!--android:bottomLeftRadius="integer"-->
-    <!--android:bottomRightRadius="integer" />-->
-    <!--<gradient-->
-    <!--android:angle="integer"-->
-    <!--android:centerX="float"-->
-    <!--android:centerY="float"-->
-    <!--android:centerColor="integer"-->
-    <!--android:endColor="color"-->
-    <!--android:gradientRadius="integer"-->
-    <!--android:startColor="color"-->
-    <!--android:type=["linear" | "radial" | "sweep"]-->
-    <!--android:useLevel=["true" | "false"] />-->
-    <!--<padding-->
-    <!--android:left="integer"-->
-    <!--android:top="integer"-->
-    <!--android:right="integer"-->
-    <!--android:bottom="integer" />-->
-    <!--<size-->
-    <!--android:width="integer"-->
-    <!--android:height="integer" />-->
-    <!--<solid-->
-    <!--android:color="color" />-->
-    <!--<stroke-->
-    <!--android:width="integer"-->
-    <!--android:color="color"-->
-    <!--android:dashWidth="integer"-->
-    <!--android:dashGap="integer" />-->
-    <!--</shape>-->
 
     <declare-styleable name="background">
         <attr name="bl_shape" format="enum">
@@ -51,6 +16,10 @@
         <attr name="bl_corners_bottomRightRadius" format="dimension" />
         <attr name="bl_corners_topLeftRadius" format="dimension" />
         <attr name="bl_corners_topRightRadius" format="dimension" />
+        <attr name="bl_corners_leftRadius" format="dimension" />
+        <attr name="bl_corners_topRadius" format="dimension" />
+        <attr name="bl_corners_rightRadius" format="dimension" />
+        <attr name="bl_corners_bottomRadius" format="dimension" />
 
         <attr name="bl_gradient_angle" format="integer" />
         <attr name="bl_gradient_centerX" format="float" />
@@ -64,6 +33,8 @@
             <enum name="radial" value="1" />
             <enum name="sweep" value="2" />
         </attr>
+
+
         <attr name="bl_gradient_useLevel" format="boolean" />
 
         <attr name="bl_padding_left" format="dimension" />
@@ -117,6 +88,175 @@
         <attr name="bl_unSelected_solid_color" format="color" />
         <attr name="bl_unPressed_solid_color" format="color" />
         <attr name="bl_unFocused_solid_color" format="color" />
+
+        // new
+        <attr name="bl_checkable_gradient_angle" format="integer" />
+        <attr name="bl_checkable_gradient_centerX" format="float" />
+        <attr name="bl_checkable_gradient_centerY" format="float" />
+        <attr name="bl_checkable_gradient_centerColor" format="color" />
+        <attr name="bl_checkable_gradient_endColor" format="color" />
+        <attr name="bl_checkable_gradient_startColor" format="color" />
+        <attr name="bl_checkable_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_checkable_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_checkable_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_unCheckable_gradient_angle" format="integer" />
+        <attr name="bl_unCheckable_gradient_centerX" format="float" />
+        <attr name="bl_unCheckable_gradient_centerY" format="float" />
+        <attr name="bl_unCheckable_gradient_centerColor" format="color" />
+        <attr name="bl_unCheckable_gradient_endColor" format="color" />
+        <attr name="bl_unCheckable_gradient_startColor" format="color" />
+        <attr name="bl_unCheckable_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_unCheckable_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_unCheckable_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_checked_gradient_angle" format="integer" />
+        <attr name="bl_checked_gradient_centerX" format="float" />
+        <attr name="bl_checked_gradient_centerY" format="float" />
+        <attr name="bl_checked_gradient_centerColor" format="color" />
+        <attr name="bl_checked_gradient_endColor" format="color" />
+        <attr name="bl_checked_gradient_startColor" format="color" />
+        <attr name="bl_checked_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_checked_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_checked_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_unChecked_gradient_angle" format="integer" />
+        <attr name="bl_unChecked_gradient_centerX" format="float" />
+        <attr name="bl_unChecked_gradient_centerY" format="float" />
+        <attr name="bl_unChecked_gradient_centerColor" format="color" />
+        <attr name="bl_unChecked_gradient_endColor" format="color" />
+        <attr name="bl_unChecked_gradient_startColor" format="color" />
+        <attr name="bl_unChecked_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_unChecked_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_unChecked_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_enabled_gradient_angle" format="integer" />
+        <attr name="bl_enabled_gradient_centerX" format="float" />
+        <attr name="bl_enabled_gradient_centerY" format="float" />
+        <attr name="bl_enabled_gradient_centerColor" format="color" />
+        <attr name="bl_enabled_gradient_endColor" format="color" />
+        <attr name="bl_enabled_gradient_startColor" format="color" />
+        <attr name="bl_enabled_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_enabled_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_enabled_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_unEnabled_gradient_angle" format="integer" />
+        <attr name="bl_unEnabled_gradient_centerX" format="float" />
+        <attr name="bl_unEnabled_gradient_centerY" format="float" />
+        <attr name="bl_unEnabled_gradient_centerColor" format="color" />
+        <attr name="bl_unEnabled_gradient_endColor" format="color" />
+        <attr name="bl_unEnabled_gradient_startColor" format="color" />
+        <attr name="bl_unEnabled_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_unEnabled_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_unEnabled_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_selected_gradient_angle" format="integer" />
+        <attr name="bl_selected_gradient_centerX" format="float" />
+        <attr name="bl_selected_gradient_centerY" format="float" />
+        <attr name="bl_selected_gradient_centerColor" format="color" />
+        <attr name="bl_selected_gradient_endColor" format="color" />
+        <attr name="bl_selected_gradient_startColor" format="color" />
+        <attr name="bl_selected_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_selected_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_selected_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_unSelected_gradient_angle" format="integer" />
+        <attr name="bl_unSelected_gradient_centerX" format="float" />
+        <attr name="bl_unSelected_gradient_centerY" format="float" />
+        <attr name="bl_unSelected_gradient_centerColor" format="color" />
+        <attr name="bl_unSelected_gradient_endColor" format="color" />
+        <attr name="bl_unSelected_gradient_startColor" format="color" />
+        <attr name="bl_unSelected_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_unSelected_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_unSelected_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_pressed_gradient_angle" format="integer" />
+        <attr name="bl_pressed_gradient_centerX" format="float" />
+        <attr name="bl_pressed_gradient_centerY" format="float" />
+        <attr name="bl_pressed_gradient_centerColor" format="color" />
+        <attr name="bl_pressed_gradient_endColor" format="color" />
+        <attr name="bl_pressed_gradient_startColor" format="color" />
+        <attr name="bl_pressed_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_pressed_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_pressed_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_unPressed_gradient_angle" format="integer" />
+        <attr name="bl_unPressed_gradient_centerX" format="float" />
+        <attr name="bl_unPressed_gradient_centerY" format="float" />
+        <attr name="bl_unPressed_gradient_centerColor" format="color" />
+        <attr name="bl_unPressed_gradient_endColor" format="color" />
+        <attr name="bl_unPressed_gradient_startColor" format="color" />
+        <attr name="bl_unPressed_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_unPressed_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_unPressed_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_focused_gradient_angle" format="integer" />
+        <attr name="bl_focused_gradient_centerX" format="float" />
+        <attr name="bl_focused_gradient_centerY" format="float" />
+        <attr name="bl_focused_gradient_centerColor" format="color" />
+        <attr name="bl_focused_gradient_endColor" format="color" />
+        <attr name="bl_focused_gradient_startColor" format="color" />
+        <attr name="bl_focused_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_focused_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_focused_gradient_useLevel" format="boolean" />
+
+        <attr name="bl_unFocused_gradient_angle" format="integer" />
+        <attr name="bl_unFocused_gradient_centerX" format="float" />
+        <attr name="bl_unFocused_gradient_centerY" format="float" />
+        <attr name="bl_unFocused_gradient_centerColor" format="color" />
+        <attr name="bl_unFocused_gradient_endColor" format="color" />
+        <attr name="bl_unFocused_gradient_startColor" format="color" />
+        <attr name="bl_unFocused_gradient_gradientRadius" format="dimension" />
+        <attr name="bl_unFocused_gradient_type" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+        <attr name="bl_unFocused_gradient_useLevel" format="boolean" />
 
         <attr name="bl_stroke_position" format="flags">
             <flag name="left" value="2" />
