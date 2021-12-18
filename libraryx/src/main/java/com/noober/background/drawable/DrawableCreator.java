@@ -137,6 +137,7 @@ public class DrawableCreator {
         private Integer unPressedTextColor;
         private Integer unFocusedTextColor;
         private int textColorCount;
+        private float alpha = -1;
 
         private boolean hasSelectDrawable = false;
 
@@ -145,6 +146,11 @@ public class DrawableCreator {
 
         public Builder setShape(Shape shape) {
             this.shape = shape;
+            return this;
+        }
+
+        public Builder setShapeAlpha(float alpha) {
+            this.alpha = alpha;
             return this;
         }
 
@@ -527,7 +533,19 @@ public class DrawableCreator {
                 }
             }
 
-            return drawable == null ? stateListDrawable : drawable;
+            Drawable result = drawable == null ? stateListDrawable : drawable;
+
+            if(alpha != -1){
+                if(alpha >= 1){
+                    alpha = 255;
+                }else if(alpha <= 0){
+                    alpha = 0;
+                }else {
+                    alpha = alpha * 255;
+                }
+                result.setAlpha((int) alpha);
+            }
+            return result;
         }
 
         public ColorStateList buildTextColor() {

@@ -5,6 +5,12 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_shape_alpha" value="app:bl_shape_alpha=&quot;$value$&quot;" description="shape透明度" toReformat="false" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
   <template name="bl_solid_color" value="app:bl_solid_color=&quot;$value$&quot;" description="填充颜色" toReformat="true" toShortenFQNames="true">
     <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
     <context>

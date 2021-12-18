@@ -304,6 +304,18 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 			((LayerDrawable) drawable).setLayerInset(0, (int) leftValue, (int) topValue, (int) rightValue, (int) bottomValue);
 		}
 
+		if(typedArray.hasValue(R.styleable.background_bl_shape_alpha)){
+			float alpha = typedArray.getFloat(R.styleable.background_bl_shape_alpha, 0f);
+			if(alpha >= 1){
+				alpha = 255;
+			}else if(alpha <= 0){
+				alpha = 0;
+			}else {
+				alpha = alpha * 255;
+			}
+			drawable.setAlpha((int) alpha);
+		}
+
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			view.setBackground(drawable);
 		} else {
