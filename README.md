@@ -19,7 +19,7 @@ issue回复不及时，可以添加qq群887686934
     }
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.7.2'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.7.4'
 
 如果项目使用了androidx：  
 
@@ -31,7 +31,7 @@ issue回复不及时，可以添加qq群887686934
     }
 
     implementation "androidx.appcompat:appcompat:$supportVersion" 
-    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.7.2'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.7.4'
    
 
 ## 使用文档

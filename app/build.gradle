@@ -40,8 +40,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 //    implementation 'com.noober.background:core:1.6.5'
 //    implementation 'com.github.JavaNoober:BackgroundLibrary:1.6.6'
-    implementation project(':library')
-//    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.6.9'
+//    implementation project(':library')
+    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.7.3'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

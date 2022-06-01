@@ -9,6 +9,8 @@
             <enum name="ring" value="3" />
         </attr>
 
+        <attr name="bl_shape_alpha" format="float" />
+
         <attr name="bl_solid_color" format="color" />
 
         <attr name="bl_corners_radius" format="dimension" />

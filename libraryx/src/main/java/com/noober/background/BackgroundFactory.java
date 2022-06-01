@@ -114,16 +114,16 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 			GradientDrawable drawable = null;
 			StateListDrawable stateListDrawable = null;
 			if (buttonTa.getIndexCount() > 0 && view instanceof CompoundButton) {
-				view.setClickable(true);
+				//view.setClickable(true);
 				((CompoundButton) view).setButtonDrawable(DrawableFactory.getButtonDrawable(typedArray, buttonTa));
 			} else if (selectorTa.getIndexCount() > 0) {
 				stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa);
-				view.setClickable(true);
+				//view.setClickable(true);
 				setDrawable(stateListDrawable, view, otherTa, typedArray);
 			} else if (pressTa.getIndexCount() > 0) {
 				drawable = DrawableFactory.getDrawable(typedArray);
 				stateListDrawable = DrawableFactory.getPressDrawable(drawable, typedArray, pressTa);
-				view.setClickable(true);
+				//view.setClickable(true);
 				setDrawable(stateListDrawable, view, otherTa, typedArray);
 			} else if (multiSelTa.getIndexCount() > 0) {
 				stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa, typedArray);
@@ -161,7 +161,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 					Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
 					RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(color), contentDrawable, contentDrawable);
-					view.setClickable(true);
+					//view.setClickable(true);
 					setBackground(rippleDrawable, view, typedArray);
 				} else if (stateListDrawable == null) {
 					StateListDrawable tmpDrawable = new StateListDrawable();
@@ -169,7 +169,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 					unPressDrawable.setColor(color);
 					tmpDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
 					tmpDrawable.addState(new int[]{android.R.attr.state_pressed}, unPressDrawable);
-					view.setClickable(true);
+					//view.setClickable(true);
 					setDrawable(tmpDrawable, view, otherTa, typedArray);
 				}
 			}
@@ -302,6 +302,18 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 			float bottomValue = hasStatus(position, bottom) ? 0 : -width;
 			drawable = new LayerDrawable(new Drawable[]{drawable});
 			((LayerDrawable) drawable).setLayerInset(0, (int) leftValue, (int) topValue, (int) rightValue, (int) bottomValue);
+		}
+
+		if(typedArray.hasValue(R.styleable.background_bl_shape_alpha)){
+			float alpha = typedArray.getFloat(R.styleable.background_bl_shape_alpha, 0f);
+			if(alpha >= 1){
+				alpha = 255;
+			}else if(alpha <= 0){
+				alpha = 0;
+			}else {
+				alpha = alpha * 255;
+			}
+			drawable.setAlpha((int) alpha);
 		}
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
