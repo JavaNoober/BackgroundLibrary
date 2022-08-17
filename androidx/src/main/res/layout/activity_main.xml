@@ -13,6 +13,14 @@
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix,HardcodedText">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="dasdasdads"
+            app:bl_text_gradient_orientation="horizontal"
+            app:bl_text_gradient_startColor="@color/colorAccent"
+            app:bl_text_gradient_endColor="@android:color/holo_green_dark"
+            android:layout_height="wrap_content"/>
+
         <com.noober.background.view.BLTextView
             android:layout_width="match_parent"
             android:layout_height="50dp"

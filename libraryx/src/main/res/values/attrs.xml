@@ -418,4 +418,12 @@
         <attr name="bl_frame_drawable_item14" format="reference"/>
     </declare-styleable>
 
+    <declare-styleable name="bl_text">
+        <attr name="bl_text_gradient_startColor" format="color|reference" />
+        <attr name="bl_text_gradient_endColor" format="color|reference" />
+        <attr name="bl_text_gradient_orientation" format="enum">
+            <enum name="vertical" value="0" />
+            <enum name="horizontal" value="1" />
+        </attr>
+    </declare-styleable>
 </resources>

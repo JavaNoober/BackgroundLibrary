@@ -20,6 +20,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.noober.background.drawable.DrawableFactory;
+import com.noober.background.drawable.TextViewFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -85,7 +86,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 		TypedArray animTa = context.obtainStyledAttributes(attrs, R.styleable.bl_anim);
 		TypedArray multiSelTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector);
 		TypedArray multiTextTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector_text);
-
+		TypedArray textViewTa = context.obtainStyledAttributes(attrs, R.styleable.bl_text);
 		TypedArray selectorPre21Ta = null;
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
 			selectorPre21Ta = context.obtainStyledAttributes(attrs, R.styleable.background_selector_pre_21);
@@ -93,8 +94,8 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 
 		try {
 			if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0 && pressTa.getIndexCount() == 0
-					&& textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0 && animTa.getIndexCount() == 0
-					&& multiSelTa.getIndexCount() == 0 && multiTextTa.getIndexCount() == 0) {
+				&& textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0 && animTa.getIndexCount() == 0
+				&& multiSelTa.getIndexCount() == 0 && multiTextTa.getIndexCount() == 0 && textViewTa.getIndexCount() == 0) {
 				return view;
 			}
 			if (view == null) {
@@ -153,10 +154,13 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 				((TextView) view).setTextColor(DrawableFactory.getTextSelectorColor(textTa));
 			} else if (view instanceof TextView && multiTextTa.getIndexCount() > 0) {
 				((TextView) view).setTextColor(DrawableFactory.getMultiTextColorSelectorColorCreator(context, multiTextTa));
+			} else if (view instanceof TextView && textViewTa.getIndexCount() > 0) {
+				TextViewFactory.setTextGradientColor(context, attrs, (TextView) view);
 			}
 
+
 			if (typedArray.getBoolean(R.styleable.background_bl_ripple_enable, false) &&
-					typedArray.hasValue(R.styleable.background_bl_ripple_color)) {
+				typedArray.hasValue(R.styleable.background_bl_ripple_color)) {
 				int color = typedArray.getColor(R.styleable.background_bl_ripple_color, 0);
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 					Drawable contentDrawable = (stateListDrawable == null ? drawable : stateListDrawable);
@@ -180,7 +184,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 					final Context currentContext = view.getContext();
 					final Class parentClass = currentContext.getClass();
 					final Method method = getMethod(parentClass, methodName);
-					if (method != null) {
+					if(method != null){
 						view.setOnClickListener(new View.OnClickListener() {
 							@Override
 							public void onClick(View view) {
@@ -211,12 +215,12 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 			animTa.recycle();
 			multiSelTa.recycle();
 			multiTextTa.recycle();
+			textViewTa.recycle();
 			if (selectorPre21Ta != null) {
 				selectorPre21Ta.recycle();
 			}
 		}
 	}
-
 
 	private static Method getMethod(Class clazz, String methodName) {
 		Method method = null;
@@ -376,7 +380,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 		try {
 			if (constructor == null) {
 				Class<? extends View> clazz = context.getClassLoader().loadClass(
-						prefix != null ? (prefix + name) : name).asSubclass(View.class);
+					prefix != null ? (prefix + name) : name).asSubclass(View.class);
 
 				constructor = clazz.getConstructor(sConstructorSignature);
 				sConstructorMap.put(name, constructor);
@@ -394,13 +398,14 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 		return onCreateView(name, context, attrs);
 	}
 
-
 	private static boolean hasGradientState(TypedArray typedArray) {
 		return typedArray.hasValue(R.styleable.background_bl_checkable_gradient_startColor) ||
-				typedArray.hasValue(R.styleable.background_bl_checked_gradient_startColor) ||
-				typedArray.hasValue(R.styleable.background_bl_enabled_gradient_startColor) ||
-				typedArray.hasValue(R.styleable.background_bl_selected_gradient_startColor) ||
-				typedArray.hasValue(R.styleable.background_bl_pressed_gradient_startColor) ||
-				typedArray.hasValue(R.styleable.background_bl_focused_gradient_startColor);
+			typedArray.hasValue(R.styleable.background_bl_checked_gradient_startColor) ||
+			typedArray.hasValue(R.styleable.background_bl_enabled_gradient_startColor) ||
+			typedArray.hasValue(R.styleable.background_bl_selected_gradient_startColor) ||
+			typedArray.hasValue(R.styleable.background_bl_pressed_gradient_startColor) ||
+			typedArray.hasValue(R.styleable.background_bl_focused_gradient_startColor);
 	}
 }
+
+

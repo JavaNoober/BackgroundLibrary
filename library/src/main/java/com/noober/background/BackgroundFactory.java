@@ -22,6 +22,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.noober.background.drawable.DrawableFactory;
+import com.noober.background.drawable.TextViewFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -84,6 +85,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         TypedArray animTa = context.obtainStyledAttributes(attrs, R.styleable.bl_anim);
         TypedArray multiSelTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector);
         TypedArray multiTextTa = context.obtainStyledAttributes(attrs, R.styleable.background_multi_selector_text);
+        TypedArray textViewTa = context.obtainStyledAttributes(attrs, R.styleable.bl_text);
         TypedArray selectorPre21Ta = null;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             selectorPre21Ta = context.obtainStyledAttributes(attrs, R.styleable.background_selector_pre_21);
@@ -92,7 +94,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         try {
             if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0 && pressTa.getIndexCount() == 0
                     && textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0 && animTa.getIndexCount() == 0
-                    && multiSelTa.getIndexCount() == 0 && multiTextTa.getIndexCount() == 0) {
+                    && multiSelTa.getIndexCount() == 0 && multiTextTa.getIndexCount() == 0 && textViewTa.getIndexCount() == 0) {
                 return view;
             }
             if (view == null) {
@@ -151,7 +153,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 ((TextView) view).setTextColor(DrawableFactory.getTextSelectorColor(textTa));
             } else if (view instanceof TextView && multiTextTa.getIndexCount() > 0) {
                 ((TextView) view).setTextColor(DrawableFactory.getMultiTextColorSelectorColorCreator(context, multiTextTa));
+            } else if (view instanceof TextView && textViewTa.getIndexCount() > 0) {
+                TextViewFactory.setTextGradientColor(context, attrs, (TextView) view);
             }
+
 
             if (typedArray.getBoolean(R.styleable.background_bl_ripple_enable, false) &&
                     typedArray.hasValue(R.styleable.background_bl_ripple_color)) {
@@ -209,6 +214,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             animTa.recycle();
             multiSelTa.recycle();
             multiTextTa.recycle();
+            textViewTa.recycle();
             if (selectorPre21Ta != null) {
                 selectorPre21Ta.recycle();
             }

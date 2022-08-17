@@ -1490,4 +1490,22 @@
       <option name="XML" value="true" />
     </context>
   </template>
+  <template name="bl_text_gradient_startColor" value="app:bl_text_gradient_startColor=&quot;$value$&quot;" description="文字渐变起始颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_text_gradient_endColor" value="app:bl_text_gradient_endColor=&quot;$value$&quot;" description="文字渐变结束颜色" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
+  <template name="bl_text_gradient_orientation" value="app:bl_text_gradient_orientation=&quot;$value$&quot;" description="文字渐变方向" toReformat="true" toShortenFQNames="true">
+    <variable name="value" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="XML" value="true" />
+    </context>
+  </template>
 </templateSet>
