@@ -45,8 +45,4 @@ dependencies {
 //    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.6.9'
 }
 
-repositories{
-    maven { url 'https://dl.bintray.com/noober/maven' }
-}
-
 

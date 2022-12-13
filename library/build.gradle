@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 //apply plugin: 'bintray-release'
-apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.github.dcendents.android-maven'
 
 group='com.github.JavaNoober'
 
@@ -48,6 +48,3 @@ dependencies {
 //    desc = rootProject.desc
 //    website = rootProject.website
 //}
-repositories {
-    mavenCentral()
-}

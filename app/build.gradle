@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.noober.backgroudlibrary"
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -43,5 +43,5 @@ dependencies {
     implementation project(':library')
 //    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.7.3'
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

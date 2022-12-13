@@ -12,6 +12,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.noober.background.BackgroundLibrary;
@@ -88,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
         }else {
             tvTest4.setBackgroundDrawable(drawable4);
         }
+
+        CheckBox cb =  findViewById(R.id.cb_like_test);
+
+        cb.setClickable(true);
 
 
         final Button btnLike = findViewById(R.id.btn_like);

@@ -15,11 +15,11 @@
 
         <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="dasdasdads"
-            app:bl_text_gradient_orientation="horizontal"
-            app:bl_text_gradient_startColor="@color/colorAccent"
             app:bl_text_gradient_endColor="@android:color/holo_green_dark"
-            android:layout_height="wrap_content"/>
+            app:bl_text_gradient_orientation="horizontal"
+            app:bl_text_gradient_startColor="@color/colorAccent" />
 
 
         <Button
@@ -45,15 +45,16 @@
             android:textColor="@android:color/white"
             app:bl_corners_radius="4dp"
             app:bl_pressed_gradient_centerColor="@android:color/holo_green_dark"
-            app:bl_unPressed_gradient_centerColor="@android:color/darker_gray"
-            app:bl_pressed_gradient_startColor="@android:color/black"
-            app:bl_unPressed_gradient_startColor="@android:color/white"
             app:bl_pressed_gradient_endColor="@android:color/holo_red_dark"
-            app:bl_unPressed_gradient_endColor="@android:color/holo_blue_light"/>
+            app:bl_pressed_gradient_startColor="@android:color/black"
+            app:bl_unPressed_gradient_centerColor="@android:color/darker_gray"
+            app:bl_unPressed_gradient_endColor="@android:color/holo_blue_light"
+            app:bl_unPressed_gradient_startColor="@android:color/white" />
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
 
             <com.noober.background.view.BLFlow
                 android:layout_width="0dp"
@@ -124,7 +125,7 @@
 
         <com.noober.background.view.BLTextView
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:background="@null"
             android:gravity="center"
@@ -138,7 +139,7 @@
 
         <com.noober.background.view.BLTextView
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:background="@null"
             android:clickable="true"
@@ -154,7 +155,7 @@
         <com.noober.background.view.BLTextView
             android:id="@+id/ttt"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="虚线圆角边框以及填充"
@@ -198,7 +199,7 @@
         <TextView
             android:id="@+id/cobbAngle"
             android:layout_width="180dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="点击填充变色"
@@ -213,7 +214,7 @@
 
         <EditText
             android:layout_width="300dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/test_sel1"
             android:clickable="true"
@@ -225,7 +226,7 @@
 
         <com.noober.background.view.BLButton
             android:layout_width="300dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="15dp"
             android:clickable="true"
             android:enabled="true"
@@ -244,7 +245,7 @@
 
         <com.noober.background.view.BLButton
             android:layout_width="300dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="15dp"
             android:enabled="true"
             android:gravity="center"
@@ -262,7 +263,7 @@
 
         <com.noober.background.view.BLButton
             android:layout_width="300dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/downbtn_blue"
             android:clickable="true"
@@ -275,7 +276,7 @@
 
         <TextView
             android:layout_width="180dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="15dp"
             android:clickable="true"
             android:gravity="center"
@@ -298,7 +299,7 @@
         <TextView
             style="@style/test"
             android:layout_width="130dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:clickable="true"
             android:elevation="12dp"
             android:gravity="center"
@@ -309,7 +310,7 @@
         <Button
             android:id="@+id/btn"
             android:layout_width="320dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:background="@null"
             android:clickable="true"
@@ -343,7 +344,7 @@
 
         <TextView
             android:layout_width="130dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="TextView"
@@ -462,6 +463,16 @@
                 app:bl_unChecked_drawable="@drawable/shape_gender_red" />
         </RadioGroup>
 
+
+        <CheckBox
+            android:id="@+id/cb_like_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dasdas"
+            app:bl_checked_button_drawable="@mipmap/rg_select"
+            app:bl_unChecked_button_drawable="@mipmap/rg_unselect" />
+
+
         <Button
             android:id="@+id/btn1"
             android:layout_width="300dp"
@@ -561,7 +572,7 @@
         <com.noober.background.view.BLTextView
             android:id="@+id/tv_multi"
             android:layout_width="wrap_content"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="15dp"
             android:clickable="true"
             android:focusable="true"
@@ -582,7 +593,7 @@
         <TextView
             android:id="@+id/tvTest1"
             android:layout_width="130dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:gravity="center"
             android:text="点击文字变色"
             android:textSize="20sp" />
@@ -590,7 +601,7 @@
         <TextView
             android:id="@+id/btnTest2"
             android:layout_width="130dp"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:clickable="true"
             android:focusable="true"

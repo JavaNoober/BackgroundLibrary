@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".BlankFragment"
     tools:ignore="MissingPrefix">
 
@@ -39,9 +38,10 @@
         app:bl_gradient_angle="0"
         app:bl_gradient_endColor="#4F94CD"
         app:bl_gradient_startColor="#63B8FF"
-        app:bl_shape="rectangle" />
+        app:bl_shape="rectangle"
+        tools:ignore="TouchTargetSizeCheck" />
 
-    <Button
+    <com.noober.background.view.BLButton
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
@@ -85,7 +85,8 @@
         app:bl_corners_radius="20dp"
         app:bl_pressed_color="#7CCD7C"
         app:bl_shape="rectangle"
-        app:bl_unpressed_color="#7CFC00" />
+        app:bl_unpressed_color="#7CFC00"
+        tools:ignore="TextContrastCheck" />
 
     <View
         android:layout_width="50dp"
