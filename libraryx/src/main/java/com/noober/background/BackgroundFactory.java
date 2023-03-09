@@ -95,7 +95,9 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 		try {
 			if (typedArray.getIndexCount() == 0 && selectorTa.getIndexCount() == 0 && pressTa.getIndexCount() == 0
 				&& textTa.getIndexCount() == 0 && buttonTa.getIndexCount() == 0 && animTa.getIndexCount() == 0
-				&& multiSelTa.getIndexCount() == 0 && multiTextTa.getIndexCount() == 0 && textViewTa.getIndexCount() == 0) {
+				&& multiSelTa.getIndexCount() == 0 && multiTextTa.getIndexCount() == 0 && textViewTa.getIndexCount() == 0
+				&& otherTa.getIndexCount() == 0
+			) {
 				return view;
 			}
 			if (view == null) {
