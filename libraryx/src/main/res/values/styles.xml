@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Built-in theme for Android Studio IDE Preview.
+      Apply this theme in the Layout Editor to see bl_ attributes rendered.
+    -->
+    <style name="Theme.Background.Preview" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="viewInflaterClass">com.noober.background.BackgroundViewInflater</item>
+    </style>
+</resources>

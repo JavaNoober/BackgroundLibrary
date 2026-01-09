@@ -8,27 +8,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:orientation="vertical"
         android:padding="10dp"
+        app:bl_corners_radius="10dp"
+        app:bl_solid_color="@android:color/holo_blue_dark"
         tools:context=".MainActivity"
         tools:ignore="MissingPrefix,HardcodedText">
 
         <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="dasdasdads"
-            app:bl_text_gradient_orientation="horizontal"
-            app:bl_text_gradient_startColor="@color/colorAccent"
             app:bl_text_gradient_endColor="@android:color/holo_green_dark"
-            android:layout_height="wrap_content"/>
+            app:bl_text_gradient_orientation="horizontal"
+            app:bl_text_gradient_startColor="@color/colorAccent" />
 
-        <com.noober.background.view.BLTextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="5dp"
             app:bl_corners_topRadius="15dp"
             app:bl_solid_color="@color/colorAccent" />
 
-        <com.noober.background.view.BLTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="5dp"
