@@ -37,7 +37,7 @@
             app:bl_gradient_startColor="#0093C3"
             app:bl_gradient_type="linear" />
 
-        <com.noober.background.view.BLButton
+        <android.support.v7.widget.AppCompatButton
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
             android:layout_height="match_parent"
             tools:ignore="MissingConstraints">
 
-            <com.noober.background.view.BLFlow
+            <android.support.constraint.helper.Flow
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="20.0dp"
