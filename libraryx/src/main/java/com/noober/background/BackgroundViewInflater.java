@@ -1,9 +1,7 @@
 package com.noober.background;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -23,130 +21,116 @@ import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.noober.background.view.BLAutoCompleteTextView;
-import com.noober.background.view.BLButton;
-import com.noober.background.view.BLCheckBox;
-import com.noober.background.view.BLCheckedTextView;
-import com.noober.background.view.BLEditText;
-import com.noober.background.view.BLImageButton;
-import com.noober.background.view.BLImageView;
-import com.noober.background.view.BLMultiAutoCompleteTextView;
-import com.noober.background.view.BLRadioButton;
-import com.noober.background.view.BLRatingBar;
-import com.noober.background.view.BLSeekBar;
-import com.noober.background.view.BLSpinner;
-import com.noober.background.view.BLTextView;
-
 /**
  * Custom ViewInflater to support IDE Preview for BackgroundLibrary.
- * It replaces native views with Preview versions that parse bl_ attributes during edit mode.
+ * It replaces native views with Preview versions that parse bl_ attributes
+ * during edit mode.
  *
  * @author: xTao
  * @date: 2026/1/9 16:47
  */
 public class BackgroundViewInflater extends AppCompatViewInflater {
 
-    private static final String TAG = "BackgroundViewInflater";
-
     @NonNull
     @Override
     protected AppCompatTextView createTextView(Context context, AttributeSet attrs) {
-        return new BLTextView(context, attrs);
+        inject(context);
+        return super.createTextView(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatImageView createImageView(Context context, AttributeSet attrs) {
-        return new BLImageView(context, attrs);
+        inject(context);
+        return super.createImageView(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatButton createButton(Context context, AttributeSet attrs) {
-        return new BLButton(context, attrs);
+        inject(context);
+        return super.createButton(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatEditText createEditText(Context context, AttributeSet attrs) {
-        return new BLEditText(context, attrs);
+        inject(context);
+        return super.createEditText(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatSpinner createSpinner(Context context, AttributeSet attrs) {
-        return new BLSpinner(context, attrs);
+        inject(context);
+        return super.createSpinner(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatImageButton createImageButton(Context context, AttributeSet attrs) {
-        return new BLImageButton(context, attrs);
+        inject(context);
+        return super.createImageButton(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatCheckBox createCheckBox(Context context, AttributeSet attrs) {
-        return new BLCheckBox(context, attrs);
+        inject(context);
+        return super.createCheckBox(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatRadioButton createRadioButton(Context context, AttributeSet attrs) {
-        return new BLRadioButton(context, attrs);
+        inject(context);
+        return super.createRadioButton(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatCheckedTextView createCheckedTextView(Context context, AttributeSet attrs) {
-        return new BLCheckedTextView(context, attrs);
+        inject(context);
+        return super.createCheckedTextView(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatAutoCompleteTextView createAutoCompleteTextView(Context context, AttributeSet attrs) {
-        return new BLAutoCompleteTextView(context, attrs);
+        inject(context);
+        return super.createAutoCompleteTextView(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatMultiAutoCompleteTextView createMultiAutoCompleteTextView(Context context, AttributeSet attrs) {
-        return new BLMultiAutoCompleteTextView(context, attrs);
+        inject(context);
+        return super.createMultiAutoCompleteTextView(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatRatingBar createRatingBar(Context context, AttributeSet attrs) {
-        return new BLRatingBar(context, attrs);
+        inject(context);
+        return super.createRatingBar(context, attrs);
     }
 
     @NonNull
     @Override
     protected AppCompatSeekBar createSeekBar(Context context, AttributeSet attrs) {
-        return new BLSeekBar(context, attrs);
+        inject(context);
+        return super.createSeekBar(context, attrs);
     }
 
     @Nullable
     @Override
     protected View createView(Context context, String name, AttributeSet attrs) {
-        if (name.startsWith("com.noober.background.view")) {
-            return null;
-        }
+        inject(context);
+        return super.createView(context, name, attrs);
+    }
 
-        LayoutInflater inflater = BackgroundLibrary.inject(context);
-        if (inflater == null) {
-            return null;
-        }
-        View view = null;
-        if (inflater.getFactory2() != null) {
-            view = inflater.getFactory2().onCreateView(name, context, attrs);
-            if (view == null) {
-                view = inflater.getFactory2().onCreateView(null, name, context, attrs);
-            }
-        } else if (inflater.getFactory() != null) {
-            view = inflater.getFactory().onCreateView(name, context, attrs);
-        }
-        return BackgroundFactory.setViewBackground(name, context, attrs, view);
+    private void inject(Context context) {
+        BackgroundLibrary.inject(context);
     }
 
 }
