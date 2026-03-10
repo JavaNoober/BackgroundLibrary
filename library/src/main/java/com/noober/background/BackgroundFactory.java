@@ -75,7 +75,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
      * @return view
      */
     @Nullable
-    private static View setViewBackground(String name, Context context, AttributeSet attrs, View view) {
+    protected static View setViewBackground(String name, Context context, AttributeSet attrs, View view) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
         TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.background_press);
         TypedArray selectorTa = context.obtainStyledAttributes(attrs, R.styleable.background_selector);
