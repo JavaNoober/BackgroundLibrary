@@ -37,6 +37,21 @@
             app:bl_gradient_startColor="#0093C3"
             app:bl_gradient_type="linear" />
 
+        <com.noober.background.view.BLTextView
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="渐变描边（stroke gradient）"
+            android:textColor="#409EFF"
+            android:textSize="16sp"
+            app:bl_corners_radius="20dp"
+            app:bl_solid_color="#FFFFFF"
+            app:bl_stroke_gradient_angle="45"
+            app:bl_stroke_gradient_endColor="#409EFF"
+            app:bl_stroke_gradient_startColor="#67C23A"
+            app:bl_stroke_width="3dp" />
+
         <com.noober.background.view.BLButton
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"

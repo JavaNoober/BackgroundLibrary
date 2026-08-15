@@ -23,6 +23,20 @@ import java.lang.reflect.Method;
  */
 public class BackgroundLibrary {
 
+    private static volatile boolean rtlSupportEnabled = false;
+
+    /**
+     * 设置是否支持 RTL（从右到左）布局方向。默认关闭（false），开启后 left/right 相关属性
+     * （圆角、内边距、描边定位、图标定位）会在 RTL 布局下自动镜像。
+     */
+    public static void setRtlSupportEnabled(boolean enabled) {
+        rtlSupportEnabled = enabled;
+    }
+
+    public static boolean isRtlSupportEnabled() {
+        return rtlSupportEnabled;
+    }
+
     public static LayoutInflater inject(Context context) {
         LayoutInflater inflater;
         if (context instanceof Activity) {
@@ -81,9 +95,15 @@ public class BackgroundLibrary {
         Class<LayoutInflaterCompat> compatClass = LayoutInflaterCompat.class;
         Class<LayoutInflater> inflaterClass = LayoutInflater.class;
         try {
-            Field sCheckedField = compatClass.getDeclaredField("sCheckedField");
-            sCheckedField.setAccessible(true);
-            sCheckedField.setBoolean(compatClass, false);
+            // androidx core 1.1.0+ 移除了 sCheckedField 字段，这里单独捕获忽略，
+            // 避免影响后续 mFactory / mFactory2 的反射设置
+            try {
+                Field sCheckedField = compatClass.getDeclaredField("sCheckedField");
+                sCheckedField.setAccessible(true);
+                sCheckedField.setBoolean(compatClass, false);
+            } catch (NoSuchFieldException ignored) {
+                // 高版本 androidx core 无此字段，忽略即可
+            }
             Field mFactory = inflaterClass.getDeclaredField("mFactory");
             mFactory.setAccessible(true);
             Field mFactory2 = inflaterClass.getDeclaredField("mFactory2");

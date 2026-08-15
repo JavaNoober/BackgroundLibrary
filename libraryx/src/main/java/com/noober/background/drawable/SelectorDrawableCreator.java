@@ -12,10 +12,16 @@ public class SelectorDrawableCreator implements ICreateDrawable {
 
     private TypedArray typedArray;
     private TypedArray selectorTa;
+    private boolean rtl;
 
     public SelectorDrawableCreator(TypedArray typedArray, TypedArray selectorTa) {
+        this(typedArray, selectorTa, false);
+    }
+
+    public SelectorDrawableCreator(TypedArray typedArray, TypedArray selectorTa, boolean rtl) {
         this.typedArray = typedArray;
         this.selectorTa = selectorTa;
+        this.rtl = rtl;
     }
 
     @Override
@@ -78,7 +84,7 @@ public class SelectorDrawableCreator implements ICreateDrawable {
             resDrawable = selectorTa.getDrawable(attr);
         }
         if (resDrawable == null && color != 0) {
-            GradientDrawable tmpDrawable = DrawableFactory.getDrawable(typedArray);
+            GradientDrawable tmpDrawable = DrawableFactory.getDrawable(typedArray, rtl);
             tmpDrawable.setColor(color);
             stateListDrawable.addState(new int[]{functionId}, tmpDrawable);
         } else {

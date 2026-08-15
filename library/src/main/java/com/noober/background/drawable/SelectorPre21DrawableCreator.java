@@ -11,10 +11,17 @@ import com.noober.background.R;
 public class SelectorPre21DrawableCreator implements ICreateDrawable {
 
     private TypedArray typedArray;
+    private boolean rtl;
 
     @SuppressWarnings("WeakerAccess")
     public SelectorPre21DrawableCreator(TypedArray typedArray) {
+        this(typedArray, false);
+    }
+
+    @SuppressWarnings("WeakerAccess")
+    public SelectorPre21DrawableCreator(TypedArray typedArray, boolean rtl) {
         this.typedArray = typedArray;
+        this.rtl = rtl;
     }
 
     @Override
@@ -39,7 +46,7 @@ public class SelectorPre21DrawableCreator implements ICreateDrawable {
 
     private void setSelectorDrawable(StateListDrawable stateListDrawable, @StyleableRes int solidAttr, @StyleableRes int strokeAttr, @AttrRes int functionId) throws Exception {
         if (typedArray.hasValue(solidAttr) || typedArray.hasValue(strokeAttr)) {
-            GradientDrawable tmpDrawable = DrawableFactory.getDrawable(typedArray);
+            GradientDrawable tmpDrawable = DrawableFactory.getDrawable(typedArray, rtl);
             if (typedArray.hasValue(solidAttr)) {
                 tmpDrawable.setColor(typedArray.getColor(solidAttr, 0));
             }

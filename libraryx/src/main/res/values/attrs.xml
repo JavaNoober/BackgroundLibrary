@@ -58,6 +58,11 @@
         <attr name="bl_stroke_dashWidth" format="dimension" />
         <attr name="bl_stroke_dashGap" format="dimension" />
 
+        <attr name="bl_stroke_gradient_startColor" format="color" />
+        <attr name="bl_stroke_gradient_endColor" format="color" />
+        <attr name="bl_stroke_gradient_centerColor" format="color" />
+        <attr name="bl_stroke_gradient_angle" format="integer" />
+
         <!--以下是selector事件-->
         <attr name="bl_ripple_enable" format="boolean" />
         <attr name="bl_ripple_color" format="color" />

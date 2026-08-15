@@ -1,4 +1,13 @@
 # BackgroudLibrary
+
+## 2.0.0 Updates
+
+- New: stroke gradient (`bl_stroke_gradient_startColor` / `bl_stroke_gradient_endColor`, optional `bl_stroke_gradient_centerColor` / `bl_stroke_gradient_angle`)
+- New: RTL layout support — left/right of `bl_corners_*` / `bl_padding_*` / `bl_stroke_position` / `bl_position` are mirrored automatically; enable via `BackgroundLibrary.setRtlSupportEnabled(true)` (disabled by default)
+- Fix: background / text style not working on newer AndroidX (androidx core 1.1.0+)
+- Fix: `bl_enabled` / `bl_unEnabled` not working on RadioButton / CheckBox
+- Fix: white `#FFFFFF` misrecognized as invalid color
+- Fix: horizontal text gradient not working
 A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）
 
 
@@ -14,7 +23,7 @@ Add this to your app's build.gradle：
     }
 
     implementation "androidx.appcompat:appcompat:$supportVersion"
-    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.7.6'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:library:2.0.0'
 
 if use androidx：  
 
@@ -26,7 +35,7 @@ if use androidx：
     }
 
     implementation "androidx.appcompat:appcompat:$supportVersion"
-    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.7.6'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:2.0.0'
 
  
 ## Example effect

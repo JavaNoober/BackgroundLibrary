@@ -30,14 +30,15 @@ public class ResourceUtils {
     }
 
 
-    public static int getColor(Context context, String resName) {
+    @Nullable
+    public static Integer getColor(Context context, String resName) {
         Resources resources = context.getResources();
         if(resName.startsWith("#")){
             return Color.parseColor(resName);
         }
         int id = resources.getIdentifier(resName, "color", context.getPackageName());
         if(id == 0){
-            return -1;
+            return null;
         }
         return ContextCompat.getColor(context, id);
     }

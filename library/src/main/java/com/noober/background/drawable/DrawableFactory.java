@@ -4,10 +4,11 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
+
 import android.support.annotation.AttrRes;
-import android.support.annotation.NonNull;
 
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -17,65 +18,96 @@ import org.xmlpull.v1.XmlPullParserException;
 public class DrawableFactory {
 
     //获取shape属性的drawable
-    @NonNull
     public static GradientDrawable getDrawable(TypedArray typedArray) throws XmlPullParserException {
-        return (GradientDrawable) new GradientDrawableCreator(typedArray).create();
+        return getDrawable(typedArray, false);
     }
 
-    @NonNull
+    public static GradientDrawable getDrawable(TypedArray typedArray, boolean rtl) throws XmlPullParserException {
+        return (GradientDrawable) new GradientDrawableCreator(typedArray, rtl).create();
+    }
+
     public static GradientDrawable getDrawable(TypedArray typedArray, @AttrRes int gradientState) throws XmlPullParserException {
-        return (GradientDrawable) new GradientDrawableCreator(typedArray, gradientState).create();
+        return getDrawable(typedArray, gradientState, false);
     }
 
-    @NonNull
+    public static GradientDrawable getDrawable(TypedArray typedArray, @AttrRes int gradientState, boolean rtl) throws XmlPullParserException {
+        return (GradientDrawable) new GradientDrawableCreator(typedArray, gradientState, rtl).create();
+    }
+
+    //获取渐变描边的drawable
+    public static Drawable getStrokeGradientDrawable(TypedArray typedArray) throws XmlPullParserException {
+        return getStrokeGradientDrawable(typedArray, false);
+    }
+
+    public static Drawable getStrokeGradientDrawable(TypedArray typedArray, boolean rtl) throws XmlPullParserException {
+        return new GradientDrawableCreator(typedArray, rtl).createStrokeGradientDrawable();
+    }
+
     public static StateListDrawable getStateGradientDrawable(TypedArray typedArray) throws Exception {
-        return (StateListDrawable) new GradientStateDrawableCreator(typedArray).create();
+        return getStateGradientDrawable(typedArray, false);
+    }
+
+    public static StateListDrawable getStateGradientDrawable(TypedArray typedArray, boolean rtl) throws Exception {
+        return (StateListDrawable) new GradientStateDrawableCreator(typedArray, rtl).create();
     }
 
 
     //获取selector属性的drawable
-    @NonNull
     public static StateListDrawable getSelectorDrawable(TypedArray typedArray, TypedArray selectorTa) throws Exception {
-        return (StateListDrawable) new SelectorDrawableCreator(typedArray, selectorTa).create();
+        return getSelectorDrawable(typedArray, selectorTa, false);
+    }
+
+    public static StateListDrawable getSelectorDrawable(TypedArray typedArray, TypedArray selectorTa, boolean rtl) throws Exception {
+        return (StateListDrawable) new SelectorDrawableCreator(typedArray, selectorTa, rtl).create();
     }
 
     //针对sdk21以前获取selector属性的drawable
-    @NonNull
     public static StateListDrawable getSelectorPre21Drawable(TypedArray typedArray) throws Exception {
-        return new SelectorPre21DrawableCreator(typedArray).create();
+        return getSelectorPre21Drawable(typedArray, false);
+    }
+
+    public static StateListDrawable getSelectorPre21Drawable(TypedArray typedArray, boolean rtl) throws Exception {
+        return new SelectorPre21DrawableCreator(typedArray, rtl).create();
     }
 
     //获取button 属性的drawable
-    @NonNull
     public static StateListDrawable getButtonDrawable(TypedArray typedArray, TypedArray buttonTa) throws Exception {
-        return (StateListDrawable) new ButtonDrawableCreator(typedArray, buttonTa).create();
+        return getButtonDrawable(typedArray, buttonTa, false);
+    }
+
+    public static StateListDrawable getButtonDrawable(TypedArray typedArray, TypedArray buttonTa, boolean rtl) throws Exception {
+        return (StateListDrawable) new ButtonDrawableCreator(typedArray, buttonTa, rtl).create();
     }
 
     //获取text selector属性关于text的color
-    @NonNull
     public static ColorStateList getTextSelectorColor(TypedArray textTa) {
         return new ColorStateCreator(textTa).create();
     }
 
     //适配早期版本的属性
-    @NonNull
     public static StateListDrawable getPressDrawable(GradientDrawable drawable, TypedArray typedArray, TypedArray pressTa)
             throws Exception {
-        return (StateListDrawable) new PressDrawableCreator(drawable, typedArray, pressTa).create();
+        return getPressDrawable(drawable, typedArray, pressTa, false);
+    }
+
+    public static StateListDrawable getPressDrawable(GradientDrawable drawable, TypedArray typedArray, TypedArray pressTa, boolean rtl)
+            throws Exception {
+        return (StateListDrawable) new PressDrawableCreator(drawable, typedArray, pressTa, rtl).create();
     }
 
     //获取AnimationDrawable属性的drawable
-    @NonNull
     public static AnimationDrawable getAnimationDrawable(TypedArray animTa) throws Exception {
         return (AnimationDrawable) new AnimationDrawableCreator(animTa).create();
     }
 
-    @NonNull
     public static StateListDrawable getMultiSelectorDrawable(Context context, TypedArray selectorTa, TypedArray typedArray) {
-        return (StateListDrawable) new MultiSelectorDrawableCreator(context, selectorTa, typedArray).create();
+        return getMultiSelectorDrawable(context, selectorTa, typedArray, false);
     }
 
-    @NonNull
+    public static StateListDrawable getMultiSelectorDrawable(Context context, TypedArray selectorTa, TypedArray typedArray, boolean rtl) {
+        return (StateListDrawable) new MultiSelectorDrawableCreator(context, selectorTa, typedArray, rtl).create();
+    }
+
     public static ColorStateList getMultiTextColorSelectorColorCreator(Context context, TypedArray selectorTa) {
         return new MultiTextColorSelectorColorCreator(context, selectorTa).create();
     }

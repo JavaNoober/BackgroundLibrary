@@ -60,10 +60,11 @@ public class MultiTextColorSelectorColorCreator implements ICreateColorState {
                 String attrStr = vArray[p];
                 //取出资源id
                 if(p == vArray.length - 1){
-                    color = ResourceUtils.getColor(context, attrStr);
-                    if(color == -1){
+                    Integer colorValue = ResourceUtils.getColor(context, attrStr);
+                    if(colorValue == null){
                         throw new IllegalArgumentException("cannot find color from the last attribute");
                     }
+                    color = colorValue;
                 }else {
                     MultiSelector multiSelector = MultiSelector.getMultiAttr(attrStr.replace("-", ""));
                     if(multiSelector == null){

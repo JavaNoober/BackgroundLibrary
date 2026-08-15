@@ -2,11 +2,39 @@ package com.noober.background.drawable;
 
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import androidx.annotation.AttrRes;
 
 import com.noober.background.R;
 
-public class ColorStateCreator implements ICreateColorState{
+public class ColorStateCreator implements ICreateColorState {
+
+    private static final StateColorListHelper.Dimension[] TEXT_DIMENSIONS = {
+            new StateColorListHelper.Dimension(R.styleable.text_selector_bl_checkable_textColor,
+                    R.styleable.text_selector_bl_unCheckable_textColor,
+                    android.R.attr.state_checkable, -android.R.attr.state_checkable),
+            new StateColorListHelper.Dimension(R.styleable.text_selector_bl_checked_textColor,
+                    R.styleable.text_selector_bl_unChecked_textColor,
+                    android.R.attr.state_checked, -android.R.attr.state_checked),
+            new StateColorListHelper.Dimension(R.styleable.text_selector_bl_selected_textColor,
+                    R.styleable.text_selector_bl_unSelected_textColor,
+                    android.R.attr.state_selected, -android.R.attr.state_selected),
+            new StateColorListHelper.Dimension(R.styleable.text_selector_bl_pressed_textColor,
+                    R.styleable.text_selector_bl_unPressed_textColor,
+                    android.R.attr.state_pressed, -android.R.attr.state_pressed),
+            new StateColorListHelper.Dimension(R.styleable.text_selector_bl_focused_textColor,
+                    R.styleable.text_selector_bl_unFocused_textColor,
+                    android.R.attr.state_focused, -android.R.attr.state_focused),
+            // activated / active 的 negState 保留历史实现的对调（unActivated -> -state_active，
+            // unActive -> -state_activated），以保证历史布局渲染结果不变
+            new StateColorListHelper.Dimension(R.styleable.text_selector_bl_activated_textColor,
+                    R.styleable.text_selector_bl_unActivated_textColor,
+                    android.R.attr.state_activated, -android.R.attr.state_active),
+            new StateColorListHelper.Dimension(R.styleable.text_selector_bl_active_textColor,
+                    R.styleable.text_selector_bl_unActive_textColor,
+                    android.R.attr.state_active, -android.R.attr.state_activated),
+            new StateColorListHelper.Dimension(R.styleable.text_selector_bl_expanded_textColor,
+                    R.styleable.text_selector_bl_unExpanded_textColor,
+                    android.R.attr.state_expanded, -android.R.attr.state_expanded),
+    };
 
     private TypedArray textTa;
 
@@ -14,60 +42,11 @@ public class ColorStateCreator implements ICreateColorState{
         this.textTa = textTa;
     }
 
-    private int[][] states = new int[][]{};
-    private int[] colors = new int[]{};
-    private int index;
-
     public ColorStateList create() {
-        states = new int[textTa.getIndexCount()][];
-        colors = new int[textTa.getIndexCount()];
-        for (int i = 0; i < textTa.getIndexCount(); i++) {
-            int attr = textTa.getIndex(i);
-            if (attr == R.styleable.text_selector_bl_checkable_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_checkable);
-            } else if (attr == R.styleable.text_selector_bl_unCheckable_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_checkable);
-            } else if (attr == R.styleable.text_selector_bl_checked_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_checked);
-            } else if (attr == R.styleable.text_selector_bl_unChecked_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_checked);
-            } else if (attr == R.styleable.text_selector_bl_enabled_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_enabled);
-            } else if (attr == R.styleable.text_selector_bl_unEnabled_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_enabled);
-            } else if (attr == R.styleable.text_selector_bl_selected_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_selected);
-            } else if (attr == R.styleable.text_selector_bl_unSelected_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_selected);
-            } else if (attr == R.styleable.text_selector_bl_pressed_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_pressed);
-            } else if (attr == R.styleable.text_selector_bl_unPressed_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_pressed);
-            } else if (attr == R.styleable.text_selector_bl_focused_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_focused);
-            } else if (attr == R.styleable.text_selector_bl_unFocused_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_focused);
-            } else if (attr == R.styleable.text_selector_bl_activated_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_activated);
-            } else if (attr == R.styleable.text_selector_bl_unActivated_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_active);
-            } else if (attr == R.styleable.text_selector_bl_active_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_active);
-            } else if (attr == R.styleable.text_selector_bl_unActive_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_activated);
-            } else if (attr == R.styleable.text_selector_bl_expanded_textColor) {
-                setStateColor(textTa, attr, android.R.attr.state_expanded);
-            } else if (attr == R.styleable.text_selector_bl_unExpanded_textColor) {
-                setStateColor(textTa, attr, -android.R.attr.state_expanded);
-            }
-
-        }
-        return new ColorStateList(states, colors);
-    }
-
-    private void setStateColor(TypedArray selectorTa, int attr, @AttrRes int functionId) {
-        states[index] = new int[]{functionId};
-        colors[index] = selectorTa.getColor(attr, 0);
-        index++;
+        ColorStateList result = StateColorListHelper.create(textTa,
+                TEXT_DIMENSIONS, false,
+                R.styleable.text_selector_bl_enabled_textColor, R.styleable.text_selector_bl_unEnabled_textColor,
+                0);
+        return result != null ? result : ColorStateList.valueOf(0);
     }
 }

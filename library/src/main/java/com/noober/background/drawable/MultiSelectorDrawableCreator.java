@@ -18,10 +18,16 @@ public class MultiSelectorDrawableCreator implements ICreateDrawable {
     private Context context;
     private GradientDrawable gradientDrawable;
     TypedArray typedArray;
+    private boolean rtl;
     public MultiSelectorDrawableCreator(Context context, TypedArray selectorTa, TypedArray typedArray) {
+        this(context, selectorTa, typedArray, false);
+    }
+
+    public MultiSelectorDrawableCreator(Context context, TypedArray selectorTa, TypedArray typedArray, boolean rtl) {
         this.selectorTa = selectorTa;
         this.context = context;
         this.typedArray = typedArray;
+        this.rtl = rtl;
     }
 
     @Override
@@ -61,15 +67,15 @@ public class MultiSelectorDrawableCreator implements ICreateDrawable {
                 String attrStr = vArray[p];
                 //取出资源id
                 if(p == vArray.length - 1){
-                    int color = ResourceUtils.getColor(context, attrStr);
+                    Integer color = ResourceUtils.getColor(context, attrStr);
                     if(typedArray.getIndexCount() > 0){
                         try {
-                            gradientDrawable = DrawableFactory.getDrawable(typedArray);
+                            gradientDrawable = DrawableFactory.getDrawable(typedArray, rtl);
                         } catch (XmlPullParserException e) {
                             e.printStackTrace();
                         }
                     }
-                    if(gradientDrawable != null && color != -1){
+                    if(gradientDrawable != null && color != null){
                         gradientDrawable.setColor(color);
                         drawable = gradientDrawable;
                     }else {

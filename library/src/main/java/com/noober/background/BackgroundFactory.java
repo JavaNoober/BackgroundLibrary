@@ -11,6 +11,7 @@ import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -113,33 +114,38 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 throw new IllegalArgumentException("text_selector and background_multi_selector_text cannot be used simultaneously");
             }
 
-            GradientDrawable drawable = null;
+            boolean rtl = BackgroundLibrary.isRtlSupportEnabled() && ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_RTL;
+            Drawable drawable = null;
             StateListDrawable stateListDrawable = null;
             if (buttonTa.getIndexCount() > 0 && view instanceof CompoundButton) {
                 //view.setClickable(true);
-                ((CompoundButton) view).setButtonDrawable(DrawableFactory.getButtonDrawable(typedArray, buttonTa));
+                ((CompoundButton) view).setButtonDrawable(DrawableFactory.getButtonDrawable(typedArray, buttonTa, rtl));
             } else if (selectorTa.getIndexCount() > 0) {
-                stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa);
+                stateListDrawable = DrawableFactory.getSelectorDrawable(typedArray, selectorTa, rtl);
                 //view.setClickable(true);
                 setDrawable(stateListDrawable, view, otherTa, typedArray);
             } else if (pressTa.getIndexCount() > 0) {
-                drawable = DrawableFactory.getDrawable(typedArray);
-                stateListDrawable = DrawableFactory.getPressDrawable(drawable, typedArray, pressTa);
+                GradientDrawable pressDrawable = DrawableFactory.getDrawable(typedArray, rtl);
+                drawable = pressDrawable;
+                stateListDrawable = DrawableFactory.getPressDrawable(pressDrawable, typedArray, pressTa, rtl);
                 //view.setClickable(true);
                 setDrawable(stateListDrawable, view, otherTa, typedArray);
             } else if (multiSelTa.getIndexCount() > 0) {
-                stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa, typedArray);
+                stateListDrawable = DrawableFactory.getMultiSelectorDrawable(context, multiSelTa, typedArray, rtl);
                 setBackground(stateListDrawable, view, typedArray);
             } else if (typedArray.getIndexCount() > 0) {
                 if (selectorPre21Ta != null && selectorPre21Ta.getIndexCount() > 0) {
-                    stateListDrawable = DrawableFactory.getSelectorPre21Drawable(typedArray);
+                    stateListDrawable = DrawableFactory.getSelectorPre21Drawable(typedArray, rtl);
                     setDrawable(stateListDrawable, view, otherTa, typedArray);
                 } else {
                     if (hasGradientState(typedArray)) {
-                        stateListDrawable = DrawableFactory.getStateGradientDrawable(typedArray);
+                        stateListDrawable = DrawableFactory.getStateGradientDrawable(typedArray, rtl);
                         setDrawable(stateListDrawable, view, otherTa, typedArray);
                     } else {
-                        drawable = DrawableFactory.getDrawable(typedArray);
+                        drawable = DrawableFactory.getDrawable(typedArray, rtl);
+                        if (hasStrokeGradient(typedArray)) {
+                            drawable = DrawableFactory.getStrokeGradientDrawable(typedArray, rtl);
+                        }
                         setDrawable(drawable, view, otherTa, typedArray);
                     }
                 }
@@ -170,7 +176,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                     setBackground(rippleDrawable, view, typedArray);
                 } else if (stateListDrawable == null) {
                     StateListDrawable tmpDrawable = new StateListDrawable();
-                    GradientDrawable unPressDrawable = DrawableFactory.getDrawable(typedArray);
+                    GradientDrawable unPressDrawable = DrawableFactory.getDrawable(typedArray, rtl);
                     unPressDrawable.setColor(color);
                     tmpDrawable.addState(new int[]{-android.R.attr.state_pressed}, drawable);
                     tmpDrawable.addState(new int[]{android.R.attr.state_pressed}, unPressDrawable);
@@ -270,16 +276,26 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 
         if (view instanceof TextView) {
             if (otherTa.hasValue(R.styleable.bl_other_bl_position)) {
-                if (otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 1) {
+                int position = otherTa.getInt(R.styleable.bl_other_bl_position, 0);
+                boolean rtl = BackgroundLibrary.isRtlSupportEnabled() && ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_RTL;
+                if (position == 1) {  // left
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    ((TextView) view).setCompoundDrawables(drawable, null, null, null);
-                } else if (otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 2) {
+                    if (rtl) {
+                        ((TextView) view).setCompoundDrawables(null, null, drawable, null);
+                    } else {
+                        ((TextView) view).setCompoundDrawables(drawable, null, null, null);
+                    }
+                } else if (position == 2) {  // top
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                     ((TextView) view).setCompoundDrawables(null, drawable, null, null);
-                } else if (otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 4) {
+                } else if (position == 4) {  // right
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-                    ((TextView) view).setCompoundDrawables(null, null, drawable, null);
-                } else if (otherTa.getInt(R.styleable.bl_other_bl_position, 0) == 8) {
+                    if (rtl) {
+                        ((TextView) view).setCompoundDrawables(drawable, null, null, null);
+                    } else {
+                        ((TextView) view).setCompoundDrawables(null, null, drawable, null);
+                    }
+                } else if (position == 8) {  // bottom
                     drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                     ((TextView) view).setCompoundDrawables(null, null, null, drawable);
                 }
@@ -301,9 +317,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             int bottom = 1 << 4;
             float width = typedArray.getDimension(R.styleable.background_bl_stroke_width, 0f);
             int position = typedArray.getInt(R.styleable.background_bl_stroke_position, 0);
-            float leftValue = hasStatus(position, left) ? 0 : -width;
+            boolean rtl = BackgroundLibrary.isRtlSupportEnabled() && ViewCompat.getLayoutDirection(view) == ViewCompat.LAYOUT_DIRECTION_RTL;
+            float leftValue = hasStatus(position, rtl ? right : left) ? 0 : -width;
             float topValue = hasStatus(position, top) ? 0 : -width;
-            float rightValue = hasStatus(position, right) ? 0 : -width;
+            float rightValue = hasStatus(position, rtl ? left : right) ? 0 : -width;
             float bottomValue = hasStatus(position, bottom) ? 0 : -width;
             drawable = new LayerDrawable(new Drawable[]{drawable});
             ((LayerDrawable) drawable).setLayerInset(0, (int) leftValue, (int) topValue, (int) rightValue, (int) bottomValue);
@@ -406,6 +423,11 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 typedArray.hasValue(R.styleable.background_bl_selected_gradient_startColor) ||
                 typedArray.hasValue(R.styleable.background_bl_pressed_gradient_startColor) ||
                 typedArray.hasValue(R.styleable.background_bl_focused_gradient_startColor);
+    }
+
+    private static boolean hasStrokeGradient(TypedArray typedArray) {
+        return typedArray.hasValue(R.styleable.background_bl_stroke_gradient_startColor) &&
+                typedArray.hasValue(R.styleable.background_bl_stroke_gradient_endColor);
     }
 }
 

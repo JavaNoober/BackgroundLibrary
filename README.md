@@ -1,4 +1,13 @@
 # BackgroundLibrary
+
+## 2.0.0 更新
+
+- 新增描边渐变：`bl_stroke_gradient_startColor` / `bl_stroke_gradient_endColor`（可选 `bl_stroke_gradient_centerColor` / `bl_stroke_gradient_angle`）
+- 新增 RTL（从右到左）布局支持：`bl_corners_*` / `bl_padding_*` / `bl_stroke_position` / `bl_position` 的 left/right 在 RTL 下自动镜像，通过 `BackgroundLibrary.setRtlSupportEnabled(true)` 开启（默认关闭）
+- 修复高版本 AndroidX（androidx core 1.1.0+）下背景 / 文字样式不生效
+- 修复 RadioButton / CheckBox 上 `bl_enabled` / `bl_unEnabled` 系列失效
+- 修复白色 `#FFFFFF` 被误判为无效颜色
+- 修复文字渐变水平方向（`bl_text_gradient_orientation="horizontal"`）不生效
 A framework for directly generating shape through Tags, no need to write shape.xml again（通过标签直接生成shape，无需再写shape.xml）  
 
 issue回复不及时，可以添加qq群887686934  
@@ -19,7 +28,7 @@ issue回复不及时，可以添加qq群887686934
     }
 
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation 'com.github.JavaNoober.BackgroundLibrary:library:1.7.6'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:library:2.0.0'
 
 如果项目使用了androidx：  
 
@@ -31,7 +40,7 @@ issue回复不及时，可以添加qq群887686934
     }
 
     implementation "androidx.appcompat:appcompat:$supportVersion" 
-    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:1.7.6'
+    implementation 'com.github.JavaNoober.BackgroundLibrary:libraryx:2.0.0'
    
 
 ## 使用文档

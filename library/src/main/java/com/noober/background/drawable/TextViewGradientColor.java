@@ -15,8 +15,8 @@ import com.noober.background.R;
  * Description:
  */
 public class TextViewGradientColor implements ITextViewOperator{
-    private int endColor = -1;
-    private int startColor = -1;
+    private int endColor = 0;
+    private int startColor = 0;
     private int orientation = 0;
 
     @Override
@@ -26,22 +26,22 @@ public class TextViewGradientColor implements ITextViewOperator{
             if(textTa.getIndexCount() == 0){
                 return;
             }
+            boolean hasEndColor = false;
+            boolean hasStartColor = false;
             for (int i = 0; i < textTa.getIndexCount(); i++) {
                 int attr = textTa.getIndex(i);
                 if(attr == R.styleable.bl_text_bl_text_gradient_endColor){
-                    endColor = textTa.getColor(attr, -1);
+                    endColor = textTa.getColor(attr, 0);
+                    hasEndColor = true;
                 }else if(attr == R.styleable.bl_text_bl_text_gradient_startColor){
-                    startColor = textTa.getColor(attr, -1);
+                    startColor = textTa.getColor(attr, 0);
+                    hasStartColor = true;
                 }else if(attr == R.styleable.bl_text_bl_text_gradient_orientation){
                     orientation = textTa.getInt(attr, 0);
                 }
             }
 
-            if(endColor == -1 && startColor != -1){
-                textView.setTextColor(startColor);
-            }else if(startColor == -1 && endColor != -1){
-                textView.setTextColor(endColor);
-            }else if(endColor != -1 && startColor != -1){
+            if(hasStartColor && hasEndColor){
                 if(orientation == 0){
                     textView.post(new Runnable() {
                         @Override
@@ -56,11 +56,17 @@ public class TextViewGradientColor implements ITextViewOperator{
                     textView.post(new Runnable() {
                         @Override
                         public void run() {
-                            textView.getPaint().setShader(new LinearGradient(0, 0f, textView.getMeasuredWidth(), 0f, startColor, endColor, Shader.TileMode.REPEAT));
+                            CharSequence text = textView.getText();
+                            float width = (text == null || text.length() == 0) ? textView.getWidth() : textView.getPaint().measureText(text.toString());
+                            textView.getPaint().setShader(new LinearGradient(0, 0f, width, 0f, startColor, endColor, Shader.TileMode.CLAMP));
                             textView.invalidate();
                         }
                     });
                 }
+            }else if(hasStartColor){
+                textView.setTextColor(startColor);
+            }else if(hasEndColor){
+                textView.setTextColor(endColor);
             }
         }catch (Exception e){
 

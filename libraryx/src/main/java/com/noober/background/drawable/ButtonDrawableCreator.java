@@ -13,10 +13,16 @@ public class ButtonDrawableCreator implements ICreateDrawable {
 
     private TypedArray typedArray;
     private TypedArray buttonTa;
+    private boolean rtl;
 
     public ButtonDrawableCreator(TypedArray typedArray, TypedArray buttonTa) {
+        this(typedArray, buttonTa, false);
+    }
+
+    public ButtonDrawableCreator(TypedArray typedArray, TypedArray buttonTa, boolean rtl) {
         this.typedArray = typedArray;
         this.buttonTa = buttonTa;
+        this.rtl = rtl;
     }
 
     @Override
@@ -51,7 +57,7 @@ public class ButtonDrawableCreator implements ICreateDrawable {
             resDrawable = buttonTa.getDrawable(attr);
         }
         if (resDrawable == null && color != 0) {
-            GradientDrawable tmpDrawable = DrawableFactory.getDrawable(typedArray);
+            GradientDrawable tmpDrawable = DrawableFactory.getDrawable(typedArray, rtl);
             tmpDrawable.setColor(color);
             stateListDrawable.addState(new int[]{functionId}, tmpDrawable);
         } else {
